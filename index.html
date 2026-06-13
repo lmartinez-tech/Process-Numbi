@@ -262,6 +262,71 @@
       margin-bottom: 8px;
     }
 
+    .storyline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .story-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 210px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      box-shadow: 0 10px 24px rgba(38, 50, 56, .05);
+    }
+
+    .story-card strong {
+      color: var(--numbi-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .story-card h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .phase-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin: 12px 0;
+    }
+
+    .meta-box {
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .meta-box strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 3px;
+    }
+
+    .meta-box span {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
     .chips {
       display: flex;
       gap: 8px;
@@ -464,10 +529,10 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline { grid-template-columns: 1fr; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
-      .checklist { grid-template-columns: 1fr; }
+      .checklist, .phase-meta { grid-template-columns: 1fr; }
       .progress-box { grid-template-columns: 1fr; }
       .score { text-align: left; }
     }
@@ -489,6 +554,7 @@
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
         <a href="#objetivo">Objetivo</a>
+        <a href="#participacion">Participacion</a>
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
         <a href="#validaciones">Validaciones</a>
@@ -523,6 +589,40 @@
         <div class="callout">
           <strong>Lectura ejecutiva</strong>
           El proceso no debe sentirse como una auditoría pesada para el cliente. Debe sentirse como acompañamiento: diagnóstico claro, ruta explicada, avances visibles, riesgos conversados a tiempo y cierre formal antes de iniciar la operación recurrente.
+        </div>
+      </div>
+    </section>
+
+    <section id="participacion">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Mapa de participación</span>
+          <div>
+            <h2>¿Quién participa y en qué momento?</h2>
+            <p>La idea es que cada persona entienda cuándo entra, qué debe preparar y qué decisión ayuda a tomar. Así el proceso se siente acompañado, no como una lista interminable.</p>
+          </div>
+        </div>
+        <div class="storyline">
+          <article class="story-card">
+            <strong>Antes del kickoff</strong>
+            <h3>Comercial y líder de setup</h3>
+            <p>Entregan contexto, alcance vendido, expectativas del cliente y señales tempranas de riesgo.</p>
+          </article>
+          <article class="story-card">
+            <strong>Durante diagnóstico</strong>
+            <h3>Gerente Contador</h3>
+            <p>Clasifica al cliente, explica la ruta, confirma responsables y traduce hallazgos en próximos pasos.</p>
+          </article>
+          <article class="story-card">
+            <strong>Durante ejecución</strong>
+            <h3>Especialistas y cliente</h3>
+            <p>Resuelven accesos, soportes, parametrización, migración, auditoría o reconstrucción según la ruta.</p>
+          </article>
+          <article class="story-card">
+            <strong>Antes de Operación</strong>
+            <h3>Operación recurrente</h3>
+            <p>Recibe saldos, pendientes, acuerdos, riesgos residuales y la primera cadencia de trabajo.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -766,12 +866,60 @@
     };
 
     const phases = [
-      ["Pre-onboarding", "Preparar el terreno antes de hablar de números.", "2 días", ["Alcance confirmado", "Responsables definidos", "Accesos solicitados"]],
-      ["Diagnóstico", "Entender qué tan ordenado llega el cliente.", "3 días", ["Ficha completa", "Ruta definida", "Riesgos visibles"]],
-      ["Auditoría", "Validar lo crítico antes de configurar.", "3 a 8 días", ["Auditoría ejecutada", "Hallazgos priorizados", "Plan aprobado"]],
-      ["Parametrización", "Configurar para que la operación pueda correr.", "4 a 10 días", ["Plan de cuentas", "Impuestos", "Bancos e integraciones"]],
-      ["Migración o reconstrucción", "Cargar o reconstruir información con evidencia.", "5 a 15 días", ["Saldos validados", "Histórico cargado", "Conciliaciones críticas"]],
-      ["Operación recurrente", "Pasar el cliente a la cadencia normal.", "Primer ciclo", ["Ritual de cierre", "Pendientes controlados", "Pulso NPS programado"]]
+      {
+        name: "Pre-onboarding",
+        purpose: "Preparar el terreno antes de hablar de números.",
+        sla: "2 días",
+        participants: "Comercial, líder de setup y Gerente Contador",
+        moment: "Cuando el cliente acepta iniciar y antes del kickoff",
+        outcome: "Contexto claro, alcance confirmado y accesos solicitados",
+        items: ["Alcance confirmado", "Responsables definidos", "Accesos solicitados"]
+      },
+      {
+        name: "Diagnóstico",
+        purpose: "Entender qué tan ordenado llega el cliente.",
+        sla: "3 días",
+        participants: "Gerente Contador y responsable del cliente",
+        moment: "Primera conversación operativa",
+        outcome: "Ruta de setup definida y riesgos visibles",
+        items: ["Ficha completa", "Ruta definida", "Riesgos visibles"]
+      },
+      {
+        name: "Auditoría",
+        purpose: "Validar lo crítico antes de configurar.",
+        sla: "3 a 8 días",
+        participants: "Gerente Contador, especialista contable y cliente",
+        moment: "Después del diagnóstico y antes de parametrizar",
+        outcome: "Hallazgos priorizados y plan aprobado",
+        items: ["Auditoría ejecutada", "Hallazgos priorizados", "Plan aprobado"]
+      },
+      {
+        name: "Parametrización",
+        purpose: "Configurar para que la operación pueda correr.",
+        sla: "4 a 10 días",
+        participants: "Especialista contable, tecnología y Gerente Contador",
+        moment: "Cuando los hallazgos críticos están entendidos",
+        outcome: "Sistema listo para pruebas y primeros registros",
+        items: ["Plan de cuentas", "Impuestos", "Bancos e integraciones"]
+      },
+      {
+        name: "Migración o reconstrucción",
+        purpose: "Cargar o reconstruir información con evidencia.",
+        sla: "5 a 15 días",
+        participants: "Equipo contable, cliente y responsable de datos",
+        moment: "Cuando la configuración base ya está aprobada",
+        outcome: "Saldos y soportes listos para operar",
+        items: ["Saldos validados", "Histórico cargado", "Conciliaciones críticas"]
+      },
+      {
+        name: "Operación recurrente",
+        purpose: "Pasar el cliente a la cadencia normal.",
+        sla: "Primer ciclo",
+        participants: "Gerente Contador, equipo de operación y cliente",
+        moment: "Después del ritual de cierre",
+        outcome: "Operación asignada, pendientes controlados y pulso NPS programado",
+        items: ["Ritual de cierre", "Pendientes controlados", "Pulso NPS programado"]
+      }
     ];
 
     const questions = [
@@ -848,11 +996,16 @@
         <article class="step">
           <div class="num">${index + 1}</div>
           <div>
-            <h3>${phase[0]}</h3>
-            <p>${phase[1]}</p>
-            <div class="checklist">${phase[3].map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item)).join("")}</div>
+            <h3>${phase.name}</h3>
+            <p>${phase.purpose}</p>
+            <div class="phase-meta">
+              <div class="meta-box"><strong>Participan</strong><span>${phase.participants}</span></div>
+              <div class="meta-box"><strong>Momento</strong><span>${phase.moment}</span></div>
+              <div class="meta-box"><strong>Resultado</strong><span>${phase.outcome}</span></div>
+            </div>
+            <div class="checklist">${phase.items.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item)).join("")}</div>
           </div>
-          <div class="sla">${phase[2]}</div>
+          <div class="sla">${phase.sla}</div>
         </article>
       `).join("");
     }
