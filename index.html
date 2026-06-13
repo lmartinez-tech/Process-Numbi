@@ -712,6 +712,13 @@
           <div class="panel">
             <h4 id="ritualTitle">Ritual de cierre</h4>
             <p id="ritualText"></p>
+            <label>Pulso NPS de cierre
+              <select id="npsPulse">
+                <option value="promoter">Promotor probable: claridad, control y acompañamiento</option>
+                <option value="neutral">Neutral: necesita un refuerzo antes del handoff</option>
+                <option value="risk">Riesgo detractor: activar plan de recuperación</option>
+              </select>
+            </label>
             <label>Notas de transición a Operación
               <textarea id="handoffNotes">Pendientes, riesgos, acuerdos con cliente y primera cadencia recurrente.</textarea>
             </label>
@@ -1059,6 +1066,8 @@
       if (["deep", "enterprise"].includes(routeKey)) alerts.push(["risk", "Auditoría profunda obligatoria antes de parametrizar."]);
       if ($("accountingState").value !== "clean") alerts.push(["warn", "No avanzar a Operación sin saldos iniciales validados."]);
       if ($("risk").value === "high") alerts.push(["risk", "Activar seguimiento diario hasta eliminar bloqueos críticos."]);
+      if ($("npsPulse") && $("npsPulse").value === "neutral") alerts.push(["warn", "Agendar refuerzo de expectativas antes del handoff a Operación."]);
+      if ($("npsPulse") && $("npsPulse").value === "risk") alerts.push(["risk", "No cerrar setup sin plan de recuperación NPS aprobado."]);
       if (calculateProgress() >= 85) alerts.push(["good", "Listo para preparar ritual de cierre y correo de transición."]);
       if (!alerts.length) alerts.push(["good", "Sin alertas críticas. Mantener cadencia de acompañamiento."]);
       $("alerts").innerHTML = alerts.map(([type, text]) => `
@@ -1147,7 +1156,7 @@
       renderNav();
       renderAll();
 
-      ["clientName", "owner", "operationType", "clientType", "accountingState", "volume", "risk", "systemName", "mailTo", "mailTemplate"].forEach(id => {
+      ["clientName", "owner", "operationType", "clientType", "accountingState", "volume", "risk", "systemName", "mailTo", "mailTemplate", "npsPulse"].forEach(id => {
         $(id).addEventListener("input", renderAll);
         $(id).addEventListener("change", renderAll);
       });
