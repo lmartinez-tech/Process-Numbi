@@ -354,6 +354,62 @@
       gap: 12px;
     }
 
+    .explain-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .mode-switch button {
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 850;
+      padding: 8px 11px;
+    }
+
+    .mode-switch button.active {
+      background: var(--numbi);
+      color: white;
+    }
+
+    .phase-focus {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .phase-focus button {
+      min-width: 34px;
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: white;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .phase-focus button.active {
+      border-color: var(--numbi);
+      background: var(--numbi);
+      color: white;
+    }
+
     .step {
       display: grid;
       grid-template-columns: 58px 1fr auto;
@@ -364,6 +420,20 @@
       border-radius: 8px;
       background: white;
       box-shadow: 0 10px 24px rgba(38, 50, 56, .05);
+    }
+
+    .step.dimmed {
+      opacity: .42;
+      box-shadow: none;
+    }
+
+    .step.summary .phase-meta,
+    .step.summary .checklist {
+      display: none;
+    }
+
+    .step.summary {
+      align-items: center;
     }
 
     .num {
@@ -554,7 +624,7 @@
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
         <a href="#objetivo">Objetivo</a>
-        <a href="#participacion">Participacion</a>
+        <a href="#participacion">Participación</a>
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
         <a href="#validaciones">Validaciones</a>
@@ -709,6 +779,14 @@
             <div class="bar" aria-hidden="true"><span id="progressBar"></span></div>
           </div>
           <div class="score" id="progressScore">0%</div>
+        </div>
+
+        <div class="explain-controls" aria-label="Controles para explicar el proceso">
+          <div class="mode-switch">
+            <button type="button" class="active" data-mode="summary">Ver resumen</button>
+            <button type="button" data-mode="detail">Ver detalle</button>
+          </div>
+          <div class="phase-focus" id="phaseFocus" aria-label="Enfocar una fase"></div>
         </div>
 
         <div class="steps" id="steps"></div>
@@ -960,7 +1038,7 @@
       "Operación recurrente asignada"
     ];
 
-    const state = { checks: {} };
+    const state = { checks: {}, viewMode: "summary", focusedPhase: null };
 
     function $(id) { return document.getElementById(id); }
 
@@ -992,8 +1070,12 @@
     }
 
     function renderSteps() {
+      $("phaseFocus").innerHTML = phases.map((phase, index) => `
+        <button type="button" class="${state.focusedPhase === index ? "active" : ""}" data-phase="${index}" title="${phase.name}">${index + 1}</button>
+      `).join("");
+
       $("steps").innerHTML = phases.map((phase, index) => `
-        <article class="step">
+        <article class="step ${state.viewMode === "summary" ? "summary" : ""} ${state.focusedPhase !== null && state.focusedPhase !== index ? "dimmed" : ""}">
           <div class="num">${index + 1}</div>
           <div>
             <h3>${phase.name}</h3>
@@ -1008,6 +1090,16 @@
           <div class="sla">${phase.sla}</div>
         </article>
       `).join("");
+
+      document.querySelectorAll("[data-phase]").forEach(button => {
+        button.addEventListener("click", event => {
+          const selected = Number(event.currentTarget.dataset.phase);
+          state.focusedPhase = state.focusedPhase === selected ? null : selected;
+          renderSteps();
+          bindChecks();
+          renderProgress();
+        });
+      });
     }
 
     function renderQuestions() {
@@ -1090,6 +1182,16 @@
     ["clientName", "operationType", "clientType", "accountingState", "risk", "owner", "mailType", "npsPulse"].forEach(id => {
       document.addEventListener("input", event => { if (event.target && event.target.id === id) renderAll(); });
       document.addEventListener("change", event => { if (event.target && event.target.id === id) renderAll(); });
+    });
+
+    document.querySelectorAll("[data-mode]").forEach(button => {
+      button.addEventListener("click", event => {
+        state.viewMode = event.currentTarget.dataset.mode;
+        document.querySelectorAll("[data-mode]").forEach(item => item.classList.toggle("active", item.dataset.mode === state.viewMode));
+        renderSteps();
+        bindChecks();
+        renderProgress();
+      });
     });
 
     $("copyBtn").addEventListener("click", async () => {
