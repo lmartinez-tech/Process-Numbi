@@ -298,6 +298,69 @@
       color: var(--muted);
     }
 
+    .meeting-guide {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .agenda {
+      display: grid;
+      gap: 10px;
+    }
+
+    .agenda-row {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .agenda-row strong {
+      color: var(--numbi-dark);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .agenda-row h3 {
+      margin: 0 0 4px;
+      font-size: 19px;
+    }
+
+    .agenda-row p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .speaker-card {
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .speaker-card h3 {
+      font-size: 26px;
+      margin: 0;
+    }
+
+    .speaker-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .speaker-card ul {
+      margin-top: 0;
+    }
+
     .phase-meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -599,7 +662,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide { grid-template-columns: 1fr; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
       .checklist, .phase-meta { grid-template-columns: 1fr; }
@@ -624,6 +687,7 @@
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
         <a href="#objetivo">Objetivo</a>
+        <a href="#presentacion">Presentación</a>
         <a href="#participacion">Participación</a>
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
@@ -643,6 +707,60 @@
           <div class="stat"><strong>6</strong><span>momentos del proceso</span></div>
           <div class="stat"><strong>3</strong><span>rutas de setup</span></div>
           <div class="stat"><strong>NPS 9+</strong><span>meta de experiencia</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentacion">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Cómo presentarla</span>
+          <div>
+            <h2>Una reunión de 15 minutos para alinear al equipo</h2>
+            <p>Esta guía está pensada para explicar el proceso poco a poco: primero el para qué, luego quién participa, después cómo se clasifica al cliente y finalmente cómo se cierra el setup.</p>
+          </div>
+        </div>
+        <div class="meeting-guide">
+          <div class="agenda">
+            <article class="agenda-row">
+              <strong>0-3 min</strong>
+              <div>
+                <h3>Contar el objetivo</h3>
+                <p>Explicar que buscamos claridad, orden y acompañamiento para llegar a NPS 9+.</p>
+              </div>
+            </article>
+            <article class="agenda-row">
+              <strong>3-6 min</strong>
+              <div>
+                <h3>Ubicar a cada participante</h3>
+                <p>Mostrar cuándo entra Comercial, Gerente Contador, especialistas, cliente y Operación.</p>
+              </div>
+            </article>
+            <article class="agenda-row">
+              <strong>6-10 min</strong>
+              <div>
+                <h3>Clasificar un caso ejemplo</h3>
+                <p>Usar la ficha de diagnóstico para ver cómo cambia la ruta, SLA y auditoría.</p>
+              </div>
+            </article>
+            <article class="agenda-row">
+              <strong>10-15 min</strong>
+              <div>
+                <h3>Recorrer fases y cierre</h3>
+                <p>Activar “Ver resumen” para explicar el mapa y “Ver detalle” para resolver preguntas.</p>
+              </div>
+            </article>
+          </div>
+          <aside class="speaker-card">
+            <div class="mini-title">Guía para quien presenta</div>
+            <h3>La promesa debe sonar simple</h3>
+            <p>No estamos creando más trabajo. Estamos ordenando cómo acompañamos al cliente para que nadie improvise ni descubra riesgos tarde.</p>
+            <ul>
+              <li>Empieza por el dolor: setups confusos generan ansiedad.</li>
+              <li>Luego muestra el mapa: cada persona sabe cuándo participa.</li>
+              <li>Cierra con el criterio de éxito: handoff claro y NPS 9+.</li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
