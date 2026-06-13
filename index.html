@@ -151,6 +151,8 @@
       scroll-margin-top: 90px;
     }
 
+    #pasos { scroll-margin-top: 190px; }
+
     .section-title {
       display: grid;
       grid-template-columns: 230px 1fr;
@@ -351,6 +353,12 @@
     }
 
     .macro-phase {
+      appearance: none;
+      width: 100%;
+      color: var(--ink);
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
       min-width: 140px;
       border: 1px solid var(--line);
       border-top: 5px solid var(--numbi);
@@ -358,6 +366,14 @@
       background: white;
       padding: 15px;
       position: relative;
+    }
+
+    .macro-phase:hover,
+    .macro-phase.active {
+      border-color: var(--numbi);
+      border-top-color: var(--numbi);
+      background: var(--mint-soft);
+      box-shadow: 0 0 0 2px rgba(0, 201, 139, .12);
     }
 
     .macro-phase:not(:last-child)::after {
@@ -391,6 +407,72 @@
       margin: 0;
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .macro-anchor {
+      min-height: 236px;
+    }
+
+    .macro-dock {
+      background: white;
+    }
+
+    .macro-dock.is-fixed {
+      position: fixed;
+      top: 74px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9;
+      width: min(1180px, calc(100% - 48px));
+      padding: 8px 10px 0;
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 16px 30px rgba(38, 50, 56, .13);
+    }
+
+    .macro-dock.is-fixed .macro-phase {
+      padding: 9px 11px;
+      min-height: 72px;
+      border-top-width: 3px;
+    }
+
+    .macro-dock.is-fixed .macro-phase p {
+      display: none;
+    }
+
+    .macro-dock.is-fixed .macro-phase h3 {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .macro-dock.is-fixed .macro-phase strong {
+      font-size: 10px;
+      margin-bottom: 3px;
+    }
+
+    .process-bands {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+
+    .process-band {
+      padding: 5px 10px;
+      color: #006c51;
+      background: var(--mint);
+      font-size: 11px;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-radius: 4px;
+    }
+
+    .process-band.setup {
+      color: #144f83;
+      background: var(--blue-soft);
     }
 
     .text-flow {
@@ -643,6 +725,7 @@
     }
 
     .step.summary .phase-meta,
+    .step.summary .subphase-list,
     .step.summary .checklist {
       display: none;
     }
@@ -700,6 +783,29 @@
       height: 16px;
       margin-top: 3px;
       accent-color: var(--numbi);
+    }
+
+    .subphase-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .subphase {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 9px;
+      align-items: start;
+      padding: 9px 10px;
+      border-left: 3px solid var(--blue);
+      background: var(--blue-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+    }
+
+    .subphase strong {
+      color: var(--blue);
+      white-space: nowrap;
     }
 
     .cards-3 {
@@ -887,6 +993,8 @@
       section { padding: 30px 0; }
       .step { grid-template-columns: 1fr; }
       .sla { grid-column: auto; }
+      .macro-dock.is-fixed { top: 122px; width: calc(100% - 20px); }
+      .macro-anchor { min-height: 220px; }
     }
   </style>
 </head>
@@ -932,13 +1040,21 @@
           </div>
         </div>
 
-        <div class="macro-flow" aria-label="Fases maestras del setup">
-          <article class="macro-phase"><strong>Fase 1</strong><h3>Onboarding</h3><p>Clasificar, asignar responsables, pedir información y dejar acuerdos.</p></article>
-          <article class="macro-phase"><strong>Fase 2</strong><h3>Recepción y validación</h3><p>Recibir documentos, comprobar integridad y validar información inicial.</p></article>
-          <article class="macro-phase"><strong>Fase 3</strong><h3>Auditoría</h3><p>Revisar cuando existen dudas o señales de errores contables.</p></article>
-          <article class="macro-phase"><strong>Fase 4</strong><h3>Parametrización y migración</h3><p>Configurar Siigo o Alegra y migrar información cuando aplique.</p></article>
-          <article class="macro-phase"><strong>Fase 5</strong><h3>Reconstrucción contable</h3><p>Reconstruir periodos cuando el pasado contable no es confiable.</p></article>
-          <article class="macro-phase"><strong>Fase 6</strong><h3>Salida a operación</h3><p>Capacitar, cerrar el setup y pasar al flujo recurrente.</p></article>
+        <div class="macro-anchor" id="macroAnchor">
+          <div class="macro-dock" id="macroDock">
+            <div class="process-bands">
+              <div class="process-band">Fase 1 · Onboarding</div>
+              <div class="process-band setup">Fases 2-6 · Setup</div>
+            </div>
+            <div class="macro-flow" aria-label="Fases maestras del proceso">
+              <button type="button" class="macro-phase" data-macro-phase="0"><strong>Fase 1 · Onboarding</strong><h3>Onboarding</h3><p>Clasificar, asignar responsables, pedir información y dejar acuerdos.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="1"><strong>Fase 2 · Setup</strong><h3>Recepción y validación</h3><p>Recibir documentos, comprobar integridad y validar información inicial.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="2"><strong>Fase 3 · Setup</strong><h3>Auditoría</h3><p>Revisar cuando existen dudas o señales de errores contables.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="3"><strong>Fase 4 · Setup</strong><h3>Parametrización y migración</h3><p>Configurar Siigo o Alegra y migrar información cuando aplique.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="4"><strong>Fase 5 · Setup</strong><h3>Reconstrucción contable</h3><p>Reconstruir periodos cuando el pasado contable no es confiable.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="5"><strong>Fase 6 · Setup</strong><h3>Salida a operación</h3><p>Capacitar, cerrar el setup y pasar al flujo recurrente.</p></button>
+            </div>
+          </div>
         </div>
 
         <div class="text-flow">Onboarding → Recepción y validación → Auditoría* → Parametrización / migración* → Reconstrucción* → Salida a operación</div>
@@ -1510,6 +1626,7 @@
         participants: "Ventas, Mayerly, Gerente Contador, cliente y Country Manager si aplica",
         moment: "Después de la firma y de la investigación previa",
         outcome: "Clasificación, ruta y focos obligatorios entregados",
+        subphases: ["Investigación previa", "Clasificación preliminar", "Monólogo de apertura", "Preguntas de validación", "Diagnóstico final"],
         items: ["Acta y hoja de vida", "Contador asignado", "Formato Post-Onboarding", "Fecha de documentos", "Correo automático"]
       },
       {
@@ -1519,6 +1636,7 @@
         participants: "Cliente, contador designado y Gerente Contador",
         moment: "Después del onboarding, si existe pasado contable",
         outcome: "Documentos completos y saldos listos para revisión",
+        subphases: ["Recepción y validación inicial", "Auditoría Express / revisión de primer grado"],
         items: ["Documentos recibidos", "Pendientes notificados", "WhatsApp actualizado", "Dudas resueltas"]
       },
       {
@@ -1528,6 +1646,7 @@
         participants: "Contador, Andrés Granados, Gerente Contador y cliente cuando se requiera",
         moment: "Antes de aceptar saldos o definir reconstrucción",
         outcome: "Informe, dictamen y decisión post auditoría",
+        subphases: ["Auditoría de control / profunda", "Decisión post auditoría"],
         items: ["Auditoría Express", "Informe de resultados", "Dictamen si aplica", "Plan de acción", "Recotización si aplica"]
       },
       {
@@ -1537,6 +1656,7 @@
         participants: "Equipo de parametrización, contador y Gerente Contador",
         moment: "Después de validar saldos y alcance",
         outcome: "Software configurado, saldos iniciales cargados y listo para operar",
+        subphases: ["Parametrización", "Migración", "Checklist mínimo de setup"],
         items: ["Cuentas configuradas", "Facturación", "Centros de costo", "Migración validada", "Saldos iniciales"]
       },
       {
@@ -1546,6 +1666,7 @@
         participants: "Auditor, contador, auxiliar y Gerente Contador",
         moment: "Solo después de auditoría profunda y dictamen",
         outcome: "Periodos reconstruidos, impuestos y estados financieros preparados",
+        subphases: ["Definición de alcance y periodos", "Ejecución contable y conciliaciones", "Impuestos y estados financieros", "Validación y status diario"],
         items: ["Alcance definido", "Causación", "Conciliación bancaria", "Impuestos", "Estados financieros", "Status diario"]
       },
       {
@@ -1555,6 +1676,7 @@
         participants: "Gerente Contador, contador, cliente y Country Manager solo si hay alerta",
         moment: "Cuando sistema, saldos, factura y estado financiero están validados",
         outcome: "Cliente capacitado y fase cambiada de Setup a Operación",
+        subphases: ["Configuración de salida", "Capacitación al cliente", "Comunicación de cierre", "Cierre formal y transición"],
         items: ["Software funcional", "Capacitación", "Primera factura", "Primer estado financiero", "Correo de cierre", "NPS"]
       }
     ];
@@ -1705,6 +1827,9 @@
       $("phaseFocus").innerHTML = phases.map((phase, index) => `
         <button type="button" class="${state.focusedPhase === index ? "active" : ""}" data-phase="${index}" title="${phase.name}">${index + 1}</button>
       `).join("");
+      document.querySelectorAll("[data-macro-phase]").forEach(button => {
+        button.classList.toggle("active", Number(button.dataset.macroPhase) === state.focusedPhase);
+      });
 
       $("steps").innerHTML = phases.map((phase, index) => {
         const active = applies(phase);
@@ -1719,6 +1844,9 @@
               <div class="meta-box"><strong>Participan</strong><span>${phase.participants}</span></div>
               <div class="meta-box"><strong>Momento</strong><span>${phase.moment}</span></div>
               <div class="meta-box"><strong>Resultado</strong><span>${phase.outcome}</span></div>
+            </div>
+            <div class="subphase-list">
+              ${phase.subphases.map((subphase, subIndex) => `<div class="subphase"><strong>${index + 1}.${subIndex + 1}</strong><span>${subphase}</span></div>`).join("")}
             </div>
             <div class="checklist">${phase.items.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item, active)).join("")}</div>
           </div>
@@ -1888,6 +2016,28 @@
         renderProgress();
       });
     });
+
+    document.querySelectorAll("[data-macro-phase]").forEach(button => {
+      button.addEventListener("click", event => {
+        state.focusedPhase = Number(event.currentTarget.dataset.macroPhase);
+        state.viewMode = "detail";
+        document.querySelectorAll("[data-mode]").forEach(item => item.classList.toggle("active", item.dataset.mode === "detail"));
+        renderSteps();
+        bindChecks();
+        renderProgress();
+        $("pasos").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    const macroAnchor = $("macroAnchor");
+    const macroDock = $("macroDock");
+    function updateMacroDock() {
+      const shouldFix = window.scrollY + 74 >= macroAnchor.offsetTop;
+      macroDock.classList.toggle("is-fixed", shouldFix);
+    }
+    window.addEventListener("scroll", updateMacroDock, { passive: true });
+    window.addEventListener("resize", updateMacroDock);
+    updateMacroDock();
 
     $("addLogBtn").addEventListener("click", () => {
       const text = $("logText").value.trim();
