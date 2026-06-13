@@ -675,6 +675,60 @@
       font-size: 14px;
     }
 
+    .tracking-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .alerts-list, .log-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .alert-item {
+      border-left: 4px solid var(--numbi);
+      background: var(--mint-soft);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .alert-item.warn {
+      border-left-color: #d58b00;
+      background: var(--warn);
+    }
+
+    .alert-item.risk {
+      border-left-color: #c7463a;
+      background: var(--risk);
+    }
+
+    .alert-item strong, .log-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .alert-item p, .log-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .log-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: white;
+    }
+
+    .log-item small {
+      display: block;
+      color: var(--numbi-dark);
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
     .actions {
       display: flex;
       gap: 10px;
@@ -706,7 +760,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide, .decision-guide { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide, .decision-guide, .tracking-grid { grid-template-columns: 1fr; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
       .checklist, .phase-meta { grid-template-columns: 1fr; }
@@ -736,6 +790,7 @@
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
         <a href="#validaciones">Validaciones</a>
+        <a href="#seguimiento">Seguimiento</a>
         <a href="#cierre">Cierre</a>
       </nav>
     </div>
@@ -1024,6 +1079,47 @@
       </div>
     </section>
 
+    <section id="seguimiento">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Seguimiento durante setup</span>
+          <div>
+            <h2>Bitácora y alertas sin complicar el proceso</h2>
+            <p>Registramos decisiones y bloqueos importantes. Las alertas ayudan al Gerente Contador a saber qué necesita atención antes de avanzar.</p>
+          </div>
+        </div>
+        <div class="tracking-grid">
+          <div class="panel form">
+            <label>Tipo de evento
+              <select id="logType">
+                <option value="Acuerdo">Acuerdo</option>
+                <option value="Avance">Avance</option>
+                <option value="Bloqueo">Bloqueo</option>
+                <option value="Riesgo">Riesgo</option>
+              </select>
+            </label>
+            <label>Responsable
+              <input id="logOwner" value="Gerente Contador">
+            </label>
+            <label>¿Qué ocurrió?
+              <textarea id="logText" placeholder="Ejemplo: El cliente enviará los extractos faltantes el viernes."></textarea>
+            </label>
+            <button class="btn" type="button" id="addLogBtn">Agregar a la bitácora</button>
+          </div>
+          <div class="cards-2">
+            <div class="card">
+              <div class="mini-title">Alertas activas</div>
+              <div class="alerts-list" id="alertsList"></div>
+            </div>
+            <div class="card">
+              <div class="mini-title">Bitácora del setup</div>
+              <div class="log-list" id="logList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="cierre">
       <div class="wrap">
         <div class="section-title">
@@ -1216,7 +1312,19 @@
       "Operación recurrente asignada"
     ];
 
-    const state = { checks: {}, viewMode: "summary", focusedPhase: null };
+    const state = {
+      checks: {},
+      viewMode: "summary",
+      focusedPhase: null,
+      logs: [
+        {
+          type: "Avance",
+          owner: "Gerente Contador",
+          text: "Cliente clasificado y ruta inicial definida.",
+          date: new Date().toLocaleString("es-CO")
+        }
+      ]
+    };
 
     function $(id) { return document.getElementById(id); }
 
@@ -1362,11 +1470,52 @@
       $("handoffChip").className = `chip ${canHandoff ? "" : pulse === "risk" ? "risk" : "warn"}`;
     }
 
+    function renderTracking() {
+      const key = routeKey();
+      const pulse = $("npsPulse").value;
+      const done = Object.values(state.checks).filter(Boolean).length;
+      const alerts = [];
+
+      if (key === "deep") {
+        alerts.push(["risk", "Ruta profunda activa", "No parametrizar ni migrar antes de cerrar la auditoría profunda y el plan de saneamiento."]);
+      } else if (key === "guided") {
+        alerts.push(["warn", "Acompañamiento reforzado", "Programar al menos dos cortes de validación antes del cierre."]);
+      } else {
+        alerts.push(["good", "Ruta controlada", "Mantener los hitos visibles y confirmar saldos antes del handoff."]);
+      }
+
+      if ($("accountingState").value !== "clean") {
+        alerts.push(["warn", "Saldos por validar", "El estado contable aún requiere revisión antes de pasar a Operación."]);
+      }
+      if ($("risk").value === "high" || pulse === "risk") {
+        alerts.push(["risk", "Riesgo de experiencia", "Activar plan de recuperación y conversar expectativas con el cliente."]);
+      }
+      if (done === 0) {
+        alerts.push(["warn", "Sin avances registrados", "Completar los primeros mínimos de pre-onboarding y diagnóstico."]);
+      }
+
+      $("alertsList").innerHTML = alerts.map(([level, title, text]) => `
+        <div class="alert-item ${level === "good" ? "" : level}">
+          <strong>${title}</strong>
+          <p>${text}</p>
+        </div>
+      `).join("");
+
+      $("logList").innerHTML = state.logs.length ? state.logs.map(log => `
+        <div class="log-item">
+          <small>${log.type} · ${log.date}</small>
+          <strong>${log.owner}</strong>
+          <p>${log.text}</p>
+        </div>
+      `).join("") : `<p>No hay eventos registrados todavía.</p>`;
+    }
+
     function bindChecks() {
       document.querySelectorAll("[data-check]").forEach(input => {
         input.addEventListener("change", event => {
           state.checks[event.target.dataset.check] = event.target.checked;
           renderProgress();
+          renderTracking();
         });
       });
     }
@@ -1380,6 +1529,7 @@
       renderMail();
       bindChecks();
       renderProgress();
+      renderTracking();
     }
 
     ["clientName", "operationType", "clientType", "accountingState", "risk", "owner", "mailType", "npsPulse"].forEach(id => {
@@ -1395,6 +1545,22 @@
         bindChecks();
         renderProgress();
       });
+    });
+
+    $("addLogBtn").addEventListener("click", () => {
+      const text = $("logText").value.trim();
+      if (!text) {
+        $("logText").focus();
+        return;
+      }
+      state.logs.unshift({
+        type: $("logType").value,
+        owner: $("logOwner").value.trim() || "Sin responsable",
+        text,
+        date: new Date().toLocaleString("es-CO")
+      });
+      $("logText").value = "";
+      renderTracking();
     });
 
     $("copyBtn").addEventListener("click", async () => {
