@@ -151,7 +151,13 @@
       scroll-margin-top: 90px;
     }
 
-    #pasos { scroll-margin-top: 190px; }
+    #pasos,
+    #explicacion-onboarding,
+    #explicacion-recepcion-validacion,
+    #explicacion-auditoria,
+    #explicacion-parametrizacion-migracion,
+    #explicacion-reconstruccion,
+    #explicacion-salida-operacion { scroll-margin-top: 190px; }
 
     .section-title {
       display: grid;
@@ -1006,7 +1012,7 @@
         <a href="#objetivo">Objetivo</a>
         <a href="#presentacion">Vista macro</a>
         <a href="#participacion">Participación</a>
-        <a href="#metodo">Método</a>
+        <a href="#explicacion-onboarding">Onboarding</a>
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
         <a href="#validaciones">Validaciones</a>
@@ -1152,36 +1158,84 @@
       </div>
     </section>
 
-    <section id="metodo">
+    <section id="explicacion-onboarding">
       <div class="wrap">
         <div class="section-title">
-          <span class="label">Explicación del onboarding</span>
+          <span class="label">Fase 1 · Onboarding</span>
           <div>
-            <h2>El onboarding se entiende en dos subfases</h2>
-            <p>Antes de entrar al setup técnico, el equipo debe separar lo que ocurre antes de la reunión y lo que ocurre durante la reunión de onboarding.</p>
+            <h2>Fase 1 — Onboarding: diagnóstico antes de preguntar</h2>
+            <p>El onboarding no empieza en la reunión. Desde que Mayerly agenda el espacio, crea el grupo de WhatsApp con el cliente y agrega al equipo correspondiente, el Gerente Contador debe preparar una lectura inicial del cliente.</p>
           </div>
         </div>
-        <div class="cards-2">
-          <article class="card" id="explicacion-onboarding">
-            <div class="mini-title">Subfase 1</div>
-            <h3>Pre-onboarding</h3>
-            <p>Va desde la firma del contrato hasta antes de la reunión con el cliente. Aquí se prepara el terreno para que el Gerente Contador no llegue a improvisar.</p>
+        <div class="cards-3">
+          <article class="card">
+            <div class="mini-title">Tipo de operación</div>
+            <h3>Cómo trabaja el negocio</h3>
             <ul>
-              <li>Ventas crea grupo de WhatsApp, cliente en Portal Numbi y notifica al equipo.</li>
-              <li>Mayerly solicita Cámara de Comercio, certificación para token DIAN y convoca en 24 horas.</li>
-              <li>Se crea la hoja de vida en el Dashboard de Operaciones.</li>
-              <li>El Gerente Contador revisa notas comerciales, estudia al cliente, verifica token y prepara hipótesis.</li>
+              <li><strong>Servicios:</strong> vende conocimiento, tiempo, contratos, proyectos o mensualidades.</li>
+              <li><strong>Comercial:</strong> compra productos terminados y los revende.</li>
+              <li><strong>Industrial:</strong> transforma materia prima en producto terminado.</li>
+              <li><strong>Mixto:</strong> combina productos, servicios, instalación, mantenimiento o proyectos.</li>
             </ul>
           </article>
           <article class="card">
-            <div class="mini-title">Subfase 2</div>
-            <h3>Onboarding</h3>
-            <p>Es la reunión donde se valida la lectura previa, se completa la hoja de vida, se define la ruta de setup y se dejan acuerdos claros con el cliente.</p>
+            <div class="mini-title">Tipo de cliente</div>
+            <h3>Qué trae antes de Numbi</h3>
             <ul>
-              <li>El Gerente Contador dirige la reunión con un monólogo de apertura preparado.</li>
-              <li>Las preguntas validan la hipótesis; no funcionan como cuestionario mecánico.</li>
-              <li>Se define tipo de operación, tipo de cliente y estado contable.</li>
-              <li>Al cierre sale correo con acta, ruta, tiempos, documentos requeridos y compromisos.</li>
+              <li><strong>Empresa nueva:</strong> no tiene pasado contable.</li>
+              <li><strong>Software compatible:</strong> ya usa Siigo o Alegra y trae pasado contable.</li>
+              <li><strong>Migración / parametrización:</strong> usa otro software o necesita configuración desde cero.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="mini-title">Estado contable</div>
+            <h3>Qué tan confiable llega</h3>
+            <ul>
+              <li><strong>Confirmación:</strong> contabilidad aparentemente al día y confiable.</li>
+              <li><strong>Auditoría:</strong> hay dudas sobre la calidad de la información.</li>
+              <li><strong>Reconstrucción:</strong> existen problemas significativos o desorden contable.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cards-2" style="margin-top:18px">
+          <article class="card">
+            <div class="mini-title">Bloque 1</div>
+            <h3>Investigación previa</h3>
+            <ul>
+              <li>Revisar Acta de Kick Off en la sección de Onboarding del Dashboard de Migración.</li>
+              <li>Revisar notas o transcripción de la reunión comercial.</li>
+              <li>Revisar Propuesta Comercial del cliente.</li>
+              <li>Entender actividad, tamaño, software actual, expectativas, riesgos y compromisos.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="mini-title">Bloque 2</div>
+            <h3>Clasificación preliminar</h3>
+            <ul>
+              <li>Identificar si la operación es de servicios, comercial, industrial o mixta.</li>
+              <li>Definir si el cliente es empresa nueva, software compatible o migración / parametrización.</li>
+              <li>Estimar si llega a confirmación, auditoría o reconstrucción.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="mini-title">Bloque 3</div>
+            <h3>Validación en reunión</h3>
+            <ul>
+              <li>Abrir con una lectura preparada del cliente.</li>
+              <li>Validar si la hipótesis inicial es correcta.</li>
+              <li>Confirmar riesgos contables, tributarios y operativos.</li>
+              <li>Definir focos obligatorios para el contador designado.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="mini-title">Bloque 4</div>
+            <h3>Diagnóstico final</h3>
+            <ul>
+              <li>Clasificación del cliente.</li>
+              <li>Ruta de setup recomendada.</li>
+              <li>Focos de auditoría obligatorios.</li>
+              <li>Observaciones clave para el contador designado.</li>
             </ul>
           </article>
         </div>
