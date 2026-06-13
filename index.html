@@ -249,6 +249,50 @@
       max-width: 720px;
     }
 
+    .decision-guide {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .decision-card {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .decision-card.active {
+      border-color: var(--numbi);
+      box-shadow: 0 0 0 3px rgba(0, 201, 139, .14);
+    }
+
+    .decision-card strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+
+    .decision-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .route-reason {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
     .callout {
       border: 2px solid #9bc9e7;
       background: var(--blue-soft);
@@ -662,7 +706,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide, .decision-guide { grid-template-columns: 1fr; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
       .checklist, .phase-meta { grid-template-columns: 1fr; }
@@ -876,7 +920,23 @@
               <strong>Cómo se lo contamos al equipo</strong>
               <span id="teamExplanation">Este cliente puede avanzar con una revisión rápida, parametrización base y validación de saldos antes del handoff.</span>
             </div>
+            <div class="route-reason" id="routeReason">Esta ruta aplica porque el cliente llega con información ordenada y bajo riesgo.</div>
           </div>
+        </div>
+
+        <div class="decision-guide" id="decisionGuide" aria-label="Árbol simple de decisión">
+          <article class="decision-card" data-route-card="standard">
+            <strong>1. Estándar</strong>
+            <p>Cliente nuevo, operación simple, contabilidad al día y riesgo bajo.</p>
+          </article>
+          <article class="decision-card" data-route-card="guided">
+            <strong>2. Guiado</strong>
+            <p>Migración, brechas menores, inventarios, multicanal o riesgo medio.</p>
+          </article>
+          <article class="decision-card" data-route-card="deep">
+            <strong>3. Profundo</strong>
+            <p>Rescate, alto riesgo, información no confiable, atraso o operación internacional.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1170,12 +1230,33 @@
       return "standard";
     }
 
+    function routeReason(key) {
+      const type = $("clientType").value;
+      const operation = $("operationType").value;
+      const accounting = $("accountingState").value;
+      const risk = $("risk").value;
+      if (key === "deep") {
+        if (risk === "high") return "Esta ruta aplica porque el riesgo percibido es alto y necesitamos proteger la experiencia desde el inicio.";
+        if (accounting === "messy" || accounting === "unknown") return "Esta ruta aplica porque la información contable no está lista para operar sin auditoría profunda o reconstrucción.";
+        if (type === "rescue") return "Esta ruta aplica porque es un rescate: primero hay que estabilizar, ordenar y recuperar confianza.";
+        if (type === "enterprise" || operation === "international") return "Esta ruta aplica porque la operación requiere más gobierno, validación y acompañamiento ejecutivo.";
+      }
+      if (key === "guided") {
+        if (type === "migration") return "Esta ruta aplica porque hay una migración y debemos controlar saldos, históricos y expectativas.";
+        if (operation === "multi" || operation === "inventory") return "Esta ruta aplica porque la operación tiene más focos de control y necesita seguimiento cercano.";
+        if (accounting === "partial") return "Esta ruta aplica porque hay brechas menores que deben cerrarse antes del handoff.";
+        if (risk === "medium") return "Esta ruta aplica porque hay señales de riesgo medio y conviene acompañar con más cortes de validación.";
+      }
+      return "Esta ruta aplica porque el cliente llega con información ordenada, operación simple y bajo riesgo.";
+    }
+
     function check(id, text) {
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""}><span>${text}</span></label>`;
     }
 
     function renderRoute() {
-      const route = routes[routeKey()];
+      const key = routeKey();
+      const route = routes[key];
       $("routeTitle").textContent = route.title;
       $("routeText").textContent = route.text;
       $("slaChip").textContent = `SLA: ${route.sla}`;
@@ -1183,6 +1264,10 @@
       $("slaChip").className = `chip ${route.chip}`;
       $("auditChip").className = `chip blue`;
       $("teamExplanation").textContent = route.explanation;
+      $("routeReason").textContent = routeReason(key);
+      document.querySelectorAll("[data-route-card]").forEach(card => {
+        card.classList.toggle("active", card.dataset.routeCard === key);
+      });
       $("ritualTitle").textContent = `Ritual: ${route.title}`;
       $("ritualText").textContent = route.ritual;
     }
