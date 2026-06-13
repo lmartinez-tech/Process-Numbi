@@ -342,67 +342,175 @@
       color: var(--muted);
     }
 
-    .meeting-guide {
+    .macro-flow {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .agenda {
-      display: grid;
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
       gap: 10px;
+      overflow-x: auto;
+      padding: 4px 0 12px;
     }
 
-    .agenda-row {
+    .macro-phase {
+      min-width: 140px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--numbi);
+      border-radius: 8px;
+      background: white;
+      padding: 15px;
+      position: relative;
+    }
+
+    .macro-phase:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -11px;
+      top: 50%;
+      z-index: 2;
+      width: 20px;
+      color: var(--numbi-dark);
+      background: white;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .macro-phase strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 7px;
+    }
+
+    .macro-phase h3 {
+      margin: 0 0 7px;
+      font-size: 18px;
+    }
+
+    .macro-phase p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .text-flow {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--mint-soft);
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      color: var(--ink);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .conditional-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .principles-grid {
       display: grid;
-      grid-template-columns: 72px 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      align-items: start;
-      padding: 14px;
+      margin-top: 24px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      padding: 16px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: white;
     }
 
-    .agenda-row strong {
-      color: var(--numbi-dark);
-      font-size: 13px;
+    .principle-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--numbi);
       font-weight: 900;
     }
 
-    .agenda-row h3 {
-      margin: 0 0 4px;
-      font-size: 19px;
+    .principle h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
     }
 
-    .agenda-row p {
+    .principle p {
       margin: 0;
       color: var(--muted);
+      font-size: 14px;
     }
 
-    .speaker-card {
-      background: var(--mint-soft);
+    .nps-layout {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .nps-card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 22px;
-      display: grid;
-      align-content: start;
-      gap: 14px;
+      padding: 18px;
+      background: white;
     }
 
-    .speaker-card h3 {
-      font-size: 26px;
-      margin: 0;
+    .nps-card.highlight {
+      background: var(--mint-soft);
+      border-color: #9bdcc5;
     }
 
-    .speaker-card p {
+    .nps-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .nps-card p, .nps-card li {
       color: var(--muted);
-      margin: 0;
+      font-size: 14px;
     }
 
-    .speaker-card ul {
-      margin-top: 0;
+    .nps-operation {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .nps-operation div {
+      padding: 14px;
+      background: white;
+      border-right: 1px solid var(--line);
+    }
+
+    .nps-operation div:last-child { border-right: 0; }
+
+    .nps-operation strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 5px;
+    }
+
+    .nps-operation span {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
     }
 
     .phase-meta {
@@ -760,7 +868,10 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .meeting-guide, .decision-guide, .tracking-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout { grid-template-columns: 1fr; }
+      .nps-operation { grid-template-columns: 1fr; }
+      .nps-operation div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .nps-operation div:last-child { border-bottom: 0; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
       .checklist, .phase-meta { grid-template-columns: 1fr; }
@@ -785,7 +896,7 @@
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
         <a href="#objetivo">Objetivo</a>
-        <a href="#presentacion">Presentación</a>
+        <a href="#presentacion">Vista macro</a>
         <a href="#participacion">Participación</a>
         <a href="#metodo">Método</a>
         <a href="#diagnostico">Diagnóstico</a>
@@ -814,53 +925,79 @@
     <section id="presentacion">
       <div class="wrap">
         <div class="section-title">
-          <span class="label">Cómo presentarla</span>
+          <span class="label">Vista macro del proceso</span>
           <div>
-            <h2>Una reunión de 15 minutos para alinear al equipo</h2>
-            <p>Esta guía está pensada para explicar el proceso poco a poco: primero el para qué, luego quién participa, después cómo se clasifica al cliente y finalmente cómo se cierra el setup.</p>
+            <h2>Primero entendemos el flujo completo</h2>
+            <p>Estas son las seis fases maestras del setup. No todos los clientes pasan por todas: las fases se activan según el tipo de cliente y su estado contable.</p>
           </div>
         </div>
-        <div class="meeting-guide">
-          <div class="agenda">
-            <article class="agenda-row">
-              <strong>0-3 min</strong>
-              <div>
-                <h3>Contar el objetivo</h3>
-                <p>Explicar que buscamos claridad, orden y acompañamiento para llegar a NPS 9+.</p>
-              </div>
-            </article>
-            <article class="agenda-row">
-              <strong>3-6 min</strong>
-              <div>
-                <h3>Ubicar a cada participante</h3>
-                <p>Mostrar cuándo entra Comercial, Gerente Contador, especialistas, cliente y Operación.</p>
-              </div>
-            </article>
-            <article class="agenda-row">
-              <strong>6-10 min</strong>
-              <div>
-                <h3>Clasificar un caso ejemplo</h3>
-                <p>Usar la ficha de diagnóstico para ver cómo cambia la ruta, SLA y auditoría.</p>
-              </div>
-            </article>
-            <article class="agenda-row">
-              <strong>10-15 min</strong>
-              <div>
-                <h3>Recorrer fases y cierre</h3>
-                <p>Activar “Ver resumen” para explicar el mapa y “Ver detalle” para resolver preguntas.</p>
-              </div>
-            </article>
+
+        <div class="macro-flow" aria-label="Fases maestras del setup">
+          <article class="macro-phase"><strong>Fase 1</strong><h3>Onboarding</h3><p>Clasificar, asignar responsables, pedir información y dejar acuerdos.</p></article>
+          <article class="macro-phase"><strong>Fase 2</strong><h3>Recepción y validación</h3><p>Recibir documentos, comprobar integridad y validar información inicial.</p></article>
+          <article class="macro-phase"><strong>Fase 3</strong><h3>Auditoría</h3><p>Revisar cuando existen dudas o señales de errores contables.</p></article>
+          <article class="macro-phase"><strong>Fase 4</strong><h3>Parametrización y migración</h3><p>Configurar Siigo o Alegra y migrar información cuando aplique.</p></article>
+          <article class="macro-phase"><strong>Fase 5</strong><h3>Reconstrucción contable</h3><p>Reconstruir periodos cuando el pasado contable no es confiable.</p></article>
+          <article class="macro-phase"><strong>Fase 6</strong><h3>Salida a operación</h3><p>Capacitar, cerrar el setup y pasar al flujo recurrente.</p></article>
+        </div>
+
+        <div class="text-flow">Onboarding → Recepción y validación → Auditoría* → Parametrización / migración* → Reconstrucción* → Salida a operación</div>
+        <p class="conditional-note">* Las fases condicionales se activan según la combinación entre tipo de cliente y estado contable.</p>
+
+        <div class="section-title" style="margin-top:42px">
+          <span class="label">Principios del proceso</span>
+          <div>
+            <h2>Reglas que no debemos perder de vista</h2>
+            <p>Estos principios ayudan a tomar decisiones consistentes y a proteger tanto la calidad técnica como la experiencia del cliente.</p>
           </div>
-          <aside class="speaker-card">
-            <div class="mini-title">Guía para quien presenta</div>
-            <h3>La promesa debe sonar simple</h3>
-            <p>No estamos creando más trabajo. Estamos ordenando cómo acompañamos al cliente para que nadie improvise ni descubra riesgos tarde.</p>
+        </div>
+        <div class="principles-grid">
+          <article class="principle"><span class="principle-number">1</span><div><h3>Investigar antes de preguntar</h3><p>El onboarding no descubre desde cero qué hace el cliente. El Gerente Contador llega con una lectura preparada.</p></div></article>
+          <article class="principle"><span class="principle-number">2</span><div><h3>Validar cómo funciona realmente</h3><p>La reunión valida cómo opera, factura, cuesta, cobra, paga y qué tan confiable es su pasado contable.</p></div></article>
+          <article class="principle"><span class="principle-number">3</span><div><h3>Entregar tres resultados</h3><p>Ningún onboarding termina sin clasificación, ruta recomendada y focos obligatorios para el contador designado.</p></div></article>
+          <article class="principle"><span class="principle-number">4</span><div><h3>Convertir cada riesgo en revisión</h3><p>Todo riesgo sobre ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos o saldos se convierte en foco.</p></div></article>
+          <article class="principle"><span class="principle-number">5</span><div><h3>La clasificación puede cambiar</h3><p>Los hallazgos pueden mover el caso entre Confirmación, Auditoría y Reconstrucción. El SLA y el cierre siguen la clasificación final.</p></div></article>
+          <article class="principle"><span class="principle-number">6</span><div><h3>El Gerente Contador responde</h3><p>Es el interlocutor principal. El Country Manager acompaña únicamente cuando existe una alerta crítica.</p></div></article>
+        </div>
+
+        <div class="section-title" style="margin-top:42px">
+          <span class="label">Métrica de éxito</span>
+          <div>
+            <h2>NPS 9+ significa claridad y acompañamiento</h2>
+            <p>La calificación final no depende solo de que la contabilidad quede técnicamente correcta. Depende de cómo vivió el cliente el proceso.</p>
+          </div>
+        </div>
+        <div class="nps-layout">
+          <article class="nps-card highlight">
+            <div class="mini-title">Qué mide el cliente</div>
+            <h3>Su experiencia</h3>
             <ul>
-              <li>Empieza por el dolor: setups confusos generan ansiedad.</li>
-              <li>Luego muestra el mapa: cada persona sabe cuándo participa.</li>
-              <li>Cierra con el criterio de éxito: handoff claro y NPS 9+.</li>
+              <li>Si se sintió acompañado.</li>
+              <li>Si entendió qué ocurría en cada momento.</li>
+              <li>Si tuvo claridad sobre tiempos y expectativas.</li>
+              <li>Si percibió orden y buen servicio.</li>
             </ul>
-          </aside>
+          </article>
+          <article class="nps-card">
+            <div class="mini-title">Qué no mide</div>
+            <h3>No es una auditoría técnica</h3>
+            <ul>
+              <li>Qué tan rápido fue el setup.</li>
+              <li>Qué tan perfecta quedó la contabilidad.</li>
+              <li>Cuántas funciones del portal utilizó.</li>
+            </ul>
+          </article>
+          <article class="nps-card">
+            <div class="mini-title">Por qué importa</div>
+            <h3>La claridad cambia la nota</h3>
+            <p>Un setup técnicamente sólido puede obtener una mala calificación si el cliente estuvo desinformado. La comunicación visible convierte el trabajo técnico en confianza.</p>
+          </article>
+        </div>
+        <div class="nps-operation">
+          <div><strong>Momento</strong><span>Al finalizar el ritual de cierre, antes de cambiar a Operación.</span></div>
+          <div><strong>Responsable</strong><span>Gerente Contador; el dashboard registra la respuesta.</span></div>
+          <div><strong>Pregunta sugerida</strong><span>“Del 0 al 10, ¿qué tan claro, ordenado y acompañado sentiste este proceso?”</span></div>
+          <div><strong>Si es menor a 9</strong><span>No cerrar todavía: registrar causa, acordar recuperación y repetir el pulso.</span></div>
         </div>
       </div>
     </section>
@@ -1184,11 +1321,13 @@
             <div class="mini-title">Ritual de cierre</div>
             <h3 id="ritualTitle">Cierre estándar</h3>
             <p id="ritualText"></p>
-            <label>Pulso NPS antes del handoff
+            <label>Calificación del cliente antes del handoff
               <select id="npsPulse">
-                <option value="good">Promotor probable: el cliente entiende y se siente acompañado</option>
-                <option value="watch">Neutral: reforzar expectativas antes de pasar a Operación</option>
-                <option value="risk">Riesgo detractor: activar plan de recuperación</option>
+                <option value="10">10 — Totalmente claro, ordenado y acompañado</option>
+                <option value="9">9 — Experiencia positiva y acompañada</option>
+                <option value="8">8 — Requiere entender qué faltó</option>
+                <option value="7">7 — Activar plan de recuperación</option>
+                <option value="6">6 o menos — No cerrar el setup</option>
               </select>
             </label>
             <div class="chips" style="margin-top:12px">
@@ -1652,18 +1791,18 @@
       $("progressBar").style.width = `${score}%`;
       $("progressScore").textContent = `${score}%`;
 
-      const pulse = $("npsPulse").value;
+      const pulse = Number($("npsPulse").value);
       const closingComplete = closing.every((_, index) => state.checks[`closing-${index}`]);
-      const canHandoff = closingComplete && pulse === "good";
-      $("handoffChip").textContent = state.clientPhase === "Operación" ? "Fase: Operación" : canHandoff ? "Handoff listo" : pulse === "risk" ? "Plan de recuperación requerido" : "Fase: Setup";
-      $("handoffChip").className = `chip ${state.clientPhase === "Operación" || canHandoff ? "" : pulse === "risk" ? "risk" : "warn"}`;
+      const canHandoff = closingComplete && pulse >= 9;
+      $("handoffChip").textContent = state.clientPhase === "Operación" ? "Fase: Operación" : canHandoff ? "Handoff listo" : pulse < 9 ? "Recuperar experiencia antes de cerrar" : "Fase: Setup";
+      $("handoffChip").className = `chip ${state.clientPhase === "Operación" || canHandoff ? "" : pulse < 9 ? "risk" : "warn"}`;
       $("changePhaseBtn").disabled = !canHandoff || state.clientPhase === "Operación";
       $("changePhaseBtn").textContent = state.clientPhase === "Operación" ? "Cliente en Operación" : "Cambiar a Operación";
     }
 
     function renderTracking() {
       const key = routeKey();
-      const pulse = $("npsPulse").value;
+      const pulse = Number($("npsPulse").value);
       const done = Object.values(state.checks).filter(Boolean).length;
       const alerts = [];
 
@@ -1680,8 +1819,11 @@
       if ($("accountingState").value !== "confirmation") {
         alerts.push(["warn", "Clasificación puede cambiar", "Antes de cambiar la categoría, validar con Ventas si requiere renegociación de honorarios."]);
       }
-      if ($("risk").value === "high" || pulse === "risk") {
+      if ($("risk").value === "high" || pulse < 9) {
         alerts.push(["risk", "Alerta para Country Manager", "El Country Manager participa solo en casos críticos; el Gerente Contador sigue siendo el interlocutor principal."]);
+      }
+      if (pulse < 9) {
+        alerts.push(["risk", `NPS ${pulse}: no cerrar`, "Registrar la causa, acordar una acción de recuperación con el cliente y repetir el pulso antes del handoff."]);
       }
       if (done === 0) {
         alerts.push(["warn", "Sin avances registrados", "Completar los primeros mínimos de pre-onboarding y diagnóstico."]);
@@ -1765,7 +1907,7 @@
 
     $("changePhaseBtn").addEventListener("click", () => {
       const closingComplete = closing.every((_, index) => state.checks[`closing-${index}`]);
-      if (!closingComplete || $("npsPulse").value !== "good") return;
+      if (!closingComplete || Number($("npsPulse").value) < 9) return;
       state.clientPhase = "Operación";
       state.logs.unshift({
         type: "Avance",
