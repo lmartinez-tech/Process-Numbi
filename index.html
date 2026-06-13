@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proceso de Onboarding y Setup Contable</title>
+  <style>
+    :root {
+      --ink: #17211c;
+      --muted: #5f6b63;
+      --line: #d8ded8;
+      --panel: #ffffff;
+      --paper: #f6f4ee;
+      --field: #fbfaf6;
+      --green: #1f7a5a;
+      --green-soft: #dff1e8;
+      --teal: #137684;
+      --blue: #315f95;
+      --amber: #a56718;
+      --amber-soft: #f5e6c8;
+      --red: #b83b36;
+      --red-soft: #f4d9d6;
+      --violet: #6b55a3;
+      --shadow: 0 14px 32px rgba(23, 33, 28, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+      line-height: 1.45;
+    }
+
+    button, input, select, textarea { font: inherit; }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+    }
+
+    aside {
+      background: #12231d;
+      color: #eef7f1;
+      padding: 28px 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: #e4bb55;
+      color: #12231d;
+      border-radius: 8px;
+      font-weight: 800;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .nav-title {
+      margin: 24px 0 10px;
+      color: #a8bab0;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .nav-link {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #eef7f1;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .nav-link:hover, .nav-link.active { background: rgba(255, 255, 255, .1); }
+
+    .sidebar-stat {
+      margin-top: 22px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .sidebar-stat strong { display: block; font-size: 28px; }
+    .sidebar-stat span { color: #bfd0c7; font-size: 13px; }
+
+    main {
+      min-width: 0;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0;
+    }
+
+    .topbar p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 9px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      white-space: nowrap;
+    }
+
+    .btn.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    .btn.icon {
+      width: 38px;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    section {
+      margin: 18px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .band {
+      background: rgba(255, 255, 255, .56);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-left: -24px;
+      margin-right: -24px;
+      padding: 18px 24px;
+    }
+
+    .panel, .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 16px; }
+    .card { padding: 14px; box-shadow: none; }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 122px;
+    }
+
+    .metric .value {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .metric small, .card small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--field);
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 10px 11px;
+      outline: none;
+    }
+
+    textarea { min-height: 100px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(19, 118, 132, .14); }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .section-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 750;
+      background: var(--green-soft);
+      color: #145840;
+      white-space: nowrap;
+    }
+
+    .badge.warn { background: var(--amber-soft); color: #70440d; }
+    .badge.risk { background: var(--red-soft); color: #85231e; }
+    .badge.info { background: #dae8f7; color: #234b78; }
+    .badge.violet { background: #e8e2f6; color: #4e3b7d; }
+
+    .route-box {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .route-summary {
+      background: #142820;
+      color: #f3fbf6;
+      padding: 18px;
+      border-radius: 8px;
+      min-height: 220px;
+    }
+
+    .route-summary h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .route-summary p { color: #bfd0c7; margin: 0 0 16px; }
+
+    .route-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .route-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      padding-bottom: 8px;
+    }
+
+    .phase-track {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(160px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .phase {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 236px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .phase.active { border-color: var(--green); box-shadow: inset 0 0 0 2px rgba(31, 122, 90, .15); }
+
+    .phase h4 {
+      margin: 0;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 18px 1fr auto;
+      align-items: start;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .check input { width: 16px; height: 16px; margin-top: 2px; }
+    .check.done span { color: var(--muted); text-decoration: line-through; }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .matrix th, .matrix td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    .matrix th {
+      color: var(--muted);
+      background: #f0eee7;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .matrix tr:last-child td { border-bottom: 0; }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 8px 11px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: white;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      max-height: 360px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .log-item {
+      border-left: 4px solid var(--teal);
+      background: var(--panel);
+      border-radius: 0 8px 8px 0;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 11px;
+    }
+
+    .log-item strong { display: block; margin-bottom: 3px; }
+    .log-item small { color: var(--muted); }
+
+    .alert {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 11px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .alert.risk { border-color: #e3aaa6; background: #fff7f6; }
+    .alert.warn { border-color: #e2c389; background: #fffbf0; }
+    .alert.good { border-color: #a9d3bf; background: #f5fff9; }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    .mail-preview {
+      white-space: pre-wrap;
+      background: #10261f;
+      color: #eaf6ef;
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 260px;
+      font-size: 13px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 9px;
+      background: #e4e7e1;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+      transition: width .25s ease;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1120px) {
+      .app-shell { grid-template-columns: 1fr; }
+      aside {
+        position: relative;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .nav-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+      .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid.cols-3, .route-box { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      main { padding: 16px; }
+      .band { margin-left: -16px; margin-right: -16px; padding: 16px; }
+      .topbar { align-items: stretch; flex-direction: column; }
+      .toolbar { justify-content: flex-start; }
+      .grid.cols-4, .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+      .nav-group { grid-template-columns: 1fr; }
+      .section-head { align-items: stretch; flex-direction: column; }
+      .matrix { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside>
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <h1>Proceso de Onboarding y Setup Contable</h1>
+      </div>
+      <div class="nav-title">Flujo</div>
+      <div class="nav-group" id="nav"></div>
+      <div class="sidebar-stat">
+        <strong id="npsTarget">9.2</strong>
+        <span>Meta NPS de experiencia acompañada</span>
+      </div>
+      <div class="sidebar-stat">
+        <strong id="sidebarProgress">0%</strong>
+        <span>Avance total del setup</span>
+      </div>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div>
+          <h2>Setup contable guiado</h2>
+          <p>Clasifica, diagnostica, ejecuta y transfiere cada cliente con una ruta clara, SLA visible y evidencia suficiente para proteger la experiencia.</p>
+        </div>
+        <div class="toolbar">
+          <button class="btn" id="resetBtn" title="Reiniciar demo">
+            <span class="icon" data-icon="rotate"></span>Reiniciar
+          </button>
+          <button class="btn primary" id="advanceBtn">
+            <span class="icon" data-icon="arrow"></span>Avanzar fase
+          </button>
+        </div>
+      </div>
+
+      <section id="diagnostico">
+        <div class="section-head">
+          <div>
+            <h3>Ficha de diagnóstico</h3>
+            <p>Clasificación base para activar la ruta automática de setup.</p>
+          </div>
+          <span class="badge info" id="routeBadge">Ruta pendiente</span>
+        </div>
+        <div class="grid cols-3">
+          <div class="panel">
+            <div class="grid">
+              <label>Cliente
+                <input id="clientName" value="Cliente nuevo Numbi">
+              </label>
+              <label>Gerente contador responsable
+                <input id="owner" value="Gerente Contador">
+              </label>
+              <label>Fecha de kickoff
+                <input id="kickoffDate" type="date">
+              </label>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="grid">
+              <label>Tipo de operación
+                <select id="operationType">
+                  <option value="simple">Operación simple</option>
+                  <option value="multi">Multiunidad / multicanal</option>
+                  <option value="inventory">Inventarios intensivos</option>
+                  <option value="international">Operación internacional</option>
+                </select>
+              </label>
+              <label>Tipo de cliente
+                <select id="clientType">
+                  <option value="new">Cliente nuevo</option>
+                  <option value="migration">Migración desde otro proveedor</option>
+                  <option value="rescue">Rescate / operación con fricción</option>
+                  <option value="enterprise">Enterprise</option>
+                </select>
+              </label>
+              <label>Estado contable
+                <select id="accountingState">
+                  <option value="clean">Al día y conciliado</option>
+                  <option value="partial">Parcial o con brechas menores</option>
+                  <option value="messy">Atrasado / sin conciliación</option>
+                  <option value="unknown">Sin información confiable</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="grid">
+              <label>Volumen mensual de documentos
+                <select id="volume">
+                  <option value="low">Menos de 300</option>
+                  <option value="medium">300 a 1.500</option>
+                  <option value="high">Más de 1.500</option>
+                </select>
+              </label>
+              <label>Sistema contable actual
+                <input id="systemName" value="Siigo / Alegra / ERP">
+              </label>
+              <label>Riesgo percibido
+                <select id="risk">
+                  <option value="low">Bajo</option>
+                  <option value="medium">Medio</option>
+                  <option value="high">Alto</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ruta" class="band">
+        <div class="route-box">
+          <div class="route-summary">
+            <h3 id="routeTitle">Setup estándar</h3>
+            <p id="routeDescription">Ruta para clientes con información ordenada y baja complejidad operativa.</p>
+            <div class="route-list">
+              <div><span>Fase actual</span><strong id="currentPhaseLabel">Pre-onboarding</strong></div>
+              <div><span>SLA recomendado</span><strong id="slaLabel">15 días hábiles</strong></div>
+              <div><span>Auditoría requerida</span><strong id="auditLabel">Express</strong></div>
+              <div><span>Meta de cierre</span><strong>NPS 9+</strong></div>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="card metric">
+              <small>Avance checklist</small>
+              <span class="value" id="progressValue">0%</span>
+              <div class="progress"><span id="progressBar"></span></div>
+              <small id="progressHint">Completa los puntos críticos antes de cambiar a Operación.</small>
+            </div>
+            <div class="card metric">
+              <small>Semáforo de experiencia</small>
+              <span class="value" id="healthScore">92</span>
+              <span class="badge" id="healthBadge">Acompañado</span>
+              <small>Combina riesgo, SLA, evidencia y avance de fase.</small>
+            </div>
+            <div class="card">
+              <strong>Ruta automática de setup</strong>
+              <p id="routeSteps">Diagnóstico, auditoría express, parametrización, validación de saldos y cierre operativo.</p>
+            </div>
+            <div class="card">
+              <strong>Cambio a Operación</strong>
+              <p id="handoffRule">Solo habilitado con checklist mínimo completo, saldos validados y ritual de cierre documentado.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fases">
+        <div class="section-head">
+          <div>
+            <h3>Checklists por fase y SLA</h3>
+            <p>De pre-onboarding a operación recurrente, con dueños y entregables por etapa.</p>
+          </div>
+          <span class="badge" id="phaseCount">0 de 0 completados</span>
+        </div>
+        <div class="phase-track" id="phaseTrack"></div>
+      </section>
+
+      <section id="validacion" class="band">
+        <div class="section-head">
+          <div>
+            <h3>Guion de onboarding y preguntas de validación</h3>
+            <p>Una conversación estructurada para alinear expectativas y detectar riesgos temprano.</p>
+          </div>
+          <button class="btn" id="copyScriptBtn"><span class="icon" data-icon="copy"></span>Copiar guion</button>
+        </div>
+        <div class="grid cols-2">
+          <div class="panel">
+            <h4>Guion sugerido</h4>
+            <p id="scriptText">Bienvenida, contexto del proceso, confirmación de responsables, revisión de fuentes, riesgos y próximos hitos con SLA.</p>
+            <div class="checklist" id="validationQuestions"></div>
+          </div>
+          <div class="panel">
+            <h4>Matriz de focos obligatorios</h4>
+            <table class="matrix">
+              <thead><tr><th>Foco</th><th>Validación mínima</th><th>Riesgo NPS</th></tr></thead>
+              <tbody id="focusMatrix"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="auditorias">
+        <div class="section-head">
+          <div>
+            <h3>Auditoría, parametrización, migración y reconstrucción</h3>
+            <p>El nivel de profundidad cambia según la clasificación del cliente.</p>
+          </div>
+          <div class="tabs" id="auditTabs"></div>
+        </div>
+        <div class="grid cols-3" id="auditContent"></div>
+      </section>
+
+      <section id="cierre" class="band">
+        <div class="section-head">
+          <div>
+            <h3>Checklist mínimo de cierre y ritual por setup</h3>
+            <p>Condiciones para pasar de Setup a Operación sin perder acompañamiento.</p>
+          </div>
+          <span class="badge warn" id="handoffBadge">Pendiente</span>
+        </div>
+        <div class="grid cols-2">
+          <div class="panel">
+            <div class="checklist" id="closingChecklist"></div>
+          </div>
+          <div class="panel">
+            <h4 id="ritualTitle">Ritual de cierre</h4>
+            <p id="ritualText"></p>
+            <label>Notas de transición a Operación
+              <textarea id="handoffNotes">Pendientes, riesgos, acuerdos con cliente y primera cadencia recurrente.</textarea>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section id="bitacora">
+        <div class="section-head">
+          <div>
+            <h3>Bitácora dinámica, alertas y correos automáticos</h3>
+            <p>Registra decisiones, dispara alertas y prepara mensajes listos para enviar.</p>
+          </div>
+          <button class="btn primary" id="addLogBtn"><span class="icon" data-icon="plus"></span>Agregar evento</button>
+        </div>
+        <div class="grid cols-3">
+          <div class="panel">
+            <label>Nuevo evento
+              <textarea id="logText">Se confirma responsable del cliente y ventana para compartir accesos.</textarea>
+            </label>
+            <label>Tipo
+              <select id="logType">
+                <option>Kickoff</option>
+                <option>Riesgo</option>
+                <option>Acuerdo</option>
+                <option>Bloqueo</option>
+                <option>Cierre</option>
+              </select>
+            </label>
+          </div>
+          <div class="panel">
+            <h4>Alertas</h4>
+            <div class="grid" id="alerts"></div>
+          </div>
+          <div class="panel">
+            <h4>Bitácora</h4>
+            <div class="timeline" id="timeline"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="correos" class="band">
+        <div class="section-head">
+          <div>
+            <h3>Correos automáticos</h3>
+            <p>Plantillas contextualizadas por fase, riesgo y ruta de setup.</p>
+          </div>
+          <div class="tabs" id="mailTabs"></div>
+        </div>
+        <div class="grid cols-2">
+          <div class="panel">
+            <label>Destinatario
+              <input id="mailTo" value="cliente@empresa.com">
+            </label>
+            <label>Asunto
+              <input id="mailSubject">
+            </label>
+            <label>Plantilla
+              <select id="mailTemplate">
+                <option value="kickoff">Kickoff y próximos pasos</option>
+                <option value="risk">Alerta de bloqueo</option>
+                <option value="close">Cierre de setup y transición</option>
+              </select>
+            </label>
+          </div>
+          <pre class="mail-preview" id="mailPreview"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const state = {
+      currentPhase: 0,
+      checks: {},
+      logs: [],
+      activeAudit: "express"
+    };
+
+    const phases = [
+      {
+        id: "pre",
+        name: "Pre-onboarding",
+        sla: "2 días",
+        items: ["Contrato y alcance confirmados", "Responsables internos y cliente definidos", "Accesos solicitados", "Kickoff agendado"]
+      },
+      {
+        id: "diag",
+        name: "Diagnóstico",
+        sla: "3 días",
+        items: ["Ficha de diagnóstico completa", "Clasificación validada", "Riesgos iniciales documentados", "Expectativas de NPS alineadas"]
+      },
+      {
+        id: "audit",
+        name: "Auditoría",
+        sla: "3 a 8 días",
+        items: ["Auditoría express o profunda ejecutada", "Hallazgos priorizados", "Brechas de información escaladas", "Plan de saneamiento aprobado"]
+      },
+      {
+        id: "setup",
+        name: "Parametrización",
+        sla: "4 a 10 días",
+        items: ["Plan de cuentas y terceros configurados", "Impuestos y centros de costo parametrizados", "Integraciones revisadas", "Prueba de registro aprobada"]
+      },
+      {
+        id: "mig",
+        name: "Migración o reconstrucción",
+        sla: "5 a 15 días",
+        items: ["Saldos de apertura validados", "Histórico cargado o reconstruido", "Conciliaciones críticas cerradas", "Evidencia almacenada"]
+      },
+      {
+        id: "op",
+        name: "Operación recurrente",
+        sla: "Primer ciclo",
+        items: ["Checklist mínimo de cierre completo", "Ritual de cierre ejecutado", "Cadencia recurrente activa", "Primer pulso NPS programado"]
+      }
+    ];
+
+    const routes = {
+      standard: {
+        title: "Setup estándar",
+        sla: "15 días hábiles",
+        audit: "Express",
+        desc: "Ruta para información ordenada, baja complejidad y operación con pocos focos de control.",
+        steps: "Diagnóstico, auditoría express, parametrización, validación de saldos y cierre operativo.",
+        ritual: "Reunión de 30 minutos con resumen de configuración, pendientes menores, primer calendario recurrente y encuesta NPS."
+      },
+      controlled: {
+        title: "Setup controlado",
+        sla: "20 días hábiles",
+        audit: "Express ampliada",
+        desc: "Ruta para clientes con brechas menores, volumen medio o dependencias operativas que requieren seguimiento cercano.",
+        steps: "Diagnóstico ampliado, auditoría express, matriz de riesgos, parametrización por focos y dos cortes de validación.",
+        ritual: "Cierre de 45 minutos con tablero de hallazgos, compromisos por responsable y seguimiento de primera semana recurrente."
+      },
+      deep: {
+        title: "Setup profundo",
+        sla: "30 días hábiles",
+        audit: "Profunda",
+        desc: "Ruta para rescates, información atrasada o estructuras complejas que necesitan reconstrucción y control reforzado.",
+        steps: "Auditoría profunda, plan de reconstrucción, saneamiento por prioridad, migración controlada y comité de cierre.",
+        ritual: "Comité de cierre con cliente, gerente contador y operación: saldos, riesgos residuales, bitácora y criterio formal de handoff."
+      },
+      enterprise: {
+        title: "Setup enterprise",
+        sla: "35 días hábiles",
+        audit: "Profunda + gobierno",
+        desc: "Ruta para clientes enterprise, multiunidad o internacionales con más gobierno, validaciones y rituales ejecutivos.",
+        steps: "Gobierno de proyecto, auditoría profunda, parametrización modular, migración por oleadas y transición ejecutiva.",
+        ritual: "Cierre ejecutivo con mapa de gobierno, KPIs de operación recurrente, matriz RACI y agenda de estabilización."
+      }
+    };
+
+    const validations = [
+      "¿El cliente entiende qué información debe entregar y en qué fecha?",
+      "¿Existe un único responsable de desbloqueos por parte del cliente?",
+      "¿Los accesos permiten consultar, descargar y registrar sin restricciones?",
+      "¿Los saldos iniciales tienen soporte suficiente?",
+      "¿Hay temas fiscales, nómina, inventarios o bancos que puedan afectar el primer cierre?",
+      "¿El cliente sabe cómo se medirá una experiencia NPS 9+?"
+    ];
+
+    const focusRows = [
+      ["Bancos", "Extractos, conciliación, cuentas activas y saldos iniciales.", "Alto si no hay soporte."],
+      ["Impuestos", "Responsabilidades, periodicidad, retenciones y calendario.", "Alto por vencimientos."],
+      ["Cartera y proveedores", "Antigüedad, terceros, saldos y soportes.", "Medio-alto."],
+      ["Inventarios", "Método, conteo inicial, movimientos y costo.", "Crítico si es intensivo."],
+      ["Nómina", "Periodo, novedades, seguridad social y provisiones.", "Alto por sensibilidad."],
+      ["Reportes de gerencia", "Formato esperado, frecuencia y usuario final.", "Medio por expectativa."]
+    ];
+
+    const auditPlans = {
+      express: [
+        ["Auditoría express", "Revisión de saldos, bancos, impuestos, terceros y soportes críticos para confirmar viabilidad del setup."],
+        ["Parametrización mínima", "Plan de cuentas, terceros, impuestos, bancos y reglas base para iniciar operación."],
+        ["Migración ligera", "Carga de saldos y soportes esenciales con conciliación de apertura."]
+      ],
+      deep: [
+        ["Auditoría profunda", "Revisión transaccional, histórico, conciliaciones, impuestos, cartera, proveedores, nómina e inventarios."],
+        ["Reconstrucción", "Priorización por periodos críticos, saneamiento de soportes, corrección de saldos y trazabilidad de ajustes."],
+        ["Migración controlada", "Cargas por oleadas, pruebas de integridad, reconciliación y aprobación documentada."]
+      ],
+      governance: [
+        ["Gobierno de setup", "RACI, comité, cadencia, registro de decisiones y gestión de dependencias."],
+        ["Alertas ejecutivas", "Semáforo por SLA, bloqueos, foco contable y riesgo de experiencia."],
+        ["Handoff formal", "Criterios de operación, responsables recurrentes, primer ciclo y encuesta NPS."]
+      ]
+    };
+
+    const closingItems = [
+      "Saldos iniciales aprobados por cliente",
+      "Parametrización revisada con evidencia",
+      "Auditoría requerida cerrada o con riesgos aceptados",
+      "Bitácora actualizada con decisiones clave",
+      "Pendientes con responsable y fecha",
+      "Correo de transición enviado",
+      "Ritual de cierre ejecutado",
+      "Operación recurrente asignada"
+    ];
+
+    function iconSvg(name) {
+      const icons = {
+        arrow: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M5 12h14'/><path d='m13 6 6 6-6 6'/></svg>",
+        rotate: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M21 12a9 9 0 1 1-3-6.7'/><path d='M21 3v7h-7'/></svg>",
+        copy: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><rect x='9' y='9' width='13' height='13' rx='2'/><path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/></svg>",
+        plus: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M12 5v14'/><path d='M5 12h14'/></svg>",
+        check: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='m20 6-11 11-5-5'/></svg>",
+        alert: "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><path d='M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z'/><path d='M12 9v4'/><path d='M12 17h.01'/></svg>"
+      };
+      return icons[name] || icons.check;
+    }
+
+    function $(id) { return document.getElementById(id); }
+
+    function currentRouteKey() {
+      const operation = $("operationType").value;
+      const type = $("clientType").value;
+      const accounting = $("accountingState").value;
+      const volume = $("volume").value;
+      const risk = $("risk").value;
+      if (type === "enterprise" || operation === "international") return "enterprise";
+      if (type === "rescue" || accounting === "messy" || accounting === "unknown" || risk === "high") return "deep";
+      if (type === "migration" || operation === "multi" || operation === "inventory" || volume !== "low" || accounting === "partial") return "controlled";
+      return "standard";
+    }
+
+    function renderIcons() {
+      document.querySelectorAll("[data-icon]").forEach(el => {
+        el.innerHTML = iconSvg(el.dataset.icon);
+      });
+    }
+
+    function renderNav() {
+      const links = [
+        ["diagnostico", "Diagnóstico"],
+        ["ruta", "Ruta automática"],
+        ["fases", "Fases y SLA"],
+        ["validacion", "Validación"],
+        ["auditorias", "Auditorías"],
+        ["cierre", "Cierre"],
+        ["bitacora", "Bitácora"],
+        ["correos", "Correos"]
+      ];
+      $("nav").innerHTML = links.map(([id, label], index) => `
+        <button class="nav-link ${index === 0 ? "active" : ""}" data-target="${id}">
+          <span>${label}</span><span>›</span>
+        </button>
+      `).join("");
+      document.querySelectorAll(".nav-link").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".nav-link").forEach(item => item.classList.remove("active"));
+          btn.classList.add("active");
+          $(btn.dataset.target).scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+
+    function renderPhases() {
+      $("phaseTrack").innerHTML = phases.map((phase, index) => `
+        <article class="phase ${index === state.currentPhase ? "active" : ""}">
+          <h4>${phase.name}<span class="badge ${index === state.currentPhase ? "" : "info"}">${phase.sla}</span></h4>
+          <small>${index < state.currentPhase ? "Cerrada" : index === state.currentPhase ? "En curso" : "Próxima"}</small>
+          <div class="checklist">
+            ${phase.items.map((item, i) => checkTemplate(`${phase.id}-${i}`, item, index <= state.currentPhase)).join("")}
+          </div>
+        </article>
+      `).join("");
+      bindChecks();
+    }
+
+    function checkTemplate(id, text, enabled = true) {
+      const checked = state.checks[id] ? "checked" : "";
+      const disabled = enabled ? "" : "disabled";
+      const done = checked ? "done" : "";
+      return `<label class="check ${done}">
+        <input type="checkbox" data-check="${id}" ${checked} ${disabled}>
+        <span>${text}</span>
+        ${checked ? "<span class='badge'>OK</span>" : ""}
+      </label>`;
+    }
+
+    function bindChecks() {
+      document.querySelectorAll("[data-check]").forEach(input => {
+        input.addEventListener("change", event => {
+          state.checks[event.target.dataset.check] = event.target.checked;
+          renderAll();
+        });
+      });
+    }
+
+    function renderValidation() {
+      $("validationQuestions").innerHTML = validations.map((item, index) => checkTemplate(`val-${index}`, item, true)).join("");
+      $("focusMatrix").innerHTML = focusRows.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("");
+      bindChecks();
+    }
+
+    function renderAudits() {
+      const tabs = [
+        ["express", "Express"],
+        ["deep", "Profunda"],
+        ["governance", "Gobierno"]
+      ];
+      $("auditTabs").innerHTML = tabs.map(([id, label]) => `<button class="tab ${state.activeAudit === id ? "active" : ""}" data-audit="${id}">${label}</button>`).join("");
+      $("auditContent").innerHTML = auditPlans[state.activeAudit].map(([title, body]) => `
+        <div class="card">
+          <span class="badge violet">${state.activeAudit === "deep" ? "Profundo" : state.activeAudit === "governance" ? "Control" : "Rápido"}</span>
+          <h4>${title}</h4>
+          <p>${body}</p>
+        </div>
+      `).join("");
+      document.querySelectorAll("[data-audit]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.activeAudit = btn.dataset.audit;
+          renderAudits();
+        });
+      });
+    }
+
+    function renderClosing() {
+      $("closingChecklist").innerHTML = closingItems.map((item, index) => checkTemplate(`close-${index}`, item, true)).join("");
+      const route = routes[currentRouteKey()];
+      $("ritualTitle").textContent = `Ritual de cierre: ${route.title}`;
+      $("ritualText").textContent = route.ritual;
+      bindChecks();
+    }
+
+    function renderLogs() {
+      if (!state.logs.length) {
+        state.logs = [
+          { type: "Kickoff", text: "Cliente creado y ruta inicial calculada.", date: new Date().toLocaleString("es-CO") }
+        ];
+      }
+      $("timeline").innerHTML = state.logs.map(log => `
+        <div class="log-item">
+          <strong>${log.type}</strong>
+          <small>${log.date}</small>
+          <p>${log.text}</p>
+        </div>
+      `).join("");
+    }
+
+    function renderAlerts() {
+      const routeKey = currentRouteKey();
+      const alerts = [];
+      if (["deep", "enterprise"].includes(routeKey)) alerts.push(["risk", "Auditoría profunda obligatoria antes de parametrizar."]);
+      if ($("accountingState").value !== "clean") alerts.push(["warn", "No avanzar a Operación sin saldos iniciales validados."]);
+      if ($("risk").value === "high") alerts.push(["risk", "Activar seguimiento diario hasta eliminar bloqueos críticos."]);
+      if (calculateProgress() >= 85) alerts.push(["good", "Listo para preparar ritual de cierre y correo de transición."]);
+      if (!alerts.length) alerts.push(["good", "Sin alertas críticas. Mantener cadencia de acompañamiento."]);
+      $("alerts").innerHTML = alerts.map(([type, text]) => `
+        <div class="alert ${type}">
+          <span class="icon">${iconSvg(type === "good" ? "check" : "alert")}</span>
+          <span>${text}</span>
+        </div>
+      `).join("");
+    }
+
+    function calculateProgress() {
+      const total = phases.reduce((sum, phase) => sum + phase.items.length, 0) + validations.length + closingItems.length;
+      const done = Object.values(state.checks).filter(Boolean).length;
+      return Math.round((done / total) * 100);
+    }
+
+    function renderRoute() {
+      const key = currentRouteKey();
+      const route = routes[key];
+      $("routeTitle").textContent = route.title;
+      $("routeDescription").textContent = route.desc;
+      $("routeBadge").textContent = route.title;
+      $("routeBadge").className = `badge ${key === "deep" ? "risk" : key === "enterprise" ? "violet" : key === "controlled" ? "warn" : "info"}`;
+      $("slaLabel").textContent = route.sla;
+      $("auditLabel").textContent = route.audit;
+      $("routeSteps").textContent = route.steps;
+      $("currentPhaseLabel").textContent = phases[state.currentPhase].name;
+
+      const progress = calculateProgress();
+      const routePenalty = key === "deep" ? 12 : key === "enterprise" ? 10 : key === "controlled" ? 6 : 0;
+      const riskPenalty = $("risk").value === "high" ? 12 : $("risk").value === "medium" ? 5 : 0;
+      const health = Math.max(55, Math.min(99, 92 + Math.round(progress / 10) - routePenalty - riskPenalty));
+      $("progressValue").textContent = `${progress}%`;
+      $("sidebarProgress").textContent = `${progress}%`;
+      $("progressBar").style.width = `${progress}%`;
+      $("healthScore").textContent = health;
+      $("healthBadge").textContent = health >= 88 ? "Acompañado" : health >= 76 ? "Atención" : "Riesgo NPS";
+      $("healthBadge").className = `badge ${health >= 88 ? "" : health >= 76 ? "warn" : "risk"}`;
+      $("handoffBadge").textContent = progress >= 85 && state.currentPhase >= 4 ? "Handoff habilitado" : "Pendiente";
+      $("handoffBadge").className = `badge ${progress >= 85 && state.currentPhase >= 4 ? "" : "warn"}`;
+      const phaseChecks = phases.flatMap(phase => phase.items.map((_, i) => `${phase.id}-${i}`));
+      const completedPhaseChecks = phaseChecks.filter(id => state.checks[id]).length;
+      $("phaseCount").textContent = `${completedPhaseChecks} de ${phaseChecks.length} completados`;
+    }
+
+    function renderMail() {
+      const client = $("clientName").value || "cliente";
+      const owner = $("owner").value || "Gerente Contador";
+      const route = routes[currentRouteKey()];
+      const phase = phases[state.currentPhase].name;
+      const template = $("mailTemplate").value;
+      const subjects = {
+        kickoff: `Inicio de onboarding contable - ${client}`,
+        risk: `Acción requerida para desbloquear setup contable - ${client}`,
+        close: `Transición a operación recurrente - ${client}`
+      };
+      $("mailSubject").value = subjects[template];
+      const bodies = {
+        kickoff: `Hola,\n\nDamos inicio al proceso de onboarding y setup contable de ${client}. La ruta recomendada es ${route.title}, con SLA de ${route.sla}.\n\nEn esta etapa confirmaremos responsables, accesos, información base y focos obligatorios. Nuestro objetivo es que el proceso sea claro, ordenado y acompañado de punta a punta.\n\nPróximo hito: ${phase}.\n\nSaludos,\n${owner}`,
+        risk: `Hola,\n\nIdentificamos un bloqueo que puede afectar el SLA y la experiencia del setup de ${client}. Para mantener una experiencia NPS 9+, necesitamos confirmar la información pendiente y responsable de respuesta.\n\nRuta activa: ${route.title}.\nFase actual: ${phase}.\n\nQuedamos atentos para desbloquearlo hoy.\n\nSaludos,\n${owner}`,
+        close: `Hola,\n\nEl setup contable de ${client} está listo para su transición a operación recurrente, sujeto al checklist mínimo de cierre y al ritual correspondiente.\n\nResumen: ${route.steps}\nSiguiente paso: activar cadencia recurrente, responsables y primer pulso de experiencia.\n\nSaludos,\n${owner}`
+      };
+      $("mailPreview").textContent = `Para: ${$("mailTo").value}\nAsunto: ${subjects[template]}\n\n${bodies[template]}`;
+    }
+
+    function renderScript() {
+      const route = routes[currentRouteKey()];
+      $("scriptText").textContent = `Bienvenida. Confirmamos que el objetivo es llevar el setup de forma clara, ordenada y acompañada hasta Operación. La ruta sugerida es ${route.title}, con SLA de ${route.sla}. Hoy validaremos responsables, accesos, estado contable, focos obligatorios, riesgos y criterios de cierre.`;
+    }
+
+    function renderAll() {
+      renderRoute();
+      renderPhases();
+      renderValidation();
+      renderAudits();
+      renderClosing();
+      renderAlerts();
+      renderLogs();
+      renderMail();
+      renderScript();
+      renderIcons();
+    }
+
+    function init() {
+      $("kickoffDate").valueAsDate = new Date();
+      renderNav();
+      renderAll();
+
+      ["clientName", "owner", "operationType", "clientType", "accountingState", "volume", "risk", "systemName", "mailTo", "mailTemplate"].forEach(id => {
+        $(id).addEventListener("input", renderAll);
+        $(id).addEventListener("change", renderAll);
+      });
+
+      $("advanceBtn").addEventListener("click", () => {
+        state.currentPhase = Math.min(phases.length - 1, state.currentPhase + 1);
+        state.logs.unshift({ type: "Acuerdo", text: `Cambio de fase a ${phases[state.currentPhase].name}.`, date: new Date().toLocaleString("es-CO") });
+        renderAll();
+      });
+
+      $("resetBtn").addEventListener("click", () => {
+        state.currentPhase = 0;
+        state.checks = {};
+        state.logs = [];
+        renderAll();
+      });
+
+      $("addLogBtn").addEventListener("click", () => {
+        state.logs.unshift({ type: $("logType").value, text: $("logText").value, date: new Date().toLocaleString("es-CO") });
+        renderAll();
+      });
+
+      $("copyScriptBtn").addEventListener("click", async () => {
+        const text = $("scriptText").textContent + "\n\nPreguntas:\n" + validations.map(item => `- ${item}`).join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          $("copyScriptBtn").textContent = "Guion copiado";
+          setTimeout(() => {
+            $("copyScriptBtn").innerHTML = `<span class="icon" data-icon="copy"></span>Copiar guion`;
+            renderIcons();
+          }, 1400);
+        } catch {
+          $("scriptText").focus();
+        }
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
