@@ -787,6 +787,7 @@
         <a href="#objetivo">Objetivo</a>
         <a href="#presentacion">Presentación</a>
         <a href="#participacion">Participación</a>
+        <a href="#metodo">Método</a>
         <a href="#diagnostico">Diagnóstico</a>
         <a href="#pasos">Paso a paso</a>
         <a href="#validaciones">Validaciones</a>
@@ -804,7 +805,7 @@
         <p class="hero-copy">Una guía sencilla para que los Gerentes Contadores acompañen al cliente desde el primer contacto hasta la operación recurrente, con claridad, orden y una experiencia diseñada para lograr NPS 9 o más.</p>
         <div class="hero-grid">
           <div class="stat"><strong>6</strong><span>momentos del proceso</span></div>
-          <div class="stat"><strong>3</strong><span>rutas de setup</span></div>
+          <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
           <div class="stat"><strong>NPS 9+</strong><span>meta de experiencia</span></div>
         </div>
       </div>
@@ -892,24 +893,44 @@
         <div class="storyline">
           <article class="story-card">
             <strong>Antes del kickoff</strong>
-            <h3>Comercial y líder de setup</h3>
-            <p>Entregan contexto, alcance vendido, expectativas del cliente y señales tempranas de riesgo.</p>
+            <h3>Ventas</h3>
+            <p>Crea el grupo de WhatsApp y el cliente en Portal Numbi, notifica al equipo y comparte el contexto comercial.</p>
           </article>
           <article class="story-card">
-            <strong>Durante diagnóstico</strong>
+            <strong>Dentro de 24 horas</strong>
+            <h3>Mayerly / Onboarding</h3>
+            <p>Solicita Cámara de Comercio y token DIAN, convoca la reunión y crea la hoja de vida en el dashboard.</p>
+          </article>
+          <article class="story-card">
+            <strong>Antes y durante onboarding</strong>
             <h3>Gerente Contador</h3>
-            <p>Clasifica al cliente, explica la ruta, confirma responsables y traduce hallazgos en próximos pasos.</p>
+            <p>Investiga, selecciona equipo, dirige la reunión, clasifica y entrega diagnóstico al contador designado.</p>
           </article>
           <article class="story-card">
-            <strong>Durante ejecución</strong>
-            <h3>Especialistas y cliente</h3>
-            <p>Resuelven accesos, soportes, parametrización, migración, auditoría o reconstrucción según la ruta.</p>
+            <strong>Solo cuando hay alerta</strong>
+            <h3>Country Manager</h3>
+            <p>Acompaña casos críticos, pero no reemplaza al Gerente Contador como interlocutor principal del cliente.</p>
           </article>
-          <article class="story-card">
-            <strong>Antes de Operación</strong>
-            <h3>Operación recurrente</h3>
-            <p>Recibe saldos, pendientes, acuerdos, riesgos residuales y la primera cadencia de trabajo.</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Método de onboarding</span>
+          <div>
+            <h2>Cinco momentos, una conversación preparada</h2>
+            <p>El onboarding no comienza preguntando a qué se dedica el cliente. El Gerente Contador llega con una hipótesis y usa la reunión para validarla.</p>
+          </div>
+        </div>
+        <div class="cards-3">
+          <article class="card"><div class="mini-title">1. Antes de la reunión</div><h3>Investigación previa</h3><p>Revisar acta de Kick Off, notas comerciales, actividad, tamaño, software, expectativas, riesgos y compromisos.</p></article>
+          <article class="card"><div class="mini-title">2. Hipótesis inicial</div><h3>Clasificación preliminar</h3><p>Definir tipo de operación, tipo de cliente y estado contable antes de hablar con el cliente.</p></article>
+          <article class="card"><div class="mini-title">3. Inicio de reunión</div><h3>Monólogo de apertura</h3><p>Presentar la lectura preparada, el principal dolor entendido y los focos que podrían requerir atención.</p></article>
+          <article class="card"><div class="mini-title">4. Conversación</div><h3>Preguntas de validación</h3><p>Preguntar solo lo necesario para confirmar o corregir la hipótesis y activar focos obligatorios.</p></article>
+          <article class="card"><div class="mini-title">5. Entrega interna</div><h3>Diagnóstico final</h3><p>Entregar clasificación, ruta recomendada y focos de auditoría al contador designado.</p></article>
+          <article class="card"><div class="mini-title">Regla obligatoria</div><h3>Convertir riesgo en foco</h3><p>Si una respuesta afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos o saldos, debe auditarse.</p></article>
         </div>
       </div>
     </section>
@@ -931,33 +952,47 @@
             </label>
             <label>Tipo de operación
               <select id="operationType">
-                <option value="simple">Operación simple</option>
-                <option value="multi">Multiunidad o multicanal</option>
-                <option value="inventory">Inventarios intensivos</option>
-                <option value="international">Operación internacional</option>
+                <option value="services">Servicios</option>
+                <option value="commercial">Comercial</option>
+                <option value="industrial">Industrial</option>
+                <option value="mixed">Mixto</option>
               </select>
             </label>
             <label>Tipo de cliente
               <select id="clientType">
-                <option value="new">Cliente nuevo</option>
-                <option value="migration">Migración desde otro proveedor</option>
-                <option value="rescue">Rescate con fricción</option>
-                <option value="enterprise">Enterprise</option>
+                <option value="new">Empresa nueva</option>
+                <option value="compatible">Software compatible</option>
+                <option value="migration">Migración / parametrización</option>
               </select>
             </label>
             <label>Estado contable
               <select id="accountingState">
-                <option value="clean">Al día y conciliado</option>
-                <option value="partial">Con brechas menores</option>
-                <option value="messy">Atrasado o sin conciliación</option>
-                <option value="unknown">Sin información confiable</option>
+                <option value="confirmation">Confirmación</option>
+                <option value="audit">Auditoría</option>
+                <option value="reconstruction">Reconstrucción</option>
               </select>
             </label>
-            <label>Riesgo percibido
+            <label>Complejidad
               <select id="risk">
-                <option value="low">Bajo</option>
-                <option value="medium">Medio</option>
-                <option value="high">Alto</option>
+                <option value="low">Baja</option>
+                <option value="medium">Media</option>
+                <option value="high">Alta</option>
+              </select>
+            </label>
+            <label>Software actual
+              <select id="currentSoftware">
+                <option>Siigo</option>
+                <option>Alegra</option>
+                <option>Otro</option>
+                <option>Ninguno</option>
+              </select>
+            </label>
+            <label>Software destino
+              <select id="targetSoftware">
+                <option>Siigo</option>
+                <option>Alegra</option>
+                <option>Otro</option>
+                <option>No definido</option>
               </select>
             </label>
           </div>
@@ -979,19 +1014,29 @@
           </div>
         </div>
 
-        <div class="decision-guide" id="decisionGuide" aria-label="Árbol simple de decisión">
-          <article class="decision-card" data-route-card="standard">
-            <strong>1. Estándar</strong>
-            <p>Cliente nuevo, operación simple, contabilidad al día y riesgo bajo.</p>
+        <div class="decision-guide" id="decisionGuide" aria-label="Tres niveles de clasificación">
+          <article class="decision-card active">
+            <strong>1. Cómo opera</strong>
+            <p id="operationSummary">Servicios: ingresos, anticipos, cartera, nómina operativa y centros de costo.</p>
           </article>
-          <article class="decision-card" data-route-card="guided">
-            <strong>2. Guiado</strong>
-            <p>Migración, brechas menores, inventarios, multicanal o riesgo medio.</p>
+          <article class="decision-card active">
+            <strong>2. Cómo llega</strong>
+            <p id="clientSummary">Empresa nueva: sin pasado contable y configuración inicial.</p>
           </article>
-          <article class="decision-card" data-route-card="deep">
-            <strong>3. Profundo</strong>
-            <p>Rescate, alto riesgo, información no confiable, atraso o operación internacional.</p>
+          <article class="decision-card active">
+            <strong>3. Qué intervención necesita</strong>
+            <p id="stateSummary">Confirmación: validar que la información sea confiable.</p>
           </article>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="mini-title">Ficha obligatoria para el contador designado</div>
+          <div class="phase-meta">
+            <div class="meta-box"><strong>Hipótesis</strong><span id="diagnosisHypothesis">Validada</span></div>
+            <div class="meta-box"><strong>Ruta recomendada</strong><span id="diagnosisRoute">Confirmación — empresa nueva</span></div>
+            <div class="meta-box"><strong>Focos obligatorios</strong><span id="diagnosisFocus">Ingresos, cartera, nómina y bancos</span></div>
+          </div>
+          <p id="diagnosisNote">El contador designado recibe la clasificación, la ruta y los focos que debe auditar sí o sí.</p>
         </div>
       </div>
     </section>
@@ -1072,7 +1117,7 @@
           <span class="label">Auditoría y setup</span>
           <div>
             <h2>Qué hacemos según la ruta</h2>
-            <p>La profundidad cambia según el riesgo: express para validar, profunda para reconstruir, y gobierno reforzado para clientes enterprise.</p>
+            <p>La profundidad cambia según el estado contable: Express para confirmar saldos, profunda para emitir dictamen y reconstrucción cuando el pasado no es confiable.</p>
           </div>
         </div>
         <div class="cards-3" id="auditCards"></div>
@@ -1149,6 +1194,9 @@
             <div class="chips" style="margin-top:12px">
               <span class="chip" id="handoffChip">Handoff pendiente</span>
             </div>
+            <div class="actions">
+              <button class="btn" type="button" id="changePhaseBtn" disabled>Cambiar a Operación</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1188,99 +1236,198 @@
 
   <script>
     const routes = {
-      standard: {
-        title: "Setup estándar",
-        text: "Para clientes con información ordenada, baja complejidad y pocos focos de control.",
-        sla: "15 días hábiles",
-        audit: "Auditoría express",
+      "new-confirmation": {
+        title: "Confirmación — empresa nueva",
+        text: "No tiene pasado contable. Se configura Siigo o Alegra para iniciar la operación desde cero.",
+        sla: "2 días hábiles",
+        audit: "Sin auditoría histórica",
         chip: "",
-        explanation: "Este cliente puede avanzar con revisión rápida, parametrización base y validación de saldos antes del handoff.",
-        ritual: "Reunión de 30 minutos: confirmar configuración, saldos, pendientes menores, calendario recurrente y primer pulso NPS."
+        phases: ["Onboarding", "Parametrización", "Checklist mínimo", "Salida a operación"],
+        explanation: "No se solicita el Formato Post-Onboarding histórico. Se activa software, se capacita y se validan primera factura y primer estado financiero.",
+        ritual: "Correo automático de culminación, capacitación, primera factura y primer estado financiero validados."
       },
-      guided: {
-        title: "Setup guiado",
-        text: "Para clientes con brechas menores, migración o una operación que requiere más seguimiento.",
-        sla: "20 días hábiles",
-        audit: "Auditoría express ampliada",
+      "compatible-confirmation": {
+        title: "Confirmación — software compatible",
+        text: "Trae historia en Siigo o Alegra y requiere confirmar que saldos y soportes sean confiables.",
+        sla: "2 días desde documentos completos",
+        audit: "Auditoría Express",
+        chip: "",
+        phases: ["Onboarding", "Recepción", "Auditoría Express", "Parametrización", "Checklist mínimo", "Salida"],
+        explanation: "Se solicita Formato Post-Onboarding, se validan saldos y se parametriza sin migración.",
+        ritual: "Correo automático con reporte de lo validado y confirmación de salida a operación."
+      },
+      "migration-confirmation": {
+        title: "Confirmación — migración y parametrización",
+        text: "Trae historia y necesita validar saldos, configurar y migrar información a Siigo o Alegra.",
+        sla: "7 días hábiles",
+        audit: "Auditoría Express",
         chip: "warn",
-        explanation: "Este cliente necesita acompañamiento más visible: dos cortes de validación, matriz de riesgos y seguimiento de pendientes.",
-        ritual: "Reunión de 45 minutos: revisar hallazgos, responsables, fechas de pendientes y estabilización de la primera semana."
+        phases: ["Onboarding", "Recepción", "Auditoría Express", "Parametrización", "Migración", "Checklist mínimo", "Salida"],
+        explanation: "Se confirman saldos, se migra la información y se deja el software listo para operar.",
+        ritual: "Entrega de estados financieros, primera factura y correo automático con reporte de entregables."
       },
-      deep: {
-        title: "Setup profundo",
-        text: "Para rescates, información atrasada, saldos poco confiables o alto riesgo de experiencia.",
-        sla: "30 días hábiles",
+      "compatible-audit": {
+        title: "Auditoría — software compatible",
+        text: "Existe duda sobre la calidad del pasado contable y se requiere dictamen con plan de acción.",
+        sla: "5 días hábiles",
         audit: "Auditoría profunda",
+        chip: "warn",
+        phases: ["Onboarding", "Recepción", "Auditoría profunda", "Decisión post auditoría"],
+        explanation: "Andrés Granados revisa a fondo, entrega dictamen y se decide entre ajustes, reconstrucción o recotización.",
+        ritual: "Reunión con el cliente para presentar dictamen, hallazgos y plan de trabajo."
+      },
+      "migration-audit": {
+        title: "Auditoría — migración y parametrización",
+        text: "Requiere dictamen antes de decidir si también se parametriza, migra o reconstruye.",
+        sla: "5 días + alcance posterior",
+        audit: "Auditoría profunda",
+        chip: "warn",
+        phases: ["Onboarding", "Recepción", "Auditoría profunda", "Decisión post auditoría"],
+        explanation: "La auditoría define el alcance posterior. El documento fuente identifica una inconsistencia pendiente sobre activar parametrización y migración.",
+        ritual: "Reunión de resultados y definición formal del siguiente alcance con Operaciones y Ventas."
+      },
+      "compatible-reconstruction": {
+        title: "Reconstrucción — software compatible",
+        text: "El pasado contable no es confiable y deben reconstruirse periodos, sin migrar de software.",
+        sla: "30 días hábiles",
+        audit: "Auditoría profunda previa obligatoria",
         chip: "risk",
-        explanation: "Este cliente necesita auditoría profunda, plan de reconstrucción, saneamiento priorizado y comité de cierre.",
-        ritual: "Comité de cierre: saldos, riesgos residuales, bitácora de decisiones, aceptación de pendientes y handoff formal a Operación."
+        phases: ["Onboarding", "Recepción", "Auditoría", "Parametrización", "Reconstrucción", "Checklist mínimo", "Salida"],
+        explanation: "Se define alcance por periodos, se reconstruyen causaciones, bancos, impuestos y estados financieros.",
+        ritual: "Entrega de estados financieros reconstruidos y correo formal de cierre."
+      },
+      "migration-reconstruction": {
+        title: "Reconstrucción — migración y parametrización",
+        text: "Requiere reconstruir el pasado y además configurar o migrar a Siigo o Alegra.",
+        sla: "30 días hábiles",
+        audit: "Auditoría profunda previa obligatoria",
+        chip: "risk",
+        phases: ["Onboarding", "Recepción", "Auditoría", "Parametrización", "Migración", "Reconstrucción", "Checklist", "Salida"],
+        explanation: "Se reconstruye, se cargan saldos iniciales, se migra y se deja la operación recurrente activa.",
+        ritual: "Estados financieros reconstruidos, software operativo y correo formal de cierre."
       }
+    };
+
+    const operationFocus = {
+      services: {
+        label: "Servicios",
+        short: "ingresos, anticipos, cartera, nómina operativa y centros de costo",
+        questions: [
+          "¿Cobran antes, durante o después de prestar el servicio?",
+          "¿Trabajan por mensualidad, contrato, bolsa de horas, hito o proyecto?",
+          "¿Quién ejecuta directamente el servicio?",
+          "¿Subcontratan parte del servicio?"
+        ]
+      },
+      commercial: {
+        label: "Comercial",
+        short: "inventario, costo de ventas, proveedores, márgenes y facturación",
+        questions: [
+          "¿Cómo controlan inventario: sistema, Excel o conteo físico?",
+          "¿Cómo determinan el costo de ventas?",
+          "¿Tienen bodegas, canales o líneas distintas?",
+          "¿Hay devoluciones, garantías, descuentos o mermas frecuentes?"
+        ]
+      },
+      industrial: {
+        label: "Industrial",
+        short: "materia prima, producción, costeo, MOD, CIF y activos productivos",
+        questions: [
+          "¿Qué materias primas compran y cómo se transforman?",
+          "¿Qué personal participa directamente en la producción?",
+          "¿Qué costos indirectos requiere la planta?",
+          "¿La maquinaria productiva está identificada y depreciada?"
+        ]
+      },
+      mixed: {
+        label: "Mixto",
+        short: "separación de ingresos, centros de costo, inventario consumido y costos directos",
+        questions: [
+          "¿Qué parte del ingreso corresponde a producto, servicio, instalación o proyecto?",
+          "¿Cómo separan los costos directos por línea?",
+          "¿Cómo controlan el inventario consumido?",
+          "¿Necesitan rentabilidad por proyecto, sede o línea?"
+        ]
+      }
+    };
+
+    const clientLabels = {
+      new: "Empresa nueva: sin pasado contable; configuración inicial en Siigo o Alegra.",
+      compatible: "Software compatible: trae historia en Siigo o Alegra y se validan saldos.",
+      migration: "Migración / parametrización: usa otro software o requiere configuración desde cero."
+    };
+
+    const stateLabels = {
+      confirmation: "Confirmación: contabilidad al día; se valida confiabilidad.",
+      audit: "Auditoría: existen dudas y se requiere dictamen con plan de acción.",
+      reconstruction: "Reconstrucción: hay inconsistencias graves; exige auditoría profunda previa y fee adicional."
     };
 
     const phases = [
       {
-        name: "Pre-onboarding",
-        purpose: "Preparar el terreno antes de hablar de números.",
-        sla: "2 días",
-        participants: "Comercial, líder de setup y Gerente Contador",
-        moment: "Cuando el cliente acepta iniciar y antes del kickoff",
-        outcome: "Contexto claro, alcance confirmado y accesos solicitados",
-        items: ["Alcance confirmado", "Responsables definidos", "Accesos solicitados"]
+        name: "Onboarding",
+        purpose: "Clasificar al cliente, asignar responsables, pedir información y dejar acuerdos.",
+        sla: "Dentro de 24 h para convocar",
+        participants: "Ventas, Mayerly, Gerente Contador, cliente y Country Manager si aplica",
+        moment: "Después de la firma y de la investigación previa",
+        outcome: "Clasificación, ruta y focos obligatorios entregados",
+        items: ["Acta y hoja de vida", "Contador asignado", "Formato Post-Onboarding", "Fecha de documentos", "Correo automático"]
       },
       {
-        name: "Diagnóstico",
-        purpose: "Entender qué tan ordenado llega el cliente.",
-        sla: "3 días",
-        participants: "Gerente Contador y responsable del cliente",
-        moment: "Primera conversación operativa",
-        outcome: "Ruta de setup definida y riesgos visibles",
-        items: ["Ficha completa", "Ruta definida", "Riesgos visibles"]
+        name: "Recepción y validación",
+        purpose: "Recibir documentos, confirmar si están completos y validar la información inicial.",
+        sla: "Desde recepción completa",
+        participants: "Cliente, contador designado y Gerente Contador",
+        moment: "Después del onboarding, si existe pasado contable",
+        outcome: "Documentos completos y saldos listos para revisión",
+        items: ["Documentos recibidos", "Pendientes notificados", "WhatsApp actualizado", "Dudas resueltas"]
       },
       {
         name: "Auditoría",
-        purpose: "Validar lo crítico antes de configurar.",
-        sla: "3 a 8 días",
-        participants: "Gerente Contador, especialista contable y cliente",
-        moment: "Después del diagnóstico y antes de parametrizar",
-        outcome: "Hallazgos priorizados y plan aprobado",
-        items: ["Auditoría ejecutada", "Hallazgos priorizados", "Plan aprobado"]
+        purpose: "Validar saldos en primer grado o revisar a profundidad cuando existen dudas.",
+        sla: "Express: 1 día mínimo · Profunda: 5 días",
+        participants: "Contador, Andrés Granados, Gerente Contador y cliente cuando se requiera",
+        moment: "Antes de aceptar saldos o definir reconstrucción",
+        outcome: "Informe, dictamen y decisión post auditoría",
+        items: ["Auditoría Express", "Informe de resultados", "Dictamen si aplica", "Plan de acción", "Recotización si aplica"]
       },
       {
-        name: "Parametrización",
-        purpose: "Configurar para que la operación pueda correr.",
-        sla: "4 a 10 días",
-        participants: "Especialista contable, tecnología y Gerente Contador",
-        moment: "Cuando los hallazgos críticos están entendidos",
-        outcome: "Sistema listo para pruebas y primeros registros",
-        items: ["Plan de cuentas", "Impuestos", "Bancos e integraciones"]
+        name: "Parametrización y migración",
+        purpose: "Configurar Siigo o Alegra y migrar información cuando la ruta lo requiera.",
+        sla: "7 días en ruta de migración",
+        participants: "Equipo de parametrización, contador y Gerente Contador",
+        moment: "Después de validar saldos y alcance",
+        outcome: "Software configurado, saldos iniciales cargados y listo para operar",
+        items: ["Cuentas configuradas", "Facturación", "Centros de costo", "Migración validada", "Saldos iniciales"]
       },
       {
-        name: "Migración o reconstrucción",
-        purpose: "Cargar o reconstruir información con evidencia.",
-        sla: "5 a 15 días",
-        participants: "Equipo contable, cliente y responsable de datos",
-        moment: "Cuando la configuración base ya está aprobada",
-        outcome: "Saldos y soportes listos para operar",
-        items: ["Saldos validados", "Histórico cargado", "Conciliaciones críticas"]
+        name: "Reconstrucción contable",
+        purpose: "Reconstruir periodos anteriores cuando el pasado contable no es confiable.",
+        sla: "30 días hábiles",
+        participants: "Auditor, contador, auxiliar y Gerente Contador",
+        moment: "Solo después de auditoría profunda y dictamen",
+        outcome: "Periodos reconstruidos, impuestos y estados financieros preparados",
+        items: ["Alcance definido", "Causación", "Conciliación bancaria", "Impuestos", "Estados financieros", "Status diario"]
       },
       {
-        name: "Operación recurrente",
-        purpose: "Pasar el cliente a la cadencia normal.",
-        sla: "Primer ciclo",
-        participants: "Gerente Contador, equipo de operación y cliente",
-        moment: "Después del ritual de cierre",
-        outcome: "Operación asignada, pendientes controlados y pulso NPS programado",
-        items: ["Ritual de cierre", "Pendientes controlados", "Pulso NPS programado"]
+        name: "Salida a operación",
+        purpose: "Capacitar, cerrar el setup y transferir al flujo recurrente.",
+        sla: "Al completar 100% del checklist",
+        participants: "Gerente Contador, contador, cliente y Country Manager solo si hay alerta",
+        moment: "Cuando sistema, saldos, factura y estado financiero están validados",
+        outcome: "Cliente capacitado y fase cambiada de Setup a Operación",
+        items: ["Software funcional", "Capacitación", "Primera factura", "Primer estado financiero", "Correo de cierre", "NPS"]
       }
     ];
 
     const questions = [
-      "¿El cliente sabe qué debe entregar y cuándo?",
-      "¿Hay un responsable del cliente para desbloqueos?",
-      "¿Tenemos accesos completos y funcionales?",
-      "¿Los saldos iniciales tienen soporte?",
-      "¿Hay riesgos fiscales, nómina, bancos o inventarios?",
-      "¿El cliente entiende cómo se verá una experiencia NPS 9+?"
+      "¿Esta lectura inicial de la empresa es correcta o debemos ajustarla?",
+      "¿Cómo se genera el ingreso de la unidad principal?",
+      "¿Qué tiene que pasar antes de facturar?",
+      "¿Quiénes son sus clientes y cómo pagan?",
+      "¿Por dónde ingresa y se retira el dinero?",
+      "¿Qué costos son indispensables para generar los ingresos?",
+      "¿Cómo está dividido el equipo entre administración, ventas y operación?"
     ];
 
     const focuses = [
@@ -1292,6 +1439,33 @@
       ["Reportes", "Formato esperado, frecuencia y usuario que tomará decisiones."]
     ];
 
+    const focusByOperation = {
+      services: [
+        ["Ingresos y anticipos", "Validar reconocimiento por contrato, hito, mensualidad o prestación real."],
+        ["Cartera", "Revisar clientes, recaudos, retenciones y provisión."],
+        ["Nómina operativa", "Separar costo directo del servicio y gasto administrativo."],
+        ["Centros de costo", "Medir rentabilidad por proyecto, cliente o línea."]
+      ],
+      commercial: [
+        ["Inventarios", "Validar inventario físico, ajustes y saldos iniciales."],
+        ["Costo de ventas", "Confirmar método, márgenes, devoluciones y mermas."],
+        ["Proveedores", "Revisar auxiliares, compras críticas y retenciones."],
+        ["Facturación y cartera", "Validar canales, notas crédito, recaudos e IVA."]
+      ],
+      industrial: [
+        ["Proceso productivo", "Materia prima, producto en proceso y producto terminado."],
+        ["Costeo", "Método de costeo, mano de obra directa y CIF."],
+        ["Activos productivos", "Maquinaria, depreciación y costos indirectos."],
+        ["Inventario", "Conteos, movimientos, desperdicios y saldos iniciales."]
+      ],
+      mixed: [
+        ["Separación de ingresos", "Distinguir producto, servicio, instalación y proyectos."],
+        ["Centros de costo", "Medir rentabilidad por proyecto, sede o línea."],
+        ["Inventario consumido", "Relacionar materiales con servicios o proyectos."],
+        ["Costos directos", "Separar nómina, subcontratistas, compras y gastos."]
+      ]
+    };
+
     const audits = [
       ["Auditoría express", "Validación preliminar de bancos, impuestos, terceros, soportes y saldos de apertura."],
       ["Auditoría profunda", "Revisión de histórico, conciliaciones, impuestos, cartera, proveedores, nómina e inventarios."],
@@ -1302,20 +1476,21 @@
     ];
 
     const closing = [
-      "Saldos iniciales aprobados",
-      "Parametrización revisada",
-      "Auditoría cerrada o riesgos aceptados",
-      "Bitácora actualizada",
-      "Pendientes con dueño y fecha",
-      "Correo de transición enviado",
-      "Ritual de cierre ejecutado",
-      "Operación recurrente asignada"
+      "Software configurado",
+      "Saldos iniciales cargados",
+      "Capacitación al cliente entregada",
+      "Primera factura emitida correctamente",
+      "Primer estado financiero emitido correctamente",
+      "Bitácora convertida en acta de cierre",
+      "Correo automático de culminación enviado",
+      "Fase cambiada de Setup a Operación"
     ];
 
     const state = {
       checks: {},
       viewMode: "summary",
       focusedPhase: null,
+      clientPhase: "Setup",
       logs: [
         {
           type: "Avance",
@@ -1330,36 +1505,34 @@
 
     function routeKey() {
       const type = $("clientType").value;
-      const operation = $("operationType").value;
       const accounting = $("accountingState").value;
-      const risk = $("risk").value;
-      if (type === "rescue" || type === "enterprise" || accounting === "messy" || accounting === "unknown" || risk === "high" || operation === "international") return "deep";
-      if (type === "migration" || operation === "multi" || operation === "inventory" || accounting === "partial" || risk === "medium") return "guided";
-      return "standard";
+      if (type === "new") return "new-confirmation";
+      return `${type}-${accounting}`;
     }
 
     function routeReason(key) {
-      const type = $("clientType").value;
       const operation = $("operationType").value;
-      const accounting = $("accountingState").value;
-      const risk = $("risk").value;
-      if (key === "deep") {
-        if (risk === "high") return "Esta ruta aplica porque el riesgo percibido es alto y necesitamos proteger la experiencia desde el inicio.";
-        if (accounting === "messy" || accounting === "unknown") return "Esta ruta aplica porque la información contable no está lista para operar sin auditoría profunda o reconstrucción.";
-        if (type === "rescue") return "Esta ruta aplica porque es un rescate: primero hay que estabilizar, ordenar y recuperar confianza.";
-        if (type === "enterprise" || operation === "international") return "Esta ruta aplica porque la operación requiere más gobierno, validación y acompañamiento ejecutivo.";
-      }
-      if (key === "guided") {
-        if (type === "migration") return "Esta ruta aplica porque hay una migración y debemos controlar saldos, históricos y expectativas.";
-        if (operation === "multi" || operation === "inventory") return "Esta ruta aplica porque la operación tiene más focos de control y necesita seguimiento cercano.";
-        if (accounting === "partial") return "Esta ruta aplica porque hay brechas menores que deben cerrarse antes del handoff.";
-        if (risk === "medium") return "Esta ruta aplica porque hay señales de riesgo medio y conviene acompañar con más cortes de validación.";
-      }
-      return "Esta ruta aplica porque el cliente llega con información ordenada, operación simple y bajo riesgo.";
+      const focus = operationFocus[operation];
+      return `La combinación de tipo de cliente y estado contable activa esta ruta. Por ser una operación de ${focus.label.toLowerCase()}, el contador debe priorizar ${focus.short}.`;
     }
 
-    function check(id, text) {
-      return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""}><span>${text}</span></label>`;
+    function check(id, text, enabled = true) {
+      return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
+    }
+
+    function renderClassificationSummary() {
+      const operation = $("operationType").value;
+      const client = $("clientType").value;
+      const accounting = $("accountingState").value;
+      const route = routes[routeKey()];
+      const focus = operationFocus[operation];
+      $("operationSummary").textContent = `${focus.label}: ${focus.short}.`;
+      $("clientSummary").textContent = clientLabels[client];
+      $("stateSummary").textContent = stateLabels[accounting];
+      $("diagnosisRoute").textContent = route.title;
+      $("diagnosisFocus").textContent = focus.short;
+      $("diagnosisHypothesis").textContent = $("risk").value === "high" ? "Debe ajustarse" : "Por validar en reunión";
+      $("diagnosisNote").textContent = `Ruta activa: ${route.phases.join(" → ")}. El onboarding solo se completa cuando clasificación, ruta y focos obligatorios quedan entregados al contador designado.`;
     }
 
     function renderRoute() {
@@ -1373,34 +1546,46 @@
       $("auditChip").className = `chip blue`;
       $("teamExplanation").textContent = route.explanation;
       $("routeReason").textContent = routeReason(key);
-      document.querySelectorAll("[data-route-card]").forEach(card => {
-        card.classList.toggle("active", card.dataset.routeCard === key);
-      });
+      renderClassificationSummary();
       $("ritualTitle").textContent = `Ritual: ${route.title}`;
       $("ritualText").textContent = route.ritual;
     }
 
     function renderSteps() {
+      const key = routeKey();
+      const applies = phase => {
+        if (phase.name === "Onboarding") return true;
+        if (phase.name === "Recepción y validación") return key !== "new-confirmation";
+        if (phase.name === "Auditoría") return key !== "new-confirmation";
+        if (phase.name === "Parametrización y migración") return !key.endsWith("-audit");
+        if (phase.name === "Reconstrucción contable") return key.endsWith("-reconstruction");
+        if (phase.name === "Salida a operación") return !key.endsWith("-audit");
+        return true;
+      };
+
       $("phaseFocus").innerHTML = phases.map((phase, index) => `
         <button type="button" class="${state.focusedPhase === index ? "active" : ""}" data-phase="${index}" title="${phase.name}">${index + 1}</button>
       `).join("");
 
-      $("steps").innerHTML = phases.map((phase, index) => `
-        <article class="step ${state.viewMode === "summary" ? "summary" : ""} ${state.focusedPhase !== null && state.focusedPhase !== index ? "dimmed" : ""}">
+      $("steps").innerHTML = phases.map((phase, index) => {
+        const active = applies(phase);
+        return `
+        <article class="step ${state.viewMode === "summary" ? "summary" : ""} ${state.focusedPhase !== null && state.focusedPhase !== index ? "dimmed" : ""} ${active ? "" : "dimmed"}">
           <div class="num">${index + 1}</div>
           <div>
             <h3>${phase.name}</h3>
             <p>${phase.purpose}</p>
+            <div class="chips"><span class="chip ${active ? "" : "warn"}">${active ? "Aplica en esta ruta" : "No aplica en esta ruta"}</span></div>
             <div class="phase-meta">
               <div class="meta-box"><strong>Participan</strong><span>${phase.participants}</span></div>
               <div class="meta-box"><strong>Momento</strong><span>${phase.moment}</span></div>
               <div class="meta-box"><strong>Resultado</strong><span>${phase.outcome}</span></div>
             </div>
-            <div class="checklist">${phase.items.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item)).join("")}</div>
+            <div class="checklist">${phase.items.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item, active)).join("")}</div>
           </div>
           <div class="sla">${phase.sla}</div>
         </article>
-      `).join("");
+      `}).join("");
 
       document.querySelectorAll("[data-phase]").forEach(button => {
         button.addEventListener("click", event => {
@@ -1414,11 +1599,13 @@
     }
 
     function renderQuestions() {
-      $("questions").innerHTML = questions.map((item, index) => check(`question-${index}`, item)).join("");
+      const focusQuestions = operationFocus[$("operationType").value].questions;
+      const selected = [...questions.slice(0, 5), ...focusQuestions];
+      $("questions").innerHTML = selected.map((item, index) => check(`question-${index}`, item)).join("");
     }
 
     function renderCards() {
-      $("focusCards").innerHTML = focuses.map(item => `
+      $("focusCards").innerHTML = focusByOperation[$("operationType").value].map(item => `
         <article class="card">
           <div class="mini-title">Foco obligatorio</div>
           <h3>${item[0]}</h3>
@@ -1440,7 +1627,8 @@
     function renderScript() {
       const client = $("clientName").value || "el cliente";
       const route = routes[routeKey()];
-      $("scriptText").textContent = `Hola, hoy vamos a iniciar el onboarding contable de ${client}. Primero validaremos el estado actual, después seguiremos la ruta ${route.title}, y al final haremos un cierre formal antes de pasar a Operación. La idea es que siempre sepan qué sigue, quién responde y qué necesitamos para avanzar sin sorpresas.`;
+      const focus = operationFocus[$("operationType").value];
+      $("scriptText").textContent = `Gracias por la confianza y por abrirnos este espacio. Antes de esta reunión revisamos la información compartida y nuestra lectura inicial es que ${client} opera principalmente como una empresa de ${focus.label.toLowerCase()}. Identificamos que los puntos que podrían requerir mayor atención son ${focus.short}. El objetivo de hoy no es repetir información básica, sino validar esta lectura, entender cómo opera, factura, cuesta, cobra y paga la empresa, y definir dónde debe enfocarse el contador designado. Nuestra ruta preliminar es ${route.title}, pero puede ajustarse según los hallazgos.`;
     }
 
     function renderMail() {
@@ -1449,25 +1637,28 @@
       const route = routes[routeKey()];
       const type = $("mailType").value;
       const templates = {
-        kickoff: `Asunto: Inicio de onboarding contable - ${client}\n\nHola,\n\nHoy iniciamos el onboarding y setup contable. La ruta recomendada es ${route.title}, con SLA estimado de ${route.sla}.\n\nDurante el proceso validaremos accesos, estado contable, focos obligatorios y criterios de cierre. Nuestro objetivo es que el proceso sea claro, ordenado y acompañado.\n\nSaludos,\n${owner}`,
+        kickoff: `Asunto: Acta y siguientes pasos del onboarding - ${client}\n\nHola,\n\nGracias por la reunión de onboarding. La clasificación preliminar es ${route.title}, con SLA estimado de ${route.sla}.\n\nAdjuntamos el acta, el Formato Post-Onboarding si aplica, la lista de documentos requeridos, los compromisos y la fecha acordada de entrega. El plan de trabajo puede ajustarse según los hallazgos.\n\nSaludos,\n${owner}`,
         risk: `Asunto: Acción requerida para continuar el setup - ${client}\n\nHola,\n\nIdentificamos un bloqueo que puede afectar el avance del setup. Para mantener una buena experiencia, necesitamos resolverlo antes de continuar.\n\nRuta activa: ${route.title}\nAcción requerida: confirmar información pendiente y responsable.\n\nSaludos,\n${owner}`,
-        close: `Asunto: Transición a operación recurrente - ${client}\n\nHola,\n\nEstamos listos para cerrar el setup contable y pasar a operación recurrente, sujeto al checklist mínimo de cierre.\n\nEn el ritual revisaremos saldos, parametrización, pendientes, responsables y primer pulso NPS.\n\nSaludos,\n${owner}`
+        close: `Asunto: Hemos culminado el proceso de setup - ${client}\n\nHola,\n\nHemos culminado el proceso de setup. La configuración y los entregables de la ruta ${route.title} fueron validados.\n\nEl cliente queda listo para operar bajo el flujo normal. Este correo deja trazabilidad de lo realizado y de la transición de Setup a Operación.\n\nSaludos,\n${owner}`
       };
       $("mailPreview").textContent = templates[type];
     }
 
     function renderProgress() {
-      const all = document.querySelectorAll("[data-check]");
+      const all = [...document.querySelectorAll("[data-check]")].filter(input => !input.disabled);
       const total = all.length;
-      const done = Object.values(state.checks).filter(Boolean).length;
+      const done = all.filter(input => input.checked).length;
       const score = total ? Math.round((done / total) * 100) : 0;
       $("progressBar").style.width = `${score}%`;
       $("progressScore").textContent = `${score}%`;
 
       const pulse = $("npsPulse").value;
-      const canHandoff = score >= 80 && pulse === "good";
-      $("handoffChip").textContent = canHandoff ? "Handoff listo" : pulse === "risk" ? "Plan de recuperación requerido" : "Handoff pendiente";
-      $("handoffChip").className = `chip ${canHandoff ? "" : pulse === "risk" ? "risk" : "warn"}`;
+      const closingComplete = closing.every((_, index) => state.checks[`closing-${index}`]);
+      const canHandoff = closingComplete && pulse === "good";
+      $("handoffChip").textContent = state.clientPhase === "Operación" ? "Fase: Operación" : canHandoff ? "Handoff listo" : pulse === "risk" ? "Plan de recuperación requerido" : "Fase: Setup";
+      $("handoffChip").className = `chip ${state.clientPhase === "Operación" || canHandoff ? "" : pulse === "risk" ? "risk" : "warn"}`;
+      $("changePhaseBtn").disabled = !canHandoff || state.clientPhase === "Operación";
+      $("changePhaseBtn").textContent = state.clientPhase === "Operación" ? "Cliente en Operación" : "Cambiar a Operación";
     }
 
     function renderTracking() {
@@ -1476,19 +1667,21 @@
       const done = Object.values(state.checks).filter(Boolean).length;
       const alerts = [];
 
-      if (key === "deep") {
-        alerts.push(["risk", "Ruta profunda activa", "No parametrizar ni migrar antes de cerrar la auditoría profunda y el plan de saneamiento."]);
-      } else if (key === "guided") {
-        alerts.push(["warn", "Acompañamiento reforzado", "Programar al menos dos cortes de validación antes del cierre."]);
+      if (key.endsWith("-reconstruction")) {
+        alerts.push(["risk", "Reconstrucción activa", "Requiere auditoría profunda previa, dictamen y validación de fee adicional con Ventas."]);
+      } else if (key.endsWith("-audit")) {
+        alerts.push(["warn", "Auditoría activa", "Andrés Granados entrega dictamen y plan de acción antes de definir el siguiente alcance."]);
+      } else if (key === "migration-confirmation") {
+        alerts.push(["warn", "Migración activa", "No iniciar la migración hasta validar documentos y saldos completos."]);
       } else {
-        alerts.push(["good", "Ruta controlada", "Mantener los hitos visibles y confirmar saldos antes del handoff."]);
+        alerts.push(["good", "Confirmación activa", "Mantener al cliente informado y validar los entregables mínimos antes del cierre."]);
       }
 
-      if ($("accountingState").value !== "clean") {
-        alerts.push(["warn", "Saldos por validar", "El estado contable aún requiere revisión antes de pasar a Operación."]);
+      if ($("accountingState").value !== "confirmation") {
+        alerts.push(["warn", "Clasificación puede cambiar", "Antes de cambiar la categoría, validar con Ventas si requiere renegociación de honorarios."]);
       }
       if ($("risk").value === "high" || pulse === "risk") {
-        alerts.push(["risk", "Riesgo de experiencia", "Activar plan de recuperación y conversar expectativas con el cliente."]);
+        alerts.push(["risk", "Alerta para Country Manager", "El Country Manager participa solo en casos críticos; el Gerente Contador sigue siendo el interlocutor principal."]);
       }
       if (done === 0) {
         alerts.push(["warn", "Sin avances registrados", "Completar los primeros mínimos de pre-onboarding y diagnóstico."]);
@@ -1510,6 +1703,12 @@
       `).join("") : `<p>No hay eventos registrados todavía.</p>`;
     }
 
+    function normalizeClassification() {
+      const isNew = $("clientType").value === "new";
+      if (isNew) $("accountingState").value = "confirmation";
+      $("accountingState").disabled = isNew;
+    }
+
     function bindChecks() {
       document.querySelectorAll("[data-check]").forEach(input => {
         input.addEventListener("change", event => {
@@ -1521,6 +1720,7 @@
     }
 
     function renderAll() {
+      normalizeClassification();
       renderRoute();
       renderSteps();
       renderQuestions();
@@ -1532,7 +1732,7 @@
       renderTracking();
     }
 
-    ["clientName", "operationType", "clientType", "accountingState", "risk", "owner", "mailType", "npsPulse"].forEach(id => {
+    ["clientName", "operationType", "clientType", "accountingState", "risk", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse"].forEach(id => {
       document.addEventListener("input", event => { if (event.target && event.target.id === id) renderAll(); });
       document.addEventListener("change", event => { if (event.target && event.target.id === id) renderAll(); });
     });
@@ -1563,8 +1763,23 @@
       renderTracking();
     });
 
+    $("changePhaseBtn").addEventListener("click", () => {
+      const closingComplete = closing.every((_, index) => state.checks[`closing-${index}`]);
+      if (!closingComplete || $("npsPulse").value !== "good") return;
+      state.clientPhase = "Operación";
+      state.logs.unshift({
+        type: "Avance",
+        owner: $("owner").value || "Gerente Contador",
+        text: "Checklist mínimo completado. Cliente transferido de Setup a Operación y correo automático de culminación generado.",
+        date: new Date().toLocaleString("es-CO")
+      });
+      $("mailType").value = "close";
+      renderAll();
+    });
+
     $("copyBtn").addEventListener("click", async () => {
-      const text = `${$("scriptText").textContent}\n\nPreguntas clave:\n${questions.map(item => `- ${item}`).join("\n")}`;
+      const selectedQuestions = [...questions.slice(0, 5), ...operationFocus[$("operationType").value].questions];
+      const text = `${$("scriptText").textContent}\n\nPreguntas clave:\n${selectedQuestions.map(item => `- ${item}`).join("\n")}`;
       try {
         await navigator.clipboard.writeText(text);
         $("copyBtn").textContent = "Guion copiado";
