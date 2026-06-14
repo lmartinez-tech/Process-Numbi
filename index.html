@@ -601,6 +601,75 @@
       font-weight: 650;
     }
 
+    .message-strip {
+      border: 1px solid #9bdcc5;
+      border-left: 6px solid var(--numbi);
+      border-radius: 8px;
+      padding: 18px 20px;
+      background: var(--mint-soft);
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 750;
+      line-height: 1.35;
+      margin: 18px 0 22px;
+    }
+
+    .reason-grid,
+    .compare-grid,
+    .role-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .reason-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .role-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+    .reason-card,
+    .compare-card,
+    .role-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .reason-card strong,
+    .compare-card strong,
+    .role-card strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 8px;
+    }
+
+    .reason-card p,
+    .compare-card li,
+    .role-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .compare-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .compare-card.after {
+      background: var(--mint-soft);
+      border-color: #9bdcc5;
+    }
+
+    .visual-notes {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: start;
+    }
+
     .phase-meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -979,7 +1048,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .visual-notes { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
       .nps-operation div { border-right: 0; border-bottom: 1px solid var(--line); }
       .nps-operation div:last-child { border-bottom: 0; }
@@ -1008,7 +1077,9 @@
     <div class="wrap top">
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
+        <a href="#por-que">Por qué</a>
         <a href="#objetivo">Objetivo</a>
+        <a href="#antes-despues">Antes / después</a>
         <a href="#presentacion">Vista macro</a>
         <a href="#participacion">Participación</a>
         <a href="#explicacion-onboarding">Onboarding</a>
@@ -1016,6 +1087,7 @@
         <a href="#pasos">Paso a paso</a>
         <a href="#seguimiento">Seguimiento</a>
         <a href="#cierre">Cierre</a>
+        <a href="#guion">Guion</a>
       </nav>
     </div>
   </header>
@@ -1025,11 +1097,95 @@
       <div class="wrap">
         <span class="label">Guía interna · Setup contable</span>
         <h1>Onboarding y Setup Contable Numbi</h1>
-        <p class="hero-copy">Una guía sencilla para que los Gerentes Contadores acompañen al cliente desde el primer contacto hasta la operación recurrente, con claridad, orden y una experiencia diseñada para lograr NPS 9 o más.</p>
+        <p class="hero-copy">Una ruta clara para que el cliente avance desde onboarding hasta operación con diagnóstico, responsables, comunicación visible y una experiencia diseñada para lograr NPS 9 o más.</p>
+        <div class="message-strip">Esto no agrega trabajo: organiza el trabajo que ya hacemos para evitar reprocesos, bloqueos y clientes desinformados.</div>
         <div class="hero-grid">
           <div class="stat"><strong>6</strong><span>momentos del proceso</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
           <div class="stat"><strong>NPS 9+</strong><span>meta de experiencia</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="por-que">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Contexto del cambio</span>
+          <div>
+            <h2>¿Por qué estamos cambiando esto?</h2>
+            <p>Porque el trabajo ya existe, pero muchas veces ocurre tarde, disperso o con poco contexto. La mejora busca ordenar el flujo para ahorrar tiempo, reducir reprocesos y cuidar la confianza del cliente.</p>
+          </div>
+        </div>
+        <div class="reason-grid">
+          <article class="reason-card">
+            <strong>Preparación tardía</strong>
+            <p>Algunos onboarding llegan con poco contexto y el contador recibe información incompleta para arrancar bien.</p>
+          </article>
+          <article class="reason-card">
+            <strong>Riesgos invisibles</strong>
+            <p>Los problemas se detectan cuando ya generaron retrasos, reprocesos o conversaciones difíciles con el cliente.</p>
+          </article>
+          <article class="reason-card">
+            <strong>Bloqueos dispersos</strong>
+            <p>Chats, correos y acuerdos sueltos hacen que el equipo tenga que reconstruir la historia del caso.</p>
+          </article>
+        </div>
+        <div class="message-strip">El mayor riesgo de pérdida de confianza ocurre entre onboarding y setup. Si no entendemos bien al cliente al inicio, el problema aparece después como retraso, reproceso, frustración o churn.</div>
+        <div class="callout">
+          <strong>La intención</strong>
+          El nuevo proceso busca ordenar, no burocratizar. El cliente debe entender qué sigue, quién responde y qué falta para avanzar; el equipo debe tener contexto compartido y alertas a tiempo.
+        </div>
+      </div>
+    </section>
+
+    <section id="objetivo">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Objetivo de la guía</span>
+          <div>
+            <h2>Ordenar el setup sin burocratizarlo</h2>
+            <p>Vamos a conectar onboarding, diagnóstico, ruta de setup, seguimiento y cierre para que cada cliente avance con responsables claros, comunicación visible y evidencia mínima para operar bien.</p>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Lectura ejecutiva</strong>
+          El proceso debe sentirse como acompañamiento: menos reprocesos, menos bloqueos dispersos, riesgos escalados a tiempo y un cliente que entiende qué sigue antes de pasar a operación.
+        </div>
+      </div>
+    </section>
+
+    <section id="antes-despues">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Antes vs. después</span>
+          <div>
+            <h2>La diferencia es visibilidad, no más carga</h2>
+            <p>Pasamos de operar con información fragmentada a trabajar con una ruta compartida entre cliente, onboarding, setup y operación.</p>
+          </div>
+        </div>
+        <div class="compare-grid">
+          <article class="compare-card">
+            <strong>Antes</strong>
+            <ul>
+              <li>Preparación tardía.</li>
+              <li>Preguntas improvisadas.</li>
+              <li>Contexto incompleto para el contador.</li>
+              <li>Bloqueos por WhatsApp.</li>
+              <li>Cliente sin claridad de ruta.</li>
+              <li>Riesgos detectados tarde.</li>
+            </ul>
+          </article>
+          <article class="compare-card after">
+            <strong>Después</strong>
+            <ul>
+              <li>Hipótesis previa.</li>
+              <li>Onboarding consultivo.</li>
+              <li>Ficha de diagnóstico.</li>
+              <li>Bitácora centralizada.</li>
+              <li>Ruta visible para cliente y equipo.</li>
+              <li>Riesgos escalados a tiempo.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
@@ -1067,34 +1223,34 @@
         <div class="section-title" style="margin-top:42px">
           <span class="label">Métrica de éxito</span>
           <div>
-            <h2>NPS 9+ significa claridad y acompañamiento</h2>
-            <p>La calificación final no depende solo de que la contabilidad quede técnicamente correcta. Depende de cómo vivió el cliente el proceso.</p>
+            <h2>NPS 9+ significa claridad, confianza y acompañamiento</h2>
+            <p>La calificación final no depende solo de que la contabilidad quede técnicamente correcta. Depende de si el cliente entendió la ruta, recibió comunicación visible y sintió un cierre formal antes de pasar a operación.</p>
           </div>
         </div>
         <div class="nps-layout">
           <article class="nps-card highlight">
             <div class="mini-title">Qué mide el cliente</div>
-            <h3>Su experiencia</h3>
+            <h3>Claridad y confianza</h3>
             <ul>
               <li>Si se sintió acompañado.</li>
-              <li>Si entendió qué ocurría en cada momento.</li>
-              <li>Si tuvo claridad sobre tiempos y expectativas.</li>
-              <li>Si percibió orden y buen servicio.</li>
+              <li>Si entendió qué seguía en cada momento.</li>
+              <li>Si tuvo claridad sobre tiempos, responsables y pendientes.</li>
+              <li>Si percibió una comunicación ordenada.</li>
             </ul>
           </article>
           <article class="nps-card">
             <div class="mini-title">Qué no mide</div>
-            <h3>No es una auditoría técnica</h3>
+            <h3>No es solo cierre técnico</h3>
             <ul>
               <li>Qué tan rápido fue el setup.</li>
               <li>Qué tan perfecta quedó la contabilidad.</li>
-              <li>Cuántas funciones del portal utilizó.</li>
+              <li>Cuántos pasos internos completamos.</li>
             </ul>
           </article>
           <article class="nps-card">
             <div class="mini-title">Por qué importa</div>
             <h3>La claridad cambia la nota</h3>
-            <p>Un setup técnicamente sólido puede obtener una mala calificación si el cliente estuvo desinformado. La comunicación visible convierte el trabajo técnico en confianza.</p>
+            <p>Un setup sólido puede sentirse mal si el cliente estuvo desinformado. La comunicación visible convierte el trabajo técnico en confianza y reduce el riesgo de churn.</p>
           </article>
         </div>
         <div class="nps-operation">
@@ -1106,51 +1262,40 @@
       </div>
     </section>
 
-    <section id="objetivo">
-      <div class="wrap">
-        <div class="section-title">
-          <span class="label">Objetivo de la guía</span>
-          <div>
-            <h2>¿Qué vamos a hacer?</h2>
-            <p>Vamos a ordenar el setup contable para que el equipo sepa qué revisar, qué preguntar, cuándo escalar y cuándo pasar a Operación sin dejar cabos sueltos.</p>
-          </div>
-        </div>
-        <div class="callout">
-          <strong>Lectura ejecutiva</strong>
-          El proceso no debe sentirse como una auditoría pesada para el cliente. Debe sentirse como acompañamiento: diagnóstico claro, ruta explicada, avances visibles, riesgos conversados a tiempo y cierre formal antes de iniciar la operación recurrente.
-        </div>
-      </div>
-    </section>
-
     <section id="participacion">
       <div class="wrap">
         <div class="section-title">
           <span class="label">Mapa de participación</span>
           <div>
-            <h2>¿Quién participa y en qué momento?</h2>
-            <p>La idea es que cada persona entienda cuándo entra, qué debe preparar y qué decisión ayuda a tomar. Así el proceso se siente acompañado, no como una lista interminable.</p>
+            <h2>¿Quién participa y qué gana?</h2>
+            <p>Cada rol entra para ahorrar tiempo y mejorar la transición. La idea no es controlar más, sino que nadie tenga que empezar desde cero ni reconstruir información por chats.</p>
           </div>
         </div>
-        <div class="storyline">
-          <article class="story-card">
-            <strong>Antes del kickoff</strong>
+        <div class="role-grid">
+          <article class="role-card">
+            <strong>Ventas</strong>
             <h3>Ventas</h3>
-            <p>Crea el grupo de WhatsApp y el cliente en Portal Numbi, notifica al equipo y comparte el contexto comercial.</p>
+            <p>Entrega mejor contexto desde el inicio y evita reprocesos porque onboarding y setup reciben una historia más completa.</p>
           </article>
-          <article class="story-card">
-            <strong>Dentro de 24 horas</strong>
+          <article class="role-card">
+            <strong>Onboarding</strong>
             <h3>Mayerly / Onboarding</h3>
-            <p>Solicita Cámara de Comercio y token DIAN, convoca la reunión y crea la hoja de vida en el dashboard.</p>
+            <p>Asegura que el cliente entre con información mínima, expectativas claras y una reunión menos improvisada.</p>
           </article>
-          <article class="story-card">
-            <strong>Antes y durante onboarding</strong>
+          <article class="role-card">
+            <strong>Gerente Contador</strong>
             <h3>Gerente Contador</h3>
-            <p>Investiga, selecciona equipo, dirige la reunión, clasifica y entrega diagnóstico al contador designado.</p>
+            <p>Llega preparado, valida hipótesis, detecta riesgos temprano y define la ruta correcta para el setup.</p>
           </article>
-          <article class="story-card">
-            <strong>Solo cuando hay alerta</strong>
+          <article class="role-card">
+            <strong>Contador designado</strong>
+            <h3>Contador Designado</h3>
+            <p>No parte desde cero: recibe clasificación, focos claros, riesgos y decisiones ya documentadas.</p>
+          </article>
+          <article class="role-card">
+            <strong>Country Manager</strong>
             <h3>Country Manager</h3>
-            <p>Acompaña casos críticos, pero no reemplaza al Gerente Contador como interlocutor principal del cliente.</p>
+            <p>Entra solo en alertas críticas, con visibilidad suficiente para destrabar sin meterse en toda la operación.</p>
           </article>
         </div>
       </div>
@@ -1194,7 +1339,7 @@
 
         <div class="callout" style="margin-top:18px">
           <strong>Idea clave</strong>
-          <span>El onboarding no busca descubrir desde cero qué hace el cliente. Eso ya debió investigarse. El onboarding valida cómo opera, cómo factura, cómo cobra, cómo paga, qué tan confiable es su pasado contable y qué debe auditar obligatoriamente el contador designado.</span>
+          <span>El onboarding no busca descubrir desde cero qué hace el cliente. Sirve para validar una hipótesis, entender riesgos y dejarle al contador designado una ruta clara para no empezar desde cero.</span>
         </div>
 
         <div class="section-title" style="margin-top:42px">
@@ -1394,12 +1539,12 @@
           <span class="label">Seguimiento durante setup</span>
           <div>
             <h2>Bitácora viva del Set Up</h2>
-            <p>El seguimiento deja evidencia diaria de avances, pendientes, riesgos, entregas y decisiones. No es un documento adicional: permite saber si el cliente avanza correctamente hacia operación.</p>
+            <p>La bitácora centraliza avances, pendientes, riesgos, entregas y decisiones. No es control adicional: es memoria compartida para que el equipo no dependa de chats ni reconstruya el caso desde cero.</p>
           </div>
         </div>
         <div class="callout" style="margin-bottom:18px">
           <strong>Conexión con el cierre</strong>
-          <span>Cuando el checklist mínimo esté completo, la bitácora soporta el acta o comunicación de cierre y el paso del cliente a operación recurrente.</span>
+          <span>Cuando el checklist mínimo esté completo, la bitácora soporta el acta de cierre, el correo al cliente y el paso formal a operación recurrente.</span>
         </div>
         <div class="tracking-grid">
           <div class="panel form">
@@ -1442,9 +1587,10 @@
           <span class="label">Cierre y transición</span>
           <div>
             <h2>Pasar de Setup a Operación</h2>
-            <p>El cambio de fase solo ocurre cuando hay evidencia, responsables claros, pendientes controlados y un ritual de cierre con el cliente.</p>
+            <p>El cambio de fase solo ocurre cuando hay diagnóstico, ruta ejecutada o estabilizada, responsables claros, pendientes controlados y un ritual de cierre con el cliente.</p>
           </div>
         </div>
+        <div class="message-strip">La meta no es tener más pasos. La meta es que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima para operar bien.</div>
 
         <div class="cards-2">
           <div class="card">
@@ -1498,6 +1644,48 @@
             </label>
           </div>
           <pre class="mail" id="mailPreview"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="guion">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Para presentar el martes</span>
+          <div>
+            <h2>Frases, visuales y guion corto</h2>
+            <p>Esta lámina funciona como apoyo para Liz: qué enfatizar, qué simplificar y cómo contar la idea sin que suene a carga adicional.</p>
+          </div>
+        </div>
+        <div class="visual-notes">
+          <div class="card">
+            <div class="mini-title">Frases para destacar</div>
+            <ul>
+              <li>Esto no agrega trabajo: organiza el trabajo que ya hacemos.</li>
+              <li>La claridad al inicio evita urgencias al final.</li>
+              <li>La bitácora no es control: es memoria compartida del caso.</li>
+              <li>El cliente no solo necesita que avancemos; necesita entender cómo avanzamos.</li>
+              <li>NPS 9+ significa claridad, confianza, acompañamiento y cierre formal.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="mini-title">Mejoras visuales sugeridas</div>
+            <ul>
+              <li>Dar más jerarquía a “Por qué cambiamos” y “Antes vs. Después”.</li>
+              <li>Convertir roles, fases, ficha y cierre en tarjetas breves.</li>
+              <li>Usar destacados grandes para las frases de trabajo, churn y cierre.</li>
+              <li>Simplificar textos largos a una idea principal y tres bullets.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <div class="mini-title">Guion de 5 minutos</div>
+          <p>Hoy queremos presentar una mejora al proceso de onboarding y setup contable. La idea principal es simple: esto no agrega trabajo, organiza el trabajo que ya hacemos para evitar reprocesos, bloqueos y clientes desinformados.</p>
+          <p>Hoy muchas cosas sí ocurren, pero están dispersas. A veces llegamos al onboarding con poco contexto, el contador recibe información incompleta, los riesgos se detectan tarde y los bloqueos quedan en chats. Para el cliente, eso se traduce en poca claridad.</p>
+          <p>El mayor riesgo de pérdida de confianza ocurre entre onboarding y setup. Si no entendemos bien al cliente al inicio, después aparece como retraso, reproceso, frustración o churn.</p>
+          <p>La propuesta es ordenar seis momentos: preparar una hipótesis, hacer un onboarding consultivo, documentar diagnóstico, definir ruta, trabajar con bitácora viva y cerrar formalmente antes de operación.</p>
+          <p>Cada rol gana algo: Ventas reduce reprocesos, Onboarding asegura información mínima, el Gerente Contador llega preparado, el Contador Designado no parte desde cero y Country Manager entra solo en alertas críticas.</p>
+          <p>La meta no es tener más pasos. La meta es que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima para operar bien.</p>
         </div>
       </div>
     </section>
