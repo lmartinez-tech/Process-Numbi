@@ -670,6 +670,44 @@
       align-items: start;
     }
 
+    .question-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .question-item {
+      display: grid;
+      gap: 7px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: white;
+    }
+
+    .question-item p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .question-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .question-tags span {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: var(--numbi-dark);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
     .phase-meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1343,10 +1381,34 @@
         </div>
 
         <div class="section-title" style="margin-top:42px">
+          <span class="label">Clasificación previa</span>
+          <div>
+            <h2>Ventas deja una primera lectura para orientar el diagnóstico</h2>
+            <p>Ventas realiza una precalificación inicial con dos campos del dashboard: tipo de cliente y estado contable. Esa lectura es preliminar y puede cambiar durante onboarding o setup si aparecen nuevos hallazgos.</p>
+          </div>
+        </div>
+        <div class="cards-3" style="margin-bottom:18px">
+          <article class="card">
+            <div class="mini-title">Campo 1</div>
+            <h3>Tipo de cliente</h3>
+            <p>Empresa nueva, software compatible o migración / parametrización. Indica cómo llega el cliente a Numbi.</p>
+          </article>
+          <article class="card">
+            <div class="mini-title">Campo 2</div>
+            <h3>Estado contable</h3>
+            <p>Confirmación, auditoría o reconstrucción. Indica qué tan confiable parece el punto de partida contable.</p>
+          </article>
+          <article class="card">
+            <div class="mini-title">Regla de trabajo</div>
+            <h3>Es una hipótesis, no una sentencia</h3>
+            <p>La ruta puede ajustarse si el diagnóstico muestra más complejidad, riesgos o información incompleta.</p>
+          </article>
+        </div>
+        <div class="section-title" style="margin-top:28px">
           <span class="label">Tipo de operación</span>
           <div>
-            <h2>El primer filtro para orientar el levantamiento</h2>
-            <p>Antes de iniciar el diagnóstico, el gerente identifica el tipo de operación. Esto no reemplaza el análisis del negocio, pero orienta preguntas, documentos requeridos y procesos prioritarios.</p>
+            <h2>Luego ubicamos cómo opera el cliente</h2>
+            <p>Esta clasificación ayuda a enfocar las preguntas del diagnóstico. No define sola la ruta de setup, pero sí activa focos contables y operativos distintos.</p>
           </div>
         </div>
         <div class="cards-2">
@@ -1379,8 +1441,8 @@
         <div class="section-title">
           <span class="label">Ficha de diagnóstico</span>
           <div>
-            <h2>Primero clasificamos al cliente</h2>
-            <p>Con tres datos simples definimos la ruta de setup, el nivel de auditoría y el SLA recomendado. Esto evita improvisar y hace que todos expliquemos lo mismo.</p>
+            <h2>Primero validamos la clasificación del cliente</h2>
+            <p>Ventas deja una precalificación inicial. En diagnóstico la validamos con tipo de cliente, estado contable y tipo de operación para definir ruta, nivel de revisión y focos del contador.</p>
           </div>
         </div>
 
@@ -1446,7 +1508,8 @@
             <div class="phase-meta" id="routePhases" style="margin-top:14px"></div>
             <div class="callout" style="margin-top:14px">
               <strong>Preguntas que aplican</strong>
-              <span id="routeQuestions"></span>
+              <span id="routeQuestionSummary"></span>
+              <div class="question-stack" id="routeQuestions"></div>
             </div>
           </div>
         </div>
@@ -1897,15 +1960,30 @@
       ["Riesgos tributarios o contables", ["¿Hay impuestos pendientes, sanciones o declaraciones por corregir?", "¿Qué parte de la contabilidad actual genera más dudas?"]]
     ];
 
-    const routeQuestionsByKey = {
-      "new-confirmation": ["¿Qué debe quedar configurado para iniciar operación?", "¿Quién emitirá la primera factura?", "¿Qué reportes necesita ver el cliente desde el primer mes?"],
-      "compatible-confirmation": ["¿Los saldos de apertura coinciden con auxiliares?", "¿Hay bancos, cartera o proveedores pendientes de validar?", "¿Qué información histórica debe revisar el contador antes de operar?"],
-      "migration-confirmation": ["¿Qué información se debe migrar y desde qué fecha?", "¿Los saldos iniciales tienen soporte suficiente?", "¿Qué parametrización debe quedar lista antes de operar?"],
-      "compatible-audit": ["¿Qué señales generan duda sobre la contabilidad?", "¿Qué periodos deben revisarse antes de aceptar saldos?", "¿Qué hallazgos podrían cambiar la ruta a reconstrucción?"],
-      "migration-audit": ["¿Qué debe auditarse antes de migrar?", "¿La información del software anterior es exportable y confiable?", "¿Qué hallazgos pueden cambiar alcance, tiempo o fee?"],
-      "compatible-reconstruction": ["¿Qué periodos deben reconstruirse?", "¿Qué soportes existen para bancos, impuestos, cartera y proveedores?", "¿Qué entregable confirma que la reconstrucción quedó lista?"],
-      "migration-reconstruction": ["¿Qué se reconstruye antes de migrar?", "¿Qué saldos se cargarán al software destino?", "¿Qué riesgos deben cerrarse antes de pasar a operación?"]
-    };
+    const diagnosticQuestionCatalog = [
+      { question: "¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?", applies: ["Todos"], validates: "Hipótesis previa", focus: "Reclasificación del cliente" },
+      { question: "¿Cómo se genera el ingreso por su unidad de negocio principal: producto, servicio, contrato, proyecto, fabricación o mezcla?", applies: ["Todos"], validates: "Modelo de ingreso", focus: "Ingresos, costos, centros de costo" },
+      { question: "¿Qué tiene que pasar antes de facturar?", applies: ["Todos"], validates: "Regla de facturación", focus: "Ingresos, anticipos, ingresos por cobrar" },
+      { question: "¿Quiénes son sus clientes y cómo pagan?", applies: ["Todos"], validates: "Tipo de cartera", focus: "Clientes, retenciones, cartera, provisión" },
+      { question: "¿Qué costos son indispensables para generar esos ingresos?", applies: ["Todos"], validates: "Costos directos", focus: "Costo de ventas, nómina, proveedores" },
+      { question: "¿Necesitan rentabilidad por proyecto, sede, cliente, producto o línea de negocio?", applies: ["Todos"], validates: "Segmentación", focus: "Centros de costo" },
+      { question: "¿Qué compras son críticas para operar?", applies: ["Todos"], validates: "Proveedores y costos", focus: "Inventarios, gastos, retenciones" },
+      { question: "¿Cómo está dividido el equipo entre administración, ventas y operación?", applies: ["Todos"], validates: "Nómina", focus: "Costo laboral vs gasto" },
+      { question: "¿Por dónde ingresa y se retira el dinero?", applies: ["Todos"], validates: "Bancos y caja", focus: "Conciliación, socios, caja menor" },
+      { question: "¿Cobran antes, durante o después de prestar el servicio?", applies: ["Servicios", "Mixto"], validates: "Anticipos o ingresos por cobrar", focus: "Ingresos y anticipos" },
+      { question: "¿Trabajan por mensualidad, contrato, bolsa de horas, hito o proyecto?", applies: ["Servicios", "Mixto"], validates: "Reconocimiento de ingresos", focus: "Ingresos por contrato" },
+      { question: "¿Quién ejecuta directamente el servicio?", applies: ["Servicios", "Mixto"], validates: "Nómina operativa", focus: "Nómina como costo" },
+      { question: "¿Subcontratan parte del servicio?", applies: ["Servicios", "Mixto"], validates: "Costos directos del servicio", focus: "Contratos de servicios" },
+      { question: "¿Cómo controlan inventario: sistema, Excel o conteo físico?", applies: ["Comercial", "Industrial", "Mixto"], validates: "Confiabilidad del inventario", focus: "Inventarios" },
+      { question: "¿Cómo determinan el costo de ventas o costo unitario?", applies: ["Comercial", "Industrial", "Mixto"], validates: "Margen y costeo", focus: "Costo de ventas / costeo" },
+      { question: "¿Tienen bodegas, sedes, canales o líneas de negocio distintas?", applies: ["Comercial", "Industrial", "Mixto"], validates: "Segmentación operativa", focus: "Bodegas / centros de costo" },
+      { question: "¿Hay devoluciones, garantías, descuentos, mermas o reprocesos frecuentes?", applies: ["Comercial", "Industrial", "Mixto"], validates: "Ajustes de venta, inventario o costo", focus: "Notas crédito, inventarios y costo" },
+      { question: "¿Compran productos importados o en moneda extranjera?", applies: ["Comercial", "Industrial"], validates: "Complejidad tributaria", focus: "Importaciones, TRM, impuestos" },
+      { question: "¿Qué materias primas compran y cómo se transforman en producto terminado?", applies: ["Industrial"], validates: "Proceso productivo", focus: "Materia prima, producto en proceso, producto terminado" },
+      { question: "¿Qué personal participa directamente en la producción?", applies: ["Industrial"], validates: "Mano de obra directa", focus: "MOD" },
+      { question: "¿Qué costos indirectos requiere la planta?", applies: ["Industrial"], validates: "Costos indirectos de fabricación", focus: "CIF, servicios, mantenimiento, depreciación" },
+      { question: "¿La maquinaria productiva está identificada y depreciada?", applies: ["Industrial"], validates: "Activos productivos", focus: "Activos fijos y depreciación" }
+    ];
 
     const focuses = [
       ["Bancos", "Extractos, cuentas activas, conciliación y saldos iniciales."],
@@ -1993,6 +2071,27 @@
       return `La combinación de tipo de cliente y estado contable activa esta ruta. Por ser una operación de ${focus.label.toLowerCase()}, el contador debe priorizar ${focus.short}.`;
     }
 
+    function diagnosticQuestionsForOperation(operation) {
+      const label = operationFocus[operation].label;
+      return diagnosticQuestionCatalog.filter(item => item.applies.includes("Todos") || item.applies.includes(label));
+    }
+
+    function renderDiagnosticQuestions(operation) {
+      const label = operationFocus[operation].label;
+      const questions = diagnosticQuestionsForOperation(operation);
+      $("routeQuestionSummary").textContent = `Para esta ruta usamos preguntas base y preguntas específicas de ${label.toLowerCase()}. Sirven para validar la hipótesis, ajustar la clasificación y activar focos contables sin convertir la reunión en interrogatorio.`;
+      $("routeQuestions").innerHTML = questions.map(item => `
+        <div class="question-item">
+          <p>${item.question}</p>
+          <div class="question-tags">
+            <span>Aplica: ${item.applies.join(" / ")}</span>
+            <span>Valida: ${item.validates}</span>
+            <span>Foco: ${item.focus}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
     function check(id, text, enabled = true) {
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
     }
@@ -2015,8 +2114,7 @@
     function renderRoute() {
       const key = routeKey();
       const route = routes[key];
-      const focusQuestions = operationFocus[$("operationType").value].questions;
-      const routeQuestions = routeQuestionsByKey[key] || [];
+      const operation = $("operationType").value;
       $("routeTitle").textContent = route.title;
       $("routeText").textContent = route.text;
       $("slaChip").textContent = `SLA: ${route.sla}`;
@@ -2029,7 +2127,7 @@
         <div class="meta-box"><strong>Fases que aplican</strong><span>${route.phases.join(" → ")}</span></div>
         <div class="meta-box"><strong>Resultado esperado</strong><span>${route.ritual}</span></div>
       `;
-      $("routeQuestions").innerHTML = [...routeQuestions, ...focusQuestions].slice(0, 7).map(item => `• ${item}`).join("<br>");
+      renderDiagnosticQuestions(operation);
       renderClassificationSummary();
       $("ritualTitle").textContent = `Ritual: ${route.title}`;
       $("ritualText").textContent = route.ritual;
@@ -2352,8 +2450,8 @@
 
     if ($("copyBtn")) {
       $("copyBtn").addEventListener("click", async () => {
-        const selectedQuestions = questionGroups.flatMap(([, items]) => items).slice(0, 8).concat(operationFocus[$("operationType").value].questions);
-        const text = `${$("scriptText").textContent}\n\nPreguntas clave:\n${selectedQuestions.map(item => `- ${item}`).join("\n")}`;
+        const selectedQuestions = diagnosticQuestionsForOperation($("operationType").value);
+        const text = `${$("scriptText").textContent}\n\nPreguntas clave:\n${selectedQuestions.map(item => `- ${item.question} | Valida: ${item.validates} | Foco: ${item.focus}`).join("\n")}`;
         try {
           await navigator.clipboard.writeText(text);
           $("copyBtn").textContent = "Guion copiado";
