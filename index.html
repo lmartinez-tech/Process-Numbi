@@ -672,40 +672,20 @@
 
     .question-stack {
       display: grid;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
     }
 
     .question-item {
-      display: grid;
-      gap: 7px;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
+      border-radius: 6px;
+      padding: 10px 12px;
       background: white;
-    }
-
-    .question-item p {
-      margin: 0;
       color: var(--ink);
       font-size: 14px;
       font-weight: 750;
-    }
-
-    .question-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .question-tags span {
-      display: inline-flex;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--mint-soft);
-      color: var(--numbi-dark);
-      font-size: 11px;
-      font-weight: 800;
     }
 
     .phase-meta {
@@ -1509,7 +1489,7 @@
             <div class="callout" style="margin-top:14px">
               <strong>Preguntas que aplican</strong>
               <span id="routeQuestionSummary"></span>
-              <div class="question-stack" id="routeQuestions"></div>
+              <ul class="question-stack" id="routeQuestions"></ul>
             </div>
           </div>
         </div>
@@ -2071,24 +2051,44 @@
       return `La combinación de tipo de cliente y estado contable activa esta ruta. Por ser una operación de ${focus.label.toLowerCase()}, el contador debe priorizar ${focus.short}.`;
     }
 
+    const diagnosticQuestionShortlist = {
+      services: [
+        "¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?",
+        "¿Cobran antes, durante o después de prestar el servicio?",
+        "¿Trabajan por mensualidad, contrato, bolsa de horas, hito o proyecto?",
+        "¿Quién ejecuta directamente el servicio?"
+      ],
+      commercial: [
+        "¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?",
+        "¿Cómo controlan inventario: sistema, Excel o conteo físico?",
+        "¿Cómo determinan el costo de ventas o costo unitario?",
+        "¿Tienen bodegas, sedes, canales o líneas de negocio distintas?"
+      ],
+      industrial: [
+        "¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?",
+        "¿Qué materias primas compran y cómo se transforman en producto terminado?",
+        "¿Qué personal participa directamente en la producción?",
+        "¿Qué costos indirectos requiere la planta?"
+      ],
+      mixed: [
+        "¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?",
+        "¿Cómo se genera el ingreso por su unidad de negocio principal: producto, servicio, contrato, proyecto, fabricación o mezcla?",
+        "¿Necesitan rentabilidad por proyecto, sede, cliente, producto o línea de negocio?",
+        "¿Cómo controlan inventario: sistema, Excel o conteo físico?"
+      ]
+    };
+
     function diagnosticQuestionsForOperation(operation) {
-      const label = operationFocus[operation].label;
-      return diagnosticQuestionCatalog.filter(item => item.applies.includes("Todos") || item.applies.includes(label));
+      const selected = diagnosticQuestionShortlist[operation] || diagnosticQuestionShortlist.services;
+      return selected.map(question => diagnosticQuestionCatalog.find(item => item.question === question) || { question, validates: "", focus: "" });
     }
 
     function renderDiagnosticQuestions(operation) {
       const label = operationFocus[operation].label;
       const questions = diagnosticQuestionsForOperation(operation);
-      $("routeQuestionSummary").textContent = `Para esta ruta usamos preguntas base y preguntas específicas de ${label.toLowerCase()}. Sirven para validar la hipótesis, ajustar la clasificación y activar focos contables sin convertir la reunión en interrogatorio.`;
+      $("routeQuestionSummary").textContent = `Según el tipo de operación seleccionado (${label}), estas son las preguntas mínimas para validar la hipótesis y orientar los focos del contador.`;
       $("routeQuestions").innerHTML = questions.map(item => `
-        <div class="question-item">
-          <p>${item.question}</p>
-          <div class="question-tags">
-            <span>Aplica: ${item.applies.join(" / ")}</span>
-            <span>Valida: ${item.validates}</span>
-            <span>Foco: ${item.focus}</span>
-          </div>
-        </div>
+        <li class="question-item">${item.question}</li>
       `).join("");
     }
 
