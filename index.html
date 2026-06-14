@@ -681,11 +681,90 @@
     .question-item {
       border: 1px solid var(--line);
       border-radius: 6px;
-      padding: 10px 12px;
+      padding: 8px 10px;
       background: white;
       color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 750;
+    }
+
+    #diagnostico .section-title {
+      margin-bottom: 14px;
+    }
+
+    #diagnostico .guide {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    #diagnostico .diagnosis-form {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px 12px;
+      padding: 14px;
+    }
+
+    #diagnostico .diagnosis-form label {
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    #diagnostico .diagnosis-form input,
+    #diagnostico .diagnosis-form select {
+      min-height: 38px;
+      padding: 8px 10px;
+    }
+
+    #diagnostico .route-card {
+      gap: 10px;
+      padding: 14px 16px;
+    }
+
+    #diagnostico .route-heading {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    #diagnostico .route-card h3 {
+      font-size: 28px;
+      line-height: 1.08;
+    }
+
+    #diagnostico .route-card p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    #diagnostico .route-compact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    #diagnostico .route-card .callout,
+    #diagnostico .route-reason {
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    #diagnostico .route-card .callout strong {
+      margin-bottom: 4px;
+    }
+
+    #diagnostico .route-card .phase-meta {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0;
+    }
+
+    #diagnostico .route-card .meta-box {
+      padding: 8px;
+    }
+
+    #diagnostico .decision-guide {
+      display: none;
     }
 
     .phase-meta {
@@ -1067,6 +1146,8 @@
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
       .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .visual-notes { grid-template-columns: 1fr; }
+      #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
       .nps-operation div { border-right: 0; border-bottom: 1px solid var(--line); }
       .nps-operation div:last-child { border-bottom: 0; }
@@ -1084,6 +1165,7 @@
       .hero { padding-top: 34px; }
       section { padding: 30px 0; }
       .step { grid-template-columns: 1fr; }
+      #diagnostico .diagnosis-form { grid-template-columns: 1fr; }
       .sla { grid-column: auto; }
       .macro-dock.is-fixed { top: 122px; width: calc(100% - 20px); }
       .macro-anchor { min-height: 220px; }
@@ -1325,7 +1407,7 @@
           <span class="label">Fase 1 · Onboarding</span>
           <div>
             <h2>Fase 1 — Pre-onboarding y Onboarding</h2>
-            <p>El gerente no llega a descubrir al cliente desde cero. Llega con una hipótesis inicial y usa la reunión para validarla.</p>
+            <p>El gerente llega con una hipótesis inicial, la valida con el cliente y cierra la reunión dejando una ficha de diagnóstico lista para el contador designado.</p>
           </div>
         </div>
         <div class="cards-2">
@@ -1356,8 +1438,8 @@
         </div>
 
         <div class="callout" style="margin-top:18px">
-          <strong>Idea clave</strong>
-          <span>El onboarding no busca descubrir desde cero qué hace el cliente. Sirve para validar una hipótesis, entender riesgos y dejarle al contador designado una ruta clara para no empezar desde cero.</span>
+          <strong>Entregable al finalizar onboarding</strong>
+          <span>El Gerente Contador entrega una ficha de diagnóstico al contador designado con la clasificación validada, la ruta recomendada, los riesgos y los focos que debe revisar en la auditoría inicial. Así el contador sabe por dónde empezar y qué no puede dejar pasar.</span>
         </div>
 
         <div class="section-title" style="margin-top:42px">
@@ -1427,7 +1509,7 @@
         </div>
 
         <div class="guide">
-          <div class="panel form">
+          <div class="panel form diagnosis-form">
             <label>Nombre del cliente
               <input id="clientName" value="Cliente nuevo Numbi">
             </label>
@@ -1472,24 +1554,32 @@
           </div>
 
           <div class="card route-card">
-            <div class="route-name">Ruta automática</div>
-            <h3 id="routeTitle">Setup estándar</h3>
-            <p id="routeText">Para clientes con información ordenada, baja complejidad y pocos focos de control.</p>
-            <div class="chips">
-              <span class="chip" id="slaChip">SLA: 15 días hábiles</span>
-              <span class="chip blue" id="auditChip">Auditoría express</span>
-              <span class="chip" id="npsChip">Meta: NPS 9+</span>
+            <div class="route-heading">
+              <div>
+                <div class="route-name">Ruta automática</div>
+                <h3 id="routeTitle">Setup estándar</h3>
+                <p id="routeText">Para clientes con información ordenada, baja complejidad y pocos focos de control.</p>
+              </div>
+              <div class="chips">
+                <span class="chip" id="slaChip">SLA: 15 días hábiles</span>
+                <span class="chip blue" id="auditChip">Auditoría express</span>
+                <span class="chip" id="npsChip">Meta: NPS 9+</span>
+              </div>
             </div>
-            <div class="callout">
-              <strong>Cómo se lo contamos al equipo</strong>
-              <span id="teamExplanation">Este cliente puede avanzar con una revisión rápida, parametrización base y validación de saldos antes del handoff.</span>
-            </div>
-            <div class="route-reason" id="routeReason">Esta ruta aplica porque el cliente llega con información ordenada y bajo riesgo.</div>
-            <div class="phase-meta" id="routePhases" style="margin-top:14px"></div>
-            <div class="callout" style="margin-top:14px">
-              <strong>Preguntas que aplican</strong>
-              <span id="routeQuestionSummary"></span>
-              <ul class="question-stack" id="routeQuestions"></ul>
+            <div class="route-compact-grid">
+              <div>
+                <div class="callout">
+                  <strong>Lectura para el equipo</strong>
+                  <span id="teamExplanation">Este cliente puede avanzar con una revisión rápida, parametrización base y validación de saldos antes del handoff.</span>
+                </div>
+                <div class="route-reason" id="routeReason" style="margin-top:10px">Esta ruta aplica porque el cliente llega con información ordenada y bajo riesgo.</div>
+                <div class="phase-meta" id="routePhases" style="margin-top:10px"></div>
+              </div>
+              <div class="callout">
+                <strong>Preguntas que aplican</strong>
+                <span id="routeQuestionSummary"></span>
+                <ul class="question-stack" id="routeQuestions"></ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1565,13 +1655,13 @@
         <div class="steps" id="steps"></div>
 
         <div class="card" style="margin-top:18px">
-          <div class="mini-title">Entrega al contador designado</div>
+          <div class="mini-title">Ficha entregada al contador al cerrar onboarding</div>
           <div class="phase-meta">
             <div class="meta-box"><strong>Hipótesis</strong><span id="diagnosisHypothesis">Validada</span></div>
             <div class="meta-box"><strong>Ruta recomendada</strong><span id="diagnosisRoute">Confirmación — empresa nueva</span></div>
             <div class="meta-box"><strong>Focos obligatorios</strong><span id="diagnosisFocus">Ingresos, cartera, nómina y bancos</span></div>
           </div>
-          <p id="diagnosisNote">El contador designado recibe clasificación del cliente, ruta recomendada, estado contable, riesgo principal, cuentas críticas, focos obligatorios de auditoría y observaciones relevantes.</p>
+          <p id="diagnosisNote">Esta ficha orienta la auditoría inicial: el contador recibe clasificación, ruta recomendada, estado contable, riesgos, cuentas críticas y focos obligatorios para saber por dónde empezar.</p>
         </div>
       </div>
     </section>
@@ -1870,13 +1960,13 @@
     const phases = [
       {
         name: "Onboarding",
-        purpose: "Clasificar al cliente, asignar responsables, pedir información y dejar acuerdos.",
+        purpose: "Validar la clasificación, definir la ruta y entregar al contador la ficha que orienta la auditoría inicial.",
         sla: "Dentro de 24 h para convocar",
         participants: "Ventas, Mayerly, Gerente Contador, cliente y Country Manager si aplica",
         moment: "Después de la firma y de la investigación previa",
-        outcome: "Clasificación, ruta y focos obligatorios entregados",
+        outcome: "Ficha de diagnóstico entregada al contador para iniciar la auditoría",
         subphases: ["Pre-onboarding", "Onboarding"],
-        items: ["Acta y hoja de vida", "Contador asignado", "Formato Post-Onboarding", "Fecha de documentos", "Correo automático"]
+        items: ["Acta y hoja de vida", "Contador asignado", "Ficha de diagnóstico", "Fecha de documentos", "Correo automático"]
       },
       {
         name: "Recepción y validación",
@@ -2086,7 +2176,7 @@
     function renderDiagnosticQuestions(operation) {
       const label = operationFocus[operation].label;
       const questions = diagnosticQuestionsForOperation(operation);
-      $("routeQuestionSummary").textContent = `Según el tipo de operación seleccionado (${label}), estas son las preguntas mínimas para validar la hipótesis y orientar los focos del contador.`;
+      $("routeQuestionSummary").textContent = `${label}: preguntas mínimas para validar la hipótesis y orientar la revisión inicial.`;
       $("routeQuestions").innerHTML = questions.map(item => `
         <li class="question-item">${item.question}</li>
       `).join("");
@@ -2108,7 +2198,7 @@
       $("diagnosisRoute").textContent = route.title;
       $("diagnosisFocus").textContent = focus.short;
       $("diagnosisHypothesis").textContent = "Por validar en reunión";
-      $("diagnosisNote").textContent = `Ruta activa: ${route.phases.join(" → ")}. Entregar al contador: clasificación, estado contable ${$("accountingState").selectedOptions[0].text}, ruta recomendada, riesgo principal, cuentas críticas, focos obligatorios y observaciones relevantes.`;
+      $("diagnosisNote").textContent = `Al cerrar onboarding, esta ficha orienta la auditoría inicial. El contador recibe la clasificación, estado contable ${$("accountingState").selectedOptions[0].text}, ruta recomendada, riesgo principal, cuentas críticas, focos obligatorios y observaciones relevantes.`;
     }
 
     function renderRoute() {
