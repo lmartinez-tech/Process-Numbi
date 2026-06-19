@@ -663,6 +663,128 @@
       font-size: 19px;
     }
 
+    .gps-layout {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .gps-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .gps-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .gps-card {
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .gps-card strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 4px;
+    }
+
+    .gps-card span {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .step-manual {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .step-block {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: white;
+    }
+
+    .step-block.full { grid-column: 1 / -1; }
+
+    .step-block strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+
+    .step-block ul,
+    .step-block ol {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .step-block p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--numbi-dark);
+      background: var(--mint-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
     .compare-card ul {
       margin: 0;
       padding-left: 18px;
@@ -1155,7 +1277,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .gps-layout, .gps-summary, .step-grid { grid-template-columns: 1fr; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
@@ -1187,15 +1309,20 @@
     <div class="wrap top">
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
+        <a href="#empezar">Empezar</a>
         <a href="#por-que">Contexto</a>
         <a href="#objetivo">Objetivo</a>
         <a href="#manual">Uso del manual</a>
         <a href="#antes-despues">Reglas</a>
         <a href="#presentacion">Flujo</a>
+        <a href="#rutas">Rutas</a>
         <a href="#participacion">Roles</a>
+        <a href="#trabajo-rol">Mi trabajo</a>
         <a href="#explicacion-onboarding">Onboarding</a>
         <a href="#diagnostico">Ficha</a>
         <a href="#pasos">Etapas</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#gobernanza">Gobernanza</a>
         <a href="#seguimiento">Bitácora</a>
         <a href="#cierre">Cierre</a>
       </nav>
@@ -1213,6 +1340,51 @@
           <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
           <div class="stat"><strong>1</strong><span>ficha para orientar setup</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="empezar">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Empezar</span>
+          <div>
+            <h2>GPS operativo del cliente</h2>
+            <p>Selecciona rol, ruta y paso actual. El manual muestra qué hacer ahora, qué necesitas, dónde registrar y qué no debe quedar pendiente para avanzar.</p>
+          </div>
+        </div>
+        <div class="gps-layout">
+          <div class="panel form gps-panel">
+            <label>Cliente
+              <input id="gpsClient" value="Cliente nuevo Numbi">
+            </label>
+            <label>Rol
+              <select id="gpsRole">
+                <option>Gerente Contador</option>
+                <option>Contador</option>
+                <option>Onboarding</option>
+                <option>Ventas</option>
+                <option>Auditor</option>
+                <option>Auxiliar</option>
+                <option>Parametrización y Migración</option>
+                <option>Country Manager</option>
+              </select>
+            </label>
+            <label>Ruta actual
+              <select id="gpsRoute"></select>
+            </label>
+            <label>Paso actual
+              <select id="gpsStep"></select>
+            </label>
+            <div class="action-row">
+              <button class="btn" type="button" id="completeGpsStep">Completar paso</button>
+              <button class="btn secondary" type="button" id="registerBlock">Registrar bloqueo</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gps-summary" id="gpsSummary"></div>
+            <div class="step-manual" id="gpsStepDetail"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1414,6 +1586,19 @@
       </div>
     </section>
 
+    <section id="rutas">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Rutas</span>
+          <div>
+            <h2>Siete combinaciones válidas</h2>
+            <p>Cada ruta muestra por qué aplica, qué etapas activa, qué no aplica y dónde puede cambiar si aparecen nuevos hallazgos.</p>
+          </div>
+        </div>
+        <div class="cards-2" id="routeCards"></div>
+      </div>
+    </section>
+
     <section id="participacion">
       <div class="wrap">
         <div class="section-title">
@@ -1450,6 +1635,19 @@
             <p>Entra solo ante alertas críticas, riesgos de churn o decisiones que requieran desbloqueo ejecutivo.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="trabajo-rol">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Mi trabajo por rol</span>
+          <div>
+            <h2>Qué debo hacer según mi rol</h2>
+            <p>Esta vista evita leer todo el manual cuando solo necesitas saber tus responsabilidades activas y condicionales.</p>
+          </div>
+        </div>
+        <div class="cards-3" id="roleWorkCards"></div>
       </div>
     </section>
 
@@ -1767,6 +1965,54 @@
       </div>
     </section>
 
+    <section id="herramientas">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Herramientas</span>
+          <div>
+            <h2>Documentos y plantillas del proceso</h2>
+            <p>Separamos herramientas internas de comunicaciones para cliente para evitar enviar hipótesis, riesgos internos o discusiones comerciales.</p>
+          </div>
+        </div>
+        <div class="cards-2">
+          <div class="card">
+            <div class="mini-title">Internas</div>
+            <div class="cards-2" id="internalTools"></div>
+          </div>
+          <div class="card">
+            <div class="mini-title">Cliente</div>
+            <div class="cards-2" id="clientTools"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gobernanza">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Gobernanza y excepciones</span>
+          <div>
+            <h2>Qué hacer cuando aparece un bloqueo</h2>
+            <p>Las excepciones deben activarse en el punto de uso. Esta tabla consolida los protocolos que todavía requieren validación formal de RACI o proceso original.</p>
+          </div>
+        </div>
+        <div class="cards-2" style="margin-bottom:18px">
+          <div class="card">
+            <div class="mini-title">Protocolos contextuales</div>
+            <div class="log-list" id="protocolList"></div>
+          </div>
+          <div class="card">
+            <div class="mini-title">Matriz RACI consultable</div>
+            <div class="table-wrap"><table id="raciTable"></table></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mini-title">Decisiones pendientes</div>
+          <div class="table-wrap"><table id="pendingTable"></table></div>
+        </div>
+      </div>
+    </section>
+
     <section id="cierre">
       <div class="wrap">
         <div class="section-title">
@@ -1912,6 +2158,252 @@
         ritual: "Estados financieros reconstruidos, software operativo y correo formal de cierre."
       }
     };
+
+    const manualSteps = [
+      {
+        id: "PRE-01",
+        name: "Preparar cliente y contexto comercial",
+        stage: "Pre-onboarding",
+        order: 0,
+        description: "Reunir la información mínima para que el Gerente Contador llegue con una hipótesis y no empiece desde cero.",
+        raci: { r: "Ventas / Onboarding", a: "Pendiente RACI oficial", c: "Gerente Contador", i: "Country Manager si hay alerta" },
+        inputs: ["Cliente creado", "Contexto comercial", "Propuesta comercial", "Notas o transcripción comercial"],
+        actions: ["Abre el dashboard.", "Ubica la pestaña Onboarding y la columna Reunión de Onboarding.", "Verifica tipo de cliente y estado contable preliminar.", "Comparte contexto, compromisos y alertas visibles con el Gerente Contador."],
+        outputs: "Contexto comercial disponible para preparar onboarding.",
+        evidence: "Registro en dashboard, propuesta comercial y notas comerciales disponibles.",
+        registerIn: "Dashboard de Migración / pestaña Onboarding.",
+        entry: "Cliente firmado o listo para iniciar onboarding.",
+        exit: "Gerente Contador tiene información mínima para preparar la reunión.",
+        blockers: ["No existe propuesta comercial", "No hay notas comerciales", "No está creado el cliente"],
+        problem: "Registrar bloqueo y pedir a Ventas completar contexto antes de la reunión.",
+        communication: "Cliente no recibe comunicación en este paso salvo confirmación de agenda.",
+        sla: "Pendiente de validación. Actualmente se menciona convocatoria dentro de 24 h.",
+        routes: ["Todas"],
+        next: "ONB-01",
+        examples: ["Así se ve bien: contexto comercial, CIIU, software actual y compromisos visibles.", "Así no se debe registrar: 'cliente listo' sin adjuntos ni notas."]
+      },
+      {
+        id: "ONB-01",
+        name: "Preparar hipótesis de onboarding",
+        stage: "Onboarding",
+        order: 1,
+        description: "Entender actividad comercial, tamaño, software, expectativas y modelo de negocio antes de hablar con el cliente.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Ventas / Onboarding", i: "Contador asignado cuando exista" },
+        inputs: ["Pestaña Onboarding", "Columna Reunión de Onboarding", "Transcripción comercial", "Propuesta comercial"],
+        actions: ["Revisa actividad comercial y CIIU.", "Identifica tamaño, software actual y expectativas vendidas.", "Detecta red flags comerciales o contables.", "Prepara preguntas para validar modelo de negocio y ruta."],
+        outputs: "Hipótesis inicial de clasificación, ruta, riesgos y focos.",
+        evidence: "Notas de preparación en ficha o dashboard.",
+        registerIn: "Ficha de diagnóstico / Dashboard de Migración.",
+        entry: "Existe contexto comercial mínimo.",
+        exit: "La reunión tiene hipótesis y preguntas preparadas.",
+        blockers: ["Falta información comercial", "No hay claridad sobre compromisos vendidos"],
+        problem: "Solicitar aclaración a Ventas antes de dirigir onboarding.",
+        communication: "No aplica comunicación externa todavía.",
+        sla: "Antes de la reunión de onboarding.",
+        routes: ["Todas"],
+        next: "ONB-02",
+        examples: ["Así se ve bien: 'Servicios, Siigo, confirma saldos, riesgo en cartera'.", "Así no se debe registrar: 'revisar después en la llamada'."]
+      },
+      {
+        id: "ONB-02",
+        name: "Ejecutar reunión de onboarding",
+        stage: "Onboarding",
+        order: 2,
+        description: "Dirigir la reunión, profundizar en expectativas, interlocutor y modelo de negocio, y completar acta durante la llamada.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Cliente / Ventas si hay duda comercial", i: "Contador asignado" },
+        inputs: ["Hipótesis inicial", "Acta de onboarding", "Hoja de vida", "Preguntas por tipo de operación"],
+        actions: ["Presenta objetivo y plataforma Numbi.", "Diligencia acta durante la reunión.", "Valida tipo de operación, tipo de cliente y estado contable.", "Acuerda fecha de entrega de documentos e informa siguientes pasos."],
+        outputs: "Acta, hoja de vida, ruta preliminar y fecha de documentos acordada.",
+        evidence: "Acta de onboarding diligenciada y hoja de vida actualizada.",
+        registerIn: "Acta de onboarding / Hoja de vida / Dashboard.",
+        entry: "Reunión agendada y cliente convocado.",
+        exit: "Cliente entiende qué sigue y qué debe entregar.",
+        blockers: ["Cliente no confirma operación", "No hay responsable del cliente", "No se acuerda fecha de documentos"],
+        problem: "Registrar pendiente, enviar resumen y no iniciar setup sin mínimos acordados.",
+        communication: "Gerente Contador comunica ruta preliminar, documentos requeridos y próximo hito.",
+        sla: "Durante la reunión.",
+        routes: ["Todas"],
+        next: "ONB-03",
+        examples: ["Así se ve bien: acta completa con fecha, documentos y responsables.", "Así no se debe registrar: acta vacía y acuerdos en WhatsApp."]
+      },
+      {
+        id: "ONB-03",
+        name: "Entregar ficha interna y resumen al cliente",
+        stage: "Onboarding",
+        order: 3,
+        description: "Separar la ficha interna para el equipo del resumen externo que recibe el cliente.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Contador asignado / Ventas", i: "Cliente" },
+        inputs: ["Acta", "Hoja de vida", "Ruta preliminar", "Riesgos y focos detectados"],
+        actions: ["Completa ficha interna con hipótesis, riesgos, focos y ruta.", "Entrega la ficha al contador asignado y a Ventas.", "Prepara resumen para cliente sin alertas internas.", "Envía próximos pasos, documentos pendientes y fechas."],
+        outputs: "Ficha interna y resumen para cliente separados.",
+        evidence: "Ficha interna guardada y comunicación enviada al cliente.",
+        registerIn: "Ficha de diagnóstico / correo o plantilla de comunicación.",
+        entry: "Onboarding finalizado.",
+        exit: "Contador sabe cómo iniciar revisión y cliente sabe qué sigue.",
+        blockers: ["Faltan definiciones de ruta", "No hay contador asignado", "No hay fecha de entrega documental"],
+        problem: "No iniciar revisión hasta asignar contador y cerrar ruta preliminar.",
+        communication: "Enviar resumen de ruta, documentos, responsables, fechas y próximo hito.",
+        sla: "Al finalizar onboarding.",
+        routes: ["Todas"],
+        next: "VAL-01",
+        examples: ["Así se ve bien: ficha interna con riesgos y resumen cliente sin etiquetas internas.", "Así no se debe registrar: enviar al cliente alertas de churn o hipótesis internas."]
+      },
+      {
+        id: "VAL-01",
+        name: "Recibir y validar documentos",
+        stage: "Recepción y validación",
+        order: 4,
+        description: "Confirmar que los documentos requeridos llegaron completos antes de iniciar revisión o parametrización.",
+        raci: { r: "Contador asignado", a: "Gerente Contador", c: "Cliente", i: "Onboarding" },
+        inputs: ["Checklist de documentos", "Fecha acordada", "Formato Post-Onboarding si aplica"],
+        actions: ["Verifica que el cliente entregó documentos en la fecha acordada.", "Compara contra checklist de la ruta.", "Registra faltantes y responsable.", "Notifica al cliente qué falta y si se bloquea el avance."],
+        outputs: "Documentos completos o bloqueo documentado.",
+        evidence: "Checklist documental actualizado.",
+        registerIn: "Bitácora viva / checklist de setup.",
+        entry: "Cliente entrega documentos o vence fecha acordada.",
+        exit: "Documentos completos o bloqueo formal enviado.",
+        blockers: ["Faltan auxiliares", "Faltan extractos", "Falta acceso a software", "Falta formato requerido"],
+        problem: "Enviar recordatorio y registrar bloqueo. Regla de pausa/recalculo SLA pendiente de validación.",
+        communication: "Contador o Gerente Contador informa faltantes, impacto y nueva fecha requerida.",
+        sla: "Desde recepción completa; pausa por faltantes pendiente de validación.",
+        routes: ["Compatible", "Migración", "Auditoría", "Reconstrucción"],
+        next: "AUD-01",
+        examples: ["Así se ve bien: 'faltan extractos mayo, responsable cliente, vence viernes'.", "Así no se debe registrar: 'faltan documentos' sin detalle."]
+      },
+      {
+        id: "AUD-01",
+        name: "Revisar confiabilidad contable",
+        stage: "Auditoría / revisión",
+        order: 5,
+        description: "Validar saldos y soportes, y decidir si basta validación inicial o si se requiere revisión profunda por red flags.",
+        raci: { r: "Contador asignado", a: "Gerente Contador", c: "Auditor", i: "Ventas si cambia alcance" },
+        inputs: ["Ficha interna", "Documentos completos", "Saldos", "Soportes", "Red flags"],
+        actions: ["Revisa bancos, impuestos, terceros, cartera y proveedores.", "Contrasta saldos contra soportes.", "Documenta red flags.", "Escala a auditoría profunda si la información no es confiable."],
+        outputs: "Resultado de revisión y decisión de intervención.",
+        evidence: "Informe de validación inicial o dictamen de auditoría profunda.",
+        registerIn: "Informe de revisión / bitácora.",
+        entry: "Documentos completos o red flag crítico identificado.",
+        exit: "Existe decisión: continuar, auditar profundo, reconstruir o recotizar.",
+        blockers: ["Saldos sin soporte", "Inconsistencias graves", "Hallazgo cambia alcance, precio o tiempo"],
+        problem: "No continuar sin dictamen cuando el hallazgo puede implicar reconstrucción.",
+        communication: "Comunicar al cliente solo el impacto operativo, no discusiones internas.",
+        sla: "Validación inicial según ruta; auditoría profunda 5 días o según alcance.",
+        routes: ["Compatible", "Migración", "Auditoría", "Reconstrucción"],
+        next: "DEC-01",
+        examples: ["Así se ve bien: informe con hallazgo, impacto y decisión.", "Así no se debe registrar: 'parece mal' sin soporte ni cuenta afectada."]
+      },
+      {
+        id: "DEC-01",
+        name: "Tomar decisión de intervención",
+        stage: "Decisión",
+        order: 6,
+        description: "Confirmar si la ruta continúa igual o cambia a parametrización, migración, auditoría profunda, reconstrucción o recotización.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Auditor / Ventas si cambia alcance", i: "Cliente / Country Manager si hay alerta" },
+        inputs: ["Informe de revisión", "Dictamen si aplica", "Impacto en SLA y honorarios"],
+        actions: ["Evalúa hallazgos contra ruta actual.", "Define si cambia alcance, precio o tiempo.", "Registra motivo del cambio de ruta.", "Valida con Ventas si corresponde recotizar."],
+        outputs: "Ruta confirmada o cambio de ruta documentado.",
+        evidence: "Registro de decisión y comunicación asociada.",
+        registerIn: "Bitácora / ficha / decisión post auditoría.",
+        entry: "Existe informe o hallazgo que exige decisión.",
+        exit: "La ruta siguiente está definida y comunicada internamente.",
+        blockers: ["Cambio de honorarios sin validación", "Reconstrucción sin dictamen", "Cliente inconforme"],
+        problem: "Activar recotización, alerta Country Manager o pausa según corresponda.",
+        communication: "Gerente Contador comunica al cliente cambios de alcance, tiempos o documentos requeridos.",
+        sla: "Pendiente de regla oficial para extensión o pausa.",
+        routes: ["Todas con hallazgos"],
+        next: "EJE-01",
+        examples: ["Así se ve bien: cambio de ruta con motivo, fecha, responsable e impacto.", "Así no se debe registrar: cambiar selector sin explicar motivo."]
+      },
+      {
+        id: "EJE-01",
+        name: "Ejecutar ruta correspondiente",
+        stage: "Ejecución setup",
+        order: 7,
+        description: "Realizar parametrización, migración, reconstrucción o validaciones según la ruta aprobada.",
+        raci: { r: "Contador / Parametrización y Migración / Auxiliar", a: "Gerente Contador", c: "Cliente / Auditor", i: "Ventas si cambia alcance" },
+        inputs: ["Ruta aprobada", "Documentos completos", "Software destino", "Checklist de setup"],
+        actions: ["Ejecuta solo las actividades que aplican a la ruta.", "Registra avance diario o por hito.", "Documenta bloqueos y decisiones.", "Actualiza responsables y pendientes."],
+        outputs: "Setup ejecutado o avance con bloqueos claros.",
+        evidence: "Checklist, bitácora, software configurado, saldos o estados preparados.",
+        registerIn: "Bitácora viva / checklist mínimo / software contable.",
+        entry: "Ruta confirmada y documentos mínimos completos.",
+        exit: "Checklist mínimo de ruta listo para cierre.",
+        blockers: ["Bloqueo técnico", "Cliente sin documentos", "SLA al 80%", "Cambio de alcance"],
+        problem: "Activar protocolo contextual: alerta SLA, recordatorio, recotización o escalamiento.",
+        communication: "Mantener al cliente informado de avances, faltantes y próximo hito.",
+        sla: "Según ruta: 2, 5, 7 o 30 días cuando esté definido.",
+        routes: ["Todas excepto auditoría sin salida aprobada"],
+        next: "CIE-01",
+        examples: ["Así se ve bien: avance con porcentaje, pendiente, responsable y próxima fecha.", "Así no se debe registrar: 'en proceso' sin evidencia."]
+      },
+      {
+        id: "CIE-01",
+        name: "Validar cierre y pasar a operación",
+        stage: "Cierre",
+        order: 8,
+        description: "Confirmar que el cliente puede pasar a operación con evidencia suficiente y comunicación formal.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Contador asignado / Cliente", i: "Country Manager si hay alerta" },
+        inputs: ["Checklist mínimo", "Bitácora", "Entregables de ruta", "Pulso NPS"],
+        actions: ["Verifica checklist de cierre.", "Confirma que no hay pendientes críticos.", "Envía comunicación formal de cierre.", "Cambia etapa a Operación solo con evidencia suficiente."],
+        outputs: "Cliente cerrado y transferido a operación.",
+        evidence: "Correo de cierre, checklist, bitácora y cambio de etapa.",
+        registerIn: "Dashboard / bitácora / correo de cierre.",
+        entry: "Checklist mínimo completo.",
+        exit: "Cliente está en Operación y conoce próximos responsables.",
+        blockers: ["NPS bajo", "Pendientes críticos", "Sin primera factura o estado financiero cuando aplica"],
+        problem: "No pasar a Operación; registrar causa y plan de recuperación.",
+        communication: "Gerente Contador comunica cierre, entregables, responsables y canal de operación.",
+        sla: "Al completar 100% del checklist; reglas de pausa pendientes de validación.",
+        routes: ["Todas con salida aprobada"],
+        next: "Operación recurrente",
+        examples: ["Así se ve bien: cierre con checklist, correo y responsables.", "Así no se debe registrar: cambiar a Operación sin correo ni checklist."]
+      }
+    ];
+
+    const roleWork = [
+      ["Gerente Contador", "Prepara hipótesis, dirige onboarding, define ruta, decide cambios, coordina cierre.", "Activa Country Manager ante riesgo crítico o baja satisfacción."],
+      ["Contador", "Usa ficha interna, valida documentos y saldos, registra hallazgos y ejecuta ruta.", "Escala red flags al Gerente Contador."],
+      ["Onboarding", "Agenda, solicita mínimos, crea hoja de vida y prepara condiciones de reunión.", "Informa faltantes iniciales."],
+      ["Ventas", "Precalifica cliente, entrega contexto comercial y valida recotización si cambia alcance.", "No participa en setup normal salvo cambio comercial."],
+      ["Auditor", "Realiza revisión profunda y dictamen cuando hay red flags.", "Participa por condición, no por defecto."],
+      ["Auxiliar", "Apoya reconstrucción, causaciones, conciliaciones y soportes.", "Actúa según asignación de ruta."],
+      ["Parametrización y Migración", "Configura software, migra información y valida cargas.", "Actúa cuando la ruta incluye parametrización o migración."],
+      ["Country Manager", "Desbloquea alertas críticas, riesgo de churn o decisiones ejecutivas.", "No participa por defecto."]
+    ];
+
+    const tools = {
+      internal: [
+        ["Ficha interna", "Clasificación, hipótesis, riesgos, cuentas críticas, focos, complejidad y decisiones internas."],
+        ["Acta de onboarding", "Acuerdos de la reunión, responsables, documentos y próximos pasos."],
+        ["Hoja de vida", "Datos operativos y contexto del cliente."],
+        ["Bitácora", "Avances, decisiones, bloqueos, responsables y evidencia."],
+        ["Informe de revisión", "Hallazgos de validación inicial o auditoría profunda."],
+        ["Checklist de cierre", "Condiciones mínimas antes de pasar a operación."]
+      ],
+      client: [
+        ["Resumen para cliente", "Ruta acordada, documentos pendientes, fechas, responsables y próximo hito."],
+        ["Correo de faltantes", "Qué falta, quién lo debe enviar y fecha límite."],
+        ["Correo de cierre", "Entregables validados y paso formal a operación."],
+        ["Plantilla WhatsApp", "Recordatorios breves de documentos, bloqueos o próximos pasos."]
+      ]
+    };
+
+    const protocols = [
+      ["Falta información", "Enviar recordatorio, registrar bloqueo y pausar/recalcular SLA cuando la regla sea aprobada."],
+      ["Red flag contable", "Escalar a auditoría profunda y no continuar sin decisión documentada."],
+      ["Hallazgo cambia alcance", "Activar recotización con Ventas antes de prometer nueva ruta."],
+      ["80% del SLA consumido", "Registrar alerta de SLA y definir acción de recuperación."],
+      ["Cliente inconforme", "Registrar riesgo de satisfacción y notificar al Country Manager."],
+      ["Reconstrucción posible", "No continuar sin dictamen y validación de fee adicional."]
+    ];
+
+    const pendingDecisions = [
+      ["RACI oficial no adjunta", "No se puede validar A/R definitivo por actividad.", "Usar roles actuales como borrador y validar con matriz oficial."],
+      ["Regla de pausa/recalculo de SLA", "El manual menciona SLA, pero no define eventos de pausa aprobados.", "Definir política de SLA por faltantes del cliente y cambios de alcance."],
+      ["Responsable accountable de parametrización/migración", "No hay RACI oficial visible para confirmar A único.", "Validar si A queda en Gerente Contador u Operaciones."],
+      ["Auditoría profunda", "Se menciona Andrés Granados en el manual actual, pero la definición permanente debe ser rol.", "Usar rol Auditor y dejar nombres propios solo como asignación actual."],
+      ["Resumen externo vs ficha interna", "El manual anterior mezclaba destinatarios.", "Aprobar dos plantillas separadas antes de operación."]
+    ];
 
     const operationFocus = {
       services: {
@@ -2197,6 +2689,101 @@
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
     }
 
+    function list(items, ordered = false) {
+      const tag = ordered ? "ol" : "ul";
+      return `<${tag}>${items.map(item => `<li>${item}</li>`).join("")}</${tag}>`;
+    }
+
+    function routeLabelFromKey(key) {
+      return routes[key]?.title || key;
+    }
+
+    function ensureGpsOptions() {
+      if (!$("gpsRoute") || $("gpsRoute").options.length) return;
+      $("gpsRoute").innerHTML = Object.keys(routes).map(key => `<option value="${key}">${routeLabelFromKey(key)}</option>`).join("");
+      $("gpsStep").innerHTML = manualSteps.map(step => `<option value="${step.id}">${step.id} · ${step.name}</option>`).join("");
+    }
+
+    function renderGps() {
+      if (!$("gpsSummary")) return;
+      ensureGpsOptions();
+      const routeKeyValue = $("gpsRoute").value || "new-confirmation";
+      const stepId = $("gpsStep").value || manualSteps[0].id;
+      const role = $("gpsRole").value || "Gerente Contador";
+      const client = $("gpsClient").value || "Cliente nuevo Numbi";
+      const step = manualSteps.find(item => item.id === stepId) || manualSteps[0];
+      const progress = Math.round(((step.order + 1) / manualSteps.length) * 100);
+      const route = routes[routeKeyValue];
+      const applicable = step.routes.includes("Todas") || step.routes.some(item => route.title.includes(item) || route.phases.join(" ").includes(item));
+      $("gpsSummary").innerHTML = `
+        <div class="gps-card"><strong>Cliente</strong><span>${client}</span></div>
+        <div class="gps-card"><strong>Ruta actual</strong><span>${route.title}</span></div>
+        <div class="gps-card"><strong>Etapa actual</strong><span>${step.stage}</span></div>
+        <div class="gps-card"><strong>Progreso</strong><span>${progress}%</span></div>
+      `;
+      $("gpsStepDetail").innerHTML = `
+        <div>
+          <div class="route-name">${step.id}</div>
+          <h3>${step.name}</h3>
+          <p>${step.description}</p>
+          <div class="chips">
+            <span class="chip">${applicable ? "Aplica a esta ruta" : "Revisar si aplica"}</span>
+            <span class="chip blue">Responsable actual: ${step.raci.r}</span>
+            <span class="chip">${role}</span>
+          </div>
+        </div>
+        <div class="step-grid">
+          <div class="step-block"><strong>Empieza cuando</strong><p>${step.entry}</p></div>
+          <div class="step-block"><strong>Necesitas antes de empezar</strong>${list(step.inputs)}</div>
+          <div class="step-block full"><strong>Haz esto, en este orden</strong>${list(step.actions, true)}</div>
+          <div class="step-block"><strong>Resultado esperado</strong><p>${step.outputs}</p></div>
+          <div class="step-block"><strong>Evidencia obligatoria</strong><p>${step.evidence}</p></div>
+          <div class="step-block"><strong>Registra el resultado en</strong><p>${step.registerIn}</p></div>
+          <div class="step-block"><strong>Terminaste cuando</strong><p>${step.exit}</p></div>
+          <div class="step-block"><strong>No avances si</strong>${list(step.blockers)}</div>
+          <div class="step-block"><strong>Si ocurre un problema</strong><p>${step.problem}</p></div>
+          <div class="step-block"><strong>Comunicación al cliente</strong><p>${step.communication}</p></div>
+          <div class="step-block"><strong>SLA</strong><p>${step.sla}</p></div>
+          <div class="step-block"><strong>RACI</strong><p>R: ${step.raci.r}<br>A: ${step.raci.a}<br>C: ${step.raci.c}<br>I: ${step.raci.i}</p></div>
+          <div class="step-block"><strong>Siguiente paso</strong><p>${step.next}</p></div>
+          <div class="step-block"><strong>Ejemplos</strong>${list(step.examples)}</div>
+        </div>
+      `;
+    }
+
+    function renderRoleWork() {
+      if (!$("roleWorkCards")) return;
+      $("roleWorkCards").innerHTML = roleWork.map(([role, normal, conditional]) => `
+        <article class="card">
+          <div class="mini-title">Rol</div>
+          <h3>${role}</h3>
+          <p><strong>Trabajo normal:</strong> ${normal}</p>
+          <p><strong>Condicional:</strong> ${conditional}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderTools() {
+      if (!$("internalTools")) return;
+      $("internalTools").innerHTML = tools.internal.map(([name, text]) => `<article class="card"><h3>${name}</h3><p>${text}</p></article>`).join("");
+      $("clientTools").innerHTML = tools.client.map(([name, text]) => `<article class="card"><h3>${name}</h3><p>${text}</p></article>`).join("");
+    }
+
+    function renderGovernance() {
+      if (!$("protocolList")) return;
+      $("protocolList").innerHTML = protocols.map(([trigger, action]) => `
+        <div class="log-entry"><strong>${trigger}</strong><span>${action}</span></div>
+      `).join("");
+      $("raciTable").innerHTML = `
+        <thead><tr><th>Paso</th><th>R</th><th>A</th><th>C</th><th>I</th></tr></thead>
+        <tbody>${manualSteps.map(step => `<tr><td>${step.id} · ${step.name}</td><td>${step.raci.r}</td><td>${step.raci.a}</td><td>${step.raci.c}</td><td>${step.raci.i}</td></tr>`).join("")}</tbody>
+      `;
+      $("pendingTable").innerHTML = `
+        <thead><tr><th>Decisión pendiente</th><th>Riesgo</th><th>Recomendación</th></tr></thead>
+        <tbody>${pendingDecisions.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody>
+      `;
+    }
+
     function renderClassificationSummary() {
       const operation = $("operationType").value;
       const client = $("clientType").value;
@@ -2476,15 +3063,47 @@
       renderCards();
       renderScript();
       renderMail();
+      renderGps();
+      renderRoleWork();
+      renderTools();
+      renderGovernance();
       bindChecks();
       renderProgress();
       renderTracking();
     }
 
-    ["clientName", "operationType", "clientType", "accountingState", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse"].forEach(id => {
+    ["clientName", "operationType", "clientType", "accountingState", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse", "gpsClient", "gpsRole", "gpsRoute", "gpsStep"].forEach(id => {
       document.addEventListener("input", event => { if (event.target && event.target.id === id) renderAll(); });
       document.addEventListener("change", event => { if (event.target && event.target.id === id) renderAll(); });
     });
+
+    if ($("completeGpsStep")) {
+      $("completeGpsStep").addEventListener("click", () => {
+        const currentIndex = Math.max(0, manualSteps.findIndex(step => step.id === $("gpsStep").value));
+        const next = manualSteps[Math.min(currentIndex + 1, manualSteps.length - 1)];
+        state.logs.unshift({
+          type: "Avance",
+          owner: $("gpsRole").value || "Gerente Contador",
+          text: `Paso ${manualSteps[currentIndex].id} completado. Siguiente paso: ${next.id} ${next.name}.`,
+          date: new Date().toLocaleString("es-CO")
+        });
+        $("gpsStep").value = next.id;
+        renderAll();
+      });
+    }
+
+    if ($("registerBlock")) {
+      $("registerBlock").addEventListener("click", () => {
+        const step = manualSteps.find(item => item.id === $("gpsStep").value) || manualSteps[0];
+        state.logs.unshift({
+          type: "Bloqueo",
+          owner: $("gpsRole").value || "Sin responsable",
+          text: `Bloqueo registrado en ${step.id}: revisar condiciones "No avances si" y protocolo de problema.`,
+          date: new Date().toLocaleString("es-CO")
+        });
+        renderTracking();
+      });
+    }
 
     document.querySelectorAll("[data-mode]").forEach(button => {
       button.addEventListener("click", event => {
