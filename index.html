@@ -663,47 +663,6 @@
       font-size: 19px;
     }
 
-    .gps-layout {
-      display: grid;
-      grid-template-columns: 330px 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .gps-panel {
-      display: grid;
-      gap: 12px;
-    }
-
-    .gps-summary {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .gps-card {
-      background: var(--mint-soft);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px;
-    }
-
-    .gps-card strong {
-      display: block;
-      color: var(--numbi-dark);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 4px;
-    }
-
-    .gps-card span {
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 750;
-    }
-
     .step-manual {
       display: grid;
       gap: 12px;
@@ -1277,7 +1236,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .gps-layout, .gps-summary, .step-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid { grid-template-columns: 1fr; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
@@ -1309,7 +1268,6 @@
     <div class="wrap top">
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
-        <a href="#empezar">Empezar</a>
         <a href="#por-que">Contexto</a>
         <a href="#objetivo">Objetivo</a>
         <a href="#manual">Uso del manual</a>
@@ -1340,51 +1298,6 @@
           <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
           <div class="stat"><strong>1</strong><span>ficha para orientar setup</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="empezar">
-      <div class="wrap">
-        <div class="section-title">
-          <span class="label">Empezar</span>
-          <div>
-            <h2>GPS operativo del cliente</h2>
-            <p>Selecciona rol, ruta y paso actual. El manual muestra qué hacer ahora, qué necesitas, dónde registrar y qué no debe quedar pendiente para avanzar.</p>
-          </div>
-        </div>
-        <div class="gps-layout">
-          <div class="panel form gps-panel">
-            <label>Cliente
-              <input id="gpsClient" value="Cliente nuevo Numbi">
-            </label>
-            <label>Rol
-              <select id="gpsRole">
-                <option>Gerente Contador</option>
-                <option>Contador</option>
-                <option>Onboarding</option>
-                <option>Ventas</option>
-                <option>Auditor</option>
-                <option>Auxiliar</option>
-                <option>Parametrización y Migración</option>
-                <option>Country Manager</option>
-              </select>
-            </label>
-            <label>Ruta actual
-              <select id="gpsRoute"></select>
-            </label>
-            <label>Paso actual
-              <select id="gpsStep"></select>
-            </label>
-            <div class="action-row">
-              <button class="btn" type="button" id="completeGpsStep">Completar paso</button>
-              <button class="btn secondary" type="button" id="registerBlock">Registrar bloqueo</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="gps-summary" id="gpsSummary"></div>
-            <div class="step-manual" id="gpsStepDetail"></div>
-          </div>
         </div>
       </div>
     </section>
@@ -2702,63 +2615,6 @@
       return `<${tag}>${items.map(item => `<li>${item}</li>`).join("")}</${tag}>`;
     }
 
-    function routeLabelFromKey(key) {
-      return routes[key]?.title || key;
-    }
-
-    function ensureGpsOptions() {
-      if (!$("gpsRoute") || $("gpsRoute").options.length) return;
-      $("gpsRoute").innerHTML = Object.keys(routes).map(key => `<option value="${key}">${routeLabelFromKey(key)}</option>`).join("");
-      $("gpsStep").innerHTML = manualSteps.map(step => `<option value="${step.id}">${step.id} · ${step.name}</option>`).join("");
-    }
-
-    function renderGps() {
-      if (!$("gpsSummary")) return;
-      ensureGpsOptions();
-      const routeKeyValue = $("gpsRoute").value || "new-confirmation";
-      const stepId = $("gpsStep").value || manualSteps[0].id;
-      const role = $("gpsRole").value || "Gerente Contador";
-      const client = $("gpsClient").value || "Cliente nuevo Numbi";
-      const step = manualSteps.find(item => item.id === stepId) || manualSteps[0];
-      const progress = Math.round(((step.order + 1) / manualSteps.length) * 100);
-      const route = routes[routeKeyValue];
-      const applicable = step.routes.includes("Todas") || step.routes.some(item => route.title.includes(item) || route.phases.join(" ").includes(item));
-      $("gpsSummary").innerHTML = `
-        <div class="gps-card"><strong>Cliente</strong><span>${client}</span></div>
-        <div class="gps-card"><strong>Ruta actual</strong><span>${route.title}</span></div>
-        <div class="gps-card"><strong>Etapa actual</strong><span>${step.stage}</span></div>
-        <div class="gps-card"><strong>Progreso</strong><span>${progress}%</span></div>
-      `;
-      $("gpsStepDetail").innerHTML = `
-        <div>
-          <div class="route-name">${step.id}</div>
-          <h3>${step.name}</h3>
-          <p>${step.description}</p>
-          <div class="chips">
-            <span class="chip">${applicable ? "Aplica a esta ruta" : "Revisar si aplica"}</span>
-            <span class="chip blue">Responsable actual: ${step.raci.r}</span>
-            <span class="chip">${role}</span>
-          </div>
-        </div>
-        <div class="step-grid">
-          <div class="step-block"><strong>Empieza cuando</strong><p>${step.entry}</p></div>
-          <div class="step-block"><strong>Necesitas antes de empezar</strong>${list(step.inputs)}</div>
-          <div class="step-block full"><strong>Haz esto, en este orden</strong>${list(step.actions, true)}</div>
-          <div class="step-block"><strong>Resultado esperado</strong><p>${step.outputs}</p></div>
-          <div class="step-block"><strong>Evidencia obligatoria</strong><p>${step.evidence}</p></div>
-          <div class="step-block"><strong>Registra el resultado en</strong><p>${step.registerIn}</p></div>
-          <div class="step-block"><strong>Terminaste cuando</strong><p>${step.exit}</p></div>
-          <div class="step-block"><strong>No avances si</strong>${list(step.blockers)}</div>
-          <div class="step-block"><strong>Si ocurre un problema</strong><p>${step.problem}</p></div>
-          <div class="step-block"><strong>Comunicación al cliente</strong><p>${step.communication}</p></div>
-          <div class="step-block"><strong>SLA</strong><p>${step.sla}</p></div>
-          <div class="step-block"><strong>RACI</strong><p>R: ${step.raci.r}<br>A: ${step.raci.a}<br>C: ${step.raci.c}<br>I: ${step.raci.i}</p></div>
-          <div class="step-block"><strong>Siguiente paso</strong><p>${step.next}</p></div>
-          <div class="step-block"><strong>Ejemplos</strong>${list(step.examples)}</div>
-        </div>
-      `;
-    }
-
     function renderRoleWork() {
       if (!$("roleWorkCards")) return;
       $("roleWorkCards").innerHTML = roleWork.map(([role, normal, conditional]) => `
@@ -3071,7 +2927,6 @@
       renderCards();
       renderScript();
       renderMail();
-      renderGps();
       renderRoleWork();
       renderTools();
       renderGovernance();
@@ -3080,38 +2935,10 @@
       renderTracking();
     }
 
-    ["clientName", "operationType", "clientType", "accountingState", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse", "gpsClient", "gpsRole", "gpsRoute", "gpsStep"].forEach(id => {
+    ["clientName", "operationType", "clientType", "accountingState", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse"].forEach(id => {
       document.addEventListener("input", event => { if (event.target && event.target.id === id) renderAll(); });
       document.addEventListener("change", event => { if (event.target && event.target.id === id) renderAll(); });
     });
-
-    if ($("completeGpsStep")) {
-      $("completeGpsStep").addEventListener("click", () => {
-        const currentIndex = Math.max(0, manualSteps.findIndex(step => step.id === $("gpsStep").value));
-        const next = manualSteps[Math.min(currentIndex + 1, manualSteps.length - 1)];
-        state.logs.unshift({
-          type: "Avance",
-          owner: $("gpsRole").value || "Gerente Contador",
-          text: `Paso ${manualSteps[currentIndex].id} completado. Siguiente paso: ${next.id} ${next.name}.`,
-          date: new Date().toLocaleString("es-CO")
-        });
-        $("gpsStep").value = next.id;
-        renderAll();
-      });
-    }
-
-    if ($("registerBlock")) {
-      $("registerBlock").addEventListener("click", () => {
-        const step = manualSteps.find(item => item.id === $("gpsStep").value) || manualSteps[0];
-        state.logs.unshift({
-          type: "Bloqueo",
-          owner: $("gpsRole").value || "Sin responsable",
-          text: `Bloqueo registrado en ${step.id}: revisar condiciones "No avances si" y protocolo de problema.`,
-          date: new Date().toLocaleString("es-CO")
-        });
-        renderTracking();
-      });
-    }
 
     document.querySelectorAll("[data-mode]").forEach(button => {
       button.addEventListener("click", event => {
