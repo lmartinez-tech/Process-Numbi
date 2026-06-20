@@ -757,10 +757,7 @@
     }
 
     .role-view {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 14px;
-      align-items: start;
+      display: block;
     }
 
     .role-view h3 {
@@ -789,6 +786,214 @@
       padding-left: 18px;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .role-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .role-head {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .role-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .role-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .role-map-card {
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+      min-height: 150px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .role-map-card.aplica {
+      border-top-color: var(--numbi);
+      background: var(--mint-soft);
+    }
+
+    .role-map-card.condicional {
+      border-top-color: #f0b429;
+      background: var(--warn);
+    }
+
+    .role-map-card.no-aplica {
+      opacity: .68;
+      background: #fbfcfc;
+    }
+
+    .role-map-card strong {
+      color: var(--numbi-dark);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .role-map-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      width: fit-content;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--numbi-dark);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .status-chip.condicional {
+      background: #fff1c7;
+      color: #8a5a00;
+    }
+
+    .status-chip.no-aplica {
+      background: #edf1f2;
+      color: var(--muted);
+    }
+
+    .role-moment {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .role-moment > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .role-moment > summary::-webkit-details-marker { display: none; }
+
+    .role-moment[open] > summary {
+      border-bottom: 1px solid var(--line);
+      background: var(--mint-soft);
+    }
+
+    .role-moment-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .role-moment-title strong {
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    .role-moment-title span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .role-moment-body {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .handoff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .handoff-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .handoff-box strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+
+    .handoff-box p,
+    .handoff-box li {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .rule-details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fbfdfc;
+    }
+
+    .rule-details summary {
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .coverage-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--soft);
+    }
+
+    .coverage-item strong {
+      display: block;
+      color: var(--numbi);
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .coverage-item span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
 
     .table-wrap {
@@ -1314,7 +1519,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .principle-grid, .visual-notes, .step-grid, .role-view { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .principle-grid, .visual-notes, .step-grid, .role-view, .role-head, .role-map, .handoff-grid, .coverage-grid { grid-template-columns: 1fr; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
@@ -1357,9 +1562,9 @@
         <p class="hero-copy" id="heroCopy">Herramienta operativa para entrar por rol y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.</p>
         <div class="message-strip" id="heroMessage">Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.</div>
         <div class="hero-grid">
-          <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
+          <div class="stat"><strong>5</strong><span>macroetapas del proceso</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
-          <div class="stat"><strong>1</strong><span>ficha para orientar setup</span></div>
+          <div class="stat"><strong>1</strong><span>fuente madre sincronizada</span></div>
         </div>
       </div>
     </section>
@@ -2054,6 +2259,10 @@
           <div class="mini-title">Decisiones pendientes</div>
           <div class="table-wrap"><table id="pendingTable"></table></div>
         </div>
+        <div class="card" style="margin-top:18px">
+          <div class="mini-title">Reporte de cobertura</div>
+          <div id="coverageReport"></div>
+        </div>
       </div>
     </section>
 
@@ -2401,6 +2610,28 @@
         routes: ["Todas con salida aprobada"],
         next: "Operación recurrente",
         examples: ["Así se ve bien: cierre con checklist, correo y responsables.", "Así no se debe registrar: cambiar a Operación sin correo ni checklist."]
+      },
+      {
+        id: "OPE-01",
+        name: "Iniciar operación recurrente",
+        stage: "Operación recurrente",
+        order: 9,
+        description: "Recibir información periódica, ejecutar el ciclo mensual y atender solicitudes, PQRS o casos críticos después del cierre formal del setup.",
+        raci: { r: "Gerente Contador / Contador asignado", a: "Gerente Contador", c: "Cliente / Nómina cuando aplique / Country Manager en casos críticos", i: "Ventas solo si surge impacto comercial" },
+        inputs: ["Cliente en Operación", "Correo de cierre", "Canal de atención definido", "Calendario fiscal o recurrente", "Pendientes no críticos controlados"],
+        actions: ["Recibe información periódica del cliente por los canales definidos.", "Ejecuta cierres contables, estados financieros, impuestos y nómina recurrente cuando aplique.", "Actualiza bitácora con solicitudes, pendientes, PQRS y casos críticos.", "Mantiene comunicación visible sobre fechas, entregables y bloqueos.", "Escala casos críticos al Country Manager sin reemplazar el liderazgo operativo del Gerente Contador."],
+        outputs: "Cliente operando en el flujo recurrente con calendario, responsables y canales claros.",
+        evidence: "Bitácora recurrente, estados financieros, impuestos, soportes de nómina cuando aplique, PQRS registradas y comunicaciones relevantes.",
+        registerIn: "Portal Numbi / Dashboard / bitácora / canales definidos con el cliente.",
+        entry: "Cliente transferido formalmente de Setup a Operación.",
+        exit: "El ciclo recurrente se ejecuta y cualquier caso crítico queda registrado y escalado.",
+        blockers: ["Cliente no entrega información periódica", "PQRS crítica", "Pendiente de setup reabierto", "Caso crítico de experiencia", "Impacto comercial no definido"],
+        problem: "Registrar el caso, informar impacto operativo y activar escalamiento según criticidad.",
+        communication: "Explicar al cliente fechas, canal recurrente, entregables y próximos hitos sin reabrir discusiones internas del setup.",
+        sla: "Según calendario recurrente y acuerdos operativos vigentes.",
+        routes: ["Todas después del cierre"],
+        next: "Flujo recurrente",
+        examples: ["Así se ve bien: solicitud registrada con responsable, fecha y próximo hito.", "Así no se debe registrar: PQRS o pendientes solo por chat sin bitácora."]
       }
     ];
 
@@ -2473,15 +2704,15 @@
       {
         key: "nomina",
         role: "Soy Nómina",
-        summary: "Es un frente especializado que participa cuando hay empleados, seguridad social, PILA, nómina electrónica o novedades laborales.",
-        participates: ["Onboarding si se identifican empleados", "Set Up si nómina impacta saldos o costos", "Operación recurrente"],
-        does: ["Valida empleados, novedades, seguridad social, PILA y nómina electrónica.", "Identifica diferencias entre nómina pagada, transmitida y contabilizada.", "Entrega información al área contable para registro correcto."],
-        receives: ["Datos de empleados", "Novedades", "Contratos o soportes laborales", "Preguntas del Gerente Contador o Contador Designado"],
-        delivers: ["Validación de nómina", "Alertas laborales o contables", "Información para contabilización", "Soportes de nómina"],
-        interacts: ["Gerente Contador", "Contador Designado", "Cliente cuando se solicite información de nómina"],
-        documents: ["Novedades", "Validaciones", "Diferencias detectadas", "Soportes entregados"],
-        escalates: ["Al Gerente Contador si hay diferencias que impactan costos, impuestos, estados financieros o experiencia del cliente."],
-        notDo: ["No define ruta de setup.", "No resuelve recotización.", "No comunica decisiones contables generales al cliente."]
+        summary: "Participación parcial definida: entra solo cuando la información de nómina impacta saldos, costos, cierre o la operación recurrente.",
+        participates: ["Set Up si nómina impacta saldos, costos o soportes", "Salida a operación si quedan validaciones de nómina", "Operación recurrente cuando esté definida en el flujo del cliente"],
+        does: ["Atiende solicitudes relacionadas con información laboral que impacta la contabilidad.", "Entrega validaciones o soportes de nómina cuando el Gerente Contador o el Contador Designado lo soliciten.", "Marca pendientes cuando la instrucción de nómina aún no esté definida en la fuente madre."],
+        receives: ["Solicitud del Gerente Contador o Contador Designado", "Información laboral o soportes asociados al caso", "Contexto de impacto contable cuando aplique"],
+        delivers: ["Validación o soporte solicitado", "Alerta si la información laboral afecta costos, impuestos, cierre o experiencia del cliente"],
+        interacts: ["Gerente Contador", "Contador Designado", "Cliente solo cuando Numbi coordine la solicitud"],
+        documents: ["Validaciones realizadas", "Soportes entregados", "Pendientes de definición cuando falte regla aprobada"],
+        escalates: ["Al Gerente Contador si la información de nómina afecta saldos, costos, impuestos, cierre o experiencia del cliente."],
+        notDo: ["No define ruta de setup.", "No asume un proceso completo de nómina si no está aprobado en la fuente madre.", "No resuelve recotización.", "No comunica decisiones contables generales al cliente."]
       },
       {
         key: "country-manager",
@@ -2859,51 +3090,976 @@
       "correos"
     ];
 
-    const roleStepIds = {
-      ventas: ["PRE-01", "ONB-02", "DEC-01", "EJE-01"],
-      onboarding: ["PRE-01", "ONB-01", "ONB-02", "ONB-03"],
-      "gerente-contador": ["ONB-01", "ONB-02", "ONB-03", "VAL-01", "AUD-01", "DEC-01", "EJE-01", "CIE-01"],
-      "contador-designado": ["ONB-03", "VAL-01", "AUD-01", "EJE-01", "CIE-01"],
-      "auxiliar-contable": ["EJE-01"],
-      nomina: ["ONB-02", "VAL-01", "EJE-01", "CIE-01"],
-      "country-manager": ["PRE-01", "DEC-01", "EJE-01", "CIE-01"],
-      cliente: ["ONB-02", "ONB-03", "VAL-01", "EJE-01", "CIE-01"]
-    };
+    const macroStages = [
+      "Pre-onboarding",
+      "Onboarding",
+      "Set Up",
+      "Salida a operación",
+      "Operación recurrente"
+    ];
 
     const roleNavLabels = {
-      ventas: [["Mi rol", "#mi-rol"], ["Antes del onboarding", "#mis-etapas"], ["Durante el onboarding", "#mis-tareas"], ["Cuándo vuelvo a participar", "#mis-escalamientos"], ["Qué debo entregar", "#mis-evidencias"], ["Qué no debo prometer", "#mis-limites"], ["Checklist de Ventas", "#mis-checklist"]],
-      onboarding: [["Mi rol", "#mi-rol"], ["Preparación", "#mis-etapas"], ["Coordinación", "#mis-tareas"], ["Entrega al gerente", "#mis-evidencias"], ["Checklist", "#mis-checklist"], ["Escalamiento", "#mis-escalamientos"]],
-      "gerente-contador": [["Mi rol", "#mi-rol"], ["Pre-onboarding", "#mis-etapas"], ["Onboarding", "#mis-tareas"], ["Diagnóstico", "#mis-tareas"], ["Ficha al contador", "#mis-evidencias"], ["Seguimiento de Set Up", "#mis-tareas"], ["Escalamiento", "#mis-escalamientos"]],
-      "contador-designado": [["Mi rol", "#mi-rol"], ["Mis etapas", "#mis-etapas"], ["Revisión documental", "#mis-tareas"], ["Auditoría y saldos", "#mis-tareas"], ["Checklist técnico", "#mis-checklist"], ["Evidencias", "#mis-evidencias"], ["Escalamiento", "#mis-escalamientos"]],
-      "country-manager": [["Mi rol", "#mi-rol"], ["Cuándo intervengo", "#mis-etapas"], ["Riesgos que miro", "#mis-tareas"], ["Decisiones", "#mis-tareas"], ["Recotización", "#mis-escalamientos"], ["Evidencia para decidir", "#mis-evidencias"]],
-      cliente: [["Mi proceso", "#mi-rol"], ["Qué debo entregar", "#mis-tareas"], ["Tiempos esperados", "#mis-etapas"], ["Avances", "#mis-evidencias"], ["Si falta información", "#mis-escalamientos"], ["Capacitación", "#mis-etapas"], ["Cierre del Set Up", "#mis-checklist"]]
+      ventas: [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Checklist", "#checklist-rol"], ["Evidencias", "#evidencias-rol"], ["Escalamiento", "#escalamiento-rol"]],
+      onboarding: [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Checklist", "#checklist-rol"], ["Pendientes", "#pendientes-rol"]],
+      "gerente-contador": [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Rutas y SLA", "#rutas-rol"], ["Checklist", "#checklist-rol"], ["Escalamiento", "#escalamiento-rol"]],
+      "contador-designado": [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Ficha y focos", "#momentos"], ["Checklist", "#checklist-rol"], ["Escalamiento", "#escalamiento-rol"]],
+      "auxiliar-contable": [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Pendientes", "#pendientes-rol"], ["Checklist", "#checklist-rol"]],
+      nomina: [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Intervenciones", "#momentos"], ["Pendientes", "#pendientes-rol"], ["Checklist", "#checklist-rol"]],
+      "country-manager": [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Alertas", "#momentos"], ["Decisiones", "#escalamiento-rol"], ["Pendientes", "#pendientes-rol"]],
+      cliente: [["Mi proceso", "#mi-rol"], ["Recorrido", "#tu-recorrido"], ["Qué debo hacer", "#momentos"], ["Tiempos", "#rutas-rol"], ["Cierre", "#checklist-rol"]]
     };
 
+    const routeInconsistencies = [
+      {
+        route: "Auditoría — migración y parametrización",
+        label: "Inconsistencia",
+        text: "El nombre de la ruta sugiere parametrización y migración, pero la matriz vigente no activa esos pasos después del dictamen. Debe definirse oficialmente si se agregan parametrización, migración y checklist mínimo."
+      }
+    ];
+
+    const roleSpecificOpenIssues = {
+      onboarding: ["Matching Gerente-Cliente", "Participación Country Manager en onboarding"],
+      "gerente-contador": ["RACI oficial no adjunta", "Regla de pausa/recalculo de SLA", "Responsable accountable de parametrización/migración", "Ruta 2 Auditoría + Migración"],
+      "contador-designado": ["RACI oficial no adjunta", "Responsable accountable de parametrización/migración", "Ruta 2 Auditoría + Migración"],
+      "auxiliar-contable": ["RACI oficial no adjunta", "Responsable accountable de parametrización/migración"],
+      nomina: ["RACI oficial no adjunta"],
+      "country-manager": ["Matching Gerente-Cliente", "Participación Country Manager en onboarding", "Regla de pausa/recalculo de SLA"],
+      ventas: ["Ruta 2 Auditoría + Migración", "Resumen externo vs ficha interna"]
+    };
+
+    const roleParticipationByStep = {
+      "PRE-01": {
+        ventas: {
+          type: "responsable principal",
+          status: "aplica",
+          before: "El cliente está firmado o listo para iniciar onboarding.",
+          trigger: "Contrato firmado y necesidad de activar el caso en Numbi.",
+          receives: "Contrato firmado, propuesta comercial, notas y compromisos vendidos.",
+          from: "Cliente y proceso comercial.",
+          instruction: "Crea el cliente, abre el canal inicial, realiza precalificación y entrega contexto comercial sin presentarlo como diagnóstico definitivo.",
+          steps: ["Crear grupo de WhatsApp e incluir a Onboarding y Country Manager según la regla vigente.", "Crear el cliente en Portal Numbi.", "Notificar al equipo de Onboarding.", "Entregar notas, expectativas, necesidades, alcance, compromisos y alertas visibles.", "Aclarar que la clasificación inicial es preliminar."],
+          interacts: "Onboarding y Country Manager según regla vigente.",
+          counterpart: "Onboarding recibe el caso y prepara la coordinación del arranque.",
+          delivers: "Cliente creado, canal abierto y contexto comercial mínimo.",
+          to: "Onboarding y Gerente Contador cuando sea asignado.",
+          after: "Onboarding asigna Gerente Contador y convoca la reunión.",
+          notDo: "No definir ruta técnica ni prometer alcance contable no validado."
+        },
+        onboarding: {
+          type: "receptor",
+          status: "aplica",
+          before: "Ventas creó cliente, grupo y contexto comercial.",
+          trigger: "Notificación de nuevo cliente.",
+          receives: "Cliente creado, contexto comercial, propuesta y notas.",
+          from: "Ventas.",
+          instruction: "Recibe el caso, asigna Gerente Contador y asegura condiciones mínimas para convocar onboarding.",
+          steps: ["Asignar Gerente Contador según capacidad instalada.", "Incluir al gerente en el grupo.", "Asignar cliente en el portal.", "Solicitar Cámara de Comercio y certificación para token DIAN.", "Crear hoja de vida inicial en Dashboard.", "Convocar dentro de 24 horas desde la creación del cliente."],
+          interacts: "Ventas, Gerente Contador, Cliente y Country Manager cuando aplique.",
+          counterpart: "Ventas debe entregar contexto suficiente y el Gerente Contador debe preparar hipótesis.",
+          delivers: "Reunión coordinada, hoja de vida inicial y documentos mínimos solicitados.",
+          to: "Gerente Contador y cliente.",
+          after: "Gerente Contador prepara hipótesis de onboarding.",
+          notDo: "No definir ruta técnica ni conclusiones contables."
+        },
+        "country-manager": {
+          type: "informado / consultado",
+          status: "condicional",
+          before: "Ventas abre el caso y crea el grupo.",
+          trigger: "Inclusión en grupo, matching especial, cliente sensible o criterio ejecutivo.",
+          receives: "Contexto comercial, alerta o necesidad de criterio de asignación.",
+          from: "Ventas u Onboarding.",
+          instruction: "Acompaña decisiones de matching o alerta sin asumir operación diaria.",
+          steps: ["Revisar contexto cuando se le incluya.", "Dar criterio ejecutivo si el caso lo requiere.", "Marcar pendiente si faltan criterios objetivos de participación."],
+          interacts: "Ventas, Onboarding y Gerente Contador.",
+          counterpart: "Onboarding mantiene la coordinación operativa.",
+          delivers: "Criterio ejecutivo o acompañamiento puntual.",
+          to: "Onboarding o Gerente Contador.",
+          after: "El caso continúa hacia preparación del onboarding.",
+          notDo: "No reemplazar al Gerente Contador ni supervisar casos en verde."
+        }
+      },
+      "ONB-01": {
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Onboarding asignó el caso y dejó hoja de vida inicial.",
+          trigger: "Asignación como Gerente Contador.",
+          receives: "Pestaña Onboarding, columna Reunión de Onboarding, transcripción comercial, propuesta, Cámara de Comercio y certificación DIAN si aplica.",
+          from: "Onboarding y Ventas.",
+          instruction: "Estudia al cliente, selecciona equipo, valida condiciones técnicas y prepara hipótesis inicial.",
+          steps: ["Revisar actividad comercial, CIIU, tamaño, software actual y expectativas.", "Seleccionar Contador Designado y Auxiliar cuando aplique.", "Validar token DIAN.", "Crear licencia Siigo o Alegra si Numbi la adquiere.", "Conectar Portal Numbi.", "Activar calendario fiscal para empresa nueva.", "Preparar hipótesis por operación, tipo de cliente y estado contable."],
+          interacts: "Ventas, Onboarding, Contador Designado y Auxiliar cuando aplique.",
+          counterpart: "Ventas aclara compromisos vendidos; Onboarding confirma insumos y convocatoria.",
+          delivers: "Hipótesis inicial, equipo asignado, focos y preguntas preparadas.",
+          to: "Reunión de onboarding y Contador Designado si ya existe.",
+          after: "Ventas abre la reunión y el Gerente Contador lidera la validación.",
+          notDo: "No llegar a la reunión a descubrir desde cero ni saltar la revisión comercial disponible."
+        },
+        ventas: {
+          type: "consultado",
+          status: "condicional",
+          before: "El Gerente Contador revisa información comercial.",
+          trigger: "Duda sobre alcance, promesa, expectativa o contexto vendido.",
+          receives: "Pregunta puntual del Gerente Contador.",
+          from: "Gerente Contador.",
+          instruction: "Aclarar compromisos comerciales sin redefinir la ruta técnica.",
+          steps: ["Responder dudas sobre propuesta, expectativas y alcance.", "Entregar notas o transcripción faltante.", "Confirmar si existe promesa comercial sensible."],
+          interacts: "Gerente Contador y Onboarding.",
+          counterpart: "El Gerente Contador usa esa aclaración para preparar hipótesis.",
+          delivers: "Aclaración comercial documentada.",
+          to: "Gerente Contador.",
+          after: "La reunión se ejecuta con contexto suficiente.",
+          notDo: "No convertir una aclaración comercial en diagnóstico contable."
+        },
+        onboarding: {
+          type: "apoyo",
+          status: "aplica",
+          before: "Onboarding coordinó la convocatoria.",
+          trigger: "Preparación de la reunión.",
+          receives: "Confirmación de asistentes y documentos iniciales.",
+          from: "Cliente, Ventas y Gerente Contador.",
+          instruction: "Asegura que el gerente tenga insumos y participantes correctos.",
+          steps: ["Confirmar agenda.", "Asegurar que Ventas y Gerente Contador estén incluidos.", "Verificar insumos iniciales y hoja de vida."],
+          interacts: "Ventas, Cliente y Gerente Contador.",
+          counterpart: "Gerente Contador prepara hipótesis.",
+          delivers: "Reunión lista para ejecutarse.",
+          to: "Gerente Contador.",
+          after: "Se realiza onboarding.",
+          notDo: "No liderar diagnóstico técnico."
+        }
+      },
+      "ONB-02": {
+        ventas: {
+          type: "apoyo",
+          status: "aplica",
+          before: "La reunión ya está convocada y el Gerente Contador llega con hipótesis.",
+          trigger: "Inicio del onboarding.",
+          receives: "Agenda y contexto de participantes.",
+          from: "Onboarding y Gerente Contador.",
+          instruction: "Abre la reunión, presenta al equipo, entrega contexto comercial breve y cede la palabra.",
+          steps: ["Presentar al equipo Numbi.", "Dar contexto comercial estrictamente necesario.", "Ceder la palabra al Gerente Contador.", "Intervenir después solo si hay aclaración comercial."],
+          interacts: "Cliente y Gerente Contador.",
+          counterpart: "Gerente Contador recibe el liderazgo y dirige el onboarding.",
+          delivers: "Liderazgo de la reunión transferido.",
+          to: "Gerente Contador.",
+          after: "Ventas queda disponible para aclaraciones de alcance o promesas.",
+          notDo: "No liderar el diagnóstico contable ni responder por ruta técnica."
+        },
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Ventas presenta al equipo y entrega la palabra.",
+          trigger: "Inicio operativo del onboarding.",
+          receives: "Hipótesis inicial, acta, hoja de vida y preguntas por tipo de operación.",
+          from: "Ventas, Onboarding y revisión previa.",
+          instruction: "Dirige la reunión, valida hipótesis, completa acta y hoja de vida, presenta la plataforma y define ruta preliminar.",
+          steps: ["Recibir la palabra de Ventas.", "Realizar monólogo de apertura.", "Profundizar en expectativas, personalidad del interlocutor y modelo de negocio.", "Diligenciar acta y hoja de vida durante la reunión.", "Validar tipo de operación, tipo de cliente y estado contable.", "Definir tipo de setup.", "Proyectar checklist documental.", "Acordar fecha de entrega.", "Informar siguientes pasos y advertir que el plan depende de hallazgos."],
+          interacts: "Cliente, Ventas y Onboarding.",
+          counterpart: "El cliente explica su operación y Ventas aclara alcance cuando sea necesario.",
+          delivers: "Acta, hoja de vida, clasificación, checklist documental, fecha y acuerdos.",
+          to: "Cliente, Contador Designado y equipo relevante.",
+          after: "Se genera ficha diagnóstica y comunicación automática.",
+          notDo: "No reiniciar presentación comercial ni dejar acuerdos dispersos fuera del acta."
+        },
+        onboarding: {
+          type: "apoyo",
+          status: "aplica",
+          before: "La reunión fue convocada.",
+          trigger: "Ejecución del onboarding.",
+          receives: "Agenda, asistentes y orden de reunión.",
+          from: "Cliente, Ventas y Gerente Contador.",
+          instruction: "Asegura condiciones de reunión, asistentes e insumos.",
+          steps: ["Confirmar participantes.", "Asegurar que Ventas abra y Gerente Contador lidere.", "Apoyar registro cuando corresponda."],
+          interacts: "Ventas, Cliente y Gerente Contador.",
+          counterpart: "Gerente Contador diligencia acta y define ruta.",
+          delivers: "Coordinación y soporte de reunión.",
+          to: "Gerente Contador.",
+          after: "El Gerente Contador cierra acuerdos y ficha.",
+          notDo: "No reemplazar al Gerente Contador en la validación técnica."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "Numbi revisó tu información inicial y preparó la reunión.",
+          trigger: "Reunión de onboarding.",
+          receives: "Presentación del equipo, objetivo de la reunión y explicación de próximos pasos.",
+          from: "Ventas y Gerente Contador.",
+          instruction: "Explica cómo opera tu empresa, valida la lectura inicial y acuerda documentos y fechas.",
+          steps: ["Conocer al equipo.", "Explicar actividad, ingresos, facturación, costos, pagos y operación.", "Confirmar o corregir la clasificación inicial.", "Acordar fecha para entregar documentos.", "Resolver dudas sobre próximos pasos."],
+          interacts: "Gerente Contador como interlocutor principal.",
+          counterpart: "Numbi documenta acuerdos, ruta preliminar y documentos requeridos.",
+          delivers: "Información operativa, validaciones y compromisos de entrega.",
+          to: "Gerente Contador.",
+          after: "Recibirás resumen con documentos, responsables, fechas y siguiente hito.",
+          notDo: "No necesitas conocer discusiones internas de alcance, capacidad o recotización."
+        }
+      },
+      "ONB-03": {
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Onboarding terminó con acta, hoja de vida, ruta y focos.",
+          trigger: "Cierre del onboarding.",
+          receives: "Acta, hoja de vida, ruta preliminar, riesgos y focos detectados.",
+          from: "Reunión de onboarding.",
+          instruction: "Prepara ficha interna para el Contador Designado y resumen externo para el cliente.",
+          steps: ["Completar ficha interna con tipo de cliente, estado contable, ruta, focos obligatorios y cuentas críticas.", "Entregar la ficha al Contador Designado y a la persona de Ventas que realizó la venta.", "Preparar resumen para cliente sin hipótesis internas ni alertas sensibles.", "Enviar próximos pasos, documentos pendientes, responsables y fechas."],
+          interacts: "Contador Designado, Ventas y Cliente.",
+          counterpart: "Contador Designado recibe la ficha para iniciar revisión; el cliente recibe ruta y próximos pasos.",
+          delivers: "Ficha diagnóstica interna y resumen operativo externo.",
+          to: "Contador Designado, Ventas y Cliente.",
+          after: "Comienza recepción documental y validación inicial.",
+          notDo: "No enviar al cliente alertas internas de riesgo o discusiones de churn."
+        },
+        "contador-designado": {
+          type: "receptor",
+          status: "aplica",
+          before: "El Gerente Contador cerró onboarding y validó ruta preliminar.",
+          trigger: "Entrega de ficha diagnóstica.",
+          receives: "Ficha interna, ruta, riesgos, cuentas críticas, focos obligatorios y documentos esperados.",
+          from: "Gerente Contador.",
+          instruction: "Inicia su trabajo desde la ficha; no parte desde cero.",
+          steps: ["Leer ficha completa.", "Identificar focos obligatorios.", "Confirmar documentos requeridos.", "Preparar validación inicial o auditoría según ruta."],
+          interacts: "Gerente Contador y, cuando se autorice, cliente.",
+          counterpart: "Gerente Contador aclara dudas de ruta y alcance.",
+          delivers: "Plan de revisión inicial y alertas de información faltante.",
+          to: "Gerente Contador.",
+          after: "Valida documentos, saldos y soportes.",
+          notDo: "No asumir liderazgo comercial ni cambiar ruta sin alineación."
+        },
+        ventas: {
+          type: "informado",
+          status: "aplica",
+          before: "El onboarding quedó documentado.",
+          trigger: "Entrega de ficha final.",
+          receives: "Ficha o resumen interno con ruta y focos que pueden impactar alcance.",
+          from: "Gerente Contador.",
+          instruction: "Queda informado para futuras aclaraciones comerciales.",
+          steps: ["Revisar si hay compromisos comerciales relacionados.", "Responder aclaraciones si el equipo las solicita."],
+          interacts: "Gerente Contador.",
+          counterpart: "Gerente Contador lidera la operación técnica.",
+          delivers: "Aclaración comercial cuando aplique.",
+          to: "Gerente Contador.",
+          after: "Ventas vuelve solo si cambia alcance, fee o promesa comercial.",
+          notDo: "No intervenir en setup por defecto."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "La reunión de onboarding terminó.",
+          trigger: "Cierre y resumen de próximos pasos.",
+          receives: "Ruta acordada, documentos pendientes, responsables, fechas y siguiente hito.",
+          from: "Gerente Contador.",
+          instruction: "Revisa el resumen y prepara la información solicitada.",
+          steps: ["Confirmar documentos requeridos.", "Preparar soportes y accesos.", "Cumplir la fecha acordada.", "Preguntar si algo no queda claro."],
+          interacts: "Gerente Contador.",
+          counterpart: "Numbi revisará documentos y avisará si falta algo.",
+          delivers: "Documentos, accesos y respuestas necesarias.",
+          to: "Gerente Contador o canal definido.",
+          after: "Inicia revisión documental y setup según ruta.",
+          notDo: "No se espera que participes en discusiones internas de diagnóstico."
+        }
+      },
+      "VAL-01": {
+        "contador-designado": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Recibió ficha diagnóstica y el cliente entregó documentos o venció la fecha acordada.",
+          trigger: "Recepción documental.",
+          receives: "Checklist, documentos, soportes, accesos y fecha acordada.",
+          from: "Cliente y Gerente Contador.",
+          instruction: "Verifica integridad documental antes de iniciar revisión técnica.",
+          steps: ["Comparar documentos contra checklist.", "Identificar faltantes.", "Notificar faltantes por correo.", "Actualizar WhatsApp con avance y pendientes.", "Agenda reunión si hay dudas."],
+          interacts: "Gerente Contador y cliente cuando se coordine.",
+          counterpart: "Cliente entrega faltantes; Gerente Contador supervisa impacto.",
+          delivers: "Documentos completos o bloqueo formal.",
+          to: "Gerente Contador y cliente.",
+          after: "Se ejecuta auditoría express, validación inicial o revisión profunda según ruta.",
+          notDo: "No avanzar con saldos sin soporte suficiente."
+        },
+        "gerente-contador": {
+          type: "aprobador / supervisor",
+          status: "aplica",
+          before: "Contador Designado recibe información.",
+          trigger: "Faltantes, bloqueo o validación completa.",
+          receives: "Estado documental y alertas.",
+          from: "Contador Designado.",
+          instruction: "Supervisa avance, impacto en SLA y comunicación al cliente.",
+          steps: ["Revisar faltantes críticos.", "Alinear mensaje al cliente.", "Registrar bloqueo cuando aplique.", "Definir si hay pausa, alerta o cambio de ruta pendiente de validación."],
+          interacts: "Contador Designado y cliente.",
+          counterpart: "Contador Designado valida integridad; cliente entrega faltantes.",
+          delivers: "Decisión de continuidad, bloqueo o escalamiento.",
+          to: "Contador Designado y cliente.",
+          after: "Comienza revisión contable.",
+          notDo: "No dejar faltantes solo en chats."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "Recibiste lista de documentos y fecha.",
+          trigger: "Entrega de documentos o solicitud de faltantes.",
+          receives: "Confirmación de documentos recibidos o lista de faltantes.",
+          from: "Numbi.",
+          instruction: "Entrega la información completa o aclara dudas para no bloquear el avance.",
+          steps: ["Enviar documentos por el canal acordado.", "Responder faltantes con detalle.", "Avisar si un documento no existe o necesita más tiempo.", "Asistir a reunión de aclaración si se requiere."],
+          interacts: "Gerente Contador o Contador Designado cuando Numbi lo coordine.",
+          counterpart: "Numbi valida integridad y te informa impacto.",
+          delivers: "Documentos, soportes, accesos y respuestas.",
+          to: "Numbi.",
+          after: "Numbi revisa saldos, soportes y define continuidad.",
+          notDo: "No enviar información dispersa sin indicar qué pendiente resuelve."
+        }
+      },
+      "AUD-01": {
+        "contador-designado": {
+          type: "ejecutor",
+          status: "aplica",
+          before: "Documentos completos o bloqueo formal resuelto.",
+          trigger: "Ruta con pasado contable, red flags o necesidad de validar saldos.",
+          receives: "Ficha interna, documentos completos, saldos, soportes y red flags.",
+          from: "Cliente y Gerente Contador.",
+          instruction: "Ejecuta auditoría express o revisión de primer grado y documenta hallazgos.",
+          steps: ["Revisar bancos, impuestos, terceros, cartera y proveedores.", "Comparar saldos contra soportes.", "Documentar hallazgos.", "Solicitar reunión si hay dudas.", "Recomendar continuidad, ajustes, auditoría profunda o escalamiento."],
+          interacts: "Gerente Contador, Auditor si escala y cliente cuando se requiera.",
+          counterpart: "Gerente Contador decide continuidad y comunicación.",
+          delivers: "Informe de revisión o hallazgos.",
+          to: "Gerente Contador.",
+          after: "Se toma decisión de intervención.",
+          notDo: "No comunicar hallazgos sensibles al cliente sin alineación."
+        },
+        "gerente-contador": {
+          type: "aprobador",
+          status: "aplica",
+          before: "Contador Designado revisa saldos y soportes.",
+          trigger: "Informe, hallazgo o red flag.",
+          receives: "Informe de revisión, red flags y recomendación técnica.",
+          from: "Contador Designado o Auditor.",
+          instruction: "Evalúa hallazgos y define si continúa, ajusta, escala a auditoría profunda o cambia ruta.",
+          steps: ["Revisar evidencia.", "Definir impacto en ruta, SLA y cliente.", "Activar Auditor cuando aplique.", "Preparar mensaje operativo al cliente."],
+          interacts: "Contador Designado, Auditor, Cliente, Ventas si cambia alcance.",
+          counterpart: "Auditor emite dictamen si hay auditoría profunda.",
+          delivers: "Decisión de continuidad o escalamiento.",
+          to: "Contador Designado, cliente y Ventas si aplica.",
+          after: "Se ejecuta decisión post auditoría.",
+          notDo: "No continuar con saldos dudosos sin decisión documentada."
+        },
+        ventas: {
+          type: "informado",
+          status: "condicional",
+          before: "El equipo contable detecta hallazgo con posible impacto comercial.",
+          trigger: "Hallazgo cambia alcance, precio, tiempo o promesa vendida.",
+          receives: "Contexto mínimo del hallazgo e impacto comercial.",
+          from: "Gerente Contador.",
+          instruction: "Prepararse para aclarar alcance o activar conversación comercial.",
+          steps: ["Revisar promesa vendida.", "Confirmar si hay cambio de fee o recotización.", "No intervenir si el hallazgo no cambia alcance."],
+          interacts: "Gerente Contador y Country Manager si hay riesgo.",
+          counterpart: "Gerente Contador comunica impacto técnico.",
+          delivers: "Definición comercial o ruta de recotización.",
+          to: "Gerente Contador y cliente cuando corresponda.",
+          after: "Decisión post auditoría define continuidad.",
+          notDo: "No explicar hallazgos contables sin validación técnica."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "condicional",
+          before: "Numbi revisó documentos y saldos.",
+          trigger: "Duda, faltante o hallazgo que requiere aclaración.",
+          receives: "Solicitud de aclaración o explicación del impacto operativo.",
+          from: "Numbi.",
+          instruction: "Aporta soportes o aclaraciones para que Numbi pueda decidir continuidad.",
+          steps: ["Responder preguntas.", "Entregar soportes faltantes.", "Asistir a reunión si se solicita.", "Esperar plan de acción si hay hallazgos."],
+          interacts: "Gerente Contador.",
+          counterpart: "Numbi revisa y define plan.",
+          delivers: "Aclaraciones o soportes.",
+          to: "Numbi.",
+          after: "Recibirás próximos pasos según resultado.",
+          notDo: "No recibes discusiones internas de dictamen o recotización antes de estar alineadas."
+        }
+      },
+      "DEC-01": {
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Existe informe o hallazgo que exige decisión.",
+          trigger: "Hallazgo, dictamen, cambio de alcance o riesgo de experiencia.",
+          receives: "Informe, dictamen, impacto en SLA y posible impacto en honorarios.",
+          from: "Contador Designado, Auditor o cliente.",
+          instruction: "Define continuidad, ajustes, reconstrucción, parametrización, migración, auditoría profunda o recotización.",
+          steps: ["Evaluar hallazgos contra ruta actual.", "Definir plan de acción.", "Si no hay gravedad, ejecutar sin Ventas ni cobro adicional.", "Si cambia alcance, activar recotización con Ventas.", "Registrar motivo, responsable, impacto y decisión.", "Comunicar al cliente el impacto operativo."],
+          interacts: "Ventas, Auditor, Contador Designado, Cliente y Country Manager si hay alerta.",
+          counterpart: "Ventas lidera conversación comercial cuando cambia precio o alcance.",
+          delivers: "Ruta confirmada, plan de acción o cambio de ruta documentado.",
+          to: "Equipo de setup, cliente y Ventas si aplica.",
+          after: "Se ejecuta la ruta correspondiente.",
+          notDo: "No prometer cambios económicos sin Ventas."
+        },
+        ventas: {
+          type: "consultado",
+          status: "condicional",
+          before: "El Gerente Contador determinó que el hallazgo puede cambiar alcance, precio o tiempo.",
+          trigger: "Recotización, reconstrucción no contemplada, promesa comercial o validación de honorarios.",
+          receives: "Hallazgo resumido, impacto comercial y decisión requerida.",
+          from: "Gerente Contador.",
+          instruction: "Lidera la conversación comercial cuando hay fee adicional o cambio de alcance.",
+          steps: ["Revisar propuesta original.", "Validar honorarios o recotización.", "Alinear mensaje con Gerente Contador.", "Hablar con cliente solo cuando exista definición interna."],
+          interacts: "Gerente Contador, Country Manager y cliente cuando corresponda.",
+          counterpart: "Gerente Contador sostiene explicación técnica.",
+          delivers: "Definición comercial o nueva propuesta.",
+          to: "Cliente y Gerente Contador.",
+          after: "El setup continúa con alcance confirmado.",
+          notDo: "No prometer salida técnica sin plan contable."
+        },
+        "country-manager": {
+          type: "decisor ejecutivo",
+          status: "condicional",
+          before: "Existe alerta crítica, riesgo de churn, SLA o recotización.",
+          trigger: "Escalamiento del Gerente Contador o Ventas.",
+          receives: "Contexto, evidencia, riesgo, impacto y decisión requerida.",
+          from: "Gerente Contador o Ventas.",
+          instruction: "Acompaña decisión ejecutiva sin reemplazar responsable operativo.",
+          steps: ["Revisar evidencia.", "Definir criterio ejecutivo.", "Alinear si se comunica al cliente.", "Dar seguimiento al plan de recuperación."],
+          interacts: "Gerente Contador, Ventas y cliente solo si el caso lo requiere.",
+          counterpart: "Gerente Contador sigue como dueño operativo.",
+          delivers: "Lineamiento o decisión ejecutiva.",
+          to: "Gerente Contador y Ventas.",
+          after: "El equipo ejecuta la decisión y registra avance.",
+          notDo: "No operar el día a día ni tomar la relación principal del cliente."
+        },
+        "contador-designado": {
+          type: "consultado",
+          status: "aplica",
+          before: "Entregó informe o hallazgos.",
+          trigger: "Decisión técnica requiere soporte o aclaración.",
+          receives: "Pregunta del Gerente Contador.",
+          from: "Gerente Contador.",
+          instruction: "Aporta soporte técnico para la decisión.",
+          steps: ["Explicar hallazgo.", "Adjuntar evidencia.", "Proponer plan técnico posible."],
+          interacts: "Gerente Contador y Auditor si aplica.",
+          counterpart: "Gerente Contador decide ruta.",
+          delivers: "Soporte técnico.",
+          to: "Gerente Contador.",
+          after: "Ejecuta la ruta aprobada.",
+          notDo: "No recotizar ni comunicar decisión comercial."
+        }
+      },
+      "EJE-01": {
+        "contador-designado": {
+          type: "ejecutor",
+          status: "aplica",
+          before: "Ruta aprobada y documentos mínimos completos.",
+          trigger: "Confirmación de ruta de parametrización, migración, reconstrucción o validaciones.",
+          receives: "Ruta aprobada, documentos, software destino y checklist.",
+          from: "Gerente Contador y cliente.",
+          instruction: "Ejecuta o coordina actividades técnicas según ruta y registra avance.",
+          steps: ["Ejecutar solo actividades que aplican.", "Configurar cuentas, facturación, centros de costo o inventarios cuando aplique.", "Cargar saldos iniciales o migrar información cuando aplique.", "Coordinar reconstrucción cuando corresponda.", "Registrar avance por hito, pendiente, responsable y fecha."],
+          interacts: "Gerente Contador, Auxiliar, Nómina si aplica, cliente y equipo de parametrización.",
+          counterpart: "Gerente Contador supervisa, cliente entrega insumos y Auxiliar apoya tareas asignadas.",
+          delivers: "Software configurado, información migrada o periodos reconstruidos.",
+          to: "Gerente Contador.",
+          after: "Se valida checklist mínimo de cierre.",
+          notDo: "No cambiar alcance sin decisión ni dejar avances sin evidencia."
+        },
+        "gerente-contador": {
+          type: "aprobador / supervisor",
+          status: "aplica",
+          before: "Ruta aprobada.",
+          trigger: "Ejecución de setup.",
+          receives: "Avances, bloqueos, riesgos y entregables técnicos.",
+          from: "Contador Designado, Auxiliar, Nómina, Auditor o cliente.",
+          instruction: "Supervisa ruta, comunicación, bitácora, dashboard, SLA y riesgos.",
+          steps: ["Revisar avance por hito.", "Mantener comunicación visible al cliente.", "Actualizar dashboard.", "Activar protocolo si hay bloqueo, SLA al 80%, cambio de alcance o riesgo.", "Coordinar capacitación cuando aplique."],
+          interacts: "Contador Designado, cliente, Ventas, Country Manager, Nómina, Auxiliar y Auditor.",
+          counterpart: "Cada ejecutor registra avance y evidencia.",
+          delivers: "Status, decisiones, escalamiento y control del cierre.",
+          to: "Cliente, equipo y Country Manager si aplica.",
+          after: "Valida cierre y paso a operación.",
+          notDo: "No dejar cliente sin información visible."
+        },
+        "auxiliar-contable": {
+          type: "ejecutor operativo",
+          status: "condicional",
+          before: "Contador Designado le asigna una tarea dentro de la ruta.",
+          trigger: "Necesidad de apoyo en organización documental, cargues, conciliaciones, causaciones o reconstrucción.",
+          receives: "Instrucción concreta, documentos, alcance operativo y prioridad.",
+          from: "Contador Designado.",
+          instruction: "Ejecuta únicamente tareas asignadas y reporta avances o inconsistencias.",
+          steps: ["Organizar soportes.", "Realizar cargues o validaciones asignadas.", "Apoyar conciliaciones, causaciones o reconstrucción.", "Reportar avance y pendientes al Contador Designado."],
+          interacts: "Contador Designado y Gerente Contador si se requiere.",
+          counterpart: "Contador Designado valida calidad y decide continuidad.",
+          delivers: "Tarea operativa ejecutada, soportes organizados y pendientes identificados.",
+          to: "Contador Designado.",
+          after: "Contador Designado consolida entregables.",
+          notDo: "No clasificar clientes, decidir ruta, recotizar ni escalar directamente al cliente."
+        },
+        nomina: {
+          type: "apoyo especializado",
+          status: "condicional",
+          before: "El equipo contable identifica que información laboral impacta saldos, costos o cierre.",
+          trigger: "Solicitud del Gerente Contador o Contador Designado.",
+          receives: "Solicitud específica, contexto contable e información laboral disponible.",
+          from: "Gerente Contador o Contador Designado.",
+          instruction: "Entrega validación o soporte de nómina solo dentro del alcance solicitado.",
+          steps: ["Revisar la solicitud.", "Validar información laboral disponible.", "Entregar soporte o alerta sobre impacto contable.", "Marcar pendiente si falta regla aprobada."],
+          interacts: "Gerente Contador y Contador Designado.",
+          counterpart: "Contador Designado integra la información a la contabilidad.",
+          delivers: "Validación, soporte o alerta de nómina.",
+          to: "Contador Designado o Gerente Contador.",
+          after: "El setup continúa con la información integrada.",
+          notDo: "No asumir un proceso completo de nómina no definido."
+        },
+        ventas: {
+          type: "sin participación directa / condicional",
+          status: "condicional",
+          before: "Setup avanza bajo responsabilidad contable.",
+          trigger: "Cambio de alcance, fee adicional, reconstrucción no contemplada, hallazgo grave o promesa comercial.",
+          receives: "Contexto mínimo del cambio y decisión comercial requerida.",
+          from: "Gerente Contador.",
+          instruction: "No participa por defecto; vuelve solo si hay impacto comercial.",
+          steps: ["Revisar propuesta original si se activa cambio.", "Alinear mensaje comercial.", "Liderar recotización si aplica."],
+          interacts: "Gerente Contador y Country Manager si hay riesgo.",
+          counterpart: "Equipo contable ejecuta ruta técnica.",
+          delivers: "Definición comercial cuando aplique.",
+          to: "Gerente Contador y cliente si corresponde.",
+          after: "Setup continúa con alcance validado.",
+          notDo: "No intervenir en conciliaciones, causaciones, parametrización o reconstrucción detallada.",
+          masterAccess: "contexto"
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "Numbi confirmó ruta y documentos.",
+          trigger: "Inicio de setup según clasificación.",
+          receives: "Actualizaciones de avance, pendientes y próximos hitos.",
+          from: "Gerente Contador o equipo coordinado por Numbi.",
+          instruction: "Entrega respuestas, accesos o documentos cuando Numbi los solicite y participa en reuniones necesarias.",
+          steps: ["Responder pendientes.", "Asistir a reuniones de aclaración o capacitación.", "Validar primeros entregables cuando aplique.", "Mantener canal definido para preguntas."],
+          interacts: "Gerente Contador como interlocutor principal.",
+          counterpart: "Numbi ejecuta parametrización, migración, auditoría o reconstrucción según ruta.",
+          delivers: "Información y validaciones necesarias para avanzar.",
+          to: "Numbi.",
+          after: "Numbi prepara cierre, capacitación y paso a operación.",
+          notDo: "No necesitas gestionar discusiones internas del equipo."
+        },
+        "country-manager": {
+          type: "alerta ejecutiva",
+          status: "condicional",
+          before: "Setup presenta riesgo crítico, SLA o bloqueo.",
+          trigger: "Escalamiento del Gerente Contador.",
+          receives: "Bitácora, evidencia, riesgo e impacto.",
+          from: "Gerente Contador.",
+          instruction: "Acompaña desbloqueo ejecutivo sin operar la ruta.",
+          steps: ["Revisar bitácora.", "Definir opción de desbloqueo.", "Confirmar responsable operativo.", "Dar seguimiento a riesgo de experiencia."],
+          interacts: "Gerente Contador, Ventas y cliente solo si es necesario.",
+          counterpart: "Gerente Contador ejecuta y comunica.",
+          delivers: "Lineamiento o acompañamiento.",
+          to: "Gerente Contador.",
+          after: "El setup sigue con plan registrado.",
+          notDo: "No ejecutar tareas contables."
+        }
+      },
+      "CIE-01": {
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Checklist mínimo de ruta listo para cierre.",
+          trigger: "Validación de salida a operación.",
+          receives: "Checklist, bitácora, entregables de ruta y pulso de experiencia.",
+          from: "Contador Designado, cliente y dashboard.",
+          instruction: "Valida cierre, comunica formalmente y cambia etapa solo con evidencia suficiente.",
+          steps: ["Verificar checklist 100%.", "Confirmar sistema funcional, capacitación, primera factura y primer estado financiero cuando apliquen.", "Usar bitácora como evidencia.", "Activar correo automático de cierre.", "Cambiar etapa de Setup a Operación.", "Explicar flujo recurrente y canal de respuesta."],
+          interacts: "Contador Designado, cliente y Country Manager si hay alerta.",
+          counterpart: "Contador Designado entrega soportes; cliente confirma entendimiento.",
+          delivers: "Cierre formal y transferencia a operación.",
+          to: "Cliente y flujo recurrente.",
+          after: "Inicia operación recurrente.",
+          notDo: "No pasar a Operación sin checklist, comunicación y evidencia."
+        },
+        "contador-designado": {
+          type: "apoyo",
+          status: "aplica",
+          before: "Terminó ejecución técnica.",
+          trigger: "Solicitud de soportes para cierre.",
+          receives: "Checklist y observaciones del Gerente Contador.",
+          from: "Gerente Contador.",
+          instruction: "Entrega soportes finales y valida que los entregables estén listos.",
+          steps: ["Completar checklist técnico.", "Entregar evidencias.", "Confirmar primera factura o estado financiero cuando aplique.", "Cerrar pendientes técnicos."],
+          interacts: "Gerente Contador.",
+          counterpart: "Gerente Contador comunica y cambia etapa.",
+          delivers: "Soportes de cierre.",
+          to: "Gerente Contador.",
+          after: "Cliente pasa a operación.",
+          notDo: "No cambiar etapa sin aprobación."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "Numbi terminó el setup aplicable.",
+          trigger: "Cierre formal.",
+          receives: "Capacitación, explicación del Portal Numbi, próximos responsables, fechas y correo de cierre.",
+          from: "Gerente Contador.",
+          instruction: "Valida capacitación y entiende cómo inicia la operación recurrente.",
+          steps: ["Recibir capacitación.", "Confirmar cómo entregar información periódica.", "Validar primeros entregables cuando aplique.", "Guardar correo de cierre y canal de operación."],
+          interacts: "Gerente Contador.",
+          counterpart: "Numbi cambia el caso a operación con evidencia.",
+          delivers: "Confirmación, preguntas finales o pendientes no críticos.",
+          to: "Gerente Contador.",
+          after: "Inicia operación recurrente.",
+          notDo: "No debe quedar sin claridad de responsables, fechas o canal."
+        },
+        "country-manager": {
+          type: "informado / alerta",
+          status: "condicional",
+          before: "Hay alerta de experiencia, NPS bajo o pendiente crítico.",
+          trigger: "Escalamiento antes del cierre.",
+          receives: "Bitácora, causa de riesgo y plan de recuperación.",
+          from: "Gerente Contador.",
+          instruction: "Acompaña cierre solo si hay alerta crítica.",
+          steps: ["Revisar causa.", "Validar plan de recuperación.", "Acompañar decisión si el cliente está sensible."],
+          interacts: "Gerente Contador y cliente si se requiere.",
+          counterpart: "Gerente Contador mantiene liderazgo operativo.",
+          delivers: "Criterio ejecutivo.",
+          to: "Gerente Contador.",
+          after: "Caso pasa o no pasa a Operación según evidencia.",
+          notDo: "No supervisar cierres en verde."
+        },
+        nomina: {
+          type: "apoyo especializado",
+          status: "condicional",
+          before: "Existen validaciones de nómina necesarias para cierre.",
+          trigger: "Solicitud del Gerente Contador.",
+          receives: "Pendiente específico de nómina.",
+          from: "Gerente Contador o Contador Designado.",
+          instruction: "Entrega validación pendiente sin asumir el cierre general.",
+          steps: ["Revisar pendiente.", "Entregar soporte.", "Informar bloqueo si falta información."],
+          interacts: "Gerente Contador y Contador Designado.",
+          counterpart: "Gerente Contador decide cierre.",
+          delivers: "Soporte o alerta de nómina.",
+          to: "Gerente Contador.",
+          after: "Cierre continúa si no quedan pendientes críticos.",
+          notDo: "No cambiar etapa ni comunicar cierre general."
+        }
+      },
+      "OPE-01": {
+        "gerente-contador": {
+          type: "responsable principal",
+          status: "aplica",
+          before: "Cliente fue transferido formalmente de Setup a Operación.",
+          trigger: "Inicio del flujo recurrente.",
+          receives: "Correo de cierre, calendario, canal definido y pendientes no críticos controlados.",
+          from: "Cierre de setup.",
+          instruction: "Mantiene la operación recurrente, comunicación, bitácora, entregables y escalamiento de casos críticos.",
+          steps: ["Recibir información periódica.", "Coordinar ciclo mensual.", "Revisar estados financieros, impuestos y entregables.", "Registrar solicitudes y PQRS.", "Escalar casos críticos."],
+          interacts: "Cliente, Contador asignado, Nómina cuando aplique y Country Manager en casos críticos.",
+          counterpart: "Cliente entrega información periódica y el equipo ejecuta ciclo mensual.",
+          delivers: "Operación recurrente con responsables, fechas y canales claros.",
+          to: "Cliente y equipo recurrente.",
+          after: "El ciclo mensual continúa.",
+          notDo: "No dejar PQRS o solicitudes críticas sin bitácora."
+        },
+        "contador-designado": {
+          type: "ejecutor",
+          status: "aplica",
+          before: "Cliente entra a operación recurrente.",
+          trigger: "Ciclo mensual o solicitud operativa.",
+          receives: "Información periódica y lineamiento del Gerente Contador.",
+          from: "Cliente y Gerente Contador.",
+          instruction: "Ejecuta tareas contables recurrentes según el flujo definido.",
+          steps: ["Procesar información periódica.", "Apoyar cierres contables.", "Reportar pendientes y bloqueos.", "Actualizar evidencia cuando corresponda."],
+          interacts: "Gerente Contador y cliente cuando se coordine.",
+          counterpart: "Gerente Contador mantiene relación y prioridades.",
+          delivers: "Avance y entregables contables recurrentes.",
+          to: "Gerente Contador.",
+          after: "Se cierra ciclo mensual o se gestionan pendientes.",
+          notDo: "No cambiar acuerdos recurrentes sin alineación."
+        },
+        cliente: {
+          type: "cliente externo",
+          status: "aplica",
+          before: "Setup terminó formalmente.",
+          trigger: "Inicio de operación recurrente.",
+          receives: "Canal, fechas, responsables y forma de entregar información periódica.",
+          from: "Gerente Contador.",
+          instruction: "Entrega información periódica y usa el canal definido para solicitudes.",
+          steps: ["Enviar información en las fechas acordadas.", "Responder solicitudes.", "Reportar PQRS o dudas por el canal definido.", "Revisar entregables recurrentes."],
+          interacts: "Gerente Contador como interlocutor principal.",
+          counterpart: "Numbi ejecuta cierres, estados financieros, impuestos y atención recurrente.",
+          delivers: "Información periódica, respuestas y solicitudes.",
+          to: "Numbi.",
+          after: "Se mantiene el ciclo recurrente.",
+          notDo: "No quedan pasos de setup abiertos sin responsable."
+        },
+        nomina: {
+          type: "apoyo especializado",
+          status: "condicional",
+          before: "Cliente ya opera recurrentemente.",
+          trigger: "Flujo recurrente con información de nómina definida.",
+          receives: "Solicitud o información laboral definida.",
+          from: "Gerente Contador, Contador Designado o cliente cuando se coordine.",
+          instruction: "Participa solo en momentos de nómina aprobados dentro del flujo recurrente.",
+          steps: ["Atender solicitud definida.", "Entregar soporte o validación.", "Registrar pendiente si falta regla aprobada."],
+          interacts: "Gerente Contador y Contador Designado.",
+          counterpart: "Gerente Contador integra la comunicación con el cliente.",
+          delivers: "Soporte de nómina cuando aplique.",
+          to: "Gerente Contador o Contador Designado.",
+          after: "El ciclo recurrente continúa.",
+          notDo: "No inventar tareas recurrentes no aprobadas."
+        },
+        "country-manager": {
+          type: "alerta ejecutiva",
+          status: "condicional",
+          before: "Cliente está en operación recurrente.",
+          trigger: "Caso crítico, PQRS sensible, riesgo de churn o decisión ejecutiva.",
+          receives: "Bitácora, contexto y decisión requerida.",
+          from: "Gerente Contador.",
+          instruction: "Acompaña caso crítico sin convertirse en interlocutor principal.",
+          steps: ["Revisar evidencia.", "Alinear decisión.", "Dar seguimiento a plan crítico."],
+          interacts: "Gerente Contador y cliente solo si aplica.",
+          counterpart: "Gerente Contador mantiene la relación operativa.",
+          delivers: "Lineamiento ejecutivo.",
+          to: "Gerente Contador.",
+          after: "Caso crítico se gestiona y registra.",
+          notDo: "No reemplazar al Gerente Contador."
+        },
+        ventas: {
+          type: "informado",
+          status: "condicional",
+          before: "Cliente ya opera recurrentemente.",
+          trigger: "Impacto comercial, nuevo alcance o promesa comercial.",
+          receives: "Contexto del impacto comercial.",
+          from: "Gerente Contador o Country Manager.",
+          instruction: "Participa solo si hay conversación comercial nueva.",
+          steps: ["Revisar alcance vendido.", "Alinear propuesta o promesa.", "Liderar conversación comercial si aplica."],
+          interacts: "Gerente Contador y Country Manager.",
+          counterpart: "Equipo operativo mantiene ejecución recurrente.",
+          delivers: "Definición comercial.",
+          to: "Gerente Contador y cliente si corresponde.",
+          after: "Operación continúa con alcance alineado.",
+          notDo: "No operar solicitudes contables recurrentes."
+        }
+      }
+    };
+
+    function macroStageForStep(step) {
+      if (step.id === "PRE-01" || step.id === "ONB-01") return "Pre-onboarding";
+      if (step.id === "ONB-02" || step.id === "ONB-03") return "Onboarding";
+      if (["VAL-01", "AUD-01", "DEC-01", "EJE-01"].includes(step.id)) return "Set Up";
+      if (step.id === "CIE-01") return "Salida a operación";
+      if (step.id === "OPE-01") return "Operación recurrente";
+      return step.stage;
+    }
+
+    const processRules = manualSteps.map(step => ({
+      id: step.id,
+      version: "1.0",
+      status: "vigente",
+      title: step.name,
+      masterText: step.description,
+      macroStage: macroStageForStep(step),
+      phase: step.stage,
+      order: step.order,
+      clientTypes: ["Según clasificación final"],
+      accountingStates: ["Según clasificación final"],
+      operationTypes: ["Servicios", "Comercial", "Industrial", "Mixto"],
+      routes: step.routes,
+      actors: roleParticipationByStep[step.id] || {},
+      previousActor: step.raci?.c || "",
+      nextActor: step.next || "",
+      input: step.inputs,
+      output: step.outputs,
+      channel: step.registerIn,
+      evidence: step.evidence,
+      sla: step.sla,
+      advance: step.exit,
+      blocker: step.blockers,
+      escalation: step.problem,
+      clientCommunication: step.communication,
+      source: "manualSteps:index.html",
+      openPoint: pendingDecisions.filter(item => step.problem.includes(item[0]) || item[0].includes("RACI")),
+      inconsistency: step.id === "DEC-01" ? routeInconsistencies : [],
+      examples: step.examples
+    }));
+
     function roleNavItems(roleKey) {
-      return roleNavLabels[roleKey] || [["Mi rol", "#mi-rol"], ["Mis etapas", "#mis-etapas"], ["Mis tareas", "#mis-tareas"], ["Mis checklist", "#mis-checklist"], ["Mis evidencias", "#mis-evidencias"], ["Mis escalamientos", "#mis-escalamientos"]];
+      return roleNavLabels[roleKey] || [["Mi rol", "#mi-rol"], ["Tu recorrido", "#tu-recorrido"], ["Mis momentos", "#momentos"], ["Checklist", "#checklist-rol"], ["Evidencias", "#evidencias-rol"], ["Escalamiento", "#escalamiento-rol"]];
     }
 
-    function roleSteps(roleKey) {
-      const ids = roleStepIds[roleKey] || [];
-      return ids.map(id => manualSteps.find(step => step.id === id)).filter(Boolean);
+    function asList(value) {
+      if (!value) return [];
+      return Array.isArray(value) ? value : [value];
     }
 
-    function renderRoleStep(step) {
+    function renderValue(value, fallback = "No aplica para esta vista.") {
+      const items = asList(value).filter(Boolean);
+      if (!items.length) return `<p>${fallback}</p>`;
+      if (items.length === 1) return `<p>${items[0]}</p>`;
+      return list(items);
+    }
+
+    function rulesForRole(roleKey) {
+      return processRules.filter(rule => rule.actors[roleKey]).sort((a, b) => a.order - b.order);
+    }
+
+    function pendingForRole(roleKey) {
+      const labels = roleSpecificOpenIssues[roleKey] || [];
+      return pendingDecisions.filter(item => labels.includes(item[0]));
+    }
+
+    function renderRoleMap(roleKey) {
       return `
-        <article class="card role-step">
-          <div class="mini-title">${step.id} · ${step.stage}</div>
-          <h3>${step.name}</h3>
-          <p>${step.description}</p>
-          <div class="phase-meta">
-            <div class="meta-box"><strong>Empieza cuando</strong><span>${step.entry}</span></div>
-            <div class="meta-box"><strong>Debe quedar</strong><span>${step.outputs}</span></div>
-            <div class="meta-box"><strong>Dónde registrar</strong><span>${step.registerIn}</span></div>
+        <div class="role-map" id="tu-recorrido">
+          ${macroStages.map(stage => {
+            const stageRules = processRules.filter(rule => rule.macroStage === stage && rule.actors[roleKey]);
+            const conditional = stageRules.length && stageRules.every(rule => rule.actors[roleKey].status === "condicional");
+            const stateClass = stageRules.length ? conditional ? "condicional" : "aplica" : "no-aplica";
+            const statusText = stageRules.length ? conditional ? "Condicional" : "Aplica" : "No aplica";
+            const detail = stageRules.length ? stageRules.map(rule => rule.title).join(" · ") : "No tienes acción directa en esta etapa.";
+            return `
+              <article class="role-map-card ${stateClass}">
+                <span class="status-chip ${stateClass}">${statusText}</span>
+                <strong>${stage}</strong>
+                <p>${detail}</p>
+              </article>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function renderMasterRule(rule, actor, roleKey) {
+      if (roleKey === "cliente") return "";
+      if (actor.masterAccess === "contexto") {
+        return `
+          <details class="rule-details">
+            <summary>Ver contexto madre permitido</summary>
+            <div class="phase-meta" style="margin-top:12px">
+              <div class="meta-box"><strong>Regla madre</strong><span>${rule.masterText}</span></div>
+              <div class="meta-box"><strong>Ruta</strong><span>${rule.routes.join(", ")}</span></div>
+              <div class="meta-box"><strong>SLA</strong><span>${rule.sla}</span></div>
+            </div>
+          </details>
+        `;
+      }
+      return `
+        <details class="rule-details">
+          <summary>Ver regla madre</summary>
+          <div class="phase-meta" style="margin-top:12px">
+            <div class="meta-box"><strong>Texto oficial</strong><span>${rule.masterText}</span></div>
+            <div class="meta-box"><strong>RACI</strong><span>R: ${manualSteps.find(step => step.id === rule.id).raci.r} · A: ${manualSteps.find(step => step.id === rule.id).raci.a} · C: ${manualSteps.find(step => step.id === rule.id).raci.c} · I: ${manualSteps.find(step => step.id === rule.id).raci.i}</span></div>
+            <div class="meta-box"><strong>Rutas</strong><span>${rule.routes.join(", ")}</span></div>
+            <div class="meta-box"><strong>SLA</strong><span>${rule.sla}</span></div>
+            <div class="meta-box"><strong>Bloquea si</strong><span>${asList(rule.blocker).join(", ")}</span></div>
+            <div class="meta-box"><strong>Ejemplos</strong><span>${asList(rule.examples).join(" / ")}</span></div>
           </div>
-          <div class="role-section"><strong>Haz esto, en este orden</strong>${list(step.actions, true)}</div>
-          <div class="role-section"><strong>Evidencia mínima</strong><p>${step.evidence}</p></div>
-          <div class="role-section"><strong>Si hay bloqueo</strong><p>${step.problem}</p></div>
+        </details>
+      `;
+    }
+
+    function renderRoleMoment(rule, roleKey, index) {
+      const actor = rule.actors[roleKey];
+      const open = index < 2 ? "open" : "";
+      return `
+        <details class="role-moment" ${open}>
+          <summary>
+            <span class="role-moment-title">
+              <strong>${rule.title}</strong>
+              <span>${rule.macroStage} · ${actor.type}</span>
+            </span>
+            <span class="status-chip ${actor.status || "aplica"}">${actor.status || "aplica"}</span>
+          </summary>
+          <div class="role-moment-body">
+            <div class="handoff-grid">
+              <div class="handoff-box"><strong>1. Momento del proceso</strong><p>${rule.macroStage} / ${rule.phase}</p></div>
+              <div class="handoff-box"><strong>2. Qué ocurre antes</strong>${renderValue(actor.before || rule.input)}</div>
+              <div class="handoff-box"><strong>3. Qué activa mi participación</strong>${renderValue(actor.trigger || rule.input)}</div>
+              <div class="handoff-box"><strong>4. Qué recibo</strong>${renderValue(actor.receives || rule.input)}</div>
+              <div class="handoff-box"><strong>5. De quién lo recibo</strong>${renderValue(actor.from || rule.previousActor)}</div>
+              <div class="handoff-box"><strong>6. Qué debo hacer</strong>${renderValue(actor.instruction)}</div>
+              <div class="handoff-box"><strong>7. Paso a paso</strong>${renderValue(actor.steps || manualSteps.find(step => step.id === rule.id).actions)}</div>
+              <div class="handoff-box"><strong>8. Con quién interactúo</strong>${renderValue(actor.interacts)}</div>
+              <div class="handoff-box"><strong>9. Qué debe hacer la otra persona</strong>${renderValue(actor.counterpart)}</div>
+              <div class="handoff-box"><strong>10. Qué entrego</strong>${renderValue(actor.delivers || rule.output)}</div>
+              <div class="handoff-box"><strong>11. A quién lo entrego</strong>${renderValue(actor.to || rule.nextActor)}</div>
+              <div class="handoff-box"><strong>12. Evidencia</strong>${renderValue(rule.evidence)}</div>
+              <div class="handoff-box"><strong>13. Sistema o canal</strong>${renderValue(rule.channel)}</div>
+              <div class="handoff-box"><strong>14. Plazo o SLA</strong>${renderValue(rule.sla)}</div>
+              <div class="handoff-box"><strong>15. Permite avanzar</strong>${renderValue(rule.advance)}</div>
+              <div class="handoff-box"><strong>16. Bloquea si</strong>${renderValue(rule.blocker)}</div>
+              <div class="handoff-box"><strong>17. Cuándo escalo</strong>${renderValue(actor.escalates || rule.escalation)}</div>
+              <div class="handoff-box"><strong>18. A quién escalo</strong>${renderValue(actor.escalateTo || "Gerente Contador, Ventas o Country Manager según el tipo de riesgo definido en la regla.")}</div>
+              <div class="handoff-box"><strong>19. Qué sucede después</strong>${renderValue(actor.after || rule.nextActor)}</div>
+              <div class="handoff-box"><strong>20. Qué no debo hacer</strong>${renderValue(actor.notDo)}</div>
+            </div>
+            ${rule.inconsistency.length ? `<div class="alert-item warn"><strong>Inconsistencia conservada</strong><p>${rule.inconsistency.map(item => item.text).join(" ")}</p></div>` : ""}
+            ${renderMasterRule(rule, actor, roleKey)}
+          </div>
+        </details>
+      `;
+    }
+
+    function renderRouteContext(roleKey) {
+      const routeRows = Object.values(routes).map(route => `
+        <tr>
+          <td>${route.title}</td>
+          <td>${route.sla}</td>
+          <td>${route.phases.join(" → ")}</td>
+          <td>${route.ritual}</td>
+        </tr>
+      `).join("");
+      const clientNote = roleKey === "cliente" ? `<p>Los tiempos dependen de la clasificación final y de recibir información completa. Si falta información, Numbi te indicará qué hace falta y cómo afecta el avance.</p>` : `<p>Las rutas se derivan del tipo de cliente y estado contable. El tipo de operación solo orienta preguntas y focos.</p>`;
+      return `
+        <article class="card" id="rutas-rol">
+          <div class="mini-title">Rutas, condiciones y SLA</div>
+          ${clientNote}
+          <div class="table-wrap"><table>
+            <thead><tr><th>Ruta</th><th>SLA</th><th>Etapas que activa</th><th>Resultado esperado</th></tr></thead>
+            <tbody>${routeRows}</tbody>
+          </table></div>
+          ${roleKey !== "cliente" ? `<div class="alert-item warn" style="margin-top:12px"><strong>Pendiente de definición</strong><p>${routeInconsistencies[0].text}</p></div>` : ""}
         </article>
       `;
+    }
+
+    function renderRoleChecklist(roleKey, rules) {
+      const checklist = rules.flatMap(rule => {
+        const actor = rule.actors[roleKey];
+        return asList(actor.steps || actor.instruction).map(item => `${rule.id}: ${item}`);
+      });
+      const evidences = rules.map(rule => `${rule.id}: ${rule.evidence}`);
+      const escalations = rules.map(rule => {
+        const actor = rule.actors[roleKey];
+        return `${rule.id}: ${actor.escalates || rule.escalation}`;
+      });
+      return `
+        <div class="step-manual">
+          <div class="role-section" id="checklist-rol"><strong>Checklist de ejecución</strong>${renderValue(checklist)}</div>
+          <div class="role-section" id="evidencias-rol"><strong>Evidencias que deben quedar</strong>${renderValue(evidences)}</div>
+          <div class="role-section" id="escalamiento-rol"><strong>Escalamiento</strong>${renderValue(escalations)}</div>
+        </div>
+      `;
+    }
+
+    function renderRolePending(roleKey) {
+      if (roleKey === "cliente") return "";
+      const pending = pendingForRole(roleKey);
+      const partial = roleKey === "nomina" || roleKey === "auxiliar-contable"
+        ? `<div class="alert-item warn"><strong>Participación parcial definida</strong><p>Este rol muestra solo las intervenciones aprobadas o derivadas de reglas vigentes. Si se aprueba una nueva tarea, debe agregarse primero a la regla madre.</p></div>`
+        : "";
+      if (!pending.length && !partial) return "";
+      return `
+        <article class="card" id="pendientes-rol">
+          <div class="mini-title">Puntos abiertos que afectan esta vista</div>
+          ${partial}
+          ${pending.map(item => `<div class="alert-item warn"><strong>${item[0]}</strong><p>${item[1]} Recomendación: ${item[2]}</p></div>`).join("")}
+        </article>
+      `;
+    }
+
+    function renderRoleBefore(roleKey, rules) {
+      if (!rules.length) return "";
+      const first = rules[0];
+      const before = processRules.filter(rule => rule.order < first.order).slice(-3);
+      if (!before.length) return `<p>Tu participación inicia al comienzo del flujo definido para este rol.</p>`;
+      return renderValue(before.map(rule => `${rule.macroStage}: ${rule.title}.`));
     }
 
     function renderRoleWork() {
@@ -2913,32 +4069,43 @@
         $("roleViewPanel").innerHTML = "";
         return;
       }
-      const steps = roleSteps(active.key);
+      const rules = rulesForRole(active.key);
       $("roleViewPanel").innerHTML = `
-        <article class="card" id="mi-rol">
-          <div class="mini-title">Mi rol en el proceso</div>
-          <h3>${active.role}</h3>
-          <p>${active.summary}</p>
-        </article>
-        <div class="step-manual">
-          <div class="role-section" id="mis-tareas"><strong>Qué debo hacer</strong>${list(active.does)}</div>
-          <div class="role-section"><strong>Qué recibo</strong>${list(active.receives)}</div>
-          <div class="role-section"><strong>Qué entrego</strong>${list(active.delivers)}</div>
-          <div class="role-section"><strong>Con quién interactúo</strong>${list(active.interacts)}</div>
-        </div>
-        <div class="section-title" id="mis-etapas" style="margin-top:26px">
-          <span class="label">Mis etapas</span>
-          <div>
-            <h2>Pasos del manual que me corresponden</h2>
-            <p>Estos pasos salen del proceso completo y quedan filtrados para este rol. Si necesitas contexto de todo el flujo, entra por “Proceso completo”.</p>
+        <div class="role-shell">
+          <div class="role-head">
+            <article class="card" id="mi-rol">
+              <div class="mini-title">Mi rol en el proceso</div>
+              <h3>${active.role}</h3>
+              <p>${active.summary}</p>
+              <div class="role-actions">
+                <button class="btn secondary" type="button" data-home>Cambiar rol</button>
+                <button class="btn" type="button" data-select-role="proceso-completo">Ver proceso completo</button>
+              </div>
+            </article>
+            <article class="card">
+              <div class="mini-title">Qué ocurre antes de que participes</div>
+              ${renderRoleBefore(active.key, rules)}
+            </article>
           </div>
-        </div>
-        <div class="cards-2">${steps.map(renderRoleStep).join("")}</div>
-        <div class="step-manual" style="margin-top:22px">
-          <div class="role-section" id="mis-evidencias"><strong>Qué debo documentar</strong>${list(active.documents)}</div>
-          <div class="role-section" id="mis-escalamientos"><strong>Cuándo debo escalar</strong>${list(active.escalates)}</div>
-          <div class="role-section" id="mis-limites"><strong>Qué no debo hacer</strong>${list(active.notDo)}</div>
-          <div class="role-section" id="mis-checklist"><strong>Checklist mínimo</strong>${list(active.checklist || active.does)}</div>
+          <article class="card">
+            <div class="mini-title">Tu recorrido en el proceso</div>
+            ${renderRoleMap(active.key)}
+          </article>
+          <div class="section-title" id="momentos" style="margin-top:12px">
+            <span class="label">Momentos por rol</span>
+            <div>
+              <h2>Tareas organizadas por momento</h2>
+              <p>Estos momentos se derivan de la regla madre. Cada bloque conserva antes, activador, insumo, acción, handoff, evidencia, SLA, bloqueo y escalamiento.</p>
+            </div>
+          </div>
+          <div class="step-manual">${rules.map((rule, index) => renderRoleMoment(rule, active.key, index)).join("")}</div>
+          ${renderRouteContext(active.key)}
+          ${renderRoleChecklist(active.key, rules)}
+          <div class="step-manual">
+            <div class="role-section" id="mis-limites"><strong>Errores que debo evitar</strong>${list(active.notDo)}</div>
+            <div class="role-section"><strong>Interacciones principales</strong>${list(active.interacts)}</div>
+          </div>
+          ${renderRolePending(active.key)}
         </div>
       `;
     }
@@ -2982,6 +4149,7 @@
     function setHeroForMode() {
       const active = roleViews.find(item => item.key === state.selectedRole);
       if (!state.selectedRole) {
+        document.title = "Numbi | Manual operativo";
         $("heroLabel").textContent = "Manual operativo · Setup contable";
         $("heroTitle").textContent = "Manual de Onboarding y Setup Contable Numbi";
         $("heroCopy").textContent = "Herramienta operativa para entrar por rol y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.";
@@ -2989,6 +4157,7 @@
         return;
       }
       if (state.selectedRole === "proceso-completo") {
+        document.title = "Numbi | Proceso completo";
         $("heroLabel").textContent = "Proceso completo";
         $("heroTitle").textContent = "Proceso completo de Onboarding y Setup Contable";
         $("heroCopy").textContent = "Vista madre del manual: etapas, rutas, participación, diagnóstico, bitácora, gobernanza, cierre y correos automáticos.";
@@ -2997,6 +4166,7 @@
       }
       $("heroLabel").textContent = "Manual por rol";
       $("heroTitle").textContent = active ? active.role.replace("Soy", "Manual para") : "Manual por rol";
+      document.title = active ? `Numbi | ${active.role}` : "Numbi | Manual por rol";
       $("heroCopy").textContent = active ? active.summary : "";
       $("heroMessage").textContent = "Esta vista muestra solo tus etapas, tareas, entregables, evidencias y escalamientos. El proceso completo sigue disponible como referencia madre.";
     }
@@ -3037,6 +4207,28 @@
       $("pendingTable").innerHTML = `
         <thead><tr><th>Decisión pendiente</th><th>Riesgo</th><th>Recomendación</th></tr></thead>
         <tbody>${pendingDecisions.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody>
+      `;
+      renderCoverageReport();
+    }
+
+    function renderCoverageReport() {
+      if (!$("coverageReport")) return;
+      const unmappedSteps = manualSteps.filter(step => !processRules.some(rule => rule.id === step.id));
+      const rulesWithoutRoles = processRules.filter(rule => !Object.keys(rule.actors).length);
+      $("coverageReport").innerHTML = `
+        <p>Inventario generado desde la fuente madre actual del repositorio. La cobertura no elimina puntos abiertos: los conserva como decisiones pendientes.</p>
+        <div class="coverage-grid">
+          <div class="coverage-item"><strong>${manualSteps.length}</strong><span>pasos madre</span></div>
+          <div class="coverage-item"><strong>${processRules.length}</strong><span>reglas mapeadas</span></div>
+          <div class="coverage-item"><strong>${Object.keys(routes).length}</strong><span>rutas preservadas</span></div>
+          <div class="coverage-item"><strong>${diagnosticQuestionCatalog.length}</strong><span>preguntas conservadas</span></div>
+          <div class="coverage-item"><strong>${pendingDecisions.length}</strong><span>puntos abiertos</span></div>
+          <div class="coverage-item"><strong>${routeInconsistencies.length}</strong><span>inconsistencias visibles</span></div>
+          <div class="coverage-item"><strong>${unmappedSteps.length}</strong><span>pasos sin regla</span></div>
+          <div class="coverage-item"><strong>${rulesWithoutRoles.length}</strong><span>reglas sin rol</span></div>
+        </div>
+        ${unmappedSteps.length ? `<div class="alert-item risk"><strong>Bloques no mapeados</strong><p>${unmappedSteps.map(step => step.id).join(", ")}</p></div>` : `<div class="alert-item"><strong>Cobertura de pasos madre</strong><p>Todos los pasos de manualSteps están proyectados como reglas madre.</p></div>`}
+        ${rulesWithoutRoles.length ? `<div class="alert-item warn"><strong>Reglas sin rol asignado</strong><p>${rulesWithoutRoles.map(rule => rule.id).join(", ")}</p></div>` : `<div class="alert-item"><strong>Participación por rol</strong><p>Todas las reglas madre tienen al menos un rol o actor asignado para lectura operativa.</p></div>`}
       `;
     }
 
@@ -3116,6 +4308,7 @@
               <div class="meta-box"><strong>Puede cambiar si</strong><span>Aparecen red flags, documentos incompletos, saldos no confiables o cambio de alcance.</span></div>
               <div class="meta-box"><strong>Dashboard</strong><span>El Gerente Contador actualiza la clasificación final, SLA y ruta activa.</span></div>
             </div>
+            ${key === "migration-audit" ? `<div class="alert-item warn" style="margin-top:12px"><strong>${routeInconsistencies[0].label}: pendiente de definición</strong><p>${routeInconsistencies[0].text}</p></div>` : ""}
           </article>
         `;
       }).join("");
