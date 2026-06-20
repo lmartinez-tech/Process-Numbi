@@ -617,20 +617,23 @@
     .reason-grid,
     .compare-grid,
     .role-grid,
-    .manual-grid {
+    .manual-grid,
+    .principle-grid {
       display: grid;
       gap: 14px;
     }
 
     .reason-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .role-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .role-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .manual-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .principle-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .reason-card,
     .compare-card,
     .role-card,
-    .manual-card {
+    .manual-card,
+    .principle-card {
       background: white;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -640,7 +643,8 @@
     .reason-card strong,
     .compare-card strong,
     .role-card strong,
-    .manual-card strong {
+    .manual-card strong,
+    .principle-card strong {
       display: block;
       color: var(--numbi-dark);
       font-size: 12px;
@@ -652,7 +656,8 @@
     .reason-card p,
     .compare-card li,
     .role-card p,
-    .manual-card p {
+    .manual-card p,
+    .principle-card p {
       color: var(--muted);
       font-size: 14px;
       margin-bottom: 0;
@@ -711,6 +716,65 @@
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 10px;
+    }
+
+    .role-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .role-tabs button {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .role-tabs button.active {
+      color: white;
+      background: var(--numbi);
+      border-color: var(--numbi);
+    }
+
+    .role-view {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .role-view h3 {
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    .role-section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: white;
+    }
+
+    .role-section strong {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 7px;
+    }
+
+    .role-section ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .table-wrap {
@@ -1236,7 +1300,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .principle-grid, .visual-notes, .step-grid, .role-view { grid-template-columns: 1fr; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
@@ -1275,7 +1339,7 @@
         <a href="#presentacion">Flujo</a>
         <a href="#rutas">Rutas</a>
         <a href="#participacion">Roles</a>
-        <a href="#trabajo-rol">Mi trabajo</a>
+        <a href="#trabajo-rol">Vistas por rol</a>
         <a href="#explicacion-onboarding">Onboarding</a>
         <a href="#diagnostico">Ficha</a>
         <a href="#pasos">Etapas</a>
@@ -1292,7 +1356,7 @@
       <div class="wrap">
         <span class="label">Manual operativo · Setup contable</span>
         <h1>Manual de Onboarding y Setup Contable Numbi</h1>
-        <p class="hero-copy">Guía paso a paso para que un Gerente Contador o Contador nuevo entienda qué hacer, cuándo hacerlo, quién participa y qué debe quedar documentado para lograr satisfacción alta y un NPS colectivo de 40 o más, alineado con lo prometido a los fondos.</p>
+        <p class="hero-copy">Manual madre con vistas por rol para que cada persona entienda qué hacer, cuándo intervenir, qué entregar, qué documentar y cuándo escalar para lograr satisfacción alta y un NPS colectivo de 40 o más, alineado con lo prometido a los fondos.</p>
         <div class="message-strip">Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.</div>
         <div class="hero-grid">
           <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
@@ -1338,13 +1402,13 @@
         <div class="section-title">
           <span class="label">Objetivo del manual</span>
           <div>
-            <h2>Que cualquiera pueda ejecutar el proceso sin depender de memoria o chats</h2>
-            <p>El manual explica el paso a paso desde la preparación del onboarding hasta el cierre a operación. Sirve para alinear a Gerentes Contadores, Contadores, Onboarding, Ventas y Country Manager alrededor de una misma ruta.</p>
+            <h2>Una sola verdad del proceso, múltiples vistas por rol</h2>
+            <p>El manual madre vive una sola vez. Cada vista filtra la misma regla operativa para que Ventas, Onboarding, Gerente Contador, Contador Designado, Auxiliar, Nómina, Country Manager y Cliente vean solo lo que deben ejecutar, validar, entregar, escalar o conocer.</p>
           </div>
         </div>
         <div class="callout">
           <strong>Cómo se debe usar</strong>
-          Para cada cliente, revisa la etapa actual, identifica el responsable, ejecuta las acciones mínimas, registra bloqueos en bitácora y confirma el entregable antes de avanzar.
+          Para cada cliente, identifica la macroetapa, la ruta, la regla transversal y el rol afectado. Después ejecuta las acciones mínimas, registra evidencia y confirma el entregable antes de avanzar.
         </div>
       </div>
     </section>
@@ -1354,8 +1418,8 @@
         <div class="section-title">
           <span class="label">Uso del manual</span>
           <div>
-            <h2>Cómo seguir el proceso paso a paso</h2>
-            <p>Cada etapa debe responder cuatro preguntas simples: qué se busca, quién lo hace, qué acciones mínimas se ejecutan y qué evidencia debe quedar.</p>
+            <h2>Cómo se transforma una regla madre en instrucciones por rol</h2>
+            <p>Cada instrucción se clasifica primero en el proceso madre y luego se traduce únicamente para los roles que participan, intervienen, reciben, entregan, validan, aprueban, escalan o deben estar informados.</p>
           </div>
         </div>
         <div class="manual-grid">
@@ -1389,6 +1453,25 @@
             <h3>Cerrar formalmente</h3>
             <p>Confirmar checklist mínimo, comunicar cierre al cliente y pasar a operación solo con evidencia suficiente.</p>
           </article>
+        </div>
+        <div class="message-strip">Regla de arquitectura: el proceso madre no se duplica. Las vistas por rol son filtros del mismo proceso, no manuales independientes.</div>
+        <div class="principle-grid">
+          <article class="principle-card">
+            <strong>1. Clasificar</strong>
+            <p>Ubicar la instrucción en macroetapa, fase específica, ruta o condición del cliente y regla transversal.</p>
+          </article>
+          <article class="principle-card">
+            <strong>2. Convertir</strong>
+            <p>Redactar una regla madre única, clara y trazable para el proceso completo.</p>
+          </article>
+          <article class="principle-card">
+            <strong>3. Filtrar</strong>
+            <p>Mostrar a cada rol solo lo que debe hacer, recibir, entregar, documentar, escalar o conocer.</p>
+          </article>
+        </div>
+        <div class="callout" style="margin-top:18px">
+          <strong>Arquitectura oficial</strong>
+          Las macroetapas son Pre-onboarding, Onboarding, Set Up, Salida a operación y Operación recurrente. Comunicación con cliente, escalamiento, evidencia, dashboard, NPS, nómina, auditoría, recotización, WhatsApp, bitácora y checklist son reglas transversales, frentes especializados o condiciones; no se convierten automáticamente en etapas.
         </div>
       </div>
     </section>
@@ -1515,10 +1598,10 @@
     <section id="participacion">
       <div class="wrap">
         <div class="section-title">
-          <span class="label">Roles del manual</span>
+          <span class="label">Roles oficiales</span>
           <div>
-            <h2>Quién hace qué en cada momento</h2>
-            <p>El manual funciona si cada rol sabe cuándo entra, qué debe entregar y cuándo debe escalar. Nadie debería reconstruir el caso desde cero.</p>
+            <h2>Ocho vistas sobre un solo proceso</h2>
+            <p>Los roles no reciben el mismo nivel de detalle. La vista del cliente es externa y sencilla; la del Country Manager es ejecutiva; las vistas operativas muestran solo acciones, evidencia y escalamiento aplicable.</p>
           </div>
         </div>
         <div class="role-grid">
@@ -1543,9 +1626,24 @@
             <p>Usa la ficha para iniciar auditoría, validar saldos, registrar hallazgos y ejecutar la ruta que aplique.</p>
           </article>
           <article class="role-card">
+            <strong>Auxiliar contable</strong>
+            <h3>Auxiliar Contable</h3>
+            <p>Apoya organización documental, cargues, conciliaciones, causaciones y reconstrucción cuando se le asigne.</p>
+          </article>
+          <article class="role-card">
+            <strong>Nómina</strong>
+            <h3>Nómina</h3>
+            <p>Participa como frente especializado cuando hay empleados, PILA, nómina electrónica o novedades laborales.</p>
+          </article>
+          <article class="role-card">
             <strong>Country Manager</strong>
             <h3>Country Manager</h3>
             <p>Entra solo ante alertas críticas, SLA en riesgo, recotización o solicitud explícita del Gerente Contador.</p>
+          </article>
+          <article class="role-card">
+            <strong>Cliente</strong>
+            <h3>Cliente</h3>
+            <p>Recibe una vista externa: qué debe entregar, qué puede esperar, cómo se le informan avances y cuándo cierra el setup.</p>
           </article>
         </div>
       </div>
@@ -1554,13 +1652,14 @@
     <section id="trabajo-rol">
       <div class="wrap">
         <div class="section-title">
-          <span class="label">Mi trabajo por rol</span>
+          <span class="label">Vistas por rol</span>
           <div>
             <h2>Qué debo hacer según mi rol</h2>
-            <p>Esta vista evita leer todo el manual cuando solo necesitas saber tus responsabilidades activas y condicionales.</p>
+            <p>Selecciona una vista. El contenido se deriva del mismo proceso madre y muestra solo participación, entregables, documentación, escalamiento y límites de ese rol.</p>
           </div>
         </div>
-        <div class="cards-3" id="roleWorkCards"></div>
+        <div class="role-tabs" id="roleTabs" aria-label="Seleccionar vista por rol"></div>
+        <div class="role-view" id="roleViewPanel"></div>
       </div>
     </section>
 
@@ -2273,15 +2372,103 @@
       }
     ];
 
-    const roleWork = [
-      ["Ventas", "Crea cliente en Portal Numbi, abre WhatsApp, entrega contexto comercial y participa en onboarding para presentar al equipo.", "Lidera la conversación comercial si hay recotización por mal cierre."],
-      ["Onboarding", "Asigna Gerente Contador, solicita Cámara de Comercio y token DIAN, convoca al cliente y crea hoja de vida inicial.", "Escala faltantes iniciales que impidan convocar o preparar la reunión."],
-      ["Gerente Contador", "Prepara hipótesis, asigna contador, dirige onboarding, define ruta, mantiene hoja de vida/bitácora y coordina cierre.", "Activa Country Manager ante alerta, extensión de SLA o riesgo crítico."],
-      ["Contador", "Usa ficha interna, valida documentos y saldos, registra hallazgos y ejecuta la ruta aprobada.", "Escala red flags al Gerente Contador y puede registrar eventos en bitácora."],
-      ["Auditor", "Realiza revisión profunda, emite dictamen y propone plan de acción cuando la información no es confiable.", "Participa por red flags o ruta de auditoría, no por defecto."],
-      ["Auxiliar", "Apoya reconstrucción, causaciones, conciliaciones, impuestos y estados financieros.", "Entrega status diario al contador durante reconstrucción."],
-      ["Parametrización y Migración", "Configura Siigo o Alegra, migra información, carga saldos iniciales y valida que el software quede operativo.", "Actúa cuando la ruta incluye parametrización o migración."],
-      ["Country Manager", "Revisa alertas críticas, SLA en riesgo, recotizaciones, riesgos de churn y solicitudes explícitas del Gerente Contador.", "No supervisa setups en verde ni reemplaza al Gerente Contador frente al cliente."]
+    const roleViews = [
+      {
+        role: "Soy Ventas",
+        summary: "Cuida alcance vendido, contexto comercial, promesas, expectativas y recotización cuando el hallazgo cambia alcance o cobro.",
+        participates: ["Pre-onboarding", "Apertura del onboarding para presentar al equipo", "Recotización por mal cierre o cambio de alcance"],
+        does: ["Precalifica tipo de cliente y estado contable.", "Crea cliente, abre canal inicial y entrega contexto comercial.", "Aclara promesas, límites de alcance y expectativas vendidas.", "Lidera conversación comercial si hay nueva propuesta."],
+        receives: ["Hallazgos que cambian alcance, tiempo, complejidad o fee.", "Solicitud de aclaración comercial del Gerente Contador."],
+        delivers: ["Contexto comercial, propuesta, compromisos, expectativas y alertas visibles."],
+        interacts: ["Onboarding", "Gerente Contador", "Country Manager si hay riesgo comercial", "Cliente en temas comerciales"],
+        documents: ["Contexto comercial", "Promesas realizadas", "Decisión de recotización si aplica"],
+        escalates: ["Al Country Manager cuando hay riesgo comercial, cliente sensible o decisión que excede el cierre inicial."],
+        notDo: ["No define ruta técnica.", "No comunica hallazgos contables sin validación del Gerente Contador.", "No interviene en auditoría, migración o reconstrucción salvo impacto comercial."]
+      },
+      {
+        role: "Soy Onboarding",
+        summary: "Coordina el arranque para que la reunión tenga asistentes, documentos mínimos, hoja de vida inicial y condiciones listas.",
+        participates: ["Pre-onboarding", "Agenda y coordinación de la reunión inicial", "Entrega organizada al Gerente Contador"],
+        does: ["Asigna Gerente Contador según capacidad y reglas vigentes.", "Solicita Cámara de Comercio y certificación para token DIAN.", "Convoca al cliente dentro de 24 horas desde la creación del caso.", "Crea hoja de vida inicial y confirma asistentes."],
+        receives: ["Cliente creado por Ventas", "Contexto comercial", "Datos iniciales del cliente"],
+        delivers: ["Reunión coordinada", "Hoja de vida inicial", "Documentos mínimos solicitados", "Gerente Contador incluido en el canal"],
+        interacts: ["Ventas", "Gerente Contador", "Cliente"],
+        documents: ["Agenda", "Asistentes", "Documentos solicitados", "Hoja de vida inicial"],
+        escalates: ["Al Gerente Contador o Ventas si faltan mínimos para convocar o preparar onboarding."],
+        notDo: ["No define ruta técnica.", "No lidera auditoría o reconstrucción.", "No comunica conclusiones contables al cliente."]
+      },
+      {
+        role: "Soy Gerente Contador",
+        summary: "Es el interlocutor operativo principal: prepara hipótesis, dirige onboarding, define ruta, supervisa setup y valida cierre.",
+        participates: ["Pre-onboarding", "Onboarding", "Set Up", "Salida a operación", "Operación recurrente cuando recibe el cliente"],
+        does: ["Investiga al cliente y prepara hipótesis.", "Dirige onboarding, valida clasificación y define ruta.", "Entrega ficha interna al Contador Designado.", "Supervisa avances, comunicación, bitácora, dashboard y cierre.", "Activa escalamiento, recotización o Country Manager cuando corresponda."],
+        receives: ["Contexto comercial", "Acta y hoja de vida", "Informes del contador o auditor", "Alertas, bloqueos y hallazgos"],
+        delivers: ["Ruta validada", "Ficha diagnóstica", "Focos obligatorios", "Status al cliente", "Cierre formal del setup"],
+        interacts: ["Cliente", "Ventas", "Onboarding", "Contador Designado", "Auxiliar", "Nómina", "Auditor", "Country Manager"],
+        documents: ["Ficha diagnóstica", "Bitácora", "Dashboard", "Cambios de ruta", "Checklist de cierre", "Comunicaciones relevantes"],
+        escalates: ["A Ventas por alcance/cobro.", "A Country Manager por riesgo crítico, SLA en riesgo, recotización o cliente sensible.", "A Auditor cuando hay red flags contables."],
+        notDo: ["No pasa a operación sin checklist y evidencia.", "No promete cambios económicos sin Ventas.", "No delega al Country Manager la relación operativa con el cliente."]
+      },
+      {
+        role: "Soy Contador Designado",
+        summary: "Inicia cuando recibe la ficha diagnóstica; ejecuta validación, auditoría express, parametrización, migración o reconstrucción según ruta.",
+        participates: ["Set Up", "Recepción documental", "Auditoría express", "Ejecución técnica", "Preparación de salida a operación"],
+        does: ["Revisa ficha y focos obligatorios.", "Valida documentos, saldos y soportes.", "Registra hallazgos y bloqueos.", "Ejecuta o coordina actividades técnicas de la ruta.", "Actualiza checklist y prepara entregables para cierre."],
+        receives: ["Ficha del Gerente Contador", "Documentos del cliente", "Checklist de ruta", "Soportes y accesos"],
+        delivers: ["Informe de revisión", "Hallazgos", "Checklist actualizado", "Avance técnico", "Entregables de ruta"],
+        interacts: ["Gerente Contador", "Auxiliar Contable", "Nómina si aplica", "Auditor", "Cliente cuando el gerente lo indique"],
+        documents: ["Bitácora", "Informe de revisión", "Checklist", "Soportes técnicos", "Pendientes documentales"],
+        escalates: ["Al Gerente Contador ante red flags, documentos incompletos, saldos sin soporte o cambio de alcance."],
+        notDo: ["No lidera onboarding salvo indicación expresa.", "No recotiza.", "No comunica hallazgos sensibles al cliente sin alineación del Gerente Contador."]
+      },
+      {
+        role: "Soy Auxiliar Contable",
+        summary: "Apoya la ejecución operativa del contador en organización documental, cargues, conciliaciones, causaciones y reconstrucción.",
+        participates: ["Set Up cuando es asignado", "Reconstrucción contable", "Preparación de información y checklist"],
+        does: ["Organiza documentos y soportes.", "Apoya cargue de información.", "Realiza conciliaciones, causaciones y validaciones operativas.", "Reporta avance diario o periódico al Contador Designado."],
+        receives: ["Instrucciones del Contador Designado", "Documentos y soportes", "Alcance operativo de la tarea"],
+        delivers: ["Información organizada", "Conciliaciones", "Cargues", "Avance operativo", "Pendientes identificados"],
+        interacts: ["Contador Designado", "Gerente Contador cuando se requiera"],
+        documents: ["Checklist asignado", "Avance operativo", "Pendientes y soportes revisados"],
+        escalates: ["Al Contador Designado si faltan documentos, hay inconsistencias o la tarea excede el alcance asignado."],
+        notDo: ["No clasifica clientes.", "No decide recotización.", "No escala directamente al cliente o Country Manager salvo instrucción expresa."]
+      },
+      {
+        role: "Soy Nómina",
+        summary: "Es un frente especializado que participa cuando hay empleados, seguridad social, PILA, nómina electrónica o novedades laborales.",
+        participates: ["Onboarding si se identifican empleados", "Set Up si nómina impacta saldos o costos", "Operación recurrente"],
+        does: ["Valida empleados, novedades, seguridad social, PILA y nómina electrónica.", "Identifica diferencias entre nómina pagada, transmitida y contabilizada.", "Entrega información al área contable para registro correcto."],
+        receives: ["Datos de empleados", "Novedades", "Contratos o soportes laborales", "Preguntas del Gerente Contador o Contador Designado"],
+        delivers: ["Validación de nómina", "Alertas laborales o contables", "Información para contabilización", "Soportes de nómina"],
+        interacts: ["Gerente Contador", "Contador Designado", "Cliente cuando se solicite información de nómina"],
+        documents: ["Novedades", "Validaciones", "Diferencias detectadas", "Soportes entregados"],
+        escalates: ["Al Gerente Contador si hay diferencias que impactan costos, impuestos, estados financieros o experiencia del cliente."],
+        notDo: ["No define ruta de setup.", "No resuelve recotización.", "No comunica decisiones contables generales al cliente."]
+      },
+      {
+        role: "Soy Country Manager",
+        summary: "Tiene una vista ejecutiva: entra por alertas, riesgo de churn, SLA crítico, recotización, cliente sensible o decisión que excede al Gerente Contador.",
+        participates: ["Asignación o matching cuando aplique", "Alertas críticas", "Recotización", "Riesgos comerciales, reputacionales o de experiencia"],
+        does: ["Revisa alertas amarillas o rojas.", "Acompaña decisiones críticas.", "Apoya desbloqueo ejecutivo sin reemplazar al Gerente Contador.", "Da seguimiento a NPS y experiencia del cliente."],
+        receives: ["Bitácora de riesgo", "Contexto del Gerente Contador", "Impacto comercial o de cliente", "Estado de SLA"],
+        delivers: ["Criterio ejecutivo", "Acompañamiento", "Decisión o lineamiento para desbloquear"],
+        interacts: ["Gerente Contador", "Ventas", "Cliente solo si el caso lo requiere"],
+        documents: ["Decisión ejecutiva o acompañamiento en bitácora o dashboard"],
+        escalates: ["A dirección o liderazgo interno si el riesgo excede el proceso operativo."],
+        notDo: ["No supervisa setups en verde.", "No opera el día a día.", "No reemplaza al Gerente Contador como interlocutor principal."]
+      },
+      {
+        role: "Soy Cliente",
+        summary: "Vista externa, simple y cuidada: qué debe entregar, qué puede esperar, cómo se le informan avances y cuándo cierra el setup.",
+        participates: ["Onboarding", "Entrega de información", "Reuniones o validaciones requeridas", "Capacitación", "Cierre de setup"],
+        does: ["Entrega información y documentos en las fechas acordadas.", "Aclara dudas sobre su operación.", "Valida capacitación y primeros entregables.", "Usa los canales definidos para preguntas."],
+        receives: ["Ruta del proceso", "Documentos requeridos", "Fechas", "Status de avance", "Capacitación", "Correo de cierre"],
+        delivers: ["Soportes, accesos, respuestas y validaciones necesarias para avanzar."],
+        interacts: ["Gerente Contador como interlocutor principal", "Contador o Nómina cuando Numbi lo coordine", "Ventas solo para temas comerciales"],
+        documents: ["Confirmaciones, documentos enviados y respuestas a solicitudes"],
+        escalates: ["Al Gerente Contador si no entiende el avance, hay bloqueo o requiere claridad sobre tiempos."],
+        notDo: ["No recibe discusiones internas, riesgos comerciales internos, dudas de capacidad o decisiones de recotización antes de estar alineadas internamente."]
+      }
     ];
 
     const tools = {
@@ -2539,6 +2726,7 @@
       checks: {},
       viewMode: "summary",
       focusedPhase: 0,
+      activeRole: "Soy Gerente Contador",
       clientPhase: "Setup",
       logs: [
         {
@@ -2616,15 +2804,29 @@
     }
 
     function renderRoleWork() {
-      if (!$("roleWorkCards")) return;
-      $("roleWorkCards").innerHTML = roleWork.map(([role, normal, conditional]) => `
-        <article class="card">
-          <div class="mini-title">Rol</div>
-          <h3>${role}</h3>
-          <p><strong>Trabajo normal:</strong> ${normal}</p>
-          <p><strong>Condicional:</strong> ${conditional}</p>
-        </article>
+      if (!$("roleTabs") || !$("roleViewPanel")) return;
+      const active = roleViews.find(item => item.role === state.activeRole) || roleViews[2];
+      $("roleTabs").innerHTML = roleViews.map(item => `
+        <button type="button" class="${item.role === active.role ? "active" : ""}" data-role-view="${item.role}">${item.role}</button>
       `).join("");
+      $("roleViewPanel").innerHTML = `
+        <article class="card">
+          <div class="mini-title">Vista filtrada</div>
+          <h3>${active.role}</h3>
+          <p>${active.summary}</p>
+          <div class="message-strip" style="font-size:16px;margin-bottom:0">Esta vista no crea un manual distinto: filtra el proceso madre para este rol.</div>
+        </article>
+        <div class="step-manual">
+          <div class="role-section"><strong>Cuándo participa</strong>${list(active.participates)}</div>
+          <div class="role-section"><strong>Qué debe hacer</strong>${list(active.does)}</div>
+          <div class="role-section"><strong>Qué recibe</strong>${list(active.receives)}</div>
+          <div class="role-section"><strong>Qué entrega</strong>${list(active.delivers)}</div>
+          <div class="role-section"><strong>Con quién interactúa</strong>${list(active.interacts)}</div>
+          <div class="role-section"><strong>Qué debe documentar</strong>${list(active.documents)}</div>
+          <div class="role-section"><strong>Cuándo debe escalar</strong>${list(active.escalates)}</div>
+          <div class="role-section"><strong>Qué no debe hacer</strong>${list(active.notDo)}</div>
+        </div>
+      `;
     }
 
     function renderTools() {
@@ -2948,6 +3150,13 @@
         bindChecks();
         renderProgress();
       });
+    });
+
+    document.addEventListener("click", event => {
+      const roleButton = event.target.closest("[data-role-view]");
+      if (!roleButton) return;
+      state.activeRole = roleButton.dataset.roleView;
+      renderRoleWork();
     });
 
     document.querySelectorAll("[data-macro-phase]").forEach(button => {
