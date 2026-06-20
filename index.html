@@ -666,39 +666,86 @@
     .entry-timeline {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      gap: 10px;
+      align-items: stretch;
     }
 
     .entry-card {
       position: relative;
       background: white;
       border: 1px solid var(--line);
-      border-top: 4px solid var(--numbi);
       border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 10px 24px rgba(38, 50, 56, .05);
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      box-shadow: 0 10px 24px rgba(38, 50, 56, .04);
     }
 
     .entry-card:not(:last-child)::after {
-      content: "→";
+      content: "";
       position: absolute;
-      right: -12px;
-      top: 28px;
-      width: 24px;
-      height: 24px;
-      display: grid;
-      place-items: center;
-      color: var(--numbi-dark);
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      font-weight: 900;
+      right: -10px;
+      top: 31px;
+      width: 10px;
+      height: 2px;
+      background: var(--numbi);
       z-index: 1;
     }
 
+    .entry-step {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--numbi);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
     .entry-card h3 {
-      margin-bottom: 10px;
-      font-size: 19px;
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .entry-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .entry-card .owner {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .entry-card .done {
+      padding-top: 9px;
+      border-top: 1px solid var(--line);
+    }
+
+    .entry-card .done strong,
+    .entry-card .owner strong {
+      color: var(--numbi-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .entry-transition {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid #9bdcc5;
+      border-left: 5px solid var(--numbi);
+      border-radius: 8px;
+      background: var(--mint-soft);
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 750;
+      line-height: 1.35;
     }
 
     .entry-card dl {
@@ -1658,81 +1705,45 @@
           <span class="label">Antes del onboarding</span>
           <div>
             <h2>Antes del onboarding: ¿cómo ingresa un cliente a Numbi?</h2>
-            <p>Antes de que el Gerente Contador prepare el pre-onboarding, el cliente pasa por un flujo simple: propuesta, aceptación, revisión interna y creación en el portal.</p>
+            <p>Un mapa rápido para entender qué pasa antes de que el Gerente Contador prepare el pre-onboarding.</p>
           </div>
         </div>
 
         <div class="entry-timeline">
           <article class="entry-card">
-            <div class="mini-title">Momento 1</div>
+            <div class="entry-step">1</div>
             <h3>Propuesta comercial</h3>
-            <dl>
-              <dt>Responsable principal</dt>
-              <dd>Ventas.</dd>
-              <dt>Interactúan</dt>
-              <dd>Cliente y equipo comercial.</dd>
-              <dt>Acción clave</dt>
-              <dd>Presentar y enviar la propuesta comercial.</dd>
-              <dt>Entregable o evidencia</dt>
-              <dd>Propuesta enviada y link de aceptación compartido.</dd>
-              <dt>Finaliza cuando</dt>
-              <dd>El cliente acepta avanzar con Numbi y se le envía el link de aceptación.</dd>
-            </dl>
+            <p>Ventas presenta la propuesta y envía el link de aceptación.</p>
+            <p class="owner"><strong>Responsable:</strong> Ventas.</p>
+            <p class="done"><strong>Termina cuando:</strong> el cliente acepta avanzar con Numbi.</p>
           </article>
 
           <article class="entry-card">
-            <div class="mini-title">Momento 2</div>
+            <div class="entry-step">2</div>
             <h3>Aceptación del cliente</h3>
-            <dl>
-              <dt>Responsable principal</dt>
-              <dd>Cliente.</dd>
-              <dt>Interactúan</dt>
-              <dd>Cliente, Ventas y portal Numbi.</dd>
-              <dt>Acción clave</dt>
-              <dd>Confirmar datos, cargar documentos iniciales y aceptar la propuesta en línea.</dd>
-              <dt>Entregable o evidencia</dt>
-              <dd>Datos confirmados, RUT, Cámara de Comercio, cédula del representante legal y aceptación registrada.</dd>
-              <dt>Finaliza cuando</dt>
-              <dd>El cliente confirma sus datos, sube documentos iniciales y acepta la propuesta en línea.</dd>
-            </dl>
+            <p>El cliente confirma datos, carga RUT, Cámara de Comercio y cédula, y acepta en línea.</p>
+            <p class="owner"><strong>Responsable:</strong> Cliente.</p>
+            <p class="done"><strong>Termina cuando:</strong> queda registrada la aceptación en el portal.</p>
           </article>
 
           <article class="entry-card">
-            <div class="mini-title">Momento 3</div>
+            <div class="entry-step">3</div>
             <h3>Revisión interna</h3>
-            <dl>
-              <dt>Responsable principal</dt>
-              <dd>Equipo Numbi.</dd>
-              <dt>Interactúan</dt>
-              <dd>Ventas, equipo operativo y portal.</dd>
-              <dt>Acción clave</dt>
-              <dd>Revisar la aceptación, los documentos y la evidencia registrada.</dd>
-              <dt>Entregable o evidencia</dt>
-              <dd>Datos, documentos y aceptación revisados.</dd>
-              <dt>Finaliza cuando</dt>
-              <dd>Se revisan los datos, documentos y evidencia de aceptación.</dd>
-            </dl>
+            <p>El equipo revisa datos, documentos y evidencia de aceptación.</p>
+            <p class="owner"><strong>Responsable:</strong> Equipo Numbi.</p>
+            <p class="done"><strong>Termina cuando:</strong> la información está validada para crear el cliente.</p>
           </article>
 
           <article class="entry-card">
-            <div class="mini-title">Momento 4</div>
-            <h3>Cliente creado en portal</h3>
-            <dl>
-              <dt>Responsable principal</dt>
-              <dd>Equipo Numbi.</dd>
-              <dt>Interactúan</dt>
-              <dd>Ventas.</dd>
-              <dt>Acción clave</dt>
-              <dd>Crear el cliente en el portal con la información inicial disponible.</dd>
-              <dt>Entregable o evidencia</dt>
-              <dd>Cliente creado en el portal y listo para iniciar onboarding.</dd>
-              <dt>Finaliza cuando</dt>
-              <dd>El cliente queda creado en el portal con la información inicial disponible para que el Gerente Contador prepare el pre-onboarding.</dd>
-            </dl>
+            <div class="entry-step">4</div>
+            <h3>Cliente creado</h3>
+            <p>El cliente queda creado en el portal con la información inicial disponible.</p>
+            <p class="owner"><strong>Responsable:</strong> Equipo Numbi.</p>
+            <p class="done"><strong>Termina cuando:</strong> el Gerente Contador ya puede preparar el pre-onboarding.</p>
           </article>
         </div>
 
-        <div class="message-strip">Cuando el cliente ya fue aceptado, revisado y creado en el portal, inicia la Etapa 1: el Gerente Contador prepara el pre-onboarding, revisa el contexto inicial y llega a la reunión con una hipótesis clara del cliente.</div>
+        <div class="entry-transition">Con el cliente creado en el portal, inicia la Etapa 1: el Gerente Contador prepara el pre-onboarding y llega a la reunión con una hipótesis inicial.</div>
       </div>
     </section>
 
