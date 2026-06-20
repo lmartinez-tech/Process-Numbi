@@ -1332,20 +1332,13 @@
     <div class="wrap top">
       <div class="logo">num<span>bi</span></div>
       <nav aria-label="Secciones">
-        <a href="#por-que">Contexto</a>
-        <a href="#objetivo">Objetivo</a>
-        <a href="#manual">Uso del manual</a>
-        <a href="#antes-despues">Reglas</a>
-        <a href="#presentacion">Flujo</a>
-        <a href="#rutas">Rutas</a>
-        <a href="#participacion">Roles</a>
+        <a href="#inicio-rapido">Inicio</a>
         <a href="#trabajo-rol">Vistas por rol</a>
-        <a href="#explicacion-onboarding">Onboarding</a>
-        <a href="#diagnostico">Ficha</a>
         <a href="#pasos">Etapas</a>
-        <a href="#herramientas">Herramientas</a>
-        <a href="#gobernanza">Gobernanza</a>
-        <a href="#seguimiento">Bitácora</a>
+        <a href="#rutas">Rutas</a>
+        <a href="#herramientas">Evidencias</a>
+        <a href="#correos">Comunicación</a>
+        <a href="#gobernanza">Escalamiento</a>
         <a href="#cierre">Cierre</a>
       </nav>
     </div>
@@ -1356,13 +1349,73 @@
       <div class="wrap">
         <span class="label">Manual operativo · Setup contable</span>
         <h1>Manual de Onboarding y Setup Contable Numbi</h1>
-        <p class="hero-copy">Manual madre con vistas por rol para que cada persona entienda qué hacer, cuándo intervenir, qué entregar, qué documentar y cuándo escalar para lograr satisfacción alta y un NPS colectivo de 40 o más, alineado con lo prometido a los fondos.</p>
+        <p class="hero-copy">Herramienta operativa para entrar por rol o por etapa y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.</p>
         <div class="message-strip">Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.</div>
         <div class="hero-grid">
           <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
           <div class="stat"><strong>1</strong><span>ficha para orientar setup</span></div>
         </div>
+      </div>
+    </section>
+
+    <section id="inicio-rapido">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Inicio rápido</span>
+          <div>
+            <h2>Elige cómo quieres entrar al manual</h2>
+            <p>Una sola verdad del proceso, dos entradas de trabajo: por rol o por etapa del cliente.</p>
+          </div>
+        </div>
+        <div class="cards-2">
+          <article class="card">
+            <div class="mini-title">A. Entrar por rol</div>
+            <h3>Soy...</h3>
+            <p>Usa esta entrada si quieres ver solo lo que te toca hacer, recibir, entregar, documentar o escalar.</p>
+            <div class="role-tabs" style="margin-top:12px">
+              <button type="button" data-entry-role="Soy Ventas">Ventas</button>
+              <button type="button" data-entry-role="Soy Onboarding">Onboarding</button>
+              <button type="button" data-entry-role="Soy Gerente Contador">Gerente Contador</button>
+              <button type="button" data-entry-role="Soy Contador Designado">Contador Designado</button>
+              <button type="button" data-entry-role="Soy Auxiliar Contable">Auxiliar Contable</button>
+              <button type="button" data-entry-role="Soy Nómina">Nómina</button>
+              <button type="button" data-entry-role="Soy Country Manager">Country Manager</button>
+              <button type="button" data-entry-role="Soy Cliente">Cliente</button>
+            </div>
+          </article>
+          <article class="card">
+            <div class="mini-title">B. Entrar por etapa</div>
+            <h3>El cliente está en...</h3>
+            <p>Usa esta entrada si quieres ubicar la etapa, revisar criterios de avance, bloqueos, evidencia y comunicación.</p>
+            <div class="role-tabs" style="margin-top:12px">
+              <button type="button" data-entry-phase="0" data-entry-target="#explicacion-onboarding">Pre-onboarding</button>
+              <button type="button" data-entry-phase="0" data-entry-target="#explicacion-onboarding">Onboarding</button>
+              <button type="button" data-entry-phase="1" data-entry-target="#pasos">Set Up</button>
+              <button type="button" data-entry-phase="5" data-entry-target="#pasos">Salida a operación</button>
+              <button type="button" data-entry-phase="5" data-entry-target="#cierre">Operación recurrente</button>
+            </div>
+          </article>
+        </div>
+        <div class="cards-3" style="margin-top:14px">
+          <article class="card"><div class="mini-title">Qué es</div><p>Un manual operativo único para ejecutar onboarding, setup, salida a operación y transición al flujo recurrente.</p></article>
+          <article class="card"><div class="mini-title">Cómo se usa</div><p>Entra por tu rol o por la etapa del cliente. Revisa checklist, evidencia, bloqueo y escalamiento antes de avanzar.</p></article>
+          <article class="card"><div class="mini-title">Lógica</div><p>El proceso madre vive una sola vez; cada vista filtra lo que corresponde a cada rol.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="trabajo-rol">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Vistas por rol</span>
+          <div>
+            <h2>Qué debo hacer según mi rol</h2>
+            <p>Selecciona una vista. El contenido se deriva del mismo proceso madre y muestra solo participación, entregables, documentación, escalamiento y límites de ese rol.</p>
+          </div>
+        </div>
+        <div class="role-tabs" id="roleTabs" aria-label="Seleccionar vista por rol"></div>
+        <div class="role-view" id="roleViewPanel"></div>
       </div>
     </section>
 
@@ -1543,8 +1596,8 @@
         <div class="section-title" style="margin-top:42px">
           <span class="label">Criterio de experiencia</span>
           <div>
-            <h2>NPS colectivo 40+ significa claridad, confianza y acompañamiento</h2>
-            <p>El manual busca que el cliente entienda la ruta, reciba comunicación visible y tenga un cierre formal antes de pasar a operación. El indicador principal es el NPS colectivo, con meta de 40 o más.</p>
+            <h2>Experiencia 9+ significa claridad, confianza y acompañamiento</h2>
+            <p>El manual busca que el cliente entienda la ruta, reciba comunicación visible y tenga un cierre formal antes de pasar a operación. La meta operativa es calificación 9 o más con comentarios sobre orden, claridad, acompañamiento y buen servicio.</p>
           </div>
         </div>
         <div class="nps-layout">
@@ -1577,7 +1630,7 @@
           <div><strong>Momento</strong><span>Al finalizar el onboarding/setup contable y antes de pasar el cliente a Operación.</span></div>
           <div><strong>Responsable</strong><span>Gerente Contador; el dashboard registra la respuesta.</span></div>
           <div><strong>Pregunta sugerida</strong><span>“Del 1 al 10, donde 1 es nada y 10 es mucho, ¿qué tanto recomendarías a Numbi a otra persona?”</span></div>
-          <div><strong>Indicador principal</strong><span>NPS colectivo con meta de 40 o más; si hay señales bajas, registrar causa y acordar recuperación.</span></div>
+          <div><strong>Indicador principal</strong><span>Calificación 9 o más; si hay señales bajas, registrar causa y acordar recuperación antes del handoff.</span></div>
         </div>
       </div>
     </section>
@@ -1646,20 +1699,6 @@
             <p>Recibe una vista externa: qué debe entregar, qué puede esperar, cómo se le informan avances y cuándo cierra el setup.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section id="trabajo-rol">
-      <div class="wrap">
-        <div class="section-title">
-          <span class="label">Vistas por rol</span>
-          <div>
-            <h2>Qué debo hacer según mi rol</h2>
-            <p>Selecciona una vista. El contenido se deriva del mismo proceso madre y muestra solo participación, entregables, documentación, escalamiento y límites de ese rol.</p>
-          </div>
-        </div>
-        <div class="role-tabs" id="roleTabs" aria-label="Seleccionar vista por rol"></div>
-        <div class="role-view" id="roleViewPanel"></div>
       </div>
     </section>
 
@@ -1824,9 +1863,9 @@
                 <p id="routeText">Para clientes con información ordenada, baja complejidad y pocos focos de control.</p>
               </div>
               <div class="chips">
-                <span class="chip" id="slaChip">SLA: 15 días hábiles</span>
+                <span class="chip" id="slaChip">SLA: según clasificación</span>
                 <span class="chip blue" id="auditChip">Validación inicial</span>
-                <span class="chip" id="npsChip">Meta: NPS 40+</span>
+                <span class="chip" id="npsChip">Meta: 9+</span>
               </div>
             </div>
             <div class="route-compact-grid">
@@ -2503,7 +2542,6 @@
 
     const pendingDecisions = [
       ["RACI oficial no adjunta", "No se puede validar A/R definitivo por actividad.", "Usar roles actuales como borrador y validar con matriz oficial."],
-      ["Métrica NPS", "La instrucción de presentación pide NPS colectivo 40+, pero el proceso fuente menciona NPS 9+ por cliente.", "Confirmar si conviven como métrica colectiva y pulso individual, o si una reemplaza a la otra."],
       ["Regla de pausa/recalculo de SLA", "El manual menciona SLA desde documentos completos, pero no define eventos de pausa aprobados.", "Definir política de SLA por faltantes del cliente y cambios de alcance."],
       ["Responsable accountable de parametrización/migración", "No hay RACI oficial visible para confirmar A único.", "Validar si A queda en Gerente Contador u Operaciones."],
       ["Matching Gerente-Cliente", "El proceso indica asignación por capacidad y criterio del Country Manager, con regla de personalidad aún informal.", "Formalizar criterios cuando existan datos de los primeros casos reales."],
@@ -2814,7 +2852,6 @@
           <div class="mini-title">Vista filtrada</div>
           <h3>${active.role}</h3>
           <p>${active.summary}</p>
-          <div class="message-strip" style="font-size:16px;margin-bottom:0">Esta vista no crea un manual distinto: filtra el proceso madre para este rol.</div>
         </article>
         <div class="step-manual">
           <div class="role-section"><strong>Cuándo participa</strong>${list(active.participates)}</div>
@@ -2825,6 +2862,7 @@
           <div class="role-section"><strong>Qué debe documentar</strong>${list(active.documents)}</div>
           <div class="role-section"><strong>Cuándo debe escalar</strong>${list(active.escalates)}</div>
           <div class="role-section"><strong>Qué no debe hacer</strong>${list(active.notDo)}</div>
+          <div class="role-section"><strong>Checklist mínimo</strong>${list(active.checklist || active.does)}</div>
         </div>
       `;
     }
@@ -2923,6 +2961,8 @@
               <div class="meta-box"><strong>Etapas que aplican</strong><span>${applies}</span></div>
               <div class="meta-box"><strong>No aplica</strong><span>${skipped}</span></div>
               <div class="meta-box"><strong>Resultado esperado</strong><span>${route.ritual}</span></div>
+              <div class="meta-box"><strong>Puede cambiar si</strong><span>Aparecen red flags, documentos incompletos, saldos no confiables o cambio de alcance.</span></div>
+              <div class="meta-box"><strong>Dashboard</strong><span>El Gerente Contador actualiza la clasificación final, SLA y ruta activa.</span></div>
             </div>
           </article>
         `;
@@ -2962,6 +3002,12 @@
               <div class="meta-box"><strong>Responsables</strong><span>${phase.participants}</span></div>
               <div class="meta-box"><strong>Cuándo inicia</strong><span>${phase.moment}</span></div>
               <div class="meta-box"><strong>Entregable</strong><span>${phase.outcome}</span></div>
+            </div>
+            <div class="phase-meta">
+              <div class="meta-box"><strong>Documentos requeridos</strong><span>${phase.documents || phase.items.join(", ")}</span></div>
+              <div class="meta-box"><strong>Criterios para avanzar</strong><span>${phase.advance || phase.outcome}</span></div>
+              <div class="meta-box"><strong>Criterios de bloqueo</strong><span>${phase.blockers || "Pendientes críticos, falta de evidencia o bloqueo sin responsable."}</span></div>
+              <div class="meta-box"><strong>Comunicación al cliente</strong><span>${phase.communication || "Informar estado, pendiente, responsable y siguiente hito cuando aplique."}</span></div>
             </div>
             <div class="subphase-list">
               ${phase.subphases.map((subphase, subIndex) => `<div class="subphase"><strong>${index + 1}.${subIndex + 1}</strong><span>${subphase}</span></div>`).join("")}
@@ -3153,6 +3199,26 @@
     });
 
     document.addEventListener("click", event => {
+      const entryRole = event.target.closest("[data-entry-role]");
+      if (entryRole) {
+        state.activeRole = entryRole.dataset.entryRole;
+        renderRoleWork();
+        const target = $("trabajo-rol");
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const entryPhase = event.target.closest("[data-entry-phase]");
+      if (entryPhase) {
+        state.focusedPhase = Number(entryPhase.dataset.entryPhase);
+        renderSteps();
+        bindChecks();
+        renderProgress();
+        const target = document.querySelector(entryPhase.dataset.entryTarget || "#pasos");
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
       const roleButton = event.target.closest("[data-role-view]");
       if (!roleButton) return;
       state.activeRole = roleButton.dataset.roleView;
