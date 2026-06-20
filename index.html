@@ -1402,10 +1402,6 @@
     }
 
     .subphase {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 9px;
-      align-items: start;
       padding: 9px 10px;
       border-left: 3px solid var(--blue);
       background: var(--blue-soft);
@@ -1413,9 +1409,29 @@
       font-size: 13px;
     }
 
+    .subphase summary {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 9px;
+      align-items: start;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .subphase summary::-webkit-details-marker {
+      display: none;
+    }
+
     .subphase strong {
       color: var(--blue);
       white-space: nowrap;
+    }
+
+    .subphase .checklist {
+      grid-template-columns: 1fr;
+      margin: 10px 0 0 31px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(13, 94, 232, .14);
     }
 
     .cards-3 {
@@ -3299,18 +3315,25 @@
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
     }
 
-    function renderPhaseDetail(phase) {
-      if (!phase.detailGroups) return "";
-      return `
-        <div class="phase-detail">
-          ${phase.detailGroups.map(group => `
-            <div class="phase-detail-block">
-              <strong>${group.title}</strong>
-              <ol>${group.steps.map(step => `<li>${step}</li>`).join("")}</ol>
-            </div>
-          `).join("")}
-        </div>
-      `;
+    function renderSubphases(phase, phaseIndex, active) {
+      if (phase.detailGroups) {
+        let itemIndex = 0;
+        return phase.detailGroups.map((group, groupIndex) => {
+          const checks = group.steps.map(step => check(`phase-${phaseIndex}-${itemIndex++}`, step, active)).join("");
+          return `
+            <details class="subphase">
+              <summary><strong>${phaseIndex + 1}.${groupIndex + 1}</strong><span>${group.title}</span></summary>
+              <div class="checklist">${checks}</div>
+            </details>
+          `;
+        }).join("");
+      }
+      return phase.subphases.map((subphase, subIndex) => `
+        <details class="subphase">
+          <summary><strong>${phaseIndex + 1}.${subIndex + 1}</strong><span>${subphase}</span></summary>
+          <div class="checklist">${check(`phase-${phaseIndex}-${subIndex}`, phase.items[subIndex] || subphase, active)}</div>
+        </details>
+      `).join("");
     }
 
     function list(items, ordered = false) {
@@ -3465,7 +3488,6 @@
       $("steps").innerHTML = phases.map((phase, index) => {
         if (state.focusedPhase !== index) return "";
         const active = applies(phase);
-        const checklistItems = phase.detailGroups ? phase.detailGroups.flatMap(group => group.steps) : phase.items;
         return `
         <article class="step ${state.viewMode === "summary" ? "summary" : ""} ${active ? "" : "dimmed"}">
           <div class="num">${index + 1}</div>
@@ -3479,11 +3501,8 @@
               <div class="meta-box"><strong>Entregable</strong><span>${phase.outcome}</span></div>
             </div>
             <div class="subphase-list">
-              ${phase.subphases.map((subphase, subIndex) => `<div class="subphase"><strong>${index + 1}.${subIndex + 1}</strong><span>${subphase}</span></div>`).join("")}
+              ${renderSubphases(phase, index, active)}
             </div>
-            ${renderPhaseDetail(phase)}
-            <div class="mini-title">Paso a paso completo / evidencia</div>
-            <div class="checklist">${checklistItems.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item, active)).join("")}</div>
           </div>
           <div class="sla">${phase.sla}</div>
         </article>
