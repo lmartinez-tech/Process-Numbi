@@ -2063,12 +2063,53 @@
             <div class="close-card-block wide">
               <h3>Preguntas clave</h3>
               <p>El gerente valida la hipótesis con preguntas sobre operación, ingresos, costos, cartera, bancos, nómina, inventarios y software.</p>
-              <div class="chips">
-                <span class="chip">Preguntas base</span>
-                <span class="chip">Servicios / Mixto</span>
-                <span class="chip">Comercial / Industrial</span>
-                <span class="chip">Industrial</span>
-              </div>
+              <details class="compact-detail" open>
+                <summary>Preguntas base para todos los clientes</summary>
+                <div class="question-grid">
+                  <div class="question-mini"><strong>¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?</strong><p>Valida: hipótesis previa.</p><span>Activa: reclasificación del cliente.</span></div>
+                  <div class="question-mini"><strong>¿Cómo se genera el ingreso principal: producto, servicio, contrato, proyecto, fabricación o mezcla?</strong><p>Valida: modelo de ingreso.</p><span>Activa: ingresos, costos y centros de costo.</span></div>
+                  <div class="question-mini"><strong>¿Qué tiene que pasar antes de facturar?</strong><p>Valida: regla de facturación.</p><span>Activa: ingresos, anticipos e ingresos por cobrar.</span></div>
+                  <div class="question-mini"><strong>¿Quiénes son sus clientes y cómo pagan?</strong><p>Valida: tipo de cartera.</p><span>Activa: cartera, retenciones, provisión y recaudos.</span></div>
+                  <div class="question-mini"><strong>¿Qué costos son indispensables para generar esos ingresos?</strong><p>Valida: costos directos.</p><span>Activa: costo de ventas, nómina y proveedores.</span></div>
+                  <div class="question-mini"><strong>¿Necesitan rentabilidad por proyecto, sede, cliente, contrato o línea de negocio?</strong><p>Valida: segmentación.</p><span>Activa: centros de costo.</span></div>
+                  <div class="question-mini"><strong>¿Qué compras son críticas para operar?</strong><p>Valida: proveedores y costos.</p><span>Activa: inventarios, gastos y retenciones.</span></div>
+                  <div class="question-mini"><strong>¿Cómo está dividido el equipo entre administración, ventas y operación?</strong><p>Valida: nómina.</p><span>Activa: costo laboral vs gasto.</span></div>
+                  <div class="question-mini"><strong>¿Por dónde ingresa y se retira el dinero?</strong><p>Valida: bancos y caja.</p><span>Activa: conciliación, socios, caja menor y préstamos.</span></div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Servicios / Mixto</summary>
+                <div class="question-grid">
+                  <div class="question-mini"><strong>¿Cobran antes, durante o después de prestar el servicio?</strong><p>Valida: anticipos o cartera.</p><span>Activa: ingresos y anticipos.</span></div>
+                  <div class="question-mini"><strong>¿Trabajan por mensualidad, contrato, bolsa de horas, hito o proyecto?</strong><p>Valida: reconocimiento de ingresos.</p><span>Activa: ingresos por contrato o proyecto.</span></div>
+                  <div class="question-mini"><strong>¿Quién ejecuta directamente el servicio?</strong><p>Valida: operación del servicio.</p><span>Activa: nómina como costo.</span></div>
+                  <div class="question-mini"><strong>¿Subcontratan parte del servicio?</strong><p>Valida: costos directos del servicio.</p><span>Activa: contratos de servicios y proveedores.</span></div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Comercial / Industrial / Mixto</summary>
+                <div class="question-grid">
+                  <div class="question-mini"><strong>¿Cómo controlan inventario: sistema, Excel o conteo físico?</strong><p>Valida: confiabilidad del inventario.</p><span>Activa: inventarios y saldos iniciales.</span></div>
+                  <div class="question-mini"><strong>¿Cómo determinan el costo de ventas o costo unitario?</strong><p>Valida: margen y costeo.</p><span>Activa: costo de ventas y costeo.</span></div>
+                  <div class="question-mini"><strong>¿Tienen bodegas, sedes, canales o líneas de negocio distintas?</strong><p>Valida: segmentación operativa.</p><span>Activa: bodegas, centros de costo y reportes gerenciales.</span></div>
+                  <div class="question-mini"><strong>¿Hay devoluciones, garantías, descuentos, mermas o reprocesos frecuentes?</strong><p>Valida: ajustes de venta, inventario o costo.</p><span>Activa: notas crédito, inventarios y costo.</span></div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Comercial / Industrial</summary>
+                <div class="question-grid">
+                  <div class="question-mini"><strong>¿Compran productos importados o en moneda extranjera?</strong><p>Valida: complejidad tributaria.</p><span>Activa: importaciones, TRM, nacionalización e impuestos.</span></div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Industrial</summary>
+                <div class="question-grid">
+                  <div class="question-mini"><strong>¿Qué materias primas compran y cómo se transforman en producto terminado?</strong><p>Valida: proceso productivo.</p><span>Activa: materia prima, producto en proceso y producto terminado.</span></div>
+                  <div class="question-mini"><strong>¿Qué personal participa directamente en la producción?</strong><p>Valida: mano de obra directa.</p><span>Activa: MOD.</span></div>
+                  <div class="question-mini"><strong>¿Qué costos indirectos requiere la planta?</strong><p>Valida: costos indirectos de fabricación.</p><span>Activa: CIF, servicios, mantenimiento y depreciación.</span></div>
+                  <div class="question-mini"><strong>¿La maquinaria productiva está identificada y depreciada?</strong><p>Valida: activos productivos.</p><span>Activa: activos fijos, depreciación y costo indirecto.</span></div>
+                </div>
+              </details>
             </div>
 
             <div class="close-card-block">
@@ -2090,42 +2131,22 @@
               <h3>Matriz rápida de foco obligatorio</h3>
               <p>Usa esta guía para traducir lo que dice el cliente en revisiones concretas.</p>
               <details class="compact-detail">
-                <summary>Inventarios, producción y costos</summary>
+                <summary>Ver matriz de focos obligatorios</summary>
                 <div class="audit-matrix">
                   <div class="matrix-item"><strong>Inventarios →</strong> inventario físico, costo de ventas, ajustes y saldos iniciales.</div>
                   <div class="matrix-item"><strong>Producción →</strong> materia prima, producto en proceso, producto terminado, MOD y CIF.</div>
-                  <div class="matrix-item"><strong>Maquinaria productiva →</strong> activos fijos, depreciación y costo indirecto.</div>
-                </div>
-              </details>
-              <details class="compact-detail">
-                <summary>Ingresos y cartera</summary>
-                <div class="audit-matrix">
                   <div class="matrix-item"><strong>Proyectos →</strong> centros de costo, ingresos por proyecto y costos asociados.</div>
                   <div class="matrix-item"><strong>Anticipos de clientes →</strong> pasivos por anticipos e ingresos reconocidos.</div>
                   <div class="matrix-item"><strong>Facturación por hitos →</strong> ingresos por avance, soportes y cartera.</div>
                   <div class="matrix-item"><strong>Ventas a crédito →</strong> cartera, provisión, recaudos y retenciones.</div>
-                </div>
-              </details>
-              <details class="compact-detail">
-                <summary>Bancos, socios e impuestos</summary>
-                <div class="audit-matrix">
                   <div class="matrix-item"><strong>Importaciones →</strong> proveedores del exterior, TRM, nacionalización e impuestos.</div>
+                  <div class="matrix-item"><strong>Nómina operativa →</strong> separación entre costo y gasto.</div>
                   <div class="matrix-item"><strong>Cuentas personales de socios →</strong> bancos, socios, préstamos y gastos sin soporte.</div>
                   <div class="matrix-item"><strong>Impuestos pendientes →</strong> declaraciones, pagos, sanciones y conciliación contable.</div>
-                </div>
-              </details>
-              <details class="compact-detail">
-                <summary>Software y saldos iniciales</summary>
-                <div class="audit-matrix">
                   <div class="matrix-item"><strong>Software anterior →</strong> saldos iniciales, auxiliares y exportación de información.</div>
                   <div class="matrix-item"><strong>Contabilidad no confiable →</strong> auditoría de saldos o reconstrucción.</div>
                   <div class="matrix-item"><strong>Estados financieros sin soporte →</strong> no aceptar saldos iniciales sin validación.</div>
-                </div>
-              </details>
-              <details class="compact-detail">
-                <summary>Operación y centros de costo</summary>
-                <div class="audit-matrix">
-                  <div class="matrix-item"><strong>Nómina operativa →</strong> separación entre costo y gasto.</div>
+                  <div class="matrix-item"><strong>Maquinaria productiva →</strong> activos fijos, depreciación y costo indirecto.</div>
                   <div class="matrix-item"><strong>Múltiples sedes o líneas →</strong> centros de costo y reportes gerenciales.</div>
                 </div>
               </details>
@@ -2133,31 +2154,11 @@
 
             <div class="close-card-block wide">
               <h3>Ejemplos rápidos</h3>
-              <div class="example-accordion">
-                <details class="compact-detail">
-                  <summary>Cliente comercial</summary>
-                  <div class="question-grid">
-                    <div class="question-mini"><strong>Diagnóstico</strong><p>Inventario y ventas por varios canales. Revisar inventario, costo de ventas, proveedores, facturación electrónica, devoluciones, cartera e IVA antes de migrar.</p><span>Validar saldos de inventario, auxiliares y declaraciones recientes.</span></div>
-                  </div>
-                </details>
-                <details class="compact-detail">
-                  <summary>Cliente de servicios</summary>
-                  <div class="question-grid">
-                    <div class="question-mini"><strong>Diagnóstico</strong><p>Servicios por proyectos. Revisar ingresos por contrato, anticipos, cartera, nómina operativa, subcontratistas y centros de costo.</p><span>Validar si reconoce por factura, avance o prestación real.</span></div>
-                  </div>
-                </details>
-                <details class="compact-detail">
-                  <summary>Cliente industrial</summary>
-                  <div class="question-grid">
-                    <div class="question-mini"><strong>Diagnóstico</strong><p>No tratar como setup básico. Revisar materia prima, producto en proceso, terminado, MOD, CIF, maquinaria, depreciación y método de costeo.</p><span>Si no hay costeo confiable, evaluar parametrización avanzada o reconstrucción parcial.</span></div>
-                  </div>
-                </details>
-                <details class="compact-detail">
-                  <summary>Riesgo de reconstrucción</summary>
-                  <div class="question-grid">
-                    <div class="question-mini"><strong>Diagnóstico</strong><p>Operación activa con pasado contable no confiable, cierres atrasados o soportes incompletos.</p><span>No aceptar saldos iniciales sin auditar bancos, cartera, proveedores, impuestos, socios y patrimonio.</span></div>
-                  </div>
-                </details>
+              <div class="cards-2">
+                <article class="example-mini"><strong>Cliente comercial</strong><p>Inventario y ventas por varios canales. Revisar inventario, costo de ventas, proveedores, facturación electrónica, devoluciones, cartera e IVA antes de migrar.</p></article>
+                <article class="example-mini"><strong>Cliente de servicios</strong><p>Servicios por proyectos. Revisar ingresos por contrato, anticipos, cartera, nómina operativa, subcontratistas y centros de costo.</p></article>
+                <article class="example-mini"><strong>Cliente industrial</strong><p>No tratar como setup básico. Revisar materia prima, producto en proceso, terminado, MOD, CIF, maquinaria, depreciación y método de costeo.</p></article>
+                <article class="example-mini"><strong>Riesgo de reconstrucción</strong><p>Pasado contable no confiable. No aceptar saldos iniciales sin auditar bancos, cartera, proveedores, impuestos, socios y patrimonio.</p></article>
               </div>
             </div>
 
