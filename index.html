@@ -988,6 +988,7 @@
 
     .step.summary .phase-meta,
     .step.summary .subphase-list,
+    .step.summary .phase-detail,
     .step.summary .checklist {
       display: none;
     }
@@ -1029,6 +1030,34 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 9px;
       margin-top: 10px;
+    }
+
+    .phase-detail {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .phase-detail-block {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: var(--blue-soft);
+      padding: 12px 14px;
+    }
+
+    .phase-detail-block strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .phase-detail-block ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--ink);
+      font-size: 14px;
     }
 
     .check {
@@ -2390,7 +2419,24 @@
         moment: "Después de la firma y de la fase de pre-onboarding",
         outcome: "Ficha de diagnóstico entregada al contador para iniciar la auditoría",
         subphases: ["Pre-onboarding", "Onboarding"],
-        items: ["Acta y hoja de vida", "Contador asignado", "Ficha de diagnóstico", "Fecha de documentos", "Correo automático"]
+        detailGroups: [
+          {
+            title: "1 — Onboarding",
+            steps: [
+              "Preparar correo de Formato Post Onboarding antes de la reunión y enviarlo durante la reunión.",
+              "Activación inmediata en Siigo o Alegra.",
+              "Reunión de onboarding con el Gerente Contable.",
+              "Asignación del contador por parte del Gerente Contable.",
+              "Envío del Formato Post-Onboarding / FDP con requerimiento de documentos por email.",
+              "Proyectar checklist de información que Numbi debe revisar.",
+              "Definir con el cliente la fecha final de entrega del checklist.",
+              "Informar siguientes pasos según la clasificación del cliente y los tiempos esperados.",
+              "Advertir que el plan de trabajo depende de los hallazgos.",
+              "Enviar correo automático con acta, resumen y acuerdos al finalizar onboarding."
+            ]
+          }
+        ],
+        items: ["Preparar correo de Formato Post Onboarding", "Activación inmediata en Siigo o Alegra", "Reunión de onboarding con Gerente Contable", "Contador asignado", "Formato Post-Onboarding / FDP enviado", "Checklist proyectado", "Fecha final de entrega definida", "Siguientes pasos informados", "Advertencia de hallazgos comunicada", "Correo automático con acta, resumen y acuerdos"]
       },
       {
         name: "Recepción y validación",
@@ -2400,7 +2446,32 @@
         moment: "Después del onboarding, si existe pasado contable",
         outcome: "Documentos completos y saldos listos para revisión",
         subphases: ["Recepción y validación inicial", "Validación de saldos y soportes"],
-        items: ["Documentos recibidos", "Pendientes notificados", "WhatsApp actualizado", "Dudas resueltas"]
+        detailGroups: [
+          {
+            title: "2.1 — Recepción y validación inicial",
+            steps: [
+              "El cliente envía la información solicitada.",
+              "Se revisa si la información está completa o incompleta.",
+              "Si está incompleta, se identifican documentos, soportes o datos pendientes.",
+              "Se solicita y notifica por correo al cliente la información pendiente.",
+              "Se deja mensaje en el grupo de WhatsApp notificando avance y pendientes.",
+              "El contador revisa la información entregada.",
+              "Si hay dudas, se agenda reunión con el cliente."
+            ]
+          },
+          {
+            title: "2.2 — Auditoría Express / revisión de primer grado",
+            steps: [
+              "El contador realiza Auditoría Express.",
+              "El contador requiere mínimo 1 día hábil para validar que los saldos sean confiables.",
+              "Se analizan documentos, saldos, soportes y reportes suministrados.",
+              "Si hay dudas, se agenda reunión con el cliente.",
+              "Se reportan resultados de Auditoría Express en un informe.",
+              "El informe sirve para definir si el proceso continúa normalmente o requiere revisión profunda."
+            ]
+          }
+        ],
+        items: ["Información enviada por el cliente", "Integridad revisada", "Pendientes identificados", "Correo de pendientes enviado", "WhatsApp actualizado", "Información revisada por contador", "Reunión agendada si hay dudas", "Auditoría Express realizada", "Saldos validados mínimo 1 día hábil", "Documentos, saldos y soportes analizados", "Informe de Auditoría Express emitido", "Continuidad o revisión profunda definida"]
       },
       {
         name: "Auditoría",
@@ -2410,7 +2481,40 @@
         moment: "Cuando existen red flags antes de aceptar saldos, migrar o definir reconstrucción",
         outcome: "Informe, dictamen y decisión post auditoría",
         subphases: ["Revisión profunda", "Decisión post auditoría"],
-        items: ["Red flags documentados", "Informe de resultados", "Dictamen si aplica", "Plan de acción", "Recotización si aplica"]
+        detailGroups: [
+          {
+            title: "3.1 — Auditoría de control / auditoría profunda",
+            steps: [
+              "Si el contador detecta contabilidad errada, se activa Auditoría de Control.",
+              "Se coordina reunión con el auditor dentro de los 4 días siguientes a la recepción de documentos.",
+              "El auditor analiza la información suministrada por el cliente.",
+              "El auditor revisa el informe de Auditoría Express o auditoría de primer grado.",
+              "Se define estrategia y plan de acción para reconstrucción o corrección, incluyendo plan de trabajo, responsables y fechas.",
+              "El Gerente Contable supervisa que el proceso se lleve a cabo.",
+              "Se realiza auditoría de segundo grado.",
+              "El Gerente Contable entrega status semanal al cliente.",
+              "El Gerente Contable responde preguntas del cliente sobre proceso y status.",
+              "El Gerente Contable define cuándo es necesario involucrar al cliente.",
+              "El auditor prepara dictamen de auditoría.",
+              "El departamento de auditoría entrega informe de hallazgos.",
+              "El dictamen se presenta al Gerente Contable y al contador."
+            ]
+          },
+          {
+            title: "3.2 — Decisión post auditoría",
+            steps: [
+              "Se define si se requiere reconstrucción o ajustes menores.",
+              "Si los hallazgos no son graves, el Gerente Contable ejecuta plan de acción sin ventas y sin cobro adicional.",
+              "El Gerente Contable presenta resultados de auditoría al cliente.",
+              "En la misma reunión, se presenta el plan de acción.",
+              "Se aclaran dudas del cliente sobre hallazgos, ajustes y próximos pasos.",
+              "Si los hallazgos son graves y pueden implicar costos adicionales, se activa protocolo de recotización por mal cierre; el Gerente Contable notifica al asesor de ventas y comunica la decisión al cliente.",
+              "Operaciones y ventas definen estrategia: ofrecer sin costo adicional o cobrar más.",
+              "Se comunica al cliente el impacto del hallazgo y el alcance del trabajo adicional."
+            ]
+          }
+        ],
+        items: ["Auditoría de Control activada si hay contabilidad errada", "Reunión con auditor coordinada dentro de 4 días", "Información del cliente analizada", "Informe de Auditoría Express revisado", "Estrategia y plan de acción definidos", "Supervisión del Gerente Contable", "Auditoría de segundo grado realizada", "Status semanal al cliente", "Preguntas del cliente respondidas", "Necesidad de involucrar cliente definida", "Dictamen preparado", "Informe de hallazgos entregado", "Dictamen presentado a Gerente Contable y contador", "Reconstrucción o ajustes menores definidos", "Plan ejecutado sin ventas si no hay gravedad", "Resultados presentados al cliente", "Plan de acción presentado", "Dudas aclaradas", "Recotización activada si hay hallazgos graves", "Estrategia definida por Operaciones y Ventas", "Impacto y alcance comunicados al cliente"]
       },
       {
         name: "Parametrización y migración",
@@ -2420,7 +2524,48 @@
         moment: "Después de validar saldos y alcance",
         outcome: "Software configurado, saldos iniciales cargados y listo para operar",
         subphases: ["Parametrización", "Migración", "Checklist mínimo de setup"],
-        items: ["Cuentas configuradas", "Facturación", "Centros de costo", "Migración validada", "Saldos iniciales"]
+        detailGroups: [
+          {
+            title: "4.1 — Parametrización",
+            steps: [
+              "Inicio de parametrización.",
+              "Se agenda con el equipo de parametrización el inicio del proceso.",
+              "Se supervisa el trabajo de parametrización.",
+              "Se coordinan reuniones si es necesario involucrar al cliente.",
+              "Se dan instrucciones al responsable para configurar correctamente el sistema.",
+              "Se parametriza Siigo o Alegra, según corresponda.",
+              "Se verifica que las cuentas hayan quedado bien parametrizadas y, si aplica, que la información esté migrada.",
+              "Se crean cuentas, sistema de facturación, centros de costos o inventarios si aplica; también se coordinan reuniones con Siigo o Alegra si el cliente necesita capacitación."
+            ]
+          },
+          {
+            title: "4.2 — Migración",
+            steps: [
+              "Inicio de migración.",
+              "Se agenda con parametrización el inicio de la migración.",
+              "Se dan instrucciones al responsable para realizar la migración.",
+              "Se supervisa el trabajo de parametrización y migración.",
+              "Se verifica que las cuentas hayan quedado bien parametrizadas.",
+              "Se verifica que la información haya sido correctamente migrada.",
+              "Se migran las cuentas.",
+              "Se crean saldos iniciales.",
+              "Se deja el software listo para operar.",
+              "Se documentan cuentas en Siigo o Alegra del año en curso y se deja el software actualizado para que el contador opere."
+            ]
+          },
+          {
+            title: "4.3 — Checklist mínimo de Set Up",
+            steps: [
+              "Checklist mínimo.",
+              "Software configurado.",
+              "Saldos iniciales cargados.",
+              "Capacitación al cliente entregada.",
+              "Primera factura emitida correctamente.",
+              "Primer estado financiero emitido correctamente."
+            ]
+          }
+        ],
+        items: ["Inicio de parametrización", "Inicio agendado con equipo de parametrización", "Parametrización supervisada", "Reuniones coordinadas si aplica", "Instrucciones dadas al responsable", "Siigo o Alegra parametrizado", "Cuentas verificadas", "Cuentas, facturación, centros de costo o inventarios creados", "Reuniones con Siigo o Alegra coordinadas si aplica", "Inicio de migración", "Migración agendada", "Instrucciones de migración dadas", "Parametrización y migración supervisadas", "Cuentas bien parametrizadas", "Información migrada verificada", "Cuentas migradas", "Saldos iniciales creados", "Software listo para operar", "Cuentas documentadas y software actualizado", "Checklist mínimo", "Software configurado", "Saldos iniciales cargados", "Capacitación entregada", "Primera factura correcta", "Primer estado financiero correcto"]
       },
       {
         name: "Reconstrucción contable",
@@ -2430,7 +2575,25 @@
         moment: "Solo después de auditoría profunda y dictamen",
         outcome: "Periodos reconstruidos, impuestos y estados financieros preparados",
         subphases: ["Definición de alcance y periodos", "Ejecución contable y conciliaciones", "Impuestos y estados financieros", "Validación y status diario"],
-        items: ["Alcance definido", "Causación", "Conciliación bancaria", "Impuestos", "Estados financieros", "Status diario"]
+        detailGroups: [
+          {
+            title: "5 — Reconstrucción contable",
+            steps: [
+              "Se define el alcance de la reconstrucción.",
+              "Se determina cuántos meses o años hacia atrás se trabajarán.",
+              "Se define si la reconstrucción corresponde a meses anteriores, años anteriores o periodos específicos.",
+              "Se ejecuta la reconstrucción contable de los periodos definidos.",
+              "Se supervisa el trabajo del auxiliar.",
+              "Se preparan los impuestos de la reconstrucción.",
+              "Se preparan los estados financieros de la reconstrucción.",
+              "Se coordinan reuniones si es necesario involucrar al cliente.",
+              "Se realiza la causación de los periodos a reconstruir.",
+              "Se realiza la conciliación bancaria de los periodos a reconstruir.",
+              "El auxiliar o responsable entrega status diario al contador."
+            ]
+          }
+        ],
+        items: ["Alcance definido", "Meses o años hacia atrás determinados", "Periodos específicos definidos", "Reconstrucción ejecutada", "Trabajo del auxiliar supervisado", "Impuestos preparados", "Estados financieros preparados", "Reuniones coordinadas si aplica", "Causación realizada", "Conciliación bancaria realizada", "Status diario entregado al contador"]
       },
       {
         name: "Salida a operación",
@@ -2440,7 +2603,49 @@
         moment: "Cuando sistema, saldos, factura y estado financiero están validados",
         outcome: "Cliente capacitado y etapa cambiada de Setup a Operación",
         subphases: ["Configuración de salida", "Capacitación al cliente", "Comunicación de cierre", "Cierre formal y transición"],
-        items: ["Software funcional", "Capacitación", "Primera factura", "Primer estado financiero", "Correo de cierre", "NPS"]
+        detailGroups: [
+          {
+            title: "6.1 — Configuración de salida del Set Up",
+            steps: [
+              "Se realiza la configuración de salida del Set Up.",
+              "Se revisa que el cliente quede listo para operar bajo el proceso contable definido.",
+              "Se valida que el sistema esté funcional."
+            ]
+          },
+          {
+            title: "6.2 — Capacitación al cliente",
+            steps: [
+              "Se realiza la capacitación al cliente.",
+              "Se explican los procesos operativos necesarios para llevar una contabilidad sana.",
+              "Se explica al cliente cómo debe entregar la información.",
+              "Se explica el uso del Portal Numbi para recepción de documentos.",
+              "Se informa la siguiente fecha de entrega de procesos, impuestos o estados financieros en el Portal Numbi.",
+              "Se aclaran dudas del cliente durante la capacitación.",
+              "Se deja disponible el grupo de WhatsApp para dudas.",
+              "Se comparte link de calendario para agendar llamada si hay dudas."
+            ]
+          },
+          {
+            title: "6.3 — Comunicación de cierre del Set Up",
+            steps: [
+              "Se envía correo de hito para confirmar que el Set Up salió bien.",
+              "En el correo se informa que el proceso fue configurado y validado.",
+              "Se confirma que el cliente queda listo para operar bajo el flujo normal.",
+              "Se deja trazabilidad de la finalización del Set Up."
+            ]
+          },
+          {
+            title: "6.4 — Cierre formal del proceso",
+            steps: [
+              "Se realiza el cierre del Set Up.",
+              "Se entregan los primeros estados financieros del mes de cierre.",
+              "Se valida que el primer estado financiero haya sido emitido correctamente.",
+              "Se confirma que el cliente queda en operación normal.",
+              "Se finaliza el Set Up y se transfiere al flujo recurrente de operación contable."
+            ]
+          }
+        ],
+        items: ["Configuración de salida realizada", "Cliente listo para operar revisado", "Sistema funcional validado", "Capacitación realizada", "Procesos operativos explicados", "Entrega de información explicada", "Portal Numbi explicado", "Siguiente fecha informada", "Dudas aclaradas", "WhatsApp disponible", "Link de calendario compartido", "Correo de hito enviado", "Proceso configurado y validado informado", "Cliente listo para flujo normal confirmado", "Trazabilidad de finalización registrada", "Cierre del Set Up realizado", "Primeros estados financieros entregados", "Primer estado financiero validado", "Operación normal confirmada", "Transferencia al flujo recurrente realizada"]
       }
     ];
 
@@ -2610,6 +2815,20 @@
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
     }
 
+    function renderPhaseDetail(phase) {
+      if (!phase.detailGroups) return "";
+      return `
+        <div class="phase-detail">
+          ${phase.detailGroups.map(group => `
+            <div class="phase-detail-block">
+              <strong>${group.title}</strong>
+              <ol>${group.steps.map(step => `<li>${step}</li>`).join("")}</ol>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
     function list(items, ordered = false) {
       const tag = ordered ? "ol" : "ul";
       return `<${tag}>${items.map(item => `<li>${item}</li>`).join("")}</${tag}>`;
@@ -2749,6 +2968,7 @@
       $("steps").innerHTML = phases.map((phase, index) => {
         if (state.focusedPhase !== index) return "";
         const active = applies(phase);
+        const checklistItems = phase.detailGroups ? phase.detailGroups.flatMap(group => group.steps) : phase.items;
         return `
         <article class="step ${state.viewMode === "summary" ? "summary" : ""} ${active ? "" : "dimmed"}">
           <div class="num">${index + 1}</div>
@@ -2764,8 +2984,9 @@
             <div class="subphase-list">
               ${phase.subphases.map((subphase, subIndex) => `<div class="subphase"><strong>${index + 1}.${subIndex + 1}</strong><span>${subphase}</span></div>`).join("")}
             </div>
-            <div class="mini-title">Acciones mínimas / evidencia</div>
-            <div class="checklist">${phase.items.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item, active)).join("")}</div>
+            ${renderPhaseDetail(phase)}
+            <div class="mini-title">Paso a paso completo / evidencia</div>
+            <div class="checklist">${checklistItems.map((item, itemIndex) => check(`phase-${index}-${itemIndex}`, item, active)).join("")}</div>
           </div>
           <div class="sla">${phase.sla}</div>
         </article>
