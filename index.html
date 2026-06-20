@@ -988,6 +988,43 @@
       font-weight: 800;
     }
 
+    .close-card-block .compact-detail {
+      margin-top: 10px;
+      background: white;
+    }
+
+    .audit-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .matrix-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .matrix-item strong {
+      color: var(--numbi-dark);
+    }
+
+    .example-accordion {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .example-accordion .compact-detail {
+      margin-top: 0;
+    }
+
     .action-row {
       display: flex;
       gap: 10px;
@@ -1547,7 +1584,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .close-card-grid, .question-grid, .field-grid, .focus-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .close-card-grid, .audit-matrix, .example-accordion, .question-grid, .field-grid, .focus-grid { grid-template-columns: 1fr; }
       .entry-card::after { display: none !important; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
@@ -2046,22 +2083,92 @@
 
             <div class="close-card-block highlight">
               <h3>Regla de decisión</h3>
-              <p>Si una respuesta afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos, socios o saldos iniciales, debe convertirse en foco obligatorio de revisión.</p>
+              <p>Si una respuesta del cliente afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos o saldos iniciales, esa respuesta debe convertirse en un foco de auditoría para el contador designado.</p>
+            </div>
+
+            <div class="close-card-block wide">
+              <h3>Matriz rápida de foco obligatorio</h3>
+              <p>Usa esta guía para traducir lo que dice el cliente en revisiones concretas.</p>
+              <details class="compact-detail">
+                <summary>Inventarios, producción y costos</summary>
+                <div class="audit-matrix">
+                  <div class="matrix-item"><strong>Inventarios →</strong> inventario físico, costo de ventas, ajustes y saldos iniciales.</div>
+                  <div class="matrix-item"><strong>Producción →</strong> materia prima, producto en proceso, producto terminado, MOD y CIF.</div>
+                  <div class="matrix-item"><strong>Maquinaria productiva →</strong> activos fijos, depreciación y costo indirecto.</div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Ingresos y cartera</summary>
+                <div class="audit-matrix">
+                  <div class="matrix-item"><strong>Proyectos →</strong> centros de costo, ingresos por proyecto y costos asociados.</div>
+                  <div class="matrix-item"><strong>Anticipos de clientes →</strong> pasivos por anticipos e ingresos reconocidos.</div>
+                  <div class="matrix-item"><strong>Facturación por hitos →</strong> ingresos por avance, soportes y cartera.</div>
+                  <div class="matrix-item"><strong>Ventas a crédito →</strong> cartera, provisión, recaudos y retenciones.</div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Bancos, socios e impuestos</summary>
+                <div class="audit-matrix">
+                  <div class="matrix-item"><strong>Importaciones →</strong> proveedores del exterior, TRM, nacionalización e impuestos.</div>
+                  <div class="matrix-item"><strong>Cuentas personales de socios →</strong> bancos, socios, préstamos y gastos sin soporte.</div>
+                  <div class="matrix-item"><strong>Impuestos pendientes →</strong> declaraciones, pagos, sanciones y conciliación contable.</div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Software y saldos iniciales</summary>
+                <div class="audit-matrix">
+                  <div class="matrix-item"><strong>Software anterior →</strong> saldos iniciales, auxiliares y exportación de información.</div>
+                  <div class="matrix-item"><strong>Contabilidad no confiable →</strong> auditoría de saldos o reconstrucción.</div>
+                  <div class="matrix-item"><strong>Estados financieros sin soporte →</strong> no aceptar saldos iniciales sin validación.</div>
+                </div>
+              </details>
+              <details class="compact-detail">
+                <summary>Operación y centros de costo</summary>
+                <div class="audit-matrix">
+                  <div class="matrix-item"><strong>Nómina operativa →</strong> separación entre costo y gasto.</div>
+                  <div class="matrix-item"><strong>Múltiples sedes o líneas →</strong> centros de costo y reportes gerenciales.</div>
+                </div>
+              </details>
             </div>
 
             <div class="close-card-block wide">
               <h3>Ejemplos rápidos</h3>
-              <div class="cards-2">
-                <article class="example-mini"><strong>Comercial</strong><p>Inventario, cartera, IVA y costo de ventas.</p></article>
-                <article class="example-mini"><strong>Servicios</strong><p>Contratos, anticipos, nómina y centros de costo.</p></article>
-                <article class="example-mini"><strong>Industrial</strong><p>Materia prima, MOD, CIF, maquinaria y costeo.</p></article>
-                <article class="example-mini"><strong>Reconstrucción</strong><p>Saldos no confiables y auditoría antes de aceptar saldos iniciales.</p></article>
+              <div class="example-accordion">
+                <details class="compact-detail">
+                  <summary>Cliente comercial</summary>
+                  <div class="question-grid">
+                    <div class="question-mini"><strong>Diagnóstico</strong><p>Inventario y ventas por varios canales. Revisar inventario, costo de ventas, proveedores, facturación electrónica, devoluciones, cartera e IVA antes de migrar.</p><span>Validar saldos de inventario, auxiliares y declaraciones recientes.</span></div>
+                  </div>
+                </details>
+                <details class="compact-detail">
+                  <summary>Cliente de servicios</summary>
+                  <div class="question-grid">
+                    <div class="question-mini"><strong>Diagnóstico</strong><p>Servicios por proyectos. Revisar ingresos por contrato, anticipos, cartera, nómina operativa, subcontratistas y centros de costo.</p><span>Validar si reconoce por factura, avance o prestación real.</span></div>
+                  </div>
+                </details>
+                <details class="compact-detail">
+                  <summary>Cliente industrial</summary>
+                  <div class="question-grid">
+                    <div class="question-mini"><strong>Diagnóstico</strong><p>No tratar como setup básico. Revisar materia prima, producto en proceso, terminado, MOD, CIF, maquinaria, depreciación y método de costeo.</p><span>Si no hay costeo confiable, evaluar parametrización avanzada o reconstrucción parcial.</span></div>
+                  </div>
+                </details>
+                <details class="compact-detail">
+                  <summary>Riesgo de reconstrucción</summary>
+                  <div class="question-grid">
+                    <div class="question-mini"><strong>Diagnóstico</strong><p>Operación activa con pasado contable no confiable, cierres atrasados o soportes incompletos.</p><span>No aceptar saldos iniciales sin auditar bancos, cartera, proveedores, impuestos, socios y patrimonio.</span></div>
+                  </div>
+                </details>
               </div>
             </div>
 
             <div class="close-card-block wide final">
               <h3>Cierre obligatorio</h3>
-              <p>El onboarding solo queda completo cuando existen tres cosas: clasificación del cliente, ruta de setup y focos obligatorios para el contador designado.</p>
+              <p>El onboarding se considera completo solo cuando se hayan entregado estos tres elementos: clasificación del cliente, ruta de setup recomendada y focos obligatorios de auditoría para el contador designado. Sin estos tres elementos, el onboarding queda incompleto.</p>
+            </div>
+
+            <div class="close-card-block wide">
+              <h3>Frase estándar del proceso</h3>
+              <p>El onboarding no busca saber qué hace el cliente; eso ya debió investigarse. El onboarding busca validar cómo opera, cómo factura, cómo cuesta, cómo cobra, cómo paga y qué tan confiable es su pasado contable. Con esa información se define dónde debe auditar obligatoriamente el contador designado.</p>
             </div>
           </div>
         </article>
