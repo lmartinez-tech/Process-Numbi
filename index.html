@@ -84,7 +84,21 @@
       border-radius: 6px;
     }
 
-    nav a:hover { background: var(--mint-soft); color: var(--numbi-dark); }
+    nav button {
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    nav a:hover,
+    nav button:hover { background: var(--mint-soft); color: var(--numbi-dark); }
+
+    [hidden] { display: none !important; }
 
     .hero {
       padding: 54px 0 42px;
@@ -1331,26 +1345,17 @@
   <header>
     <div class="wrap top">
       <div class="logo">num<span>bi</span></div>
-      <nav aria-label="Secciones">
-        <a href="#inicio-rapido">Inicio</a>
-        <a href="#trabajo-rol">Vistas por rol</a>
-        <a href="#pasos">Etapas</a>
-        <a href="#rutas">Rutas</a>
-        <a href="#herramientas">Evidencias</a>
-        <a href="#correos">Comunicación</a>
-        <a href="#gobernanza">Escalamiento</a>
-        <a href="#cierre">Cierre</a>
-      </nav>
+      <nav id="mainNav" aria-label="Secciones"></nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="wrap">
-        <span class="label">Manual operativo · Setup contable</span>
-        <h1>Manual de Onboarding y Setup Contable Numbi</h1>
-        <p class="hero-copy">Herramienta operativa para entrar por rol o por etapa y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.</p>
-        <div class="message-strip">Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.</div>
+        <span class="label" id="heroLabel">Manual operativo · Setup contable</span>
+        <h1 id="heroTitle">Manual de Onboarding y Setup Contable Numbi</h1>
+        <p class="hero-copy" id="heroCopy">Herramienta operativa para entrar por rol y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.</p>
+        <div class="message-strip" id="heroMessage">Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.</div>
         <div class="hero-grid">
           <div class="stat"><strong>6</strong><span>etapas del manual</span></div>
           <div class="stat"><strong>7</strong><span>combinaciones de ruta</span></div>
@@ -1365,7 +1370,7 @@
           <span class="label">Inicio rápido</span>
           <div>
             <h2>Elige cómo quieres entrar al manual</h2>
-            <p>Una sola verdad del proceso, dos entradas de trabajo: por rol o por etapa del cliente.</p>
+            <p>Una sola verdad del proceso: elige tu rol para entrar a tu manual operativo o abre el proceso completo cuando necesites ver la ruta madre.</p>
           </div>
         </div>
         <div class="cards-2">
@@ -1374,26 +1379,22 @@
             <h3>Soy...</h3>
             <p>Usa esta entrada si quieres ver solo lo que te toca hacer, recibir, entregar, documentar o escalar.</p>
             <div class="role-tabs" style="margin-top:12px">
-              <button type="button" data-entry-role="Soy Ventas">Ventas</button>
-              <button type="button" data-entry-role="Soy Onboarding">Onboarding</button>
-              <button type="button" data-entry-role="Soy Gerente Contador">Gerente Contador</button>
-              <button type="button" data-entry-role="Soy Contador Designado">Contador Designado</button>
-              <button type="button" data-entry-role="Soy Auxiliar Contable">Auxiliar Contable</button>
-              <button type="button" data-entry-role="Soy Nómina">Nómina</button>
-              <button type="button" data-entry-role="Soy Country Manager">Country Manager</button>
-              <button type="button" data-entry-role="Soy Cliente">Cliente</button>
+              <button type="button" data-select-role="ventas">Soy Ventas</button>
+              <button type="button" data-select-role="onboarding">Soy Onboarding</button>
+              <button type="button" data-select-role="gerente-contador">Soy Gerente Contador</button>
+              <button type="button" data-select-role="contador-designado">Soy Contador Designado</button>
+              <button type="button" data-select-role="auxiliar-contable">Soy Auxiliar Contable</button>
+              <button type="button" data-select-role="nomina">Soy Nómina</button>
+              <button type="button" data-select-role="country-manager">Soy Country Manager</button>
+              <button type="button" data-select-role="cliente">Soy Cliente</button>
             </div>
           </article>
           <article class="card">
-            <div class="mini-title">B. Entrar por etapa</div>
-            <h3>El cliente está en...</h3>
-            <p>Usa esta entrada si quieres ubicar la etapa, revisar criterios de avance, bloqueos, evidencia y comunicación.</p>
-            <div class="role-tabs" style="margin-top:12px">
-              <button type="button" data-entry-phase="0" data-entry-target="#explicacion-onboarding">Pre-onboarding</button>
-              <button type="button" data-entry-phase="0" data-entry-target="#explicacion-onboarding">Onboarding</button>
-              <button type="button" data-entry-phase="1" data-entry-target="#pasos">Set Up</button>
-              <button type="button" data-entry-phase="5" data-entry-target="#pasos">Salida a operación</button>
-              <button type="button" data-entry-phase="5" data-entry-target="#cierre">Operación recurrente</button>
+            <div class="mini-title">B. Ver proceso completo</div>
+            <h3>Proceso madre</h3>
+            <p>Usa esta entrada solo si necesitas revisar todo el flujo: etapas, rutas, dashboard, evidencias, RACI, comunicación y gobernanza.</p>
+            <div class="actions">
+              <button class="btn" type="button" data-select-role="proceso-completo">Ver proceso completo</button>
             </div>
           </article>
         </div>
@@ -1405,16 +1406,8 @@
       </div>
     </section>
 
-    <section id="trabajo-rol">
+    <section id="manual-rol" hidden>
       <div class="wrap">
-        <div class="section-title">
-          <span class="label">Vistas por rol</span>
-          <div>
-            <h2>Qué debo hacer según mi rol</h2>
-            <p>Selecciona una vista. El contenido se deriva del mismo proceso madre y muestra solo participación, entregables, documentación, escalamiento y límites de ese rol.</p>
-          </div>
-        </div>
-        <div class="role-tabs" id="roleTabs" aria-label="Seleccionar vista por rol"></div>
         <div class="role-view" id="roleViewPanel"></div>
       </div>
     </section>
@@ -1455,8 +1448,8 @@
         <div class="section-title">
           <span class="label">Objetivo del manual</span>
           <div>
-            <h2>Una sola verdad del proceso, múltiples vistas por rol</h2>
-            <p>El manual madre vive una sola vez. Cada vista filtra la misma regla operativa para que Ventas, Onboarding, Gerente Contador, Contador Designado, Auxiliar, Nómina, Country Manager y Cliente vean solo lo que deben ejecutar, validar, entregar, escalar o conocer.</p>
+            <h2>Una sola verdad del proceso, entradas por rol</h2>
+            <p>El manual madre vive una sola vez. Cada entrada filtra la misma regla operativa para que Ventas, Onboarding, Gerente Contador, Contador Designado, Auxiliar, Nómina, Country Manager y Cliente vean solo lo que deben ejecutar, validar, entregar, escalar o conocer.</p>
           </div>
         </div>
         <div class="callout">
@@ -1507,7 +1500,7 @@
             <p>Confirmar checklist mínimo, comunicar cierre al cliente y pasar a operación solo con evidencia suficiente.</p>
           </article>
         </div>
-        <div class="message-strip">Regla de arquitectura: el proceso madre no se duplica. Las vistas por rol son filtros del mismo proceso, no manuales independientes.</div>
+        <div class="message-strip">Regla de arquitectura: el proceso madre no se duplica. Cada entrada por rol filtra el mismo proceso, sin crear manuales independientes.</div>
         <div class="principle-grid">
           <article class="principle-card">
             <strong>1. Clasificar</strong>
@@ -2413,6 +2406,7 @@
 
     const roleViews = [
       {
+        key: "ventas",
         role: "Soy Ventas",
         summary: "Cuida alcance vendido, contexto comercial, promesas, expectativas y recotización cuando el hallazgo cambia alcance o cobro.",
         participates: ["Pre-onboarding", "Apertura del onboarding para presentar al equipo", "Recotización por mal cierre o cambio de alcance"],
@@ -2425,6 +2419,7 @@
         notDo: ["No define ruta técnica.", "No comunica hallazgos contables sin validación del Gerente Contador.", "No interviene en auditoría, migración o reconstrucción salvo impacto comercial."]
       },
       {
+        key: "onboarding",
         role: "Soy Onboarding",
         summary: "Coordina el arranque para que la reunión tenga asistentes, documentos mínimos, hoja de vida inicial y condiciones listas.",
         participates: ["Pre-onboarding", "Agenda y coordinación de la reunión inicial", "Entrega organizada al Gerente Contador"],
@@ -2437,6 +2432,7 @@
         notDo: ["No define ruta técnica.", "No lidera auditoría o reconstrucción.", "No comunica conclusiones contables al cliente."]
       },
       {
+        key: "gerente-contador",
         role: "Soy Gerente Contador",
         summary: "Es el interlocutor operativo principal: prepara hipótesis, dirige onboarding, define ruta, supervisa setup y valida cierre.",
         participates: ["Pre-onboarding", "Onboarding", "Set Up", "Salida a operación", "Operación recurrente cuando recibe el cliente"],
@@ -2449,6 +2445,7 @@
         notDo: ["No pasa a operación sin checklist y evidencia.", "No promete cambios económicos sin Ventas.", "No delega al Country Manager la relación operativa con el cliente."]
       },
       {
+        key: "contador-designado",
         role: "Soy Contador Designado",
         summary: "Inicia cuando recibe la ficha diagnóstica; ejecuta validación, auditoría express, parametrización, migración o reconstrucción según ruta.",
         participates: ["Set Up", "Recepción documental", "Auditoría express", "Ejecución técnica", "Preparación de salida a operación"],
@@ -2461,6 +2458,7 @@
         notDo: ["No lidera onboarding salvo indicación expresa.", "No recotiza.", "No comunica hallazgos sensibles al cliente sin alineación del Gerente Contador."]
       },
       {
+        key: "auxiliar-contable",
         role: "Soy Auxiliar Contable",
         summary: "Apoya la ejecución operativa del contador en organización documental, cargues, conciliaciones, causaciones y reconstrucción.",
         participates: ["Set Up cuando es asignado", "Reconstrucción contable", "Preparación de información y checklist"],
@@ -2473,6 +2471,7 @@
         notDo: ["No clasifica clientes.", "No decide recotización.", "No escala directamente al cliente o Country Manager salvo instrucción expresa."]
       },
       {
+        key: "nomina",
         role: "Soy Nómina",
         summary: "Es un frente especializado que participa cuando hay empleados, seguridad social, PILA, nómina electrónica o novedades laborales.",
         participates: ["Onboarding si se identifican empleados", "Set Up si nómina impacta saldos o costos", "Operación recurrente"],
@@ -2485,6 +2484,7 @@
         notDo: ["No define ruta de setup.", "No resuelve recotización.", "No comunica decisiones contables generales al cliente."]
       },
       {
+        key: "country-manager",
         role: "Soy Country Manager",
         summary: "Tiene una vista ejecutiva: entra por alertas, riesgo de churn, SLA crítico, recotización, cliente sensible o decisión que excede al Gerente Contador.",
         participates: ["Asignación o matching cuando aplique", "Alertas críticas", "Recotización", "Riesgos comerciales, reputacionales o de experiencia"],
@@ -2497,6 +2497,7 @@
         notDo: ["No supervisa setups en verde.", "No opera el día a día.", "No reemplaza al Gerente Contador como interlocutor principal."]
       },
       {
+        key: "cliente",
         role: "Soy Cliente",
         summary: "Vista externa, simple y cuidada: qué debe entregar, qué puede esperar, cómo se le informan avances y cuándo cierra el setup.",
         participates: ["Onboarding", "Entrega de información", "Reuniones o validaciones requeridas", "Capacitación", "Cierre de setup"],
@@ -2764,7 +2765,7 @@
       checks: {},
       viewMode: "summary",
       focusedPhase: 0,
-      activeRole: "Soy Gerente Contador",
+      selectedRole: "",
       clientPhase: "Setup",
       logs: [
         {
@@ -2841,30 +2842,181 @@
       return `<${tag}>${items.map(item => `<li>${item}</li>`).join("")}</${tag}>`;
     }
 
+    const processSectionIds = [
+      "por-que",
+      "objetivo",
+      "manual",
+      "antes-despues",
+      "presentacion",
+      "rutas",
+      "participacion",
+      "explicacion-onboarding",
+      "diagnostico",
+      "seguimiento",
+      "herramientas",
+      "gobernanza",
+      "cierre",
+      "correos"
+    ];
+
+    const roleStepIds = {
+      ventas: ["PRE-01", "ONB-02", "DEC-01", "EJE-01"],
+      onboarding: ["PRE-01", "ONB-01", "ONB-02", "ONB-03"],
+      "gerente-contador": ["ONB-01", "ONB-02", "ONB-03", "VAL-01", "AUD-01", "DEC-01", "EJE-01", "CIE-01"],
+      "contador-designado": ["ONB-03", "VAL-01", "AUD-01", "EJE-01", "CIE-01"],
+      "auxiliar-contable": ["EJE-01"],
+      nomina: ["ONB-02", "VAL-01", "EJE-01", "CIE-01"],
+      "country-manager": ["PRE-01", "DEC-01", "EJE-01", "CIE-01"],
+      cliente: ["ONB-02", "ONB-03", "VAL-01", "EJE-01", "CIE-01"]
+    };
+
+    const roleNavLabels = {
+      ventas: [["Mi rol", "#mi-rol"], ["Antes del onboarding", "#mis-etapas"], ["Durante el onboarding", "#mis-tareas"], ["Cuándo vuelvo a participar", "#mis-escalamientos"], ["Qué debo entregar", "#mis-evidencias"], ["Qué no debo prometer", "#mis-limites"], ["Checklist de Ventas", "#mis-checklist"]],
+      onboarding: [["Mi rol", "#mi-rol"], ["Preparación", "#mis-etapas"], ["Coordinación", "#mis-tareas"], ["Entrega al gerente", "#mis-evidencias"], ["Checklist", "#mis-checklist"], ["Escalamiento", "#mis-escalamientos"]],
+      "gerente-contador": [["Mi rol", "#mi-rol"], ["Pre-onboarding", "#mis-etapas"], ["Onboarding", "#mis-tareas"], ["Diagnóstico", "#mis-tareas"], ["Ficha al contador", "#mis-evidencias"], ["Seguimiento de Set Up", "#mis-tareas"], ["Escalamiento", "#mis-escalamientos"]],
+      "contador-designado": [["Mi rol", "#mi-rol"], ["Mis etapas", "#mis-etapas"], ["Revisión documental", "#mis-tareas"], ["Auditoría y saldos", "#mis-tareas"], ["Checklist técnico", "#mis-checklist"], ["Evidencias", "#mis-evidencias"], ["Escalamiento", "#mis-escalamientos"]],
+      "country-manager": [["Mi rol", "#mi-rol"], ["Cuándo intervengo", "#mis-etapas"], ["Riesgos que miro", "#mis-tareas"], ["Decisiones", "#mis-tareas"], ["Recotización", "#mis-escalamientos"], ["Evidencia para decidir", "#mis-evidencias"]],
+      cliente: [["Mi proceso", "#mi-rol"], ["Qué debo entregar", "#mis-tareas"], ["Tiempos esperados", "#mis-etapas"], ["Avances", "#mis-evidencias"], ["Si falta información", "#mis-escalamientos"], ["Capacitación", "#mis-etapas"], ["Cierre del Set Up", "#mis-checklist"]]
+    };
+
+    function roleNavItems(roleKey) {
+      return roleNavLabels[roleKey] || [["Mi rol", "#mi-rol"], ["Mis etapas", "#mis-etapas"], ["Mis tareas", "#mis-tareas"], ["Mis checklist", "#mis-checklist"], ["Mis evidencias", "#mis-evidencias"], ["Mis escalamientos", "#mis-escalamientos"]];
+    }
+
+    function roleSteps(roleKey) {
+      const ids = roleStepIds[roleKey] || [];
+      return ids.map(id => manualSteps.find(step => step.id === id)).filter(Boolean);
+    }
+
+    function renderRoleStep(step) {
+      return `
+        <article class="card role-step">
+          <div class="mini-title">${step.id} · ${step.stage}</div>
+          <h3>${step.name}</h3>
+          <p>${step.description}</p>
+          <div class="phase-meta">
+            <div class="meta-box"><strong>Empieza cuando</strong><span>${step.entry}</span></div>
+            <div class="meta-box"><strong>Debe quedar</strong><span>${step.outputs}</span></div>
+            <div class="meta-box"><strong>Dónde registrar</strong><span>${step.registerIn}</span></div>
+          </div>
+          <div class="role-section"><strong>Haz esto, en este orden</strong>${list(step.actions, true)}</div>
+          <div class="role-section"><strong>Evidencia mínima</strong><p>${step.evidence}</p></div>
+          <div class="role-section"><strong>Si hay bloqueo</strong><p>${step.problem}</p></div>
+        </article>
+      `;
+    }
+
     function renderRoleWork() {
-      if (!$("roleTabs") || !$("roleViewPanel")) return;
-      const active = roleViews.find(item => item.role === state.activeRole) || roleViews[2];
-      $("roleTabs").innerHTML = roleViews.map(item => `
-        <button type="button" class="${item.role === active.role ? "active" : ""}" data-role-view="${item.role}">${item.role}</button>
-      `).join("");
+      if (!$("roleViewPanel")) return;
+      const active = roleViews.find(item => item.key === state.selectedRole);
+      if (!active) {
+        $("roleViewPanel").innerHTML = "";
+        return;
+      }
+      const steps = roleSteps(active.key);
       $("roleViewPanel").innerHTML = `
-        <article class="card">
-          <div class="mini-title">Vista filtrada</div>
+        <article class="card" id="mi-rol">
+          <div class="mini-title">Mi rol en el proceso</div>
           <h3>${active.role}</h3>
           <p>${active.summary}</p>
         </article>
         <div class="step-manual">
-          <div class="role-section"><strong>Cuándo participa</strong>${list(active.participates)}</div>
-          <div class="role-section"><strong>Qué debe hacer</strong>${list(active.does)}</div>
-          <div class="role-section"><strong>Qué recibe</strong>${list(active.receives)}</div>
-          <div class="role-section"><strong>Qué entrega</strong>${list(active.delivers)}</div>
-          <div class="role-section"><strong>Con quién interactúa</strong>${list(active.interacts)}</div>
-          <div class="role-section"><strong>Qué debe documentar</strong>${list(active.documents)}</div>
-          <div class="role-section"><strong>Cuándo debe escalar</strong>${list(active.escalates)}</div>
-          <div class="role-section"><strong>Qué no debe hacer</strong>${list(active.notDo)}</div>
-          <div class="role-section"><strong>Checklist mínimo</strong>${list(active.checklist || active.does)}</div>
+          <div class="role-section" id="mis-tareas"><strong>Qué debo hacer</strong>${list(active.does)}</div>
+          <div class="role-section"><strong>Qué recibo</strong>${list(active.receives)}</div>
+          <div class="role-section"><strong>Qué entrego</strong>${list(active.delivers)}</div>
+          <div class="role-section"><strong>Con quién interactúo</strong>${list(active.interacts)}</div>
+        </div>
+        <div class="section-title" id="mis-etapas" style="margin-top:26px">
+          <span class="label">Mis etapas</span>
+          <div>
+            <h2>Pasos del manual que me corresponden</h2>
+            <p>Estos pasos salen del proceso completo y quedan filtrados para este rol. Si necesitas contexto de todo el flujo, entra por “Proceso completo”.</p>
+          </div>
+        </div>
+        <div class="cards-2">${steps.map(renderRoleStep).join("")}</div>
+        <div class="step-manual" style="margin-top:22px">
+          <div class="role-section" id="mis-evidencias"><strong>Qué debo documentar</strong>${list(active.documents)}</div>
+          <div class="role-section" id="mis-escalamientos"><strong>Cuándo debo escalar</strong>${list(active.escalates)}</div>
+          <div class="role-section" id="mis-limites"><strong>Qué no debo hacer</strong>${list(active.notDo)}</div>
+          <div class="role-section" id="mis-checklist"><strong>Checklist mínimo</strong>${list(active.checklist || active.does)}</div>
         </div>
       `;
+    }
+
+    function navLink(label, href) {
+      return `<a href="${href}">${label}</a>`;
+    }
+
+    function navButton(label, attrs = "") {
+      return `<button type="button" ${attrs}>${label}</button>`;
+    }
+
+    function renderNav() {
+      if (!$("mainNav")) return;
+      if (!state.selectedRole) {
+        $("mainNav").innerHTML = [
+          navButton("Inicio", "data-home"),
+          navLink("Elegir rol", "#inicio-rapido"),
+          navButton("Proceso completo", 'data-select-role="proceso-completo"'),
+          navButton("Rutas", 'data-select-role="proceso-completo" data-target="#rutas"'),
+          navButton("Gobernanza", 'data-select-role="proceso-completo" data-target="#gobernanza"')
+        ].join("");
+        return;
+      }
+      if (state.selectedRole === "proceso-completo") {
+        $("mainNav").innerHTML = [
+          navButton("Inicio", "data-home"),
+          navButton("Elegir rol", "data-home data-target=\"#inicio-rapido\""),
+          navLink("Proceso completo", "#manual"),
+          navLink("Rutas", "#rutas"),
+          navLink("Gobernanza", "#gobernanza")
+        ].join("");
+        return;
+      }
+      $("mainNav").innerHTML = [
+        navButton("Inicio", "data-home"),
+        ...roleNavItems(state.selectedRole).map(([label, href]) => navLink(label, href))
+      ].join("");
+    }
+
+    function setHeroForMode() {
+      const active = roleViews.find(item => item.key === state.selectedRole);
+      if (!state.selectedRole) {
+        $("heroLabel").textContent = "Manual operativo · Setup contable";
+        $("heroTitle").textContent = "Manual de Onboarding y Setup Contable Numbi";
+        $("heroCopy").textContent = "Herramienta operativa para entrar por rol y saber qué hacer, qué recibir, qué entregar, qué documentar y cuándo escalar para que el cliente perciba orden, claridad, acompañamiento y buen servicio.";
+        $("heroMessage").textContent = "Este manual organiza el trabajo que ya hacemos para que ningún cliente avance sin diagnóstico, ruta, responsables, comunicación clara y evidencia mínima.";
+        return;
+      }
+      if (state.selectedRole === "proceso-completo") {
+        $("heroLabel").textContent = "Proceso completo";
+        $("heroTitle").textContent = "Proceso completo de Onboarding y Setup Contable";
+        $("heroCopy").textContent = "Vista madre del manual: etapas, rutas, participación, diagnóstico, bitácora, gobernanza, cierre y correos automáticos.";
+        $("heroMessage").textContent = "Usa esta vista cuando necesites ver el flujo completo. Para operación diaria, entra por rol y trabaja solo lo que te corresponde.";
+        return;
+      }
+      $("heroLabel").textContent = "Manual por rol";
+      $("heroTitle").textContent = active ? active.role.replace("Soy", "Manual para") : "Manual por rol";
+      $("heroCopy").textContent = active ? active.summary : "";
+      $("heroMessage").textContent = "Esta vista muestra solo tus etapas, tareas, entregables, evidencias y escalamientos. El proceso completo sigue disponible como referencia madre.";
+    }
+
+    function showOnlyMode() {
+      const showHome = !state.selectedRole;
+      const showRole = Boolean(state.selectedRole && state.selectedRole !== "proceso-completo");
+      const showProcess = state.selectedRole === "proceso-completo";
+      if ($("inicio-rapido")) $("inicio-rapido").hidden = !showHome;
+      if ($("manual-rol")) $("manual-rol").hidden = !showRole;
+      processSectionIds.forEach(id => {
+        const section = $(id);
+        if (section) section.hidden = !showProcess;
+      });
+    }
+
+    function applyViewState() {
+      renderNav();
+      setHeroForMode();
+      showOnlyMode();
     }
 
     function renderTools() {
@@ -3181,6 +3333,7 @@
       bindChecks();
       renderProgress();
       renderTracking();
+      applyViewState();
     }
 
     ["clientName", "operationType", "clientType", "accountingState", "currentSoftware", "targetSoftware", "owner", "mailType", "npsPulse"].forEach(id => {
@@ -3199,30 +3352,32 @@
     });
 
     document.addEventListener("click", event => {
-      const entryRole = event.target.closest("[data-entry-role]");
-      if (entryRole) {
-        state.activeRole = entryRole.dataset.entryRole;
-        renderRoleWork();
-        const target = $("trabajo-rol");
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const home = event.target.closest("[data-home]");
+      if (home) {
+        state.selectedRole = "";
+        renderAll();
+        const target = document.querySelector(home.dataset.target || "#inicio-rapido");
+        (target || document.body).scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const selected = event.target.closest("[data-select-role]");
+      if (selected) {
+        state.selectedRole = selected.dataset.selectRole;
+        renderAll();
+        const target = selected.dataset.target ? document.querySelector(selected.dataset.target) : document.body;
+        (target || document.body).scrollIntoView({ behavior: "smooth", block: "start" });
         return;
       }
 
       const entryPhase = event.target.closest("[data-entry-phase]");
       if (entryPhase) {
+        state.selectedRole = "proceso-completo";
         state.focusedPhase = Number(entryPhase.dataset.entryPhase);
-        renderSteps();
-        bindChecks();
-        renderProgress();
-        const target = document.querySelector(entryPhase.dataset.entryTarget || "#pasos");
+        renderAll();
+        const target = document.querySelector(entryPhase.dataset.entryTarget || "#manual");
         if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
       }
-
-      const roleButton = event.target.closest("[data-role-view]");
-      if (!roleButton) return;
-      state.activeRole = roleButton.dataset.roleView;
-      renderRoleWork();
     });
 
     document.querySelectorAll("[data-macro-phase]").forEach(button => {
