@@ -658,6 +658,30 @@
       margin-bottom: 0;
     }
 
+    .role-detail-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .role-detail-panel > p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .role-detail-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .role-detail-grid .compact-detail .phase-meta {
+      padding: 12px;
+      margin: 0;
+    }
+
     .manual-card h3 {
       margin-bottom: 6px;
       font-size: 19px;
@@ -1908,11 +1932,13 @@
         <div class="section-title">
           <span class="label">Mi trabajo por rol</span>
           <div>
-            <h2>Qué debo hacer según mi rol</h2>
-            <p>Esta vista evita leer todo el manual cuando solo necesitas saber tus responsabilidades activas y condicionales.</p>
+            <h2>Ver detalle por rol</h2>
+            <p>Consulta el detalle si necesitas saber trabajo normal, condicionales, escalamiento y entregables por rol.</p>
           </div>
         </div>
-        <div class="cards-3" id="roleWorkCards"></div>
+        <div class="role-detail-panel">
+          <div class="role-detail-grid" id="roleWorkCards"></div>
+        </div>
       </div>
     </section>
 
@@ -2803,14 +2829,14 @@
     ];
 
     const roleWork = [
-      ["Ventas", "Crea cliente en Portal Numbi, abre WhatsApp, entrega contexto comercial y participa en onboarding para presentar al equipo.", "Lidera la conversación comercial si hay recotización por mal cierre."],
-      ["Onboarding", "Asigna Gerente Contador, solicita Cámara de Comercio y token DIAN, convoca al cliente y crea hoja de vida inicial.", "Escala faltantes iniciales que impidan convocar o preparar la reunión."],
-      ["Gerente Contador", "Prepara hipótesis, asigna contador, dirige onboarding, define ruta, mantiene hoja de vida/bitácora y coordina cierre.", "Activa Country Manager ante alerta, extensión de SLA o riesgo crítico."],
-      ["Contador", "Usa ficha interna, valida documentos y saldos, registra hallazgos y ejecuta la ruta aprobada.", "Escala red flags al Gerente Contador y puede registrar eventos en bitácora."],
-      ["Auditor", "Realiza revisión profunda, emite dictamen y propone plan de acción cuando la información no es confiable.", "Participa por red flags o ruta de auditoría, no por defecto."],
-      ["Auxiliar", "Apoya reconstrucción, causaciones, conciliaciones, impuestos y estados financieros.", "Entrega status diario al contador durante reconstrucción."],
-      ["Parametrización y Migración", "Configura Siigo o Alegra, migra información, carga saldos iniciales y valida que el software quede operativo.", "Actúa cuando la ruta incluye parametrización o migración."],
-      ["Country Manager", "Revisa alertas críticas, SLA en riesgo, recotizaciones, riesgos de churn y solicitudes explícitas del Gerente Contador.", "No supervisa setups en verde ni reemplaza al Gerente Contador frente al cliente."]
+      ["Ventas", "Crea cliente en Portal Numbi, abre WhatsApp, entrega contexto comercial y participa en onboarding para presentar al equipo.", "Lidera la conversación comercial si hay recotización por mal cierre.", "Cuando hay cambio de alcance, precio, tiempos o promesa comercial.", "Cliente creado, contexto comercial y propuesta disponibles."],
+      ["Onboarding", "Asigna Gerente Contador, solicita Cámara de Comercio y token DIAN, convoca al cliente y crea hoja de vida inicial.", "Escala faltantes iniciales que impidan convocar o preparar la reunión.", "Cuando faltan datos mínimos, documentos iniciales o agenda confirmada.", "Gerente asignado, reunión convocada y mínimos iniciales solicitados."],
+      ["Gerente Contador", "Prepara hipótesis, asigna contador, dirige onboarding, define ruta, mantiene hoja de vida/bitácora y coordina cierre.", "Activa Country Manager ante alerta, extensión de SLA o riesgo crítico.", "Cuando hay riesgo de churn, bloqueo crítico, SLA en riesgo o recotización.", "Ficha definitiva, ruta recomendada, focos obligatorios y cierre coordinado."],
+      ["Contador", "Usa ficha interna, valida documentos y saldos, registra hallazgos y ejecuta la ruta aprobada.", "Escala red flags al Gerente Contador y puede registrar eventos en bitácora.", "Cuando encuentra saldos no confiables, documentos faltantes o hallazgos que cambian la ruta.", "Hallazgos, validaciones, bitácora y entregables de la ruta ejecutados."],
+      ["Auditor", "Realiza revisión profunda, emite dictamen y propone plan de acción cuando la información no es confiable.", "Participa por red flags o ruta de auditoría, no por defecto.", "Cuando la información no permite aceptar saldos o requiere decisión post auditoría.", "Dictamen, hallazgos y plan de acción documentado."],
+      ["Auxiliar", "Apoya reconstrucción, causaciones, conciliaciones, impuestos y estados financieros.", "Entrega status diario al contador durante reconstrucción.", "Cuando aparecen bloqueos documentales, diferencias o pendientes de conciliación.", "Status diario, soportes trabajados y avances de reconstrucción."],
+      ["Parametrización y Migración", "Configura Siigo o Alegra, migra información, carga saldos iniciales y valida que el software quede operativo.", "Actúa cuando la ruta incluye parametrización o migración.", "Cuando faltan saldos, configuración, permisos o validaciones del software.", "Software configurado, saldos cargados y operación lista para validar."],
+      ["Country Manager", "Revisa alertas críticas, SLA en riesgo, recotizaciones, riesgos de churn y solicitudes explícitas del Gerente Contador.", "No supervisa setups en verde ni reemplaza al Gerente Contador frente al cliente.", "Cuando el Gerente Contador activa alerta crítica o hay riesgo de experiencia.", "Decisión o apoyo ejecutivo para destrabar el caso."]
     ];
 
     const tools = {
@@ -3343,13 +3369,16 @@
 
     function renderRoleWork() {
       if (!$("roleWorkCards")) return;
-      $("roleWorkCards").innerHTML = roleWork.map(([role, normal, conditional]) => `
-        <article class="card">
-          <div class="mini-title">Rol</div>
-          <h3>${role}</h3>
-          <p><strong>Trabajo normal:</strong> ${normal}</p>
-          <p><strong>Condicional:</strong> ${conditional}</p>
-        </article>
+      $("roleWorkCards").innerHTML = roleWork.map(([role, normal, conditional, escalation, deliverable]) => `
+        <details class="compact-detail">
+          <summary>${role}</summary>
+          <div class="phase-meta">
+            <div class="meta-box"><strong>Trabajo normal</strong><span>${normal}</span></div>
+            <div class="meta-box"><strong>Condicional</strong><span>${conditional}</span></div>
+            <div class="meta-box"><strong>Cuándo escalar</strong><span>${escalation}</span></div>
+            <div class="meta-box"><strong>Entregable esperado</strong><span>${deliverable}</span></div>
+          </div>
+        </details>
       `).join("");
     }
 
