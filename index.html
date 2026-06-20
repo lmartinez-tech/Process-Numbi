@@ -663,6 +663,64 @@
       font-size: 19px;
     }
 
+    .entry-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .entry-card {
+      position: relative;
+      background: white;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--numbi);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(38, 50, 56, .05);
+    }
+
+    .entry-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 28px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--numbi-dark);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-weight: 900;
+      z-index: 1;
+    }
+
+    .entry-card h3 {
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    .entry-card dl {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .entry-card dt {
+      color: var(--numbi-dark);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .entry-card dd {
+      margin: -6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     .step-manual {
       display: grid;
       gap: 12px;
@@ -1265,7 +1323,8 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline { grid-template-columns: 1fr; }
+      .entry-card::after { display: none !important; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
       .nps-operation { grid-template-columns: 1fr; }
@@ -1590,6 +1649,90 @@
           </div>
         </div>
         <div class="cards-3" id="roleWorkCards"></div>
+      </div>
+    </section>
+
+    <section id="ingreso-cliente">
+      <div class="wrap">
+        <div class="section-title">
+          <span class="label">Antes del onboarding</span>
+          <div>
+            <h2>Antes del onboarding: ¿cómo ingresa un cliente a Numbi?</h2>
+            <p>Antes de que el Gerente Contador prepare el pre-onboarding, el cliente pasa por un flujo simple: propuesta, aceptación, revisión interna y creación en el portal.</p>
+          </div>
+        </div>
+
+        <div class="entry-timeline">
+          <article class="entry-card">
+            <div class="mini-title">Momento 1</div>
+            <h3>Propuesta comercial</h3>
+            <dl>
+              <dt>Responsable principal</dt>
+              <dd>Ventas.</dd>
+              <dt>Interactúan</dt>
+              <dd>Cliente y equipo comercial.</dd>
+              <dt>Acción clave</dt>
+              <dd>Presentar y enviar la propuesta comercial.</dd>
+              <dt>Entregable o evidencia</dt>
+              <dd>Propuesta enviada y link de aceptación compartido.</dd>
+              <dt>Finaliza cuando</dt>
+              <dd>El cliente acepta avanzar con Numbi y se le envía el link de aceptación.</dd>
+            </dl>
+          </article>
+
+          <article class="entry-card">
+            <div class="mini-title">Momento 2</div>
+            <h3>Aceptación del cliente</h3>
+            <dl>
+              <dt>Responsable principal</dt>
+              <dd>Cliente.</dd>
+              <dt>Interactúan</dt>
+              <dd>Cliente, Ventas y portal Numbi.</dd>
+              <dt>Acción clave</dt>
+              <dd>Confirmar datos, cargar documentos iniciales y aceptar la propuesta en línea.</dd>
+              <dt>Entregable o evidencia</dt>
+              <dd>Datos confirmados, RUT, Cámara de Comercio, cédula del representante legal y aceptación registrada.</dd>
+              <dt>Finaliza cuando</dt>
+              <dd>El cliente confirma sus datos, sube documentos iniciales y acepta la propuesta en línea.</dd>
+            </dl>
+          </article>
+
+          <article class="entry-card">
+            <div class="mini-title">Momento 3</div>
+            <h3>Revisión interna</h3>
+            <dl>
+              <dt>Responsable principal</dt>
+              <dd>Equipo Numbi.</dd>
+              <dt>Interactúan</dt>
+              <dd>Ventas, equipo operativo y portal.</dd>
+              <dt>Acción clave</dt>
+              <dd>Revisar la aceptación, los documentos y la evidencia registrada.</dd>
+              <dt>Entregable o evidencia</dt>
+              <dd>Datos, documentos y aceptación revisados.</dd>
+              <dt>Finaliza cuando</dt>
+              <dd>Se revisan los datos, documentos y evidencia de aceptación.</dd>
+            </dl>
+          </article>
+
+          <article class="entry-card">
+            <div class="mini-title">Momento 4</div>
+            <h3>Cliente creado en portal</h3>
+            <dl>
+              <dt>Responsable principal</dt>
+              <dd>Equipo Numbi.</dd>
+              <dt>Interactúan</dt>
+              <dd>Ventas.</dd>
+              <dt>Acción clave</dt>
+              <dd>Crear el cliente en el portal con la información inicial disponible.</dd>
+              <dt>Entregable o evidencia</dt>
+              <dd>Cliente creado en el portal y listo para iniciar onboarding.</dd>
+              <dt>Finaliza cuando</dt>
+              <dd>El cliente queda creado en el portal con la información inicial disponible para que el Gerente Contador prepare el pre-onboarding.</dd>
+            </dl>
+          </article>
+        </div>
+
+        <div class="message-strip">Cuando el cliente ya fue aceptado, revisado y creado en el portal, inicia la Etapa 1: el Gerente Contador prepara el pre-onboarding, revisa el contexto inicial y llega a la reunión con una hipótesis clara del cliente.</div>
       </div>
     </section>
 
