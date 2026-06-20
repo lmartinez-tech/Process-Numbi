@@ -816,6 +816,144 @@
       gap: 10px;
     }
 
+    .etapa-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+      counter-reset: flow;
+    }
+
+    .flow-step {
+      position: relative;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--numbi);
+      border-radius: 8px;
+      background: white;
+      padding: 14px 14px 14px 46px;
+      min-height: 118px;
+    }
+
+    .flow-step::before {
+      counter-increment: flow;
+      content: counter(flow);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--numbi);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .flow-step h3,
+    .moment-card h3,
+    .validation-box h3,
+    .final-main h3 {
+      margin: 0 0 6px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.15;
+    }
+
+    .flow-step p,
+    .moment-card p,
+    .validation-box p,
+    .final-main p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .moment-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .moment-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--mint-soft);
+      padding: 16px;
+    }
+
+    .moment-card .subtitle {
+      margin-bottom: 10px;
+      color: var(--numbi-dark);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .moment-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .validation-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .validation-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 14px;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip-list span {
+      border-radius: 999px;
+      background: var(--mint-soft);
+      color: var(--numbi-dark);
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .final-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 16px;
+    }
+
+    .final-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .final-main {
+      border: 1px solid #9bdcc5;
+      border-radius: 8px;
+      background: var(--mint-soft);
+      padding: 13px;
+    }
+
     .compact-detail {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -1478,7 +1616,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .question-grid, .field-grid, .focus-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .etapa-flow, .moment-summary, .validation-map, .final-points, .question-grid, .field-grid, .focus-grid { grid-template-columns: 1fr; }
       .entry-card::after { display: none !important; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
@@ -1861,106 +1999,99 @@
           <span class="label">Etapa 1 · Onboarding</span>
           <div>
             <h2>Etapa 1 — Pre-onboarding y Onboarding</h2>
-            <p>Esta etapa tiene dos momentos. Primero, el Gerente Contador prepara internamente una hipótesis con la información que viene de Ventas, la propuesta, el dashboard y los documentos iniciales. Después, durante el onboarding, valida esa hipótesis con el cliente, ajusta la ruta y deja una ficha de diagnóstico definitiva para el contador designado.</p>
+            <p>La historia es simple: Ventas clasifica, el Gerente Contador prepara, el cliente valida y el contador recibe una ficha clara para empezar setup.</p>
           </div>
         </div>
-        <div class="cards-2">
-          <article class="card">
-            <div class="mini-title">A. Antes de la reunión</div>
-            <h3>Pre-onboarding: el gerente prepara la hipótesis</h3>
-            <p>Es un momento interno. El Gerente Contador no llega a improvisar: revisa la información disponible y prepara una ficha preliminar para validar después con el cliente.</p>
+
+        <div class="etapa-flow">
+          <article class="flow-step">
+            <h3>Ventas deja contexto</h3>
+            <p>Tipo de cliente, estado contable, propuesta y notas comerciales.</p>
+          </article>
+          <article class="flow-step">
+            <h3>Gerente prepara</h3>
+            <p>Revisa operación, riesgos y preguntas clave antes de la reunión.</p>
+          </article>
+          <article class="flow-step">
+            <h3>Cliente valida</h3>
+            <p>Confirma cómo opera, factura, cobra, paga, cuesta y qué tan confiable es su pasado contable.</p>
+          </article>
+          <article class="flow-step">
+            <h3>Contador recibe ficha</h3>
+            <p>Clasificación, ruta recomendada y focos obligatorios de auditoría.</p>
+          </article>
+        </div>
+
+        <div class="moment-summary">
+          <article class="moment-card">
+            <div class="subtitle">Antes de hablar con el cliente</div>
+            <h3>Pre-onboarding</h3>
             <ul>
-              <li>Revisa propuesta comercial, compromisos vendidos, notas comerciales y contexto de Ventas.</li>
-              <li>Revisa dashboard, tipo de cliente, estado contable, tipo de operación y documentos iniciales.</li>
-              <li>Identifica riesgos iniciales, prepara preguntas y diligencia una ficha de diagnóstico preliminar.</li>
-              <li>Termina cuando tiene hipótesis inicial, ruta preliminar y preguntas listas para validar.</li>
+              <li><strong>Responsable:</strong> Gerente Contador.</li>
+              <li><strong>Objetivo:</strong> preparar una lectura inicial.</li>
+              <li><strong>Termina con:</strong> preguntas listas y ficha preliminar.</li>
             </ul>
           </article>
-          <article class="card">
-            <div class="mini-title">B. Durante la reunión</div>
-            <h3>Onboarding: el gerente valida y cierra la ficha definitiva</h3>
-            <p>Es la reunión con el cliente. El Gerente Contador confirma, corrige o completa la hipótesis y convierte la conversación en una ficha definitiva.</p>
+          <article class="moment-card">
+            <div class="subtitle">Durante la reunión con el cliente</div>
+            <h3>Onboarding</h3>
             <ul>
-              <li>Valida modelo de negocio, operación, software, expectativas, documentos y alcance vendido.</li>
-              <li>Contrasta el alcance vendido con la realidad operativa que describe el cliente.</li>
-              <li>Ajusta tipo de cliente, estado contable, tipo de operación y ruta de setup si aplica.</li>
-              <li>Identifica focos obligatorios, define qué debe revisar sí o sí el contador designado y cierra la ficha definitiva.</li>
-              <li>Termina cuando quedan clasificación, ruta recomendada y focos obligatorios definidos.</li>
+              <li><strong>Responsable:</strong> Gerente Contador.</li>
+              <li><strong>Objetivo:</strong> validar o ajustar esa lectura.</li>
+              <li><strong>Termina con:</strong> ficha definitiva para el contador.</li>
             </ul>
           </article>
         </div>
 
-        <div class="callout" style="margin-top:18px">
-          <strong>Cómo se transforma la ficha</strong>
-          <span>En pre-onboarding existe una ficha preliminar para llegar preparado. Al finalizar onboarding, esa ficha queda validada o ajustada y se convierte en el diagnóstico definitivo que reciben el contador asignado, el cliente y la persona de Ventas que realizó la venta.</span>
-        </div>
-
-        <div class="section-title" style="margin-top:42px">
-          <span class="label">Clasificación previa</span>
+        <div class="section-title">
+          <span class="label">Validación</span>
           <div>
-            <h2>Ventas deja una preclasificación; el gerente la convierte en hipótesis</h2>
-            <p>Ventas deja una preclasificación inicial para orientar el diagnóstico. Esta lectura ayuda al Gerente Contador a preparar el pre-onboarding, pero no reemplaza su análisis. Durante el pre-onboarding, el gerente convierte esa información en una hipótesis; durante el onboarding, la confirma o la ajusta con el cliente.</p>
+            <h2>Lo que el gerente debe validar</h2>
+            <p>Primero se entiende cómo llega el cliente, luego cómo opera y finalmente qué debe revisar el contador.</p>
           </div>
         </div>
-        <div class="cards-3" style="margin-bottom:18px">
-          <article class="card">
-            <div class="mini-title">Campo 1</div>
-            <h3>Tipo de cliente</h3>
-            <p>Empresa nueva, software compatible o migración / parametrización. Indica cómo llega el cliente a Numbi.</p>
+        <div class="validation-map">
+          <article class="validation-box">
+            <h3>Cómo llega el cliente</h3>
+            <p>Lectura inicial que deja Ventas.</p>
+            <div class="chip-list">
+              <span>Tipo de cliente</span>
+              <span>Estado contable</span>
+            </div>
           </article>
-          <article class="card">
-            <div class="mini-title">Campo 2</div>
-            <h3>Estado contable</h3>
-            <p>Confirmación, auditoría o reconstrucción. Indica qué tan confiable parece el punto de partida contable.</p>
+          <article class="validation-box">
+            <h3>Cómo opera el cliente</h3>
+            <p>Tipo de operación que orienta preguntas.</p>
+            <div class="chip-list">
+              <span>Servicios</span>
+              <span>Comercial</span>
+              <span>Industrial</span>
+              <span>Mixto</span>
+            </div>
           </article>
-          <article class="card">
-            <div class="mini-title">Regla de trabajo</div>
-            <h3>Es una hipótesis, no una sentencia</h3>
-            <p>La ruta preliminar puede confirmarse, ajustarse o corregirse durante onboarding según lo que el cliente valide y la información que entregue.</p>
-          </article>
-        </div>
-        <div class="section-title" style="margin-top:28px">
-          <span class="label">Tipo de operación</span>
-          <div>
-            <h2>El tipo de operación ayuda a validar la hipótesis</h2>
-            <p>El tipo de operación ayuda al Gerente Contador a preparar mejores preguntas antes del onboarding. No define por sí solo la ruta de setup, pero sí orienta qué temas deben validarse con el cliente y qué focos podrían convertirse en auditoría obligatoria para el contador designado.</p>
-          </div>
-        </div>
-        <div class="cards-2">
-          <article class="card">
-            <div class="mini-title">Servicios</div>
-            <h3>Conocimiento, tiempo o contratos</h3>
-            <p>Aplica para empresas que venden conocimiento, ejecución, contratos, proyectos o mensualidades. El foco está en ingresos, anticipos, cartera, nómina operativa y centros de costo.</p>
-          </article>
-          <article class="card">
-            <div class="mini-title">Comercial</div>
-            <h3>Compra y reventa</h3>
-            <p>Aplica para empresas que compran productos terminados y los revenden. El análisis se centra en inventario, costo de ventas, proveedores, márgenes y facturación.</p>
-          </article>
-          <article class="card">
-            <div class="mini-title">Industrial</div>
-            <h3>Transformación productiva</h3>
-            <p>Aplica para empresas que transforman materia prima en producto terminado. El levantamiento revisa materia prima, producción, costeo, MOD, CIF y activos productivos.</p>
-          </article>
-          <article class="card">
-            <div class="mini-title">Mixto</div>
-            <h3>Productos, servicios o proyectos</h3>
-            <p>Aplica para empresas que combinan productos, servicios, instalación, mantenimiento o proyectos. El foco está en separar ingresos, centros de costo, inventario consumido y costos directos.</p>
+          <article class="validation-box">
+            <h3>Qué revisa el contador</h3>
+            <p>Lo que no puede quedar sin validar.</p>
+            <div class="chip-list">
+              <span>Riesgos</span>
+              <span>Cuentas críticas</span>
+              <span>Focos obligatorios</span>
+            </div>
           </article>
         </div>
 
-        <div class="section-title" style="margin-top:42px">
+        <div class="section-title">
           <span class="label">Preguntas preparadas</span>
           <div>
             <h2>Preguntas que preparan el onboarding</h2>
-            <p>Estas preguntas ayudan al Gerente Contador a validar la hipótesis durante el onboarding. Cada respuesta debe convertirse en una decisión: confirmar la clasificación, ajustar la ruta o activar un foco obligatorio para el contador designado.</p>
+            <p>El gerente no llega a improvisar. Estas preguntas sirven para confirmar la lectura inicial y convertir respuestas importantes en focos de auditoría.</p>
           </div>
         </div>
         <div class="compact-stack">
-          <details class="compact-detail" open>
+          <details class="compact-detail">
             <summary>Preguntas base para todos los clientes</summary>
             <div class="question-grid">
-              <div class="question-mini"><strong>¿Esta lectura inicial es correcta?</strong><p>Valida: hipótesis previa.</p><span>Foco: reclasificación.</span></div>
+              <div class="question-mini"><strong>¿Esta lectura inicial es correcta?</strong><p>Valida: lectura previa.</p><span>Foco: reclasificación.</span></div>
               <div class="question-mini"><strong>¿Cómo se genera el ingreso principal?</strong><p>Valida: modelo de ingreso.</p><span>Foco: ingresos, costos y centros.</span></div>
               <div class="question-mini"><strong>¿Qué pasa antes de facturar?</strong><p>Valida: regla de facturación.</p><span>Foco: anticipos e ingresos por cobrar.</span></div>
               <div class="question-mini"><strong>¿Quiénes son sus clientes y cómo pagan?</strong><p>Valida: tipo de cartera.</p><span>Foco: cartera, retenciones y recaudos.</span></div>
@@ -2006,86 +2137,98 @@
           </details>
         </div>
 
-        <div class="section-title" style="margin-top:42px">
-          <span class="label">Diagnóstico final</span>
+        <div class="section-title" style="margin-top:34px">
+          <span class="label">Ficha final</span>
           <div>
-            <h2>Diagnóstico final: lo que debe recibir el contador designado</h2>
-            <p>Al terminar el onboarding, el Gerente Contador debe entregar una ficha de diagnóstico definitiva. Esta ficha es obligatoria porque traduce la conversación con el cliente en ruta de setup, focos de auditoría y alertas para el contador designado.</p>
+            <h2>Ficha final que recibe el contador</h2>
+            <p>El resultado del onboarding debe quedar en tres decisiones claras.</p>
           </div>
         </div>
-        <div class="field-grid">
-          <div class="field-mini"><strong>Cliente</strong><p>Nombre y contexto básico.</p></div>
-          <div class="field-mini"><strong>Tipo de operación</strong><p>Servicios, comercial, industrial o mixto.</p></div>
-          <div class="field-mini"><strong>Tipo de cliente</strong><p>Empresa nueva, compatible o migración.</p></div>
-          <div class="field-mini"><strong>Clasificación contable</strong><p>Nuevo, pasado confiable, migración, auditoría o reconstrucción.</p></div>
-          <div class="field-mini"><strong>Software actual</strong><p>Siigo, Alegra, otro o ninguno.</p></div>
-          <div class="field-mini"><strong>Software destino</strong><p>Siigo, Alegra, otro o no definido.</p></div>
-          <div class="field-mini"><strong>Riesgo principal</strong><p>Inventario, ingresos, impuestos, bancos, nómina, socios, costeo o cartera.</p></div>
-          <div class="field-mini"><strong>Cuentas críticas</strong><p>Ingresos, cartera, inventarios, proveedores, impuestos, bancos, activos y nómina.</p></div>
-          <div class="field-mini"><strong>Ruta del cliente</strong><p>Setup normal, auditoría, parametrización avanzada o reconstrucción parcial/total.</p></div>
-          <div class="field-mini"><strong>Observaciones</strong><p>Notas del Gerente Contador para el inicio del setup.</p></div>
+        <div class="final-card">
+          <div class="final-points">
+            <article class="final-main">
+              <h3>Clasificación</h3>
+              <p>Tipo de operación, tipo de cliente y estado contable.</p>
+            </article>
+            <article class="final-main">
+              <h3>Ruta recomendada</h3>
+              <p>Setup normal, auditoría, parametrización avanzada o reconstrucción.</p>
+            </article>
+            <article class="final-main">
+              <h3>Focos obligatorios</h3>
+              <p>Ingresos, cartera, inventarios, bancos, nómina, impuestos, socios, activos o saldos iniciales.</p>
+            </article>
+          </div>
+          <details class="compact-detail" style="margin-top:12px">
+            <summary>Ver campos completos</summary>
+            <div class="field-grid">
+              <div class="field-mini"><strong>Cliente</strong><p>Nombre y contexto básico.</p></div>
+              <div class="field-mini"><strong>Tipo de operación</strong><p>Servicios, comercial, industrial o mixto.</p></div>
+              <div class="field-mini"><strong>Tipo de cliente</strong><p>Empresa nueva, compatible o migración.</p></div>
+              <div class="field-mini"><strong>Clasificación contable</strong><p>Nuevo, pasado confiable, migración, auditoría o reconstrucción.</p></div>
+              <div class="field-mini"><strong>Software actual</strong><p>Siigo, Alegra, otro o ninguno.</p></div>
+              <div class="field-mini"><strong>Software destino</strong><p>Siigo, Alegra, otro o no definido.</p></div>
+              <div class="field-mini"><strong>Riesgo principal</strong><p>Inventario, ingresos, impuestos, bancos, nómina, socios, costeo o cartera.</p></div>
+              <div class="field-mini"><strong>Cuentas críticas</strong><p>Ingresos, cartera, inventarios, proveedores, impuestos, bancos, activos y nómina.</p></div>
+              <div class="field-mini"><strong>Ruta del cliente</strong><p>Setup normal, auditoría, parametrización avanzada o reconstrucción parcial/total.</p></div>
+              <div class="field-mini"><strong>Observaciones</strong><p>Notas del Gerente Contador para el inicio del setup.</p></div>
+            </div>
+          </details>
         </div>
 
         <div class="decision-alert" style="margin-top:18px">
-          <strong>Regla de decisión obligatoria.</strong>
-          Si una respuesta del cliente afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos, saldos iniciales o socios, esa respuesta debe convertirse en un foco obligatorio de revisión para el contador designado.
+          <strong>Regla clave:</strong> si una respuesta afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos, socios o saldos iniciales, debe convertirse en un foco obligatorio para el contador designado.
         </div>
 
-        <div class="section-title" style="margin-top:42px">
+        <div class="section-title" style="margin-top:34px">
           <span class="label">Focos obligatorios</span>
           <div>
             <h2>Matriz rápida de focos obligatorios</h2>
-            <p>Usa esta matriz para traducir respuestas del cliente en revisiones concretas para el contador designado.</p>
+            <p>Detalle de apoyo para traducir respuestas del cliente en revisiones concretas.</p>
           </div>
         </div>
-        <div class="focus-grid">
-          <div class="focus-mini"><strong>Inventarios</strong><p>Auditar inventario físico, costo de ventas, ajustes y saldos iniciales.</p></div>
-          <div class="focus-mini"><strong>Producción</strong><p>Auditar materia prima, producto en proceso, terminado, MOD y CIF.</p></div>
-          <div class="focus-mini"><strong>Proyectos</strong><p>Auditar centros de costo, ingresos por proyecto y costos asociados.</p></div>
-          <div class="focus-mini"><strong>Anticipos</strong><p>Auditar pasivos por anticipos e ingresos reconocidos.</p></div>
-          <div class="focus-mini"><strong>Facturación por hitos</strong><p>Auditar ingresos por avance, soportes y cartera.</p></div>
-          <div class="focus-mini"><strong>Ventas a crédito</strong><p>Auditar cartera, provisión, recaudos y retenciones.</p></div>
-          <div class="focus-mini"><strong>Importaciones</strong><p>Auditar proveedores del exterior, TRM, nacionalización e impuestos.</p></div>
-          <div class="focus-mini"><strong>Nómina operativa</strong><p>Auditar separación entre costo y gasto.</p></div>
-          <div class="focus-mini"><strong>Cuentas de socios</strong><p>Auditar bancos, socios, préstamos y gastos sin soporte.</p></div>
-          <div class="focus-mini"><strong>Impuestos pendientes</strong><p>Auditar declaraciones, pagos, sanciones y conciliación contable.</p></div>
-          <div class="focus-mini"><strong>Software anterior</strong><p>Auditar saldos iniciales, auxiliares y exportación de información.</p></div>
-          <div class="focus-mini"><strong>Contabilidad no confiable</strong><p>Auditar saldos o recomendar reconstrucción.</p></div>
-          <div class="focus-mini"><strong>Estados sin soporte</strong><p>No aceptar saldos iniciales sin validación.</p></div>
-          <div class="focus-mini"><strong>Maquinaria productiva</strong><p>Auditar activos fijos, depreciación y costo indirecto.</p></div>
-          <div class="focus-mini"><strong>Múltiples sedes</strong><p>Auditar centros de costo y reportes gerenciales.</p></div>
-        </div>
+        <details class="compact-detail">
+          <summary>Ver matriz de focos</summary>
+          <div class="focus-grid">
+            <div class="focus-mini"><strong>Inventarios</strong><p>Inventario físico, costo de ventas, ajustes y saldos iniciales.</p></div>
+            <div class="focus-mini"><strong>Producción</strong><p>Materia prima, producto en proceso, terminado, MOD y CIF.</p></div>
+            <div class="focus-mini"><strong>Proyectos</strong><p>Centros de costo, ingresos por proyecto y costos asociados.</p></div>
+            <div class="focus-mini"><strong>Anticipos</strong><p>Pasivos por anticipos e ingresos reconocidos.</p></div>
+            <div class="focus-mini"><strong>Facturación por hitos</strong><p>Ingresos por avance, soportes y cartera.</p></div>
+            <div class="focus-mini"><strong>Ventas a crédito</strong><p>Cartera, provisión, recaudos y retenciones.</p></div>
+            <div class="focus-mini"><strong>Importaciones</strong><p>Proveedores del exterior, TRM, nacionalización e impuestos.</p></div>
+            <div class="focus-mini"><strong>Nómina operativa</strong><p>Separación entre costo y gasto.</p></div>
+            <div class="focus-mini"><strong>Cuentas de socios</strong><p>Bancos, socios, préstamos y gastos sin soporte.</p></div>
+            <div class="focus-mini"><strong>Impuestos pendientes</strong><p>Declaraciones, pagos, sanciones y conciliación contable.</p></div>
+            <div class="focus-mini"><strong>Software anterior</strong><p>Saldos iniciales, auxiliares y exportación de información.</p></div>
+            <div class="focus-mini"><strong>Contabilidad no confiable</strong><p>Auditar saldos o recomendar reconstrucción.</p></div>
+            <div class="focus-mini"><strong>Estados sin soporte</strong><p>No aceptar saldos iniciales sin validación.</p></div>
+            <div class="focus-mini"><strong>Maquinaria productiva</strong><p>Activos fijos, depreciación y costo indirecto.</p></div>
+            <div class="focus-mini"><strong>Múltiples sedes</strong><p>Centros de costo y reportes gerenciales.</p></div>
+          </div>
+        </details>
 
-        <div class="section-title" style="margin-top:42px">
+        <div class="section-title" style="margin-top:34px">
           <span class="label">Ejemplos</span>
           <div>
             <h2>Ejemplos rápidos de diagnóstico final</h2>
-            <p>Tarjetas cortas para aterrizar cómo debe verse un diagnóstico útil para setup.</p>
+            <p>Cuatro ejemplos cortos para aterrizar el criterio.</p>
           </div>
         </div>
         <div class="cards-2">
-          <article class="example-mini"><strong>Cliente comercial</strong><p>Inventario y varios canales. Revisar costo de ventas, proveedores, facturación, devoluciones, cartera e IVA antes de migrar.</p></article>
-          <article class="example-mini"><strong>Cliente de servicios</strong><p>Servicios por proyectos. Validar ingresos por contrato, anticipos, cartera, nómina operativa, subcontratistas y centros de costo.</p></article>
-          <article class="example-mini"><strong>Cliente industrial</strong><p>No es setup básico. Revisar MP, producto en proceso, terminado, MOD, CIF, maquinaria, depreciación y método de costeo.</p></article>
-          <article class="example-mini"><strong>Riesgo de reconstrucción</strong><p>Pasado no confiable. No aceptar saldos sin auditar bancos, cartera, proveedores, impuestos, socios y patrimonio.</p></article>
+          <article class="example-mini"><strong>Cliente comercial</strong><p>Inventario, costo de ventas, proveedores, cartera e IVA.</p></article>
+          <article class="example-mini"><strong>Cliente de servicios</strong><p>Ingresos por contrato, anticipos, nómina operativa y centros de costo.</p></article>
+          <article class="example-mini"><strong>Cliente industrial</strong><p>Materia prima, producto en proceso, MOD, CIF, maquinaria y costeo.</p></article>
+          <article class="example-mini"><strong>Riesgo de reconstrucción</strong><p>Saldos no confiables, soportes incompletos y auditoría antes de aceptar saldos.</p></article>
         </div>
 
-        <div class="section-title" style="margin-top:42px">
+        <div class="section-title" style="margin-top:34px">
           <span class="label">Cierre de etapa</span>
           <div>
             <h2>Cuándo se considera completo el onboarding</h2>
-            <p>El onboarding se considera completo solo cuando el Gerente Contador deja definidos estos tres elementos.</p>
+            <p>El onboarding solo queda completo cuando existen tres cosas: clasificación del cliente, ruta de setup y focos obligatorios para el contador. Sin eso, el onboarding está incompleto.</p>
           </div>
         </div>
-        <div class="completion-strip">
-          <strong>Sin estos tres elementos, el onboarding queda incompleto.</strong>
-          <ol>
-            <li>Clasificación del cliente.</li>
-            <li>Ruta de setup recomendada.</li>
-            <li>Focos obligatorios de auditoría para el contador designado.</li>
-          </ol>
-        </div>
-        <div class="message-strip">El onboarding no busca saber qué hace el cliente; eso ya debió investigarse. El onboarding busca validar cómo opera, cómo factura, cómo cuesta, cómo cobra, cómo paga y qué tan confiable es su pasado contable. Con esa información se define dónde debe auditar obligatoriamente el contador designado.</div>
       </div>
     </section>
 
