@@ -1255,6 +1255,105 @@
       margin-bottom: 14px;
     }
 
+    #diagnostico .setup-route-title {
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    #diagnostico .setup-route-copy {
+      display: grid;
+      gap: 14px;
+      max-width: 880px;
+    }
+
+    #diagnostico .setup-route-copy h2 {
+      margin-bottom: 0;
+    }
+
+    #diagnostico .setup-intro {
+      max-width: 760px;
+      margin: 0;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--numbi);
+      border-radius: 8px;
+      background: white;
+      line-height: 1.65;
+      box-shadow: 0 12px 28px rgba(38, 50, 56, .04);
+    }
+
+    #diagnostico .setup-paths {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    #diagnostico .setup-paths li {
+      position: relative;
+      min-height: 76px;
+      margin: 0;
+      padding: 14px 14px 14px 40px;
+      border: 1px solid rgba(0, 196, 140, .35);
+      border-radius: 8px;
+      background: var(--mint-soft);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 750;
+      display: flex;
+      align-items: center;
+    }
+
+    #diagnostico .setup-paths li::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--numbi);
+      transform: translateY(-50%);
+      box-shadow: 0 0 0 5px rgba(0, 196, 140, .12);
+    }
+
+    #diagnostico .setup-note {
+      margin: 0;
+      padding: 14px 16px;
+      border: 1px solid rgba(29, 118, 255, .18);
+      border-radius: 8px;
+      background: #eef6ff;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    #diagnostico .setup-criteria {
+      position: relative;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-top: 8px;
+    }
+
+    #diagnostico .setup-criteria .card {
+      position: relative;
+      box-shadow: 0 10px 24px rgba(38, 50, 56, .04);
+    }
+
+    #diagnostico .setup-criteria .card::before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: 18px;
+      right: 18px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--numbi);
+      opacity: .75;
+    }
+
     #diagnostico .guide {
       display: grid;
       grid-template-columns: 1fr;
@@ -1754,6 +1853,7 @@
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
       .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .close-card-grid, .audit-matrix, .example-accordion, .question-grid, .field-grid, .focus-grid, .role-info-grid, .role-alert-grid { grid-template-columns: 1fr; }
+      #diagnostico .setup-paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .entry-card::after { display: none !important; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
@@ -1776,6 +1876,7 @@
       .step { grid-template-columns: 1fr; }
       .role-detail-card summary { grid-template-columns: 1fr; }
       .role-toggle { justify-self: start; }
+      #diagnostico .setup-paths { grid-template-columns: 1fr; }
       #diagnostico .diagnosis-form { grid-template-columns: 1fr; }
       .sla { grid-column: auto; }
       .macro-dock.is-fixed { top: 122px; width: calc(100% - 20px); }
@@ -2322,22 +2423,22 @@
 
     <section id="diagnostico">
       <div class="wrap">
-        <div class="section-title">
+        <div class="section-title setup-route-title">
           <span class="label">Explicación del setup</span>
-          <div>
+          <div class="setup-route-copy">
             <h2>El Set Up se activa según la ruta definida</h2>
-            <p>Al finalizar el onboarding, el Gerente Contador no solo deja una ficha: también define una ruta de Set Up. Esa ruta indica uno de los siguientes potenciales caminos:</p>
-            <ul>
+            <p class="setup-intro">Al finalizar el onboarding, el Gerente Contador no solo deja una ficha: también define una ruta de Set Up. Esa ruta indica uno de los siguientes potenciales caminos:</p>
+            <ul class="setup-paths">
               <li>Si el cliente puede avanzar de forma normal.</li>
               <li>Si el cliente necesita auditoría.</li>
               <li>Si el cliente necesita parametrización.</li>
               <li>Si el cliente necesita migración.</li>
               <li>Si el cliente necesita reconstrucción.</li>
             </ul>
-            <p>La ruta no nace de cero; parte de la información de Ventas, se convierte en hipótesis durante el pre-onboarding y se confirma o ajusta con el cliente durante el onboarding.</p>
+            <p class="setup-note">La ruta no nace de cero; parte de la información de Ventas, se convierte en hipótesis durante el pre-onboarding y se confirma o ajusta con el cliente durante el onboarding.</p>
           </div>
         </div>
-        <div class="cards-3" style="margin-bottom:28px">
+        <div class="cards-3 setup-criteria">
           <article class="card">
             <div class="mini-title">Tipo de cliente</div>
             <h3>Cómo llega a Numbi</h3>
