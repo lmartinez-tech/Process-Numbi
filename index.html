@@ -3839,7 +3839,7 @@
         <div class="log-entry"><strong>${trigger}</strong><span>${action}</span></div>
       `).join("");
       $("raciTable").innerHTML = `
-        <thead><tr><th>Paso</th><th>R</th><th>A</th><th>C</th><th>I</th></tr></thead>
+        <thead><tr><th>Paso</th><th>Responsable</th><th>Accionante</th><th>Consultado</th><th>Informado</th></tr></thead>
         <tbody>${manualSteps.map(step => `<tr><td>${step.id} · ${step.name}</td><td>${step.raci.r}</td><td>${step.raci.a}</td><td>${step.raci.c}</td><td>${step.raci.i}</td></tr>`).join("")}</tbody>
       `;
       $("pendingTable").innerHTML = `
