@@ -2764,10 +2764,6 @@
             <div class="table-wrap"><table id="raciTable"></table></div>
           </div>
         </div>
-        <div class="card">
-          <div class="mini-title">Decisiones pendientes</div>
-          <div class="table-wrap"><table id="pendingTable"></table></div>
-        </div>
       </div>
     </section>
 
@@ -3274,21 +3270,9 @@
       ["80% del SLA consumido", "Registrar alerta de SLA y definir acción de recuperación antes de que el cliente se entere tarde."],
       ["Extensión de plazo", "Gerente Contador informa primero al Country Manager y después comunica al cliente."],
       ["Evento de riesgo", "Registrar evento tipo Riesgo en bitácora; entra al radar del Country Manager."],
-      ["Silencio operativo", "Cliente sin entradas en bitácora por 14 días se marca como alerta de silencio."],
+      ["Silencio operativo", "Cliente sin entradas en bitácora por 7 días se marca como alerta de silencio."],
       ["Cliente en rojo", "Revisar el caso con bitácora abierta; sin bitácora no se discute el caso."],
       ["Reconstrucción posible", "No continuar sin dictamen y validación de fee adicional cuando aplique."]
-    ];
-
-    const pendingDecisions = [
-      ["RACI oficial no adjunta", "No se puede validar A/R definitivo por actividad.", "Usar roles actuales como borrador y validar con matriz oficial."],
-      ["Métrica NPS", "La instrucción de presentación pide NPS colectivo 40+, pero el proceso fuente menciona NPS 9+ por cliente.", "Confirmar si conviven como métrica colectiva y pulso individual, o si una reemplaza a la otra."],
-      ["Regla de pausa/recalculo de SLA", "El manual menciona SLA desde documentos completos, pero no define eventos de pausa aprobados.", "Definir política de SLA por faltantes del cliente y cambios de alcance."],
-      ["Responsable accountable de parametrización/migración", "No hay RACI oficial visible para confirmar A único.", "Validar si A queda en Gerente Contador u Operaciones."],
-      ["Matching Gerente-Cliente", "El proceso indica asignación por capacidad y criterio del Country Manager, con regla de personalidad aún informal.", "Formalizar criterios cuando existan datos de los primeros casos reales."],
-      ["Participación Country Manager en onboarding", "El proceso dice que participa cuando el cliente lo requiere, pero no define criterios objetivos.", "Definir criterios por tamaño, industria, solicitud del Gerente Contador o tipo de setup."],
-      ["Ruta 2 Auditoría + Migración", "La ruta se llama migración/parametrización, pero la matriz no marca pasos 45-68.", "Confirmar si después del dictamen se agregan parametrización, migración y checklist."],
-      ["Regla 514 días", "La fuente dice que ningún cliente puede estar más de 514 días sin evento; parece posible error de digitación.", "Validar si la regla correcta era 14 días, alineada con alerta de silencio."],
-      ["Resumen externo vs ficha interna", "El manual anterior mezclaba destinatarios.", "Aprobar dos plantillas separadas antes de operación."]
     ];
 
     const operationFocus = {
@@ -3841,10 +3825,6 @@
       $("raciTable").innerHTML = `
         <thead><tr><th>Paso</th><th>Responsable</th><th>Accionante</th><th>Consultado</th><th>Informado</th></tr></thead>
         <tbody>${manualSteps.map(step => `<tr><td>${step.id} · ${step.name}</td><td>${step.raci.r}</td><td>${step.raci.a}</td><td>${step.raci.c}</td><td>${step.raci.i}</td></tr>`).join("")}</tbody>
-      `;
-      $("pendingTable").innerHTML = `
-        <thead><tr><th>Decisión pendiente</th><th>Riesgo</th><th>Recomendación</th></tr></thead>
-        <tbody>${pendingDecisions.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}</tbody>
       `;
     }
 
