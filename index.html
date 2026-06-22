@@ -682,6 +682,135 @@
       margin: 0;
     }
 
+    .role-detail-grid {
+      gap: 14px;
+    }
+
+    .role-detail-grid .role-detail-card {
+      border-color: #d9e6e1;
+      box-shadow: 0 10px 24px rgba(38, 50, 56, .04);
+    }
+
+    .role-detail-card summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      background: white;
+    }
+
+    .role-summary h3 {
+      margin: 0 0 5px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .role-summary p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .role-summary .chip {
+      min-height: 24px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .role-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      color: var(--numbi-dark);
+      background: var(--mint-soft);
+      border: 1px solid var(--line);
+      font-size: 18px;
+      transition: transform .2s ease;
+    }
+
+    .role-detail-card[open] .role-toggle {
+      transform: rotate(45deg);
+    }
+
+    .role-detail-card[open] summary {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f7fbf9);
+    }
+
+    .role-detail-body {
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      background: #fbfdfc;
+    }
+
+    .role-main-block,
+    .role-info-grid > div,
+    .role-alert-block {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 14px;
+    }
+
+    .role-main-block {
+      border-color: rgba(0, 196, 140, .45);
+      box-shadow: 0 12px 28px rgba(0, 128, 100, .07);
+    }
+
+    .role-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .role-detail-label {
+      display: block;
+      color: var(--numbi-dark);
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+
+    .role-detail-body p,
+    .role-detail-body li {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .role-output-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 5px;
+    }
+
+    .role-alert-block {
+      background: #fffaf1;
+      border-color: rgba(245, 184, 64, .45);
+    }
+
+    .role-alert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .role-alert-grid > div {
+      min-width: 0;
+    }
+
     .manual-card h3 {
       margin-bottom: 6px;
       font-size: 19px;
@@ -1624,7 +1753,7 @@
 
     @media (max-width: 960px) {
       .section-title, .guide { grid-template-columns: 1fr; }
-      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .close-card-grid, .audit-matrix, .example-accordion, .question-grid, .field-grid, .focus-grid { grid-template-columns: 1fr; }
+      .cards-3, .cards-2, .hero-grid, .storyline, .decision-guide, .tracking-grid, .principles-grid, .nps-layout, .reason-grid, .compare-grid, .role-grid, .manual-grid, .visual-notes, .step-grid, .entry-timeline, .close-card-grid, .audit-matrix, .example-accordion, .question-grid, .field-grid, .focus-grid, .role-info-grid, .role-alert-grid { grid-template-columns: 1fr; }
       .entry-card::after { display: none !important; }
       #diagnostico .diagnosis-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #diagnostico .route-heading, #diagnostico .route-compact-grid { grid-template-columns: 1fr; }
@@ -1645,6 +1774,8 @@
       .hero { padding-top: 34px; }
       section { padding: 30px 0; }
       .step { grid-template-columns: 1fr; }
+      .role-detail-card summary { grid-template-columns: 1fr; }
+      .role-toggle { justify-self: start; }
       #diagnostico .diagnosis-form { grid-template-columns: 1fr; }
       .sla { grid-column: auto; }
       .macro-dock.is-fixed { top: 122px; width: calc(100% - 20px); }
@@ -2943,6 +3074,8 @@
     const roleWork = [
       {
         role: "Ventas",
+        summary: "Trae el contexto comercial y evita que operaciones arranque sin entender qué se vendió.",
+        chips: ["Pre-onboarding", "Contexto", "Recotización"],
         enters: "Desde el pre-cierre comercial y pre-onboarding: trae el contexto inicial del cliente y transfiere la información a operaciones.",
         does: "Precalifica, identifica necesidad y expectativa, crea el grupo de WhatsApp, crea el cliente en portal si aplica, notifica a Onboarding, participa en onboarding cuando corresponda y aclara qué se vendió o prometió.",
         avoids: "No define sola la ruta contable final, no promete tiempos técnicos sin validación de operaciones y no cierra recotizaciones técnicas sin validar.",
@@ -2952,6 +3085,8 @@
       },
       {
         role: "Equipo de onboarding / administración",
+        summary: "Prepara la entrada operativa del cliente para que el Gerente Contador pueda llegar listo al onboarding.",
+        chips: ["Agenda", "Documentos", "Asignación"],
         enters: "Después del cierre comercial y antes de la reunión de onboarding.",
         does: "Asigna Gerente Contador, solicita Cámara de Comercio, pide certificación o información para token DIAN, convoca onboarding dentro de las 24 horas, crea hoja de vida inicial y asigna el cliente al portal del gerente.",
         avoids: "No define la ruta contable, no interpreta riesgos técnicos y no reemplaza al Gerente Contador en la relación con el cliente.",
@@ -2961,6 +3096,8 @@
       },
       {
         role: "Gerente Contador",
+        summary: "Lidera el diagnóstico, define la ruta y mantiene la comunicación principal con el cliente.",
+        chips: ["Diagnóstico", "Ruta", "Escalamiento"],
         enters: "Desde la asignación en pre-onboarding y se mantiene como responsable principal durante onboarding, setup y transición a operación.",
         does: "Estudia al cliente, dirige onboarding, valida hipótesis, define tipo de operación, tipo de cliente, estado contable y ruta, entrega ficha de diagnóstico, asigna contador si aplica, supervisa setup, mantiene comunicación y activa alertas.",
         avoids: "No inicia setup sin clasificación clara, no permite aceptar saldos sin soporte, no deja conversaciones relevantes solo en WhatsApp y no traslada al Country Manager la comunicación normal.",
@@ -2970,6 +3107,8 @@
       },
       {
         role: "Contador Designado",
+        summary: "Ejecuta la revisión inicial y convierte la ficha del gerente en hallazgos, validaciones y avances de setup.",
+        chips: ["Validación", "Set up", "Hallazgos"],
         enters: "Después del onboarding, cuando recibe la ficha de diagnóstico y la ruta definida por el Gerente Contador.",
         does: "Estudia la ficha, revisa focos obligatorios, valida información, ejecuta auditoría express o revisión de primer grado, verifica saldos y soportes, documenta hallazgos, informa riesgos y ejecuta la ruta aprobada.",
         avoids: "No acepta saldos iniciales sin soporte, no cambia la ruta sin informar, no comunica impactos comerciales sin validación y no cierra una revisión con dudas materiales.",
@@ -2979,6 +3118,8 @@
       },
       {
         role: "Auditor",
+        summary: "Entra cuando hay red flags y emite una conclusión técnica para decidir el siguiente camino.",
+        chips: ["Auditoría", "Dictamen", "Plan de acción"],
         enters: "Solo cuando la auditoría express o el Gerente Contador activan auditoría profunda.",
         does: "Revisa hallazgos, analiza información, revisa auditoría express, ejecuta auditoría de control o profunda, emite dictamen, propone plan de acción e indica si hay ajustes, reconstrucción o recotización.",
         avoids: "No reemplaza al Gerente Contador en la comunicación principal, no define condiciones comerciales, no ejecuta recotización y no cierra el setup por sí solo.",
@@ -2988,6 +3129,8 @@
       },
       {
         role: "Country Manager",
+        summary: "Acompaña únicamente casos en alerta para dar visibilidad, desbloquear decisiones y proteger la experiencia.",
+        chips: ["Alertas", "Churn", "Decisiones"],
         enters: "No entra por defecto. Participa únicamente cuando se activa una alerta.",
         does: "Revisa clientes en alerta, acompaña casos amarillos o rojos, desbloquea decisiones, apoya al Gerente Contador y revisa SLA en riesgo, recotización o posible churn.",
         avoids: "No supervisa setups en verde, no reemplaza al Gerente Contador, no se vuelve cuello de botella, no toma decisiones técnicas diarias y no participa en comunicaciones rutinarias.",
@@ -3527,16 +3670,49 @@
 
     function renderRoleWork() {
       if (!$("roleWorkCards")) return;
-      $("roleWorkCards").innerHTML = roleWork.map(({ role, enters, does, avoids, deliverable, escalateTo, escalates }) => `
-        <details class="compact-detail">
-          <summary>${role}</summary>
-          <div class="phase-meta">
-            <div class="meta-box"><strong>Cuándo entra</strong><span>${enters}</span></div>
-            <div class="meta-box"><strong>Qué hace</strong><span>${does}</span></div>
-            <div class="meta-box"><strong>Qué no debe hacer</strong><span>${avoids}</span></div>
-            <div class="meta-box"><strong>Entregable</strong><span>${deliverable}</span></div>
-            <div class="meta-box"><strong>A quién escala</strong><span>${escalateTo}</span></div>
-            <div class="meta-box"><strong>Cuándo escala o informa</strong><span>${escalates}</span></div>
+      const deliverableList = text => text.split(/,\s*/).filter(Boolean).map(item => `<li>${item}</li>`).join("");
+      $("roleWorkCards").innerHTML = roleWork.map(({ role, summary, chips, enters, does, avoids, deliverable, escalateTo, escalates }) => `
+        <details class="compact-detail role-detail-card">
+          <summary>
+            <div class="role-summary">
+              <h3>${role}</h3>
+              <p>${summary}</p>
+              <div class="chips">${chips.map(chip => `<span class="chip">${chip}</span>`).join("")}</div>
+            </div>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div class="role-detail-body">
+            <div class="role-main-block">
+              <span class="role-detail-label">Responsabilidad principal</span>
+              <p>${does}</p>
+            </div>
+            <div class="role-info-grid">
+              <div>
+                <span class="role-detail-label">Cuándo entra</span>
+                <p>${enters}</p>
+              </div>
+              <div>
+                <span class="role-detail-label">Entregable esperado</span>
+                <ul class="role-output-list">${deliverableList(deliverable)}</ul>
+              </div>
+            </div>
+            <div class="role-alert-block">
+              <span class="role-detail-label">Alertas, límites y escalamiento</span>
+              <div class="role-alert-grid">
+                <div>
+                  <span class="role-detail-label">Límites</span>
+                  <p>${avoids}</p>
+                </div>
+                <div>
+                  <span class="role-detail-label">A quién escala</span>
+                  <p>${escalateTo}</p>
+                </div>
+                <div>
+                  <span class="role-detail-label">Cuándo escala</span>
+                  <p>${escalates}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </details>
       `).join("");
