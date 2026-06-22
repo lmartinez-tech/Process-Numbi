@@ -2947,6 +2947,7 @@
         does: "Precalifica, identifica necesidad y expectativa, crea el grupo de WhatsApp, crea el cliente en portal si aplica, notifica a Onboarding, participa en onboarding cuando corresponda y aclara qué se vendió o prometió.",
         avoids: "No define sola la ruta contable final, no promete tiempos técnicos sin validación de operaciones y no cierra recotizaciones técnicas sin validar.",
         deliverable: "Contexto comercial claro, cliente creado o notificado, información inicial disponible y decisión comercial documentada si hay recotización.",
+        escalateTo: "Gerente Contador, líder de operaciones o Country Manager, según impacto comercial y riesgo del cliente.",
         escalates: "Escala cuando el alcance vendido no coincide con la realidad, el cliente requiere recotización o rechaza nuevo alcance o fee."
       },
       {
@@ -2955,6 +2956,7 @@
         does: "Asigna Gerente Contador, solicita Cámara de Comercio, pide certificación o información para token DIAN, convoca onboarding dentro de las 24 horas, crea hoja de vida inicial y asigna el cliente al portal del gerente.",
         avoids: "No define la ruta contable, no interpreta riesgos técnicos y no reemplaza al Gerente Contador en la relación con el cliente.",
         deliverable: "Cliente creado y asignado, reunión agendada, documentos iniciales solicitados, hoja de vida abierta y Gerente Contador informado.",
+        escalateTo: "Gerente Contador; si el bloqueo impide iniciar o hay falta de contexto comercial, también informa a Ventas.",
         escalates: "Escala si no obtiene documentos mínimos, el cliente no responde para agendar o falta información comercial para preparar la reunión."
       },
       {
@@ -2963,6 +2965,7 @@
         does: "Estudia al cliente, dirige onboarding, valida hipótesis, define tipo de operación, tipo de cliente, estado contable y ruta, entrega ficha de diagnóstico, asigna contador si aplica, supervisa setup, mantiene comunicación y activa alertas.",
         avoids: "No inicia setup sin clasificación clara, no permite aceptar saldos sin soporte, no deja conversaciones relevantes solo en WhatsApp y no traslada al Country Manager la comunicación normal.",
         deliverable: "Ficha de diagnóstico, ruta de setup, focos obligatorios, seguimiento, bitácora actualizada o supervisada y cierre formal.",
+        escalateTo: "Country Manager cuando hay alerta crítica; Ventas cuando hay recotización o diferencia de alcance.",
         escalates: "Escala si el SLA está en riesgo, aparece un evento de riesgo, se requiere recotización, hay extensión de plazo, inconsistencias graves o riesgo de churn."
       },
       {
@@ -2971,6 +2974,7 @@
         does: "Estudia la ficha, revisa focos obligatorios, valida información, ejecuta auditoría express o revisión de primer grado, verifica saldos y soportes, documenta hallazgos, informa riesgos y ejecuta la ruta aprobada.",
         avoids: "No acepta saldos iniciales sin soporte, no cambia la ruta sin informar, no comunica impactos comerciales sin validación y no cierra una revisión con dudas materiales.",
         deliverable: "Conclusión de revisión inicial o auditoría express, hallazgos documentados, saldos validados o alerta de no confiabilidad e información lista para la siguiente intervención.",
+        escalateTo: "Gerente Contador. Si el hallazgo requiere auditoría profunda, el Gerente Contador activa al Auditor.",
         escalates: "Escala si los saldos no son confiables, hay documentos incompletos, diferencias críticas, se requiere auditoría profunda o aparece posible reconstrucción."
       },
       {
@@ -2979,6 +2983,7 @@
         does: "Revisa hallazgos, analiza información, revisa auditoría express, ejecuta auditoría de control o profunda, emite dictamen, propone plan de acción e indica si hay ajustes, reconstrucción o recotización.",
         avoids: "No reemplaza al Gerente Contador en la comunicación principal, no define condiciones comerciales, no ejecuta recotización y no cierra el setup por sí solo.",
         deliverable: "Dictamen o informe de hallazgos, conclusión técnica y plan de acción recomendado.",
+        escalateTo: "Gerente Contador; el Gerente Contador informa a Ventas o Country Manager si cambia alcance, tiempo o riesgo del cliente.",
         escalates: "Escala si los hallazgos afectan alcance, tiempos o costo, no permiten concluir, requieren reconstrucción o generan riesgo técnico relevante."
       },
       {
@@ -2987,6 +2992,7 @@
         does: "Revisa clientes en alerta, acompaña casos amarillos o rojos, desbloquea decisiones, apoya al Gerente Contador y revisa SLA en riesgo, recotización o posible churn.",
         avoids: "No supervisa setups en verde, no reemplaza al Gerente Contador, no se vuelve cuello de botella, no toma decisiones técnicas diarias y no participa en comunicaciones rutinarias.",
         deliverable: "Acompañamiento en casos críticos, decisiones desbloqueadas y seguimiento de alertas relevantes.",
+        escalateTo: "Liderazgo de operaciones o dirección comercial cuando la decisión supera el alcance del setup o tiene impacto reputacional/comercial.",
         escalates: "Escala cuando hay riesgo de churn, recotización, extensión de plazo, silencio operativo, conflicto con el cliente o impacto reputacional/comercial."
       }
     ];
@@ -3521,7 +3527,7 @@
 
     function renderRoleWork() {
       if (!$("roleWorkCards")) return;
-      $("roleWorkCards").innerHTML = roleWork.map(({ role, enters, does, avoids, deliverable, escalates }) => `
+      $("roleWorkCards").innerHTML = roleWork.map(({ role, enters, does, avoids, deliverable, escalateTo, escalates }) => `
         <details class="compact-detail">
           <summary>${role}</summary>
           <div class="phase-meta">
@@ -3529,6 +3535,7 @@
             <div class="meta-box"><strong>Qué hace</strong><span>${does}</span></div>
             <div class="meta-box"><strong>Qué no debe hacer</strong><span>${avoids}</span></div>
             <div class="meta-box"><strong>Entregable</strong><span>${deliverable}</span></div>
+            <div class="meta-box"><strong>A quién escala</strong><span>${escalateTo}</span></div>
             <div class="meta-box"><strong>Cuándo escala o informa</strong><span>${escalates}</span></div>
           </div>
         </details>
