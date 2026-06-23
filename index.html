@@ -86,6 +86,18 @@
 
     nav a:hover { background: var(--mint-soft); color: var(--numbi-dark); }
 
+    .xref {
+      color: var(--numbi-dark);
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 140, 104, .35);
+    }
+
+    .xref:hover {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
     .hero {
       padding: 54px 0 42px;
       border-bottom: 1px solid var(--line);
@@ -154,7 +166,7 @@
     #pasos,
     #explicacion-onboarding,
     #explicacion-recepcion-validacion,
-    #explicacion-auditoria,
+    #explicacion-revision-profunda,
     #explicacion-parametrizacion-migracion,
     #explicacion-reconstruccion,
     #explicacion-salida-operacion { scroll-margin-top: 190px; }
@@ -312,6 +324,47 @@
       display: block;
       color: var(--blue);
       margin-bottom: 8px;
+    }
+
+    .hypothesis-box {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      padding: 20px;
+      background: linear-gradient(180deg, var(--mint-soft), #fff);
+      border: 1px solid rgba(0, 201, 139, .35);
+      border-left: 5px solid var(--numbi);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hypothesis-box h3 {
+      margin-bottom: 2px;
+      font-size: 22px;
+    }
+
+    .hypothesis-box p {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .hypothesis-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hypothesis-flow span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--numbi-dark);
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .storyline {
@@ -1933,8 +1986,22 @@
         </div>
         <div class="callout">
           <strong>La intención</strong>
-          El nuevo proceso busca ordenar, no burocratizar. El cliente debe entender qué sigue, quién responde y qué falta para avanzar; el equipo debe tener contexto compartido y alertas a tiempo.
+          El nuevo proceso busca ordenar, no burocratizar. El cliente debe entender qué sigue, quién responde y qué falta para avanzar; el equipo debe tener contexto compartido y <a class="xref" href="#alertas">alertas</a> a tiempo.
         </div>
+        <article class="hypothesis-box" id="hipotesis">
+          <div>
+            <span class="label">Concepto clave</span>
+            <h3>Qué significa hipótesis en este manual</h3>
+          </div>
+          <p>En este manual, una hipótesis no es una conclusión definitiva. Es la lectura inicial que el Gerente Contador construye después de revisar la información disponible del cliente: propuesta, documentos, contexto comercial, software, estado contable y tipo de operación. La hipótesis sirve para llegar preparado al onboarding, hacer mejores preguntas y validar con el cliente si la <a class="xref" href="#rutas">ruta de Set Up</a> es correcta.</p>
+          <p><strong>Hipótesis = revisar, analizar, entender y formarse una idea inicial del negocio.</strong></p>
+          <div class="hypothesis-flow">
+            <span>Se prepara antes del onboarding</span>
+            <span>Se valida durante la reunión</span>
+            <span>Puede confirmarse, ajustarse o cambiar</span>
+            <span>Se convierte en <a class="xref" href="#ficha">ficha técnica definitiva</a></span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1944,12 +2011,12 @@
           <span class="label">Objetivo del manual</span>
           <div>
             <h2>Que cualquiera pueda ejecutar el proceso sin depender de memoria o chats</h2>
-            <p>El manual explica el paso a paso desde la preparación del onboarding hasta el cierre a operación. Sirve para alinear a Gerentes Contadores, Contadores, Onboarding, Ventas, líder de operaciones y Country Manager alrededor de una misma ruta.</p>
+            <p>El manual explica el paso a paso desde la preparación del onboarding hasta el <a class="xref" href="#cierre">cierre a operación</a>. Sirve para alinear a Gerentes Contadores, Contadores, Onboarding, Ventas, Líder de Operación y Country Manager alrededor de una misma <a class="xref" href="#rutas">ruta</a>.</p>
           </div>
         </div>
         <div class="callout">
           <strong>Cómo se debe usar</strong>
-          Para cada cliente, revisa la etapa actual, identifica el responsable, ejecuta las acciones mínimas, registra bloqueos en bitácora y confirma el entregable antes de avanzar.
+          Para cada cliente, revisa la etapa actual, identifica el responsable, ejecuta las acciones mínimas, registra bloqueos en <a class="xref" href="#bitacora">bitácora</a> y confirma el entregable antes de avanzar.
         </div>
       </div>
     </section>
@@ -1977,17 +2044,17 @@
           <article class="manual-card">
             <strong>Paso 3</strong>
             <h3>Entregar ficha</h3>
-            <p>Dejar al contador asignado la ficha final con ruta, riesgos y focos para la auditoría inicial.</p>
+            <p>Dejar al contador asignado la <a class="xref" href="#ficha">ficha técnica</a> final con ruta, riesgos y focos para la revisión contable inicial.</p>
           </article>
           <article class="manual-card">
             <strong>Paso 4</strong>
             <h3>Ejecutar la ruta</h3>
-            <p>Seguir solo las etapas que aplican según tipo de cliente y estado contable: confirmación, auditoría o reconstrucción.</p>
+            <p>Seguir solo las etapas que aplican según tipo de cliente y estado contable: confirmación, revisión profunda o reconstrucción.</p>
           </article>
           <article class="manual-card">
             <strong>Paso 5</strong>
             <h3>Registrar avances</h3>
-            <p>Centralizar decisiones, pendientes, entregas, riesgos y bloqueos en la bitácora viva del setup.</p>
+            <p>Centralizar decisiones, pendientes, entregas, riesgos y bloqueos en la <a class="xref" href="#bitacora">bitácora viva del setup</a>.</p>
           </article>
           <article class="manual-card">
             <strong>Paso 6</strong>
@@ -2011,21 +2078,21 @@
           <article class="compare-card">
             <strong>Siempre</strong>
             <ul>
-              <li>Validar la hipótesis inicial con el cliente.</li>
-              <li>Definir ruta y responsables antes de iniciar setup.</li>
-              <li>Entregar ficha al contador asignado.</li>
-              <li>Registrar bloqueos en una sola bitácora.</li>
+              <li>Validar la <a class="xref" href="#hipotesis">hipótesis inicial</a> con el cliente.</li>
+              <li>Definir <a class="xref" href="#rutas">ruta</a> y responsables antes de iniciar setup.</li>
+              <li>Entregar <a class="xref" href="#ficha">ficha</a> al contador asignado.</li>
+              <li>Registrar bloqueos en una sola <a class="xref" href="#bitacora">bitácora</a>.</li>
               <li>Comunicar al cliente qué sigue.</li>
             </ul>
           </article>
           <article class="compare-card after">
             <strong>Evitar</strong>
             <ul>
-              <li>Iniciar auditoría sin contexto mínimo.</li>
+              <li>Iniciar revisión profunda sin contexto mínimo.</li>
               <li>Dejar decisiones solo en WhatsApp.</li>
               <li>Pasar a operación con pendientes críticos abiertos.</li>
-              <li>Asumir que todos entienden la ruta.</li>
-              <li>Cerrar sin comunicación formal al cliente.</li>
+              <li>Asumir que todos entienden la <a class="xref" href="#rutas">ruta</a>.</li>
+              <li>Cerrar sin <a class="xref" href="#cierre">comunicación formal</a> al cliente.</li>
             </ul>
           </article>
         </div>
@@ -2038,7 +2105,7 @@
           <span class="label">Flujo general del manual</span>
           <div>
             <h2>El proceso se ejecuta en seis etapas</h2>
-            <p>Usa este flujo para ubicar dónde está el cliente. No todos pasan por todas las etapas: la ruta se activa según tipo de cliente y estado contable.</p>
+            <p>Usa este flujo para ubicar dónde está el cliente. No todos pasan por todas las etapas: la <a class="xref" href="#rutas">ruta</a> se activa según tipo de cliente y estado contable.</p>
           </div>
         </div>
 
@@ -2051,7 +2118,7 @@
             <div class="macro-flow" aria-label="Etapas maestras del proceso">
               <button type="button" class="macro-phase" data-macro-phase="0" data-target="#explicacion-onboarding"><strong>Etapa 1 · Onboarding</strong><h3>Onboarding</h3><p>Validar lectura inicial, acordar documentos y entregar ficha al contador.</p></button>
               <button type="button" class="macro-phase" data-macro-phase="1" data-target="#explicacion-recepcion-validacion"><strong>Etapa 2 · Setup</strong><h3>Recepción y validación</h3><p>Recibir documentos, comprobar integridad y validar información inicial.</p></button>
-              <button type="button" class="macro-phase" data-macro-phase="2" data-target="#explicacion-auditoria"><strong>Etapa 3 · Setup</strong><h3>Auditoría</h3><p>Revisión profunda activada por red flags de Ventas o del equipo contable asignado.</p></button>
+              <button type="button" class="macro-phase" data-macro-phase="2" data-target="#explicacion-revision-profunda"><strong>Etapa 3 · Revisión profunda</strong><h3>Revisión profunda</h3><p>Revisión contable activada por dudas, red flags, información incompleta o saldos no confiables.</p></button>
               <button type="button" class="macro-phase" data-macro-phase="3" data-target="#explicacion-parametrizacion-migracion"><strong>Etapa 4 · Setup</strong><h3>Parametrización y migración</h3><p>Configurar Siigo o Alegra y migrar información cuando aplique.</p></button>
               <button type="button" class="macro-phase" data-macro-phase="4" data-target="#explicacion-reconstruccion"><strong>Etapa 5 · Setup</strong><h3>Reconstrucción contable</h3><p>Reconstruir periodos cuando el pasado contable no es confiable.</p></button>
               <button type="button" class="macro-phase" data-macro-phase="5" data-target="#explicacion-salida-operacion"><strong>Etapa 6 · Setup</strong><h3>Salida a operación</h3><p>Capacitar, cerrar el setup y pasar al flujo recurrente.</p></button>
@@ -2059,7 +2126,7 @@
           </div>
         </div>
 
-        <div class="text-flow">Onboarding → Recepción y validación → Auditoría* → Parametrización / migración* → Reconstrucción* → Salida a operación</div>
+        <div class="text-flow">Onboarding → Recepción y validación → Revisión profunda* → Parametrización / migración* → Reconstrucción* → Salida a operación</div>
         <p class="conditional-note">* Las etapas condicionales se activan según la combinación entre tipo de cliente y estado contable.</p>
 
         <div class="section-title" style="margin-top:42px">
@@ -2127,17 +2194,22 @@
           <article class="role-card">
             <strong>Gerente Contador</strong>
             <h3>Gerente Contador</h3>
-            <p>Prepara hipótesis, dirige onboarding, define ruta, acuerda documentos y entrega ficha al contador.</p>
+            <p>Prepara <a class="xref" href="#hipotesis">hipótesis</a>, dirige onboarding, define <a class="xref" href="#rutas">ruta</a>, acuerda documentos y entrega <a class="xref" href="#ficha">ficha</a> al contador.</p>
           </article>
           <article class="role-card">
             <strong>Contador designado</strong>
             <h3>Contador Designado</h3>
-            <p>Usa la ficha para iniciar auditoría, validar saldos, registrar hallazgos y ejecutar la ruta que aplique.</p>
+            <p>Usa la ficha para iniciar revisión contable, validar saldos, registrar hallazgos y ejecutar la ruta que aplique.</p>
+          </article>
+          <article class="role-card">
+            <strong>Líder de Operación</strong>
+            <h3>Líder de Operación</h3>
+            <p>Mide avance, revisa ANS por etapa, valida bloqueos, exige plan de acción y asegura cumplimiento del proceso.</p>
           </article>
           <article class="role-card">
             <strong>Country Manager</strong>
             <h3>Country Manager</h3>
-            <p>Entra solo ante alertas críticas, SLA en riesgo, recotización o solicitud explícita del Gerente Contador.</p>
+            <p>Entra en alertas críticas, recotización, riesgo comercial, excepción relevante o solicitud del Líder de Operación / Gerente Contador.</p>
           </article>
         </div>
       </div>
@@ -2230,12 +2302,12 @@
           <article class="card">
             <div class="mini-title">B. Durante la reunión</div>
             <h3>Onboarding: el gerente valida y cierra la ficha definitiva</h3>
-            <p>Es la reunión con el cliente. El Gerente Contador confirma, corrige o completa la hipótesis y convierte la conversación en una ficha definitiva.</p>
+            <p>Es la reunión con el cliente. El Gerente Contador confirma, corrige o completa la <a class="xref" href="#hipotesis">hipótesis</a> y convierte la conversación en una <a class="xref" href="#ficha">ficha definitiva</a>.</p>
             <ul>
               <li>Valida modelo de negocio, operación, software, expectativas, documentos y alcance vendido.</li>
               <li>Contrasta el alcance vendido con la realidad operativa que describe el cliente.</li>
-              <li>Ajusta tipo de cliente, estado contable, tipo de operación y ruta de setup si aplica.</li>
-              <li>Identifica focos obligatorios, define qué debe revisar sí o sí el contador designado y cierra la ficha definitiva.</li>
+              <li>Ajusta tipo de cliente, estado contable, tipo de operación y <a class="xref" href="#rutas">ruta de setup</a> si aplica.</li>
+              <li>Identifica <a class="xref" href="#focos">focos obligatorios</a>, define qué debe revisar sí o sí el contador designado y cierra la ficha definitiva.</li>
               <li>Termina cuando quedan clasificación, ruta recomendada y focos obligatorios definidos.</li>
             </ul>
           </article>
@@ -2262,7 +2334,7 @@
           <article class="card">
             <div class="mini-title">Campo 2</div>
             <h3>Estado contable</h3>
-            <p>Confirmación, auditoría o reconstrucción. Indica qué tan confiable parece el punto de partida contable.</p>
+            <p>Confirmación, revisión profunda o reconstrucción. Indica qué tan confiable parece el punto de partida contable.</p>
           </article>
           <article class="card">
             <div class="mini-title">Regla de trabajo</div>
@@ -2274,7 +2346,7 @@
           <span class="label">Tipo de operación</span>
           <div>
             <h2>El tipo de operación ayuda a validar la hipótesis</h2>
-            <p>El tipo de operación ayuda al Gerente Contador a preparar mejores preguntas antes del onboarding. No define por sí solo la ruta de setup, pero sí orienta qué temas deben validarse con el cliente y qué focos podrían convertirse en auditoría obligatoria para el contador designado.</p>
+            <p>El tipo de operación ayuda al Gerente Contador a preparar mejores preguntas antes del onboarding. No define por sí solo la ruta de setup, pero sí orienta qué temas deben validarse con el cliente y qué focos podrían convertirse en revisión obligatoria para el contador designado.</p>
           </div>
         </div>
         <div class="cards-2">
@@ -2369,10 +2441,11 @@
 
             <div class="close-card-block highlight">
               <h3>Regla de decisión</h3>
-              <p>Si una respuesta del cliente afecta ingresos, impuestos, inventarios, bancos, nómina, cartera, proveedores, activos o saldos iniciales, esa respuesta debe convertirse en un foco de auditoría para el contador designado.</p>
+              <p>Cada vez que el cliente mencione una duda, alerta, inconsistencia o zona sin control sobre ingresos, cartera, bancos, impuestos, nómina, proveedores, inventarios, activos, socios, saldos iniciales o software anterior, esa respuesta debe convertirse en un foco obligatorio para el contador designado.</p>
+              <p>El contador no debe revisar todo con la misma intensidad. Debe partir de la <a class="xref" href="#ficha">ficha técnica</a> y priorizar los focos que el cliente, Ventas o el Gerente Contador identificaron como críticos.</p>
             </div>
 
-            <div class="close-card-block wide">
+            <div class="close-card-block wide" id="focos">
               <h3>Matriz rápida de foco obligatorio</h3>
               <p>Usa esta guía para traducir lo que dice el cliente en revisiones concretas.</p>
               <details class="compact-detail">
@@ -2389,7 +2462,7 @@
                   <div class="matrix-item"><strong>Cuentas personales de socios →</strong> bancos, socios, préstamos y gastos sin soporte.</div>
                   <div class="matrix-item"><strong>Impuestos pendientes →</strong> declaraciones, pagos, sanciones y conciliación contable.</div>
                   <div class="matrix-item"><strong>Software anterior →</strong> saldos iniciales, auxiliares y exportación de información.</div>
-                  <div class="matrix-item"><strong>Contabilidad no confiable →</strong> auditoría de saldos o reconstrucción.</div>
+                  <div class="matrix-item"><strong>Contabilidad no confiable →</strong> revisión profunda de saldos o reconstrucción.</div>
                   <div class="matrix-item"><strong>Estados financieros sin soporte →</strong> no aceptar saldos iniciales sin validación.</div>
                   <div class="matrix-item"><strong>Maquinaria productiva →</strong> activos fijos, depreciación y costo indirecto.</div>
                   <div class="matrix-item"><strong>Múltiples sedes o líneas →</strong> centros de costo y reportes gerenciales.</div>
@@ -2403,18 +2476,18 @@
                 <article class="example-mini"><strong>Cliente comercial</strong><p>Inventario y ventas por varios canales. Revisar inventario, costo de ventas, proveedores, facturación electrónica, devoluciones, cartera e IVA antes de migrar.</p></article>
                 <article class="example-mini"><strong>Cliente de servicios</strong><p>Servicios por proyectos. Revisar ingresos por contrato, anticipos, cartera, nómina operativa, subcontratistas y centros de costo.</p></article>
                 <article class="example-mini"><strong>Cliente industrial</strong><p>No tratar como setup básico. Revisar materia prima, producto en proceso, terminado, MOD, CIF, maquinaria, depreciación y método de costeo.</p></article>
-                <article class="example-mini"><strong>Riesgo de reconstrucción</strong><p>Pasado contable no confiable. No aceptar saldos iniciales sin auditar bancos, cartera, proveedores, impuestos, socios y patrimonio.</p></article>
+                <article class="example-mini"><strong>Riesgo de reconstrucción</strong><p>Pasado contable no confiable. No aceptar saldos iniciales sin revisar bancos, cartera, proveedores, impuestos, socios y patrimonio.</p></article>
               </div>
             </div>
 
             <div class="close-card-block wide final">
               <h3>Cierre obligatorio</h3>
-              <p>El onboarding se considera completo solo cuando se hayan entregado estos tres elementos: clasificación del cliente, ruta de setup recomendada y focos obligatorios de auditoría para el contador designado. Sin estos tres elementos, el onboarding queda incompleto.</p>
+              <p>El onboarding se considera completo solo cuando se hayan entregado estos tres elementos: clasificación del cliente, ruta de setup recomendada y focos obligatorios de revisión para el contador designado. Sin estos tres elementos, el onboarding queda incompleto.</p>
             </div>
 
             <div class="close-card-block wide">
               <h3>Frase estándar del proceso</h3>
-              <p>El onboarding no busca saber qué hace el cliente; eso ya debió investigarse. El onboarding busca validar cómo opera, cómo factura, cómo cuesta, cómo cobra, cómo paga y qué tan confiable es su pasado contable. Con esa información se define dónde debe auditar obligatoriamente el contador designado.</p>
+              <p>El onboarding no busca saber qué hace el cliente; eso ya debió investigarse. El onboarding busca validar cómo opera, cómo factura, cómo cuesta, cómo cobra, cómo paga y qué tan confiable es su pasado contable. Con esa información se define dónde debe revisar obligatoriamente el contador designado.</p>
             </div>
           </div>
         </article>
@@ -2430,7 +2503,7 @@
             <p class="setup-intro">Al finalizar el onboarding, el Gerente Contador no solo deja una ficha: también define una ruta de Set Up. Esa ruta indica uno de los siguientes potenciales caminos:</p>
             <ul class="setup-paths">
               <li>Si el cliente puede avanzar de forma normal.</li>
-              <li>Si el cliente necesita auditoría.</li>
+              <li>Si el cliente necesita revisión profunda.</li>
               <li>Si el cliente necesita parametrización.</li>
               <li>Si el cliente necesita migración.</li>
               <li>Si el cliente necesita reconstrucción.</li>
@@ -2447,12 +2520,12 @@
           <article class="card">
             <div class="mini-title">Estado contable</div>
             <h3>Qué intervención necesita</h3>
-            <p>Explica si requiere confirmación, auditoría o reconstrucción.</p>
+            <p>Explica si requiere confirmación, revisión profunda o reconstrucción.</p>
           </article>
           <article class="card">
             <div class="mini-title">Gobierno del proceso</div>
             <h3>Quién participa</h3>
-            <p>El Gerente Contador lidera, Ventas aporta contexto y el Country Manager entra solo si hay alerta.</p>
+            <p>El Gerente Contador lidera, Ventas aporta contexto, el Líder de Operación revisa ANS y el Country Manager entra solo si hay alerta crítica.</p>
           </article>
         </div>
 
@@ -2467,11 +2540,11 @@
 
         <div class="message-strip" style="margin-top:18px">Una vez definida la ruta, la ficha de diagnóstico deja de ser una hipótesis y se convierte en la instrucción interna que recibe el contador designado.</div>
 
-        <div class="section-title">
+        <div class="section-title" id="ficha">
           <span class="label">Ficha de diagnóstico</span>
           <div>
             <h2>La ficha empieza como hipótesis y termina como diagnóstico final</h2>
-            <p>Ventas deja una preclasificación inicial. El Gerente Contador la revisa en pre-onboarding, arma una ficha preliminar y en la reunión la confirma o ajusta con el cliente. La ficha final define ruta, nivel de revisión y focos para el contador designado.</p>
+            <p>Ventas deja una preclasificación inicial. El Gerente Contador la revisa en pre-onboarding, arma una ficha preliminar y en la reunión la confirma o ajusta con el cliente. La ficha final define <a class="xref" href="#rutas">ruta</a>, nivel de revisión y <a class="xref" href="#focos">focos</a> para el contador designado.</p>
           </div>
         </div>
 
@@ -2498,7 +2571,7 @@
             <label>Estado contable
               <select id="accountingState">
                 <option value="confirmation">Confirmación</option>
-                <option value="audit">Auditoría</option>
+                <option value="audit">Revisión profunda</option>
                 <option value="reconstruction">Reconstrucción</option>
               </select>
             </label>
@@ -2528,7 +2601,7 @@
                 <p id="routeText">Para clientes con información ordenada, baja complejidad y pocos focos de control.</p>
               </div>
               <div class="chips">
-                <span class="chip" id="slaChip">SLA: 15 días hábiles</span>
+                <span class="chip" id="slaChip">ANS: 15 días hábiles</span>
                 <span class="chip blue" id="auditChip">Validación inicial</span>
                 <span class="chip" id="npsChip">Meta: NPS 40+</span>
               </div>
@@ -2574,7 +2647,7 @@
           </div>
         </div>
         <div id="explicacion-recepcion-validacion"></div>
-        <div id="explicacion-auditoria"></div>
+        <div id="explicacion-revision-profunda"></div>
         <div id="explicacion-parametrizacion-migracion"></div>
         <div id="explicacion-reconstruccion"></div>
         <div id="explicacion-salida-operacion"></div>
@@ -2604,14 +2677,14 @@
             <div class="meta-box"><strong>Ruta recomendada</strong><span id="diagnosisRoute">Confirmación — empresa nueva</span></div>
             <div class="meta-box"><strong>Focos obligatorios</strong><span id="diagnosisFocus">Ingresos, cartera, nómina y bancos</span></div>
           </div>
-          <p id="diagnosisNote">Esta ficha orienta la auditoría inicial: el contador recibe clasificación, ruta recomendada, estado contable, riesgos, cuentas críticas y focos obligatorios para saber por dónde empezar.</p>
+          <p id="diagnosisNote">Esta ficha orienta la revisión contable inicial: el contador recibe clasificación, ruta recomendada, estado contable, riesgos, cuentas críticas y focos obligatorios para saber por dónde empezar.</p>
         </div>
       </div>
     </section>
 
     <section id="seguimiento">
       <div class="wrap">
-        <div class="section-title">
+        <div class="section-title" id="bitacora">
           <span class="label">Seguimiento durante setup</span>
           <div>
             <h2>Customer Context: hoja de vida, bitácora y alertas</h2>
@@ -2630,7 +2703,7 @@
                 <div class="meta-box"><strong>Negocio</strong><span>Qué hace, principales clientes, cómo factura, cobra, genera ingresos y margen esperado si se conoce.</span></div>
                 <div class="meta-box"><strong>Continuidad contable</strong><span>Últimos estados financieros, primer periodo a entregar, estado recibido, software actual y software destino.</span></div>
                 <div class="meta-box"><strong>Operación</strong><span>Bancos, clientes activos, gastos principales, contacto, inventarios, centros de costo y ciudades donde declara ICA.</span></div>
-                <div class="meta-box"><strong>Definición del setup</strong><span>Tipo de operación, tipo de cliente, estado contable, ruta, focos obligatorios, contador designado y SLA.</span></div>
+                <div class="meta-box"><strong>Definición del setup</strong><span>Tipo de operación, tipo de cliente, estado contable, ruta, focos obligatorios, contador designado y <a class="xref" href="#alertas">ANS</a>.</span></div>
               </div>
             </details>
           </article>
@@ -2655,34 +2728,58 @@
             <div class="mini-title">Ejemplos de bitácora</div>
             <div class="log-list">
               <div class="log-entry"><strong>Entrega</strong><span>Cliente envió extractos bancarios enero a mayo.</span></div>
-              <div class="log-entry"><strong>Riesgo</strong><span>Cliente no ha enviado auxiliares y el SLA de confirmación está en riesgo.</span></div>
+              <div class="log-entry"><strong>Riesgo</strong><span>Cliente no ha enviado auxiliares y el ANS de confirmación está en riesgo.</span></div>
               <div class="log-entry"><strong>Confirmación</strong><span>Cliente confirmó que no maneja inventarios.</span></div>
               <div class="log-entry"><strong>Reproceso</strong><span>Se debe corregir parametrización de centros de costo.</span></div>
               <div class="log-entry"><strong>Conversación</strong><span>Se explicó que los saldos iniciales dependen de validación.</span></div>
             </div>
           </article>
-          <article class="card">
+          <article class="card" id="alertas">
             <div class="mini-title">Alertas accionables</div>
             <p>Una alerta no significa que el proceso fracasó. Significa que el caso necesita visibilidad antes de convertirse en problema para el cliente.</p>
             <details class="compact-detail">
               <summary>Qué activa revisión</summary>
               <div class="phase-meta">
-                <div class="meta-box"><strong>SLA en riesgo</strong><span>Más del 80% del tiempo prometido consumido sin pasar a la siguiente etapa.</span></div>
-                <div class="meta-box"><strong>Evento tipo Riesgo</strong><span>Cualquier evento marcado como Riesgo en bitácora activa revisión.</span></div>
+                <div class="meta-box"><strong>ANS en riesgo</strong><span>Una etapa no cumple su hito intermedio o no tiene avance documentado.</span></div>
+                <div class="meta-box"><strong>Evento tipo Riesgo</strong><span>Cualquier evento marcado como Riesgo en <a class="xref" href="#bitacora">bitácora</a> activa revisión.</span></div>
                 <div class="meta-box"><strong>Recotización</strong><span>Lo vendido no coincide con el alcance real y puede requerir nuevo fee, plazo o ruta.</span></div>
-                <div class="meta-box"><strong>Solicitud del gerente</strong><span>El Gerente Contador puede pedir acompañamiento del Country Manager sin trámite adicional.</span></div>
-                <div class="meta-box"><strong>Extensión o silencio</strong><span>El setup excede el SLA original o no hay trazabilidad reciente en bitácora.</span></div>
+                <div class="meta-box"><strong>Solicitud del gerente</strong><span>El Gerente Contador puede pedir acompañamiento del Líder de Operación o Country Manager sin trámite adicional.</span></div>
+                <div class="meta-box"><strong>Extensión o silencio</strong><span>El setup excede el ANS de etapa o no hay trazabilidad reciente en <a class="xref" href="#bitacora">bitácora</a>.</span></div>
               </div>
             </details>
             <details class="compact-detail">
               <summary>Qué hace y qué no hace Country Manager</summary>
               <div class="phase-meta">
                 <div class="meta-box"><strong>Sí hace</strong><span>Revisa el caso, verifica bitácora, pregunta estado real, ayuda a desbloquear y da visibilidad si hay riesgo comercial o de cliente.</span></div>
-                <div class="meta-box"><strong>No hace</strong><span>No reemplaza al Gerente Contador, no supervisa setups en verde y no entra en comunicaciones rutinarias o pendientes menores dentro del SLA.</span></div>
+                <div class="meta-box"><strong>No hace</strong><span>No reemplaza al Gerente Contador, no supervisa setups en verde y no entra en comunicaciones rutinarias o pendientes menores dentro del ANS.</span></div>
               </div>
             </details>
           </article>
         </div>
+
+        <article class="card" style="margin-bottom:18px" id="ans-etapa">
+          <div class="mini-title">Seguimiento de ANS por etapa</div>
+          <h3>El avance se revisa por hitos, no con una sola alerta general</h3>
+          <p>El reloj del Set Up no se mide con una sola alerta general. Cada etapa tiene su propio tiempo, avance esperado e hitos mínimos. El objetivo es que el Líder de Operación pueda revisar diariamente si el proceso avanza o si necesita intervención.</p>
+          <div class="phase-meta">
+            <div class="meta-box"><strong>Confirmación inicial</strong><span><b>Tiempo base:</b> 2 días hábiles. <b>Alerta temprana:</b> si al cierre del día 1 no hay avance mínimo o información validada. <b>Hito esperado:</b> información recibida, clasificación confirmada y próximos pasos definidos.</span></div>
+            <div class="meta-box"><strong>Revisión profunda</strong><span><b>Tiempo base:</b> 5 días hábiles desde la entrega de información suficiente. <b>Alerta temprana:</b> si no hay hallazgos preliminares o avance documentado en bitácora. <b>Hito esperado:</b> focos revisados, hallazgos registrados y conclusión técnica preliminar.</span></div>
+            <div class="meta-box"><strong>Parametrización y migración</strong><span><b>Tiempo base:</b> 7 días hábiles, salvo alcance especial. <b>Alerta temprana:</b> si no hay configuración, carga inicial o validación parcial documentada. <b>Hito esperado:</b> software configurado, saldos o información cargada y pendientes visibles.</span></div>
+            <div class="meta-box"><strong>Reconstrucción</strong><span><b>Tiempo base:</b> según alcance definido. <b>Alerta temprana:</b> si no hay avance semanal por periodo o bloque documental. <b>Hito esperado:</b> periodos reconstruidos, soportes identificados, impuestos revisados si aplica y comunicación de avance.</span></div>
+            <div class="meta-box"><strong>Salida a operación</strong><span><b>Tiempo base:</b> según cierre de ruta. <b>Alerta temprana:</b> si el checklist está incompleto o el cliente no ha recibido comunicación formal. <b>Hito esperado:</b> cierre documentado, cliente informado y operación recurrente activada.</span></div>
+          </div>
+          <div class="message-strip" style="margin-top:12px">No se debe esperar al final del SLA para activar una alerta. Si una etapa no cumple su hito intermedio, el Gerente Contador debe registrar el bloqueo y el Líder de Operación puede exigir plan de acción.</div>
+        </article>
+
+        <article class="card" style="margin-bottom:18px">
+          <div class="mini-title">Silencio operativo</div>
+          <p>Existe silencio operativo cuando, después de recibido el cliente, el equipo de operación realiza seguimientos razonables por los canales definidos y no obtiene respuesta suficiente para iniciar o continuar el Set Up.</p>
+          <div class="message-strip" style="margin-top:12px">Si pasan 7 días hábiles desde la recepción del cliente y no hay respuesta efectiva del cliente, el caso debe escalarse a Ventas para reactivación comercial. Operación no debe consumir tiempo indefinido persiguiendo a un cliente que no aparece.</div>
+          <div class="phase-meta" style="margin-top:12px">
+            <div class="meta-box"><strong>Cliente no ha arrancado</strong><span>Escala a Ventas. Ventas confirma si el cliente sigue, pausa, cancela o necesita reactivación.</span></div>
+            <div class="meta-box"><strong>Cliente ya arrancó</strong><span>El Gerente Contador registra bloqueo en bitácora. Se informa a Líder de Operación. Si hay riesgo comercial, se escala a Ventas o Country Manager según corresponda.</span></div>
+          </div>
+        </article>
 
         <div class="callout" style="margin-bottom:18px">
           <strong>Conexión con el cierre</strong>
@@ -2764,6 +2861,15 @@
             <div class="table-wrap"><table id="raciTable"></table></div>
           </div>
         </div>
+        <article class="card">
+          <div class="mini-title">Regla de escalamiento</div>
+          <h3>La línea sube de superior a superior</h3>
+          <div class="text-flow">Auxiliar → Contador → Gerente Contador → Líder de Operación → Country Manager</div>
+          <div class="phase-meta" style="margin-top:12px">
+            <div class="meta-box"><strong>Cliente no responde desde el inicio</strong><span>Si pasan 7 días hábiles sin respuesta efectiva, se escala a Ventas para reactivación comercial.</span></div>
+            <div class="meta-box"><strong>Alcance vendido no coincide</strong><span>Se escala a Country Manager y Ventas para revisar recotización, plazo o ruta.</span></div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -2809,7 +2915,7 @@
               <div class="meta-box"><strong>Aplica cuando</strong><span>La información fue validada y no hay riesgos relevantes que impidan iniciar operación.</span></div>
               <div class="meta-box"><strong>Debe incluir</strong><span>Información recibida y validada, correo de cierre, paso a operación recurrente y siguiente fecha o hito.</span></div>
               <div class="meta-box"><strong>Entregable</strong><span>Validación de saldos o información inicial, cliente listo para operar y comunicación de cierre.</span></div>
-              <div class="meta-box"><strong>No requiere</strong><span>Reunión formal obligatoria, dictamen de auditoría profunda ni recotización, salvo necesidad del cliente.</span></div>
+              <div class="meta-box"><strong>No requiere</strong><span>Reunión formal obligatoria, informe de hallazgos de revisión profunda ni recotización, salvo necesidad del cliente.</span></div>
             </div>
           </details>
           <details class="compact-detail">
@@ -2821,11 +2927,11 @@
             </div>
           </details>
           <details class="compact-detail">
-            <summary>Auditoría</summary>
+            <summary>Revisión profunda</summary>
             <div class="phase-meta">
               <div class="meta-box"><strong>Aplica cuando</strong><span>El cliente requirió revisión profunda para validar confiabilidad de la información.</span></div>
-              <div class="meta-box"><strong>Debe incluir</strong><span>Informe o dictamen, reunión con cliente, hallazgos, plan de acción, decisión de continuidad y comunicación formal.</span></div>
-              <div class="meta-box"><strong>Entregable</strong><span>Dictamen o informe, plan de acción, decisión de ruta y cliente informado.</span></div>
+              <div class="meta-box"><strong>Debe incluir</strong><span>Informe de hallazgos, reunión con cliente, hallazgos, plan de acción, decisión de continuidad y comunicación formal.</span></div>
+              <div class="meta-box"><strong>Entregable</strong><span>Informe de hallazgos o conclusión técnica, plan de acción, decisión de ruta y cliente informado.</span></div>
               <div class="meta-box"><strong>No se cierra si</strong><span>No existe conclusión técnica, el cliente no entiende el impacto o no se definió si hay ajustes, reconstrucción o recotización.</span></div>
             </div>
           </details>
@@ -2907,7 +3013,7 @@
         title: "Confirmación — empresa nueva",
         text: "No tiene pasado contable. Se configura Siigo o Alegra para iniciar la operación desde cero.",
         sla: "2 días hábiles",
-        audit: "Sin auditoría histórica",
+        audit: "Sin revisión histórica",
         chip: "",
         phases: ["Onboarding", "Parametrización", "Checklist mínimo", "Salida a operación"],
         explanation: "No se solicita el Formato Post-Onboarding histórico. Se activa software, se capacita y se validan primera factura y primer estado financiero.",
@@ -2934,40 +3040,40 @@
         ritual: "Entrega de estados financieros, primera factura y correo automático con reporte de entregables."
       },
       "compatible-audit": {
-        title: "Auditoría — software compatible",
-        text: "Existe duda sobre la calidad del pasado contable y se requiere dictamen con plan de acción.",
+        title: "Revisión profunda — software compatible",
+        text: "Existe duda sobre la calidad del pasado contable y se requiere informe de hallazgos con plan de acción.",
         sla: "5 días hábiles",
-        audit: "Auditoría profunda",
+        audit: "Revisión profunda",
         chip: "warn",
-        phases: ["Onboarding", "Recepción", "Auditoría profunda", "Decisión post auditoría"],
-        explanation: "El auditor asignado revisa a fondo, entrega dictamen y se decide entre ajustes, reconstrucción o recotización.",
-        ritual: "Reunión con el cliente para presentar dictamen, hallazgos y plan de trabajo."
+        phases: ["Onboarding", "Recepción", "Revisión profunda", "Decisión post revisión"],
+        explanation: "El responsable de revisión revisa a fondo, entrega informe de hallazgos y se decide entre ajustes, reconstrucción o recotización.",
+        ritual: "Reunión con el cliente para presentar informe de hallazgos y plan de trabajo."
       },
       "migration-audit": {
-        title: "Auditoría — migración y parametrización",
-        text: "Requiere dictamen antes de decidir si también se parametriza, migra o reconstruye.",
+        title: "Revisión profunda — migración y parametrización",
+        text: "Requiere conclusión técnica antes de decidir si también se parametriza, migra o reconstruye.",
         sla: "5 días + alcance posterior",
-        audit: "Auditoría profunda",
+        audit: "Revisión profunda",
         chip: "warn",
-        phases: ["Onboarding", "Recepción", "Auditoría profunda", "Decisión post auditoría"],
-        explanation: "La matriz actual marca auditoría y decisión. Queda pendiente confirmar si después deben agregarse parametrización, migración y checklist mínimo.",
+        phases: ["Onboarding", "Recepción", "Revisión profunda", "Decisión post revisión"],
+        explanation: "La matriz actual marca revisión profunda y decisión. Queda pendiente confirmar si después deben agregarse parametrización, migración y checklist mínimo.",
         ritual: "Reunión de resultados y definición formal del siguiente alcance con Operaciones y Ventas."
       },
       "compatible-reconstruction": {
         title: "Reconstrucción — software compatible",
         text: "El pasado contable no es confiable y deben reconstruirse periodos, sin migrar de software.",
         sla: "30 días hábiles",
-        audit: "Auditoría profunda previa obligatoria",
+        audit: "Revisión profunda previa obligatoria",
         chip: "risk",
         phases: ["Onboarding", "Recepción", "Validación inicial", "Parametrización", "Checklist mínimo", "Reconstrucción", "Salida"],
-        explanation: "No requiere migración. La auditoría profunda solo se activa si aparecen riesgos o hallazgos graves antes de reconstruir.",
+        explanation: "No requiere migración. La revisión profunda solo se activa si aparecen riesgos o hallazgos graves antes de reconstruir.",
         ritual: "Entrega de estados financieros reconstruidos y correo formal de cierre."
       },
       "migration-reconstruction": {
         title: "Reconstrucción — migración y parametrización",
         text: "Requiere reconstruir el pasado y además configurar o migrar a Siigo o Alegra.",
         sla: "30 días hábiles",
-        audit: "Auditoría profunda previa obligatoria",
+        audit: "Revisión profunda previa obligatoria",
         chip: "risk",
         phases: ["Onboarding", "Recepción", "Validación inicial", "Parametrización", "Migración", "Checklist mínimo", "Reconstrucción", "Salida"],
         explanation: "Se reconstruye la información, se cargan saldos iniciales, se migra o parametriza el software y se deja la operación recurrente activa.",
@@ -3028,7 +3134,7 @@
         description: "Dirigir la reunión, profundizar en expectativas, interlocutor y modelo de negocio, y completar acta durante la llamada.",
         raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Cliente / Ventas si hay duda comercial", i: "Contador asignado" },
         inputs: ["Hipótesis inicial", "Acta de onboarding", "Hoja de vida", "Preguntas por tipo de operación"],
-        actions: ["Ventas presenta al equipo cuando participa en la reunión.", "El Gerente Contador dirige la reunión y presenta objetivo y plataforma Numbi.", "Diligencia acta y hoja de vida durante la reunión.", "Valida tipo de operación, tipo de cliente y estado contable.", "Define tipo de setup: Confirmación, Migración y Parametrización, Auditoría o Reconstrucción.", "Proyecta checklist de información, acuerda fecha de entrega y advierte que el plan depende de hallazgos."],
+        actions: ["Ventas presenta al equipo cuando participa en la reunión.", "El Gerente Contador dirige la reunión y presenta objetivo y plataforma Numbi.", "Diligencia acta y hoja de vida durante la reunión.", "Valida tipo de operación, tipo de cliente y estado contable.", "Define tipo de setup: Confirmación, Migración y Parametrización, Revisión profunda o Reconstrucción.", "Proyecta checklist de información, acuerda fecha de entrega y advierte que el plan depende de hallazgos."],
         outputs: "Acta, hoja de vida, tipo de setup, checklist documental y fecha de documentos acordada.",
         evidence: "Acta de onboarding diligenciada, hoja de vida actualizada y correo automático del dashboard.",
         registerIn: "Dashboard de Operaciones / acta de onboarding / hoja de vida.",
@@ -3056,7 +3162,7 @@
         registerIn: "Ficha de diagnóstico / correo o plantilla de comunicación.",
         entry: "Onboarding finalizado.",
         exit: "Contador sabe cómo iniciar revisión y cliente sabe qué sigue.",
-        blockers: ["Faltan definiciones de ruta", "No hay contador asignado", "No hay fecha de entrega documental", "No está claro qué debe auditar sí o sí el contador"],
+        blockers: ["Faltan definiciones de ruta", "No hay contador asignado", "No hay fecha de entrega documental", "No está claro qué debe revisar sí o sí el contador"],
         problem: "No iniciar revisión hasta asignar contador y cerrar ruta preliminar.",
         communication: "Enviar resumen de ruta, documentos, responsables, fechas y próximo hito.",
         sla: "Al finalizar onboarding.",
@@ -3079,32 +3185,32 @@
         entry: "Cliente entrega documentos o vence fecha acordada.",
         exit: "Documentos completos o bloqueo formal enviado.",
         blockers: ["Faltan auxiliares", "Faltan extractos", "Falta acceso a software", "Falta formato requerido", "Hay dudas que requieren reunión con el cliente"],
-        problem: "Enviar recordatorio y registrar bloqueo. Regla de pausa/recalculo SLA pendiente de validación.",
+        problem: "Enviar recordatorio y registrar bloqueo. Regla de pausa/recalculo de ANS pendiente de validación.",
         communication: "Contador o Gerente Contador informa faltantes, impacto y nueva fecha requerida.",
         sla: "Comienza desde la recepción completa de documentos; faltantes bloquean el avance.",
-        routes: ["Compatible", "Migración", "Auditoría", "Reconstrucción"],
+        routes: ["Compatible", "Migración", "Revisión profunda", "Reconstrucción"],
         next: "AUD-01",
         examples: ["Así se ve bien: 'faltan extractos mayo, responsable cliente, vence viernes'.", "Así no se debe registrar: 'faltan documentos' sin detalle."]
       },
       {
         id: "AUD-01",
         name: "Revisar confiabilidad contable",
-        stage: "Auditoría / revisión",
+        stage: "Revisión profunda",
         order: 5,
-        description: "Ejecutar auditoría express o revisión de primer grado para validar si saldos, soportes y reportes son confiables.",
-        raci: { r: "Contador asignado", a: "Gerente Contador", c: "Cliente si hay dudas / Auditor si escala", i: "Ventas si cambia alcance" },
+        description: "Ejecutar revisión contable inicial para validar si saldos, soportes y reportes son confiables.",
+        raci: { r: "Contador asignado", a: "Gerente Contador", c: "Cliente si hay dudas / responsable de revisión si escala", i: "Ventas si cambia alcance" },
         inputs: ["Ficha interna", "Documentos completos", "Saldos", "Soportes", "Red flags"],
-        actions: ["Analiza documentos, saldos, soportes y reportes suministrados.", "Revisa bancos, impuestos, terceros, cartera y proveedores.", "Si hay dudas, agenda reunión con el cliente.", "Reporta resultados en un informe.", "Si la ruta exige auditoría profunda, el auditor emite dictamen y plan de acción.", "Define si el proceso continúa normalmente, requiere ajustes, reconstrucción o recotización."],
-        outputs: "Informe de auditoría express, dictamen profundo si aplica y decisión de continuidad.",
-        evidence: "Informe de resultados, dictamen si aplica y decisión de continuar o escalar.",
+        actions: ["Analiza documentos, saldos, soportes y reportes suministrados.", "Revisa bancos, impuestos, terceros, cartera y proveedores.", "Si hay dudas, agenda reunión con el cliente.", "Reporta resultados en un informe.", "Si la ruta exige revisión profunda, el responsable de revisión emite conclusión técnica y plan de acción.", "Define si el proceso continúa normalmente, requiere ajustes, reconstrucción o recotización."],
+        outputs: "Informe de revisión contable inicial, conclusión técnica si aplica y decisión de continuidad.",
+        evidence: "Informe de resultados, conclusión técnica si aplica y decisión de continuar o escalar.",
         registerIn: "Informe de revisión / bitácora.",
         entry: "Documentos completos recibidos.",
-        exit: "Existe informe o dictamen con decisión de continuar, ajustar, reconstruir o recotizar.",
-        blockers: ["Saldos sin soporte", "Inconsistencias graves", "Hallazgo cambia alcance, precio o tiempo", "Ruta de reconstrucción sin dictamen previo"],
-        problem: "Si hay contabilidad errada o red flags graves, activar auditoría de control / auditoría profunda y no continuar sin decisión.",
+        exit: "Existe informe o conclusión técnica con decisión de continuar, ajustar, reconstruir o recotizar.",
+        blockers: ["Saldos sin soporte", "Inconsistencias graves", "Hallazgo cambia alcance, precio o tiempo", "Ruta de reconstrucción sin conclusión técnica previa"],
+        problem: "Si hay contabilidad errada o red flags graves, activar revisión profunda y no continuar sin decisión.",
         communication: "Comunicar al cliente solo el impacto operativo, no discusiones internas.",
         sla: "El contador requiere mínimo 1 día hábil para validar que los saldos sean confiables.",
-        routes: ["Compatible", "Migración", "Auditoría", "Reconstrucción"],
+        routes: ["Compatible", "Migración", "Revisión profunda", "Reconstrucción"],
         next: "DEC-01",
         examples: ["Así se ve bien: informe con hallazgo, impacto y decisión.", "Así no se debe registrar: 'parece mal' sin soporte ni cuenta afectada."]
       },
@@ -3113,19 +3219,19 @@
         name: "Tomar decisión de intervención",
         stage: "Decisión",
         order: 6,
-        description: "Confirmar si la ruta continúa igual o cambia a parametrización, migración, auditoría profunda, reconstrucción o recotización.",
-        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Auditor / Ventas si cambia alcance", i: "Cliente / Country Manager si hay alerta" },
-        inputs: ["Informe de revisión", "Dictamen si aplica", "Impacto en SLA y honorarios"],
+        description: "Confirmar si la ruta continúa igual o cambia a parametrización, migración, revisión profunda, reconstrucción o recotización.",
+        raci: { r: "Gerente Contador", a: "Gerente Contador", c: "Responsable de revisión / Ventas si cambia alcance", i: "Cliente / Country Manager si hay alerta" },
+        inputs: ["Informe de revisión", "Conclusión técnica si aplica", "Impacto en ANS y honorarios"],
         actions: ["Evalúa hallazgos contra ruta actual.", "Define si el caso requiere ajustes menores, reconstrucción, parametrización, migración o recotización.", "Si los hallazgos no son graves, ejecuta plan de acción sin Ventas y sin cobro adicional.", "Presenta al cliente resultados, plan de acción, ajustes y próximos pasos.", "Si el hallazgo cambia alcance, precio o tiempo, activa recotización con Ventas antes de prometer nueva ruta.", "Registra motivo, responsable, impacto y decisión final."],
         outputs: "Ruta confirmada, plan de acción o cambio de ruta documentado.",
         evidence: "Registro de decisión, plan de acción, comunicación al cliente y recotización si aplica.",
-        registerIn: "Bitácora / ficha / decisión post auditoría.",
+        registerIn: "Bitácora / ficha / decisión post revisión.",
         entry: "Existe informe o hallazgo que exige decisión.",
         exit: "La ruta siguiente está definida, documentada y comunicada al cliente cuando corresponde.",
-        blockers: ["Cambio de honorarios sin validación", "Reconstrucción sin dictamen", "Cliente inconforme", "Alcance real distinto al vendido"],
+        blockers: ["Cambio de honorarios sin validación", "Reconstrucción sin conclusión técnica", "Cliente inconforme", "Alcance real distinto al vendido"],
         problem: "Activar recotización, alerta Country Manager o pausa según corresponda.",
         communication: "Gerente Contador comunica impacto técnico y plan; Ventas lidera conversaciones comerciales cuando cambia precio o alcance.",
-        sla: "Se mantiene el SLA de la ruta vigente; extensiones se informan antes al Country Manager y luego al cliente.",
+        sla: "Se mantiene el ANS de la ruta vigente; extensiones se informan antes al Líder de Operación y luego al cliente.",
         routes: ["Todas con hallazgos"],
         next: "EJE-01",
         examples: ["Así se ve bien: cambio de ruta con motivo, fecha, responsable e impacto.", "Así no se debe registrar: cambiar selector sin explicar motivo."]
@@ -3136,7 +3242,7 @@
         stage: "Ejecución setup",
         order: 7,
         description: "Realizar parametrización, migración, reconstrucción o validaciones según la ruta aprobada.",
-        raci: { r: "Contador / Parametrización y Migración / Auxiliar", a: "Gerente Contador", c: "Cliente / Auditor", i: "Ventas si cambia alcance" },
+        raci: { r: "Contador / Parametrización y Migración / Auxiliar", a: "Gerente Contador", c: "Cliente / responsable de revisión", i: "Ventas si cambia alcance" },
         inputs: ["Ruta aprobada", "Documentos completos", "Software destino", "Checklist de setup"],
         actions: ["Ejecuta solo las actividades que aplican a la ruta.", "En parametrización, configura Siigo o Alegra, cuentas, facturación, centros de costo e inventarios cuando aplique.", "En migración, carga saldos iniciales, migra cuentas y valida que la información quede lista para operar.", "En reconstrucción, define periodos, realiza causación, conciliación bancaria, impuestos y estados financieros.", "Coordina reuniones con el cliente cuando hagan falta decisiones o capacitación.", "Registra avance diario o por hito con pendiente, responsable y próxima fecha."],
         outputs: "Software configurado, información migrada o periodos reconstruidos según ruta.",
@@ -3144,11 +3250,11 @@
         registerIn: "Bitácora viva / checklist mínimo / software contable.",
         entry: "Ruta confirmada y documentos mínimos completos.",
         exit: "Checklist mínimo de ruta listo para cierre.",
-        blockers: ["Bloqueo técnico", "Cliente sin documentos", "SLA al 80%", "Cambio de alcance", "Software no funcional", "Capacitación pendiente cuando aplica"],
-        problem: "Activar protocolo contextual: alerta SLA, recordatorio, recotización o escalamiento.",
+        blockers: ["Bloqueo técnico", "Cliente sin documentos", "ANS de etapa en riesgo", "Cambio de alcance", "Software no funcional", "Capacitación pendiente cuando aplica"],
+        problem: "Activar protocolo contextual: alerta ANS, recordatorio, recotización o escalamiento.",
         communication: "Mantener al cliente informado de avances, faltantes y próximo hito.",
         sla: "Según ruta: 2, 5, 7 o 30 días cuando esté definido.",
-        routes: ["Todas excepto auditoría sin salida aprobada"],
+        routes: ["Todas excepto revisión profunda sin salida aprobada"],
         next: "CIE-01",
         examples: ["Así se ve bien: avance con porcentaje, pendiente, responsable y próxima fecha.", "Así no se debe registrar: 'en proceso' sin evidencia."]
       },
@@ -3185,7 +3291,7 @@
         does: "Precalifica, identifica necesidad y expectativa, crea el grupo de WhatsApp, crea el cliente en portal si aplica, notifica a Onboarding, participa en onboarding cuando corresponda y aclara qué se vendió o prometió.",
         avoids: "No define sola la ruta contable final, no promete tiempos técnicos sin validación de operaciones y no cierra recotizaciones técnicas sin validar.",
         deliverable: "Contexto comercial claro, cliente creado o notificado, información inicial disponible y decisión comercial documentada si hay recotización.",
-        escalateTo: "Gerente Contador, líder de operaciones o Country Manager, según impacto comercial y riesgo del cliente.",
+        escalateTo: "Gerente Contador, Líder de Operación o Country Manager, según impacto comercial y riesgo del cliente.",
         escalates: "Escala cuando el alcance vendido no coincide con la realidad, el cliente requiere recotización o rechaza nuevo alcance o fee."
       },
       {
@@ -3207,40 +3313,51 @@
         does: "Estudia al cliente, dirige onboarding, valida hipótesis, define tipo de operación, tipo de cliente, estado contable y ruta, entrega ficha de diagnóstico, asigna contador si aplica, supervisa setup, mantiene comunicación y activa alertas.",
         avoids: "No inicia setup sin clasificación clara, no permite aceptar saldos sin soporte, no deja conversaciones relevantes solo en WhatsApp y no traslada al Country Manager la comunicación normal.",
         deliverable: "Ficha de diagnóstico, ruta de setup, focos obligatorios, seguimiento, bitácora actualizada o supervisada y cierre formal.",
-        escalateTo: "Country Manager cuando hay alerta crítica; Ventas cuando hay recotización o diferencia de alcance.",
-        escalates: "Escala si el SLA está en riesgo, aparece un evento de riesgo, se requiere recotización, hay extensión de plazo, inconsistencias graves o riesgo de churn."
+        escalateTo: "Líder de Operación. Si hay riesgo crítico, recotización o excepción relevante, se escala a Country Manager y Ventas según corresponda.",
+        escalates: "Escala si el ANS de etapa está en riesgo, aparece un evento de riesgo, se requiere recotización, hay extensión de plazo, inconsistencias graves o riesgo de churn."
       },
       {
         role: "Contador Designado",
         summary: "Ejecuta la revisión inicial y convierte la ficha del gerente en hallazgos, validaciones y avances de setup.",
         chips: ["Validación", "Set up", "Hallazgos"],
         enters: "Después del onboarding, cuando recibe la ficha de diagnóstico y la ruta definida por el Gerente Contador.",
-        does: "Estudia la ficha, revisa focos obligatorios, valida información, ejecuta auditoría express o revisión de primer grado, verifica saldos y soportes, documenta hallazgos, informa riesgos y ejecuta la ruta aprobada.",
+        does: "Estudia la ficha, revisa focos obligatorios, valida información, ejecuta revisión contable inicial, verifica saldos y soportes, documenta hallazgos, informa riesgos y ejecuta la ruta aprobada.",
         avoids: "No acepta saldos iniciales sin soporte, no cambia la ruta sin informar, no comunica impactos comerciales sin validación y no cierra una revisión con dudas materiales.",
-        deliverable: "Conclusión de revisión inicial o auditoría express, hallazgos documentados, saldos validados o alerta de no confiabilidad e información lista para la siguiente intervención.",
-        escalateTo: "Gerente Contador. Si el hallazgo requiere auditoría profunda, el Gerente Contador activa al Auditor.",
-        escalates: "Escala si los saldos no son confiables, hay documentos incompletos, diferencias críticas, se requiere auditoría profunda o aparece posible reconstrucción."
+        deliverable: "Conclusión de revisión inicial, hallazgos documentados, saldos validados o alerta de no confiabilidad e información lista para la siguiente intervención.",
+        escalateTo: "Gerente Contador. Si el hallazgo requiere revisión profunda, el Gerente Contador activa al responsable de revisión.",
+        escalates: "Escala si los saldos no son confiables, hay documentos incompletos, diferencias críticas, se requiere revisión profunda o aparece posible reconstrucción."
       },
       {
-        role: "Auditor",
+        role: "Responsable de revisión profunda",
         summary: "Entra cuando hay red flags y emite una conclusión técnica para decidir el siguiente camino.",
-        chips: ["Auditoría", "Dictamen", "Plan de acción"],
-        enters: "Solo cuando la auditoría express o el Gerente Contador activan auditoría profunda.",
-        does: "Revisa hallazgos, analiza información, revisa auditoría express, ejecuta auditoría de control o profunda, emite dictamen, propone plan de acción e indica si hay ajustes, reconstrucción o recotización.",
+        chips: ["Revisión profunda", "Conclusión técnica", "Plan de acción"],
+        enters: "Solo cuando la revisión contable inicial o el Gerente Contador activan revisión profunda.",
+        does: "Revisa hallazgos, analiza información, revisa la validación inicial, ejecuta revisión profunda, emite conclusión técnica, propone plan de acción e indica si hay ajustes, reconstrucción o recotización.",
         avoids: "No reemplaza al Gerente Contador en la comunicación principal, no define condiciones comerciales, no ejecuta recotización y no cierra el setup por sí solo.",
-        deliverable: "Dictamen o informe de hallazgos, conclusión técnica y plan de acción recomendado.",
+        deliverable: "Informe de hallazgos, conclusión técnica y plan de acción recomendado.",
         escalateTo: "Gerente Contador; el Gerente Contador informa a Ventas o Country Manager si cambia alcance, tiempo o riesgo del cliente.",
         escalates: "Escala si los hallazgos afectan alcance, tiempos o costo, no permiten concluir, requieren reconstrucción o generan riesgo técnico relevante."
+      },
+      {
+        role: "Líder de Operación",
+        summary: "Mide avance, revisa ANS por etapa y asegura que los gerentes contadores cumplan el proceso.",
+        chips: ["ANS", "Bloqueos", "Plan de acción"],
+        enters: "Cuando necesita revisar avance diario, validar bloqueos, exigir plan de acción o acompañar escalamiento operativo.",
+        does: "Mide avance, revisa ANS por etapa, valida bloqueos, exige plan de acción y asegura que los gerentes contadores cumplan el proceso. No reemplaza al Gerente Contador frente al cliente.",
+        avoids: "No reemplaza al Gerente Contador frente al cliente, no asume comunicaciones rutinarias y no cambia la ruta sin trazabilidad.",
+        deliverable: "Bloqueos validados, plan de acción exigido, seguimiento de ANS y escalamiento activado cuando corresponda.",
+        escalateTo: "Country Manager cuando hay alerta crítica, excepción relevante, riesgo comercial o solicitud que supera la gestión operativa.",
+        escalates: "Escala si el caso no avanza, hay silencio operativo crítico, recotización, diferencia de alcance, riesgo de churn o excepción relevante."
       },
       {
         role: "Country Manager",
         summary: "Acompaña únicamente casos en alerta para dar visibilidad, desbloquear decisiones y proteger la experiencia.",
         chips: ["Alertas", "Churn", "Decisiones"],
-        enters: "No entra por defecto. Participa únicamente cuando se activa una alerta.",
-        does: "Revisa clientes en alerta, acompaña casos amarillos o rojos, desbloquea decisiones, apoya al Gerente Contador y revisa SLA en riesgo, recotización o posible churn.",
+        enters: "Entra en alertas críticas, recotización, riesgo comercial, excepción relevante o solicitud del Líder de Operación / Gerente Contador.",
+        does: "Revisa clientes en alerta, acompaña casos amarillos o rojos, desbloquea decisiones, apoya al Gerente Contador y revisa ANS en riesgo, recotización o posible churn. No reemplaza la gestión diaria del Gerente Contador.",
         avoids: "No supervisa setups en verde, no reemplaza al Gerente Contador, no se vuelve cuello de botella, no toma decisiones técnicas diarias y no participa en comunicaciones rutinarias.",
         deliverable: "Acompañamiento en casos críticos, decisiones desbloqueadas y seguimiento de alertas relevantes.",
-        escalateTo: "Liderazgo de operaciones o dirección comercial cuando la decisión supera el alcance del setup o tiene impacto reputacional/comercial.",
+        escalateTo: "Líder de Operación o dirección comercial cuando la decisión supera el alcance del setup o tiene impacto reputacional/comercial.",
         escalates: "Escala cuando hay riesgo de churn, recotización, extensión de plazo, silencio operativo, conflicto con el cliente o impacto reputacional/comercial."
       }
     ];
@@ -3251,7 +3368,7 @@
         ["Acta de onboarding", "Acuerdos de la reunión, responsables, documentos y próximos pasos."],
         ["Hoja de vida", "Capa estática: contexto, negocio, continuidad contable, operación, nómina si aplica y definición de setup."],
         ["Bitácora", "Capa dinámica: fecha, tipo de evento, resumen de una línea y responsable. Reemplaza notas dispersas y chats."],
-        ["Informe de revisión", "Hallazgos de validación inicial o auditoría profunda."],
+        ["Informe de revisión", "Hallazgos de validación inicial o revisión profunda."],
         ["Checklist de cierre", "Condiciones mínimas 100% marcadas antes de pasar a operación."],
         ["Formato Documentos Post-Onboarding", "Soportes históricos requeridos para clientes con pasado contable."]
       ],
@@ -3265,14 +3382,14 @@
 
     const protocols = [
       ["Falta información", "Enviar correo de faltantes, dejar WhatsApp con estado/pending y registrar bloqueo en bitácora."],
-      ["Red flag contable", "Escalar a auditoría profunda y no continuar con saldos, migración o reconstrucción sin decisión documentada."],
+      ["Red flag contable", "Escalar a revisión profunda y no continuar con saldos, migración o reconstrucción sin decisión documentada."],
       ["Hallazgo cambia alcance", "Activar recotización con Ventas: Operaciones documenta, Ventas lidera conversación comercial."],
-      ["80% del SLA consumido", "Registrar alerta de SLA y definir acción de recuperación antes de que el cliente se entere tarde."],
-      ["Extensión de plazo", "Gerente Contador informa primero al Country Manager y después comunica al cliente."],
+      ["ANS de etapa en riesgo", "Registrar alerta, documentar hito incumplido y definir plan de acción antes de que el cliente se entere tarde."],
+      ["Extensión de plazo", "Gerente Contador informa primero al Líder de Operación y después comunica al cliente si aplica."],
       ["Evento de riesgo", "Registrar evento tipo Riesgo en bitácora; entra al radar del Country Manager."],
-      ["Silencio operativo", "Cliente sin entradas en bitácora por 7 días se marca como alerta de silencio."],
+      ["Silencio operativo", "Si pasan 7 días hábiles desde la recepción del cliente y no hay respuesta efectiva, se escala a Ventas para reactivación comercial."],
       ["Cliente en rojo", "Revisar el caso con bitácora abierta; sin bitácora no se discute el caso."],
-      ["Reconstrucción posible", "No continuar sin dictamen y validación de fee adicional cuando aplique."]
+      ["Reconstrucción posible", "No continuar sin conclusión técnica y validación de fee adicional cuando aplique."]
     ];
 
     const operationFocus = {
@@ -3326,18 +3443,18 @@
 
     const stateLabels = {
       confirmation: "Confirmación: contabilidad al día; se valida confiabilidad.",
-      audit: "Auditoría: existen dudas y se requiere dictamen con plan de acción.",
-      reconstruction: "Reconstrucción: hay inconsistencias graves; exige auditoría profunda previa y fee adicional."
+      audit: "Revisión profunda: existen dudas y se requiere conclusión técnica con plan de acción.",
+      reconstruction: "Reconstrucción: hay inconsistencias graves; exige revisión profunda previa y fee adicional."
     };
 
     const phases = [
       {
         name: "Onboarding",
-        purpose: "Validar la clasificación, definir la ruta y entregar al contador la ficha que orienta la auditoría inicial.",
+        purpose: "Validar la clasificación, definir la ruta y entregar al contador la ficha que orienta la revisión contable inicial.",
         sla: "Dentro de 24 h para convocar",
         participants: "Ventas, Onboarding, Gerente Contador, cliente y Country Manager si aplica",
         moment: "Después de la firma y de la fase de pre-onboarding",
-        outcome: "Ficha de diagnóstico entregada al contador para iniciar la auditoría",
+        outcome: "Ficha de diagnóstico entregada al contador para iniciar la revisión",
         subphases: ["Pre-onboarding", "Onboarding"],
         detailGroups: [
           {
@@ -3380,52 +3497,52 @@
             ]
           },
           {
-            title: "2.2 — Auditoría Express / revisión de primer grado",
+            title: "2.2 — Revisión contable inicial",
             steps: [
-              "El contador realiza Auditoría Express.",
+              "El contador realiza revisión contable inicial.",
               "El contador requiere mínimo 1 día hábil para validar que los saldos sean confiables.",
               "Se analizan documentos, saldos, soportes y reportes suministrados.",
               "Si hay dudas, se agenda reunión con el cliente.",
-              "Se reportan resultados de Auditoría Express en un informe.",
+              "Se reportan resultados de la revisión contable inicial en un informe.",
               "El informe sirve para definir si el proceso continúa normalmente o requiere revisión profunda."
             ]
           }
         ],
-        items: ["Información enviada por el cliente", "Integridad revisada", "Pendientes identificados", "Correo de pendientes enviado", "WhatsApp actualizado", "Información revisada por contador", "Reunión agendada si hay dudas", "Auditoría Express realizada", "Saldos validados mínimo 1 día hábil", "Documentos, saldos y soportes analizados", "Informe de Auditoría Express emitido", "Continuidad o revisión profunda definida"]
+        items: ["Información enviada por el cliente", "Integridad revisada", "Pendientes identificados", "Correo de pendientes enviado", "WhatsApp actualizado", "Información revisada por contador", "Reunión agendada si hay dudas", "Revisión contable inicial realizada", "Saldos validados mínimo 1 día hábil", "Documentos, saldos y soportes analizados", "Informe de revisión contable inicial emitido", "Continuidad o revisión profunda definida"]
       },
       {
-        name: "Auditoría",
-        purpose: "Realizar una revisión profunda cuando Ventas o el equipo contable asignado detectan red flags.",
+        name: "Revisión profunda",
+        purpose: "Revisión contable activada cuando existen dudas, red flags, información incompleta, saldos no confiables o alertas identificadas por Ventas, el cliente o el equipo contable.",
         sla: "Profunda: 5 días o según alcance",
-        participants: "Contador, Auditor asignado, Gerente Contador y cliente cuando se requiera",
+        participants: "Contador, responsable de revisión, Gerente Contador y cliente cuando se requiera",
         moment: "Cuando existen red flags antes de aceptar saldos, migrar o definir reconstrucción",
-        outcome: "Informe, dictamen y decisión post auditoría",
-        subphases: ["Revisión profunda", "Decisión post auditoría"],
+        outcome: "Informe de hallazgos, conclusión técnica y decisión post revisión",
+        subphases: ["Revisión profunda", "Decisión post revisión"],
         detailGroups: [
           {
-            title: "3.1 — Auditoría de control / auditoría profunda",
+            title: "3.1 — Revisión profunda",
             steps: [
-              "Si el contador detecta contabilidad errada, se activa Auditoría de Control.",
-              "Se coordina reunión con el auditor dentro de los 4 días siguientes a la recepción de documentos.",
-              "El auditor analiza la información suministrada por el cliente.",
-              "El auditor revisa el informe de Auditoría Express o auditoría de primer grado.",
+              "Si el contador detecta contabilidad errada, se activa revisión profunda.",
+              "Se coordina reunión con el responsable de revisión dentro de los 4 días siguientes a la recepción de documentos.",
+              "El responsable de revisión analiza la información suministrada por el cliente.",
+              "El responsable de revisión revisa el informe de revisión contable inicial.",
               "Se define estrategia y plan de acción para reconstrucción o corrección, incluyendo plan de trabajo, responsables y fechas.",
               "El Gerente Contable supervisa que el proceso se lleve a cabo.",
-              "Se realiza auditoría de segundo grado.",
+              "Se realiza revisión de segundo grado.",
               "El Gerente Contable entrega status semanal al cliente.",
               "El Gerente Contable responde preguntas del cliente sobre proceso y status.",
               "El Gerente Contable define cuándo es necesario involucrar al cliente.",
-              "El auditor prepara dictamen de auditoría.",
-              "El departamento de auditoría entrega informe de hallazgos.",
-              "El dictamen se presenta al Gerente Contable y al contador."
+              "El responsable de revisión prepara conclusión técnica.",
+              "El equipo de revisión entrega informe de hallazgos.",
+              "La conclusión técnica se presenta al Gerente Contable y al contador."
             ]
           },
           {
-            title: "3.2 — Decisión post auditoría",
+            title: "3.2 — Decisión post revisión",
             steps: [
               "Se define si se requiere reconstrucción o ajustes menores.",
               "Si los hallazgos no son graves, el Gerente Contable ejecuta plan de acción sin ventas y sin cobro adicional.",
-              "El Gerente Contable presenta resultados de auditoría al cliente.",
+              "El Gerente Contable presenta resultados de revisión al cliente.",
               "En la misma reunión, se presenta el plan de acción.",
               "Se aclaran dudas del cliente sobre hallazgos, ajustes y próximos pasos.",
               "Si los hallazgos son graves y pueden implicar costos adicionales, se activa protocolo de recotización por mal cierre; el Gerente Contable notifica al asesor de ventas y comunica la decisión al cliente.",
@@ -3434,7 +3551,7 @@
             ]
           }
         ],
-        items: ["Auditoría de Control activada si hay contabilidad errada", "Reunión con auditor coordinada dentro de 4 días", "Información del cliente analizada", "Informe de Auditoría Express revisado", "Estrategia y plan de acción definidos", "Supervisión del Gerente Contable", "Auditoría de segundo grado realizada", "Status semanal al cliente", "Preguntas del cliente respondidas", "Necesidad de involucrar cliente definida", "Dictamen preparado", "Informe de hallazgos entregado", "Dictamen presentado a Gerente Contable y contador", "Reconstrucción o ajustes menores definidos", "Plan ejecutado sin ventas si no hay gravedad", "Resultados presentados al cliente", "Plan de acción presentado", "Dudas aclaradas", "Recotización activada si hay hallazgos graves", "Estrategia definida por Operaciones y Ventas", "Impacto y alcance comunicados al cliente"]
+        items: ["Revisión profunda activada si hay contabilidad errada", "Reunión con responsable de revisión coordinada dentro de 4 días", "Información del cliente analizada", "Informe de revisión contable inicial revisado", "Estrategia y plan de acción definidos", "Supervisión del Gerente Contable", "Revisión de segundo grado realizada", "Status semanal al cliente", "Preguntas del cliente respondidas", "Necesidad de involucrar cliente definida", "Conclusión técnica preparada", "Informe de hallazgos entregado", "Conclusión técnica presentada a Gerente Contable y contador", "Reconstrucción o ajustes menores definidos", "Plan ejecutado sin ventas si no hay gravedad", "Resultados presentados al cliente", "Plan de acción presentado", "Dudas aclaradas", "Recotización activada si hay hallazgos graves", "Estrategia definida por Operaciones y Ventas", "Impacto y alcance comunicados al cliente"]
       },
       {
         name: "Parametrización y migración",
@@ -3491,8 +3608,8 @@
         name: "Reconstrucción contable",
         purpose: "Reconstruir periodos anteriores cuando el pasado contable no es confiable.",
         sla: "30 días hábiles",
-        participants: "Auditor, contador, auxiliar y Gerente Contador",
-        moment: "Solo después de auditoría profunda y dictamen",
+        participants: "Responsable de revisión, contador, auxiliar y Gerente Contador",
+        moment: "Solo después de revisión profunda y conclusión técnica",
         outcome: "Periodos reconstruidos, impuestos y estados financieros preparados",
         subphases: ["Definición de alcance y periodos", "Ejecución contable y conciliaciones", "Impuestos y estados financieros", "Validación y status diario"],
         detailGroups: [
@@ -3642,11 +3759,11 @@
 
     const audits = [
       ["Validación inicial", "Revisión preliminar de bancos, impuestos, terceros, soportes y saldos de apertura."],
-      ["Auditoría profunda", "Revisión de histórico, conciliaciones, impuestos, cartera, proveedores, nómina e inventarios."],
+      ["Revisión profunda", "Revisión de histórico, conciliaciones, impuestos, cartera, proveedores, nómina e inventarios."],
       ["Reconstrucción", "Saneamiento por periodos críticos, trazabilidad de ajustes y evidencia para cierre."],
       ["Parametrización", "Plan de cuentas, impuestos, centros de costo, bancos, terceros e integraciones."],
       ["Migración", "Carga de saldos, pruebas de integridad y aprobación documentada."],
-      ["Bitácora y alertas", "Registro de decisiones, bloqueos, responsables, SLA y riesgos de experiencia."]
+      ["Bitácora y alertas", "Registro de decisiones, bloqueos, responsables, ANS y riesgos de experiencia."]
     ];
 
     const closing = [
@@ -3840,7 +3957,7 @@
       $("diagnosisRoute").textContent = route.title;
       $("diagnosisFocus").textContent = focus.short;
       $("diagnosisHypothesis").textContent = "Por validar en reunión";
-      $("diagnosisNote").textContent = `Al cerrar onboarding, esta ficha orienta la auditoría inicial. El contador recibe la clasificación, estado contable ${$("accountingState").selectedOptions[0].text}, ruta recomendada, riesgo principal, cuentas críticas, focos obligatorios y observaciones relevantes.`;
+      $("diagnosisNote").textContent = `Al cerrar onboarding, esta ficha orienta la revisión contable inicial. El contador recibe la clasificación, estado contable ${$("accountingState").selectedOptions[0].text}, ruta recomendada, riesgo principal, cuentas críticas, focos obligatorios y observaciones relevantes.`;
     }
 
     function renderRoute() {
@@ -3849,7 +3966,7 @@
       const operation = $("operationType").value;
       $("routeTitle").textContent = route.title;
       $("routeText").textContent = route.text;
-      $("slaChip").textContent = `SLA: ${route.sla}`;
+      $("slaChip").textContent = `ANS: ${route.sla}`;
       $("auditChip").textContent = route.audit;
       $("slaChip").className = `chip ${route.chip}`;
       $("auditChip").className = `chip blue`;
@@ -3884,11 +4001,11 @@
         "compatible-reconstruction": "Cliente con pasado y software compatible",
         "migration-reconstruction": "Cliente con migración y parametrización"
       };
-      const allPhases = ["Onboarding", "Recepción", "Auditoría", "Parametrización", "Migración", "Reconstrucción", "Salida"];
+      const allPhases = ["Onboarding", "Recepción", "Revisión profunda", "Parametrización", "Migración", "Reconstrucción", "Salida"];
       if (!$("routeCards")) return;
       const routeOptions = {
-        "compatible-audit": "Ruta 1 — Auditoría / software compatible",
-        "migration-audit": "Ruta 2 — Auditoría / migración y parametrización",
+        "compatible-audit": "Ruta 1 — Revisión profunda / software compatible",
+        "migration-audit": "Ruta 2 — Revisión profunda / migración y parametrización",
         "compatible-confirmation": "Ruta 3 — Confirmación / software compatible",
         "migration-confirmation": "Ruta 4 — Confirmación / parametrización",
         "new-confirmation": "Ruta 5 — Empresa nueva",
@@ -3925,7 +4042,7 @@
       const applies = phase => {
         if (phase.name === "Onboarding") return true;
         if (phase.name === "Recepción y validación") return key !== "new-confirmation";
-        if (phase.name === "Auditoría") return key !== "new-confirmation";
+        if (phase.name === "Revisión profunda") return key !== "new-confirmation";
         if (phase.name === "Parametrización y migración") return !key.endsWith("-audit");
         if (phase.name === "Reconstrucción contable") return key.endsWith("-reconstruction");
         if (phase.name === "Salida a operación") return !key.endsWith("-audit");
@@ -4024,7 +4141,7 @@
       const route = routes[routeKey()];
       const type = $("mailType").value;
       const templates = {
-        kickoff: `Asunto: Acta y siguientes pasos del onboarding - ${client}\n\nHola,\n\nGracias por la reunión de onboarding. La clasificación preliminar es ${route.title}, con SLA estimado de ${route.sla}.\n\nAdjuntamos el acta, el Formato Post-Onboarding si aplica, la lista de documentos requeridos, los compromisos y la fecha acordada de entrega. El plan de trabajo puede ajustarse según los hallazgos.\n\nSaludos,\n${owner}`,
+        kickoff: `Asunto: Acta y siguientes pasos del onboarding - ${client}\n\nHola,\n\nGracias por la reunión de onboarding. La clasificación preliminar es ${route.title}, con ANS estimado de ${route.sla}.\n\nAdjuntamos el acta, el Formato Post-Onboarding si aplica, la lista de documentos requeridos, los compromisos y la fecha acordada de entrega. El plan de trabajo puede ajustarse según los hallazgos.\n\nSaludos,\n${owner}`,
         risk: `Asunto: Acción requerida para continuar el setup - ${client}\n\nHola,\n\nIdentificamos un bloqueo que puede afectar el avance del setup. Para mantener una buena experiencia, necesitamos resolverlo antes de continuar.\n\nRuta activa: ${route.title}\nAcción requerida: confirmar información pendiente y responsable.\n\nSaludos,\n${owner}`,
         close: `Asunto: Hemos culminado el proceso de setup - ${client}\n\nHola,\n\nHemos culminado el proceso de setup. La configuración y los entregables de la ruta ${route.title} fueron validados.\n\nEl cliente queda listo para operar bajo el flujo normal. Este correo deja trazabilidad de lo realizado y de la transición de Setup a Operación.\n\nSaludos,\n${owner}`
       };
@@ -4055,9 +4172,9 @@
       const alerts = [];
 
       if (key.endsWith("-reconstruction")) {
-        alerts.push(["risk", "Reconstrucción activa", "Requiere auditoría profunda previa, dictamen y validación de fee adicional con Ventas."]);
+        alerts.push(["risk", "Reconstrucción activa", "Requiere revisión profunda previa, conclusión técnica y validación de fee adicional con Ventas."]);
       } else if (key.endsWith("-audit")) {
-        alerts.push(["warn", "Auditoría activa", "El auditor asignado entrega dictamen y plan de acción antes de definir el siguiente alcance."]);
+        alerts.push(["warn", "Revisión profunda activa", "El responsable de revisión entrega conclusión técnica y plan de acción antes de definir el siguiente alcance."]);
       } else if (key === "migration-confirmation") {
         alerts.push(["warn", "Migración activa", "No iniciar la migración hasta validar documentos y saldos completos."]);
       } else {
