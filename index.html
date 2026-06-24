@@ -1743,113 +1743,6 @@
       border-top: 1px solid rgba(13, 94, 232, .14);
     }
 
-    .step-progress-list {
-      display: grid;
-      gap: 10px;
-      margin: 10px 0 0 31px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(13, 94, 232, .14);
-    }
-
-    .step-progress-card {
-      display: grid;
-      gap: 10px;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .step-progress-head {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 10px;
-      align-items: start;
-    }
-
-    .step-index {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .step-progress-title {
-      margin: 0;
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 750;
-    }
-
-    .step-focus-tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: var(--mint-soft);
-      color: var(--numbi-dark);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-      white-space: nowrap;
-    }
-
-    .step-progress-fields {
-      display: grid;
-      grid-template-columns: minmax(130px, .8fr) minmax(130px, .8fr) minmax(170px, 1fr);
-      gap: 10px;
-      align-items: end;
-    }
-
-    .step-progress-fields label,
-    .step-action,
-    .step-note-fields label {
-      gap: 5px;
-      font-size: 11px;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .step-progress-fields select,
-    .step-progress-fields input,
-    .step-note-fields select,
-    .step-note-fields input,
-    .step-note-fields textarea {
-      min-height: 38px;
-      font-size: 13px;
-    }
-
-    .step-note-fields {
-      display: grid;
-      grid-template-columns: minmax(170px, .8fr) minmax(220px, 1.4fr) minmax(170px, .8fr) auto;
-      gap: 10px;
-      align-items: end;
-    }
-
-    .step-note-fields textarea {
-      resize: vertical;
-      min-height: 38px;
-      max-height: 90px;
-    }
-
-    .step-area-field.is-hidden { display: none; }
-
-    .step-action {
-      display: grid;
-      color: var(--muted);
-      font-weight: 800;
-    }
-
-    .sr-check {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      width: 1px;
-      height: 1px;
-    }
-
     .cards-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2026,8 +1919,7 @@
       .nps-operation div:last-child { border-bottom: 0; }
       .step { grid-template-columns: 48px 1fr; }
       .sla { grid-column: 2; }
-      .checklist, .phase-meta, .step-progress-fields, .step-note-fields { grid-template-columns: 1fr; }
-      .step-progress-head { grid-template-columns: 1fr; }
+      .checklist, .phase-meta { grid-template-columns: 1fr; }
       .progress-box { grid-template-columns: 1fr; }
       .score { text-align: left; }
     }
@@ -2492,7 +2384,7 @@
             <div class="close-card-block wide">
               <h3>Preguntas clave</h3>
               <p>El gerente valida la hipótesis con preguntas sobre operación, ingresos, costos, cartera, bancos, nómina, inventarios y software.</p>
-              <details class="compact-detail">
+              <details class="compact-detail" open>
                 <summary>Preguntas base para todos los clientes</summary>
                 <div class="question-grid">
                   <div class="question-mini"><strong>¿Esta lectura inicial de la empresa es correcta o hay algo importante que debamos ajustar?</strong><p>Valida: hipótesis previa.</p><span>Activa: reclasificación del cliente.</span></div>
@@ -3891,7 +3783,6 @@
 
     const state = {
       checks: {},
-      stepProgress: {},
       viewMode: "summary",
       focusedPhase: 0,
       clientPhase: "Setup",
@@ -3906,14 +3797,6 @@
     };
 
     function $(id) { return document.getElementById(id); }
-
-    function escapeHtml(value = "") {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
-    }
 
     function routeKey() {
       const type = $("clientType").value;
@@ -3973,83 +3856,15 @@
       return `<label class="check"><input type="checkbox" data-check="${id}" ${state.checks[id] ? "checked" : ""} ${enabled ? "" : "disabled"}><span>${text}</span></label>`;
     }
 
-    function progressRecord(id) {
-      if (!state.stepProgress[id]) {
-        state.stepProgress[id] = {
-          status: state.checks[id] ? "completed" : "pending",
-          noteType: "Compromiso del cliente",
-          comment: "",
-          area: ""
-        };
-      }
-      return state.stepProgress[id];
-    }
-
-    function renderProgressStep({ id, stepNumber, title, focus, sla, enabled = true }) {
-      const progress = progressRecord(id);
-      const isCompleted = progress.status === "completed";
-      const areaHidden = progress.noteType !== "Bloqueo por otra área";
-      return `
-        <article class="step-progress-card">
-          <input class="sr-check" type="checkbox" data-check="${id}" ${isCompleted ? "checked" : ""} ${enabled ? "" : "disabled"}>
-          <div class="step-progress-head">
-            <span class="step-index">Paso ${stepNumber}</span>
-            <p class="step-progress-title">${escapeHtml(title)}</p>
-            <span class="step-focus-tag">${escapeHtml(focus)}</span>
-          </div>
-          <div class="step-progress-fields">
-            <label>Estado
-              <select data-step-status="${id}" ${enabled ? "" : "disabled"}>
-                <option value="pending" ${progress.status === "pending" ? "selected" : ""}>Pendiente</option>
-                <option value="progress" ${progress.status === "progress" ? "selected" : ""}>En progreso</option>
-                <option value="completed" ${progress.status === "completed" ? "selected" : ""}>Completado</option>
-              </select>
-            </label>
-            <label>Fecha límite / SLA
-              <input type="text" value="${escapeHtml(sla || "No aplica")}" readonly>
-            </label>
-            <div class="step-action">Acción
-              <button class="btn secondary" type="button" data-save-progress="${id}" ${enabled ? "" : "disabled"}>Guardar avance</button>
-            </div>
-          </div>
-          <div class="step-note-fields">
-            <label>Tipo de nota
-              <select data-note-type="${id}" ${enabled ? "" : "disabled"}>
-                <option ${progress.noteType === "Compromiso del cliente" ? "selected" : ""}>Compromiso del cliente</option>
-                <option ${progress.noteType === "Compromiso Numbi" ? "selected" : ""}>Compromiso Numbi</option>
-                <option ${progress.noteType === "Bloqueo por otra área" ? "selected" : ""}>Bloqueo por otra área</option>
-              </select>
-            </label>
-            <label>Nota interna
-              <textarea data-note-comment="${id}" maxlength="180" placeholder="Agregar nota interna">${escapeHtml(progress.comment)}</textarea>
-            </label>
-            <label class="step-area-field ${areaHidden ? "is-hidden" : ""}" data-area-wrap="${id}">Área que bloquea
-              <input data-note-area="${id}" value="${escapeHtml(progress.area)}" placeholder="Ej. Nómina, soporte, legal">
-            </label>
-          </div>
-        </article>
-      `;
-    }
-
     function renderSubphases(phase, phaseIndex, active) {
       if (phase.detailGroups) {
         let itemIndex = 0;
         return phase.detailGroups.map((group, groupIndex) => {
-          const checks = group.steps.map(step => {
-            const currentIndex = itemIndex++;
-            return renderProgressStep({
-              id: `phase-${phaseIndex}-${currentIndex}`,
-              stepNumber: currentIndex + 1,
-              title: step,
-              focus: group.title.replace(/^\d+(\.\d+)?\s+—\s+/, ""),
-              sla: phase.sla,
-              enabled: active
-            });
-          }).join("");
+          const checks = group.steps.map(step => check(`phase-${phaseIndex}-${itemIndex++}`, step, active)).join("");
           return `
             <details class="subphase">
               <summary><strong>${phaseIndex + 1}.${groupIndex + 1}</strong><span>${group.title}</span></summary>
-              <div class="step-progress-list">${checks}</div>
+              <div class="checklist">${checks}</div>
             </details>
           `;
         }).join("");
@@ -4057,14 +3872,7 @@
       return phase.subphases.map((subphase, subIndex) => `
         <details class="subphase">
           <summary><strong>${phaseIndex + 1}.${subIndex + 1}</strong><span>${subphase}</span></summary>
-          <div class="step-progress-list">${renderProgressStep({
-            id: `phase-${phaseIndex}-${subIndex}`,
-            stepNumber: subIndex + 1,
-            title: phase.items[subIndex] || subphase,
-            focus: subphase,
-            sla: phase.sla,
-            enabled: active
-          })}</div>
+          <div class="checklist">${check(`phase-${phaseIndex}-${subIndex}`, phase.items[subIndex] || subphase, active)}</div>
         </details>
       `).join("");
     }
@@ -4417,56 +4225,6 @@
         input.addEventListener("change", event => {
           state.checks[event.target.dataset.check] = event.target.checked;
           renderProgress();
-          renderTracking();
-        });
-      });
-      document.querySelectorAll("[data-step-status]").forEach(select => {
-        select.addEventListener("change", event => {
-          const id = event.target.dataset.stepStatus;
-          const record = progressRecord(id);
-          record.status = event.target.value;
-          state.checks[id] = event.target.value === "completed";
-          const checkInput = document.querySelector(`[data-check="${id}"]`);
-          if (checkInput) checkInput.checked = state.checks[id];
-          renderProgress();
-          renderTracking();
-        });
-      });
-      document.querySelectorAll("[data-note-type]").forEach(select => {
-        select.addEventListener("change", event => {
-          const id = event.target.dataset.noteType;
-          const record = progressRecord(id);
-          record.noteType = event.target.value;
-          const areaWrap = document.querySelector(`[data-area-wrap="${id}"]`);
-          if (areaWrap) areaWrap.classList.toggle("is-hidden", event.target.value !== "Bloqueo por otra área");
-        });
-      });
-      document.querySelectorAll("[data-note-comment]").forEach(input => {
-        input.addEventListener("input", event => {
-          progressRecord(event.target.dataset.noteComment).comment = event.target.value;
-        });
-      });
-      document.querySelectorAll("[data-note-area]").forEach(input => {
-        input.addEventListener("input", event => {
-          progressRecord(event.target.dataset.noteArea).area = event.target.value;
-        });
-      });
-      document.querySelectorAll("[data-save-progress]").forEach(button => {
-        button.addEventListener("click", event => {
-          const id = event.currentTarget.dataset.saveProgress;
-          const record = progressRecord(id);
-          const comment = record.comment.trim();
-          if (comment) {
-            const area = record.noteType === "Bloqueo por otra área" && record.area.trim() ? ` · Área: ${record.area.trim()}` : "";
-            state.logs.unshift({
-              type: record.noteType,
-              owner: "Seguimiento Set Up",
-              text: `${comment}${area}`,
-              date: new Date().toLocaleString("es-CO")
-            });
-          }
-          event.currentTarget.textContent = "Avance guardado";
-          window.setTimeout(() => { event.currentTarget.textContent = "Guardar avance"; }, 1400);
           renderTracking();
         });
       });
